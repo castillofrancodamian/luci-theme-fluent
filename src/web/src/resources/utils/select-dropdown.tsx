@@ -56,7 +56,8 @@ function upgradeDropdownChevron(dropdown: HTMLElement) {
   if (openSpan) {
     if (openSpan.getAttribute("data-chevron-upgraded") !== "true") {
       openSpan.setAttribute("data-chevron-upgraded", "true");
-      openSpan.innerHTML = '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>';
+      openSpan.innerHTML =
+        '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>';
     }
   }
 }
@@ -82,13 +83,12 @@ function transformSelect(selectEl: HTMLSelectElement) {
 
   // Insert the SVG element via HTML string since LuCI's JSX types do not support SVG elements natively
   const openSpan = (<span class="open"></span>) as HTMLElement;
-  openSpan.innerHTML = '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>';
+  openSpan.innerHTML =
+    '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>';
 
   const customDropdown = (
     <div class="cbi-dropdown fluent-custom-select">
-      <ul>
-        {previewLi}
-      </ul>
+      <ul>{previewLi}</ul>
       {openSpan}
       {listbox}
     </div>
@@ -101,7 +101,7 @@ function transformSelect(selectEl: HTMLSelectElement) {
       customDropdown.setAttribute("style", cleanStyle);
     }
   }
-  
+
   // Set initial disabled state
   if (selectEl.disabled) {
     customDropdown.setAttribute("disabled", "");

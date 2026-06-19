@@ -65,6 +65,21 @@ class mainImpl extends L.view {
       o.rmempty = false;
     }
     {
+      const o = s.option(form.Flag, "view_transition", _("Page Transition Animation"), _("Enable smooth fade-out/fade-in transitions between page loads using the View Transition API."));
+      o.default = o.enabled;
+      o.rmempty = false;
+    }
+    {
+      const o = s.option(form.Flag, "tab_animation", _("Tab Slide Animation"), _("Enable sliding animation for tab menu underline indicators."));
+      o.default = o.enabled;
+      o.rmempty = false;
+    }
+    {
+      const o = s.option(form.Flag, "loading_bar", _("Top Loading Bar"), _("Display a FluentUI-styled indeterminate progress bar at the top of the page during page loads and transitions."));
+      o.default = o.enabled;
+      o.rmempty = false;
+    }
+    {
       const o = s.option(form.Value, "primary", _("[Light mode] Primary Color"), _("A HEX color (default: #0078d4)."));
       o.default = "#0078d4";
       o.rmempty = false;

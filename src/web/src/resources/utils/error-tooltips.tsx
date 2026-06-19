@@ -53,9 +53,7 @@ export function setupErrorTooltips() {
  * @param {HTMLElement} target - The input/dropdown element
  */
 function getErrorAnchor(target: HTMLElement): HTMLElement {
-  const wrapper = target.parentElement?.closest(
-    ".control-group, .password-input, .cbi-input-group, .add-item"
-  );
+  const wrapper = target.parentElement?.closest(".control-group, .password-input, .cbi-input-group, .add-item");
   return (wrapper as HTMLElement) || target;
 }
 

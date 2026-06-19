@@ -43,6 +43,9 @@
   let transition_speed = 'normal';
   let custom_css = '';
   let custom_select = '1';
+  let view_transition = '1';
+  let tab_animation = '1';
+  let loading_bar = '1';
   let dark_sidebar_bg = '';
   let dark_card_bg = '';
   let dark_page_bg = '';
@@ -85,6 +88,9 @@
     dark_card_bg = cfg.get_first('fluent', 'global', 'dark_card_bg') || '';
     dark_page_bg = cfg.get_first('fluent', 'global', 'dark_page_bg') || '';
     custom_select = cfg.get_first('fluent', 'global', 'custom_select') || '1';
+    view_transition = cfg.get_first('fluent', 'global', 'view_transition') || '1';
+    tab_animation = cfg.get_first('fluent', 'global', 'tab_animation') || '1';
+    loading_bar = cfg.get_first('fluent', 'global', 'loading_bar') || '1';
 
     bar_color = mode === 'dark' ? dark_primary : primary;
     main_left_font_color = font_weight === 'normal' ? '#5f6368' : '#69758c';
@@ -200,6 +206,88 @@
     {% } %}
   </style>
 
+  {% if (view_transition == '1') { %}
+  <style>
+    @view-transition {
+      navigation: auto;
+    }
+    
+    /* Smooth fade-out/fade-in page transition */
+    ::view-transition-old(root) {
+      animation: 180ms cubic-bezier(0.4, 0, 0.2, 1) both fade-out;
+    }
+    ::view-transition-new(root) {
+      animation: 180ms cubic-bezier(0.4, 0, 0.2, 1) both fade-in;
+    }
+    
+    @keyframes fade-out {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    {% if (tab_animation == '1') { %}
+    /* Native morphing transition for the active tab indicator */
+    .fluent-tab-slider {
+      view-transition-name: fluent-tab-slider;
+      contain: layout;
+    }
+    ::view-transition-group(fluent-tab-slider) {
+      animation-duration: {{ transition_duration }};
+      animation-timing-function: var(--fluent-easing-standard, cubic-bezier(0.8, 0, 0.2, 1));
+    }
+    {% } %}
+  </style>
+  {% } %}
+
+  {% if (loading_bar == '1') { %}
+  <style>
+    .fluent-loading-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: transparent;
+      z-index: 99999;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 1;
+      transition: opacity 150ms ease;
+    }
+
+    .fluent-loading-bar.loaded {
+      opacity: 0;
+    }
+
+    .fluent-loading-bar-indicator {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--fluent-primary, #0078d4);
+      transform-origin: left;
+      animation: fluent-indeterminate-bar 1.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes fluent-indeterminate-bar {
+      0% {
+        transform: translateX(-100%) scaleX(0.1);
+      }
+      50% {
+        transform: translateX(-30%) scaleX(0.6);
+      }
+      100% {
+        transform: translateX(100%) scaleX(0.1);
+      }
+    }
+  </style>
+  {% } %}
+
   <link rel="shortcut icon" type="image/ico" href="{{ media }}/favicon.ico">
   {% if (node && node.css) { %}
   <link rel="stylesheet" href="{{ resource }}/{{ node.css }}">
@@ -275,6 +363,14 @@
   <script>
     // FluentUI 2 sliding tab indicator logic
     (function() {
+      var tabAnimationEnabled = '{{ tab_animation }}' === '1';
+      var viewTransitionEnabled = '{{ view_transition }}' === '1';
+      
+      // Check if browser supports View Transition API and it's enabled by user
+      var hasViewTransition = viewTransitionEnabled 
+        && Boolean(document.startViewTransition) 
+        && CSS.supports('view-transition-name', 'test');
+
       function updateSlider(ul) {
         let slider = ul.querySelector('.fluent-tab-slider');
         if (!slider) {
@@ -316,7 +412,61 @@
           }
           ul.dataset.sliderInit = 'true';
           
-          updateSlider(ul);
+          let slider = ul.querySelector('.fluent-tab-slider');
+          if (!slider) {
+            slider = document.createElement('div');
+            slider.className = 'fluent-tab-slider';
+            ul.appendChild(slider);
+          }
+
+          // sessionStorage fallback: only if tab_animation is enabled AND View Transition is not active
+          if (tabAnimationEnabled && !hasViewTransition && ul.classList.contains('tabs')) {
+            var saved = null;
+            try { saved = sessionStorage.getItem('fluent-tab-slider-pos'); } catch(e) {}
+            
+            if (saved) {
+              try {
+                var pos = JSON.parse(saved);
+                sessionStorage.removeItem('fluent-tab-slider-pos');
+                
+                // Position instantly at old position
+                slider.style.transition = 'none';
+                slider.style.left = pos.left;
+                slider.style.width = pos.width;
+                slider.offsetHeight; // force reflow
+                
+                // Restore transition and slide to new active position
+                slider.style.transition = '';
+                updateSlider(ul);
+              } catch(e) {
+                updateSlider(ul);
+              }
+            } else {
+              // Initial load animation: scaleX
+              updateSlider(ul);
+              slider.style.transition = 'none';
+              slider.style.transform = 'scaleX(0)';
+              slider.offsetHeight; // force reflow
+              slider.style.transition = '';
+              slider.style.transform = 'scaleX(1)';
+            }
+
+            // Click listener to save position
+            ul.querySelectorAll('li > a').forEach(function(a) {
+              if (a.getAttribute('href') && a.getAttribute('href') !== '#') {
+                a.addEventListener('click', function() {
+                  try {
+                    sessionStorage.setItem('fluent-tab-slider-pos', JSON.stringify({
+                      left: slider.style.left,
+                      width: slider.style.width
+                    }));
+                  } catch(e) {}
+                });
+              }
+            });
+          } else {
+            updateSlider(ul);
+          }
           
           ul.addEventListener('click', () => {
             setTimeout(() => updateSlider(ul), 10);
@@ -340,13 +490,91 @@
       });
     })();
   </script>
+
+  <script>
+    // FluentUI loading bar behavior
+    (function() {
+      var loadingBarEnabled = '{{ loading_bar }}' === '1';
+      if (!loadingBarEnabled) return;
+
+      var isUnloading = false;
+
+      function hideLoading() {
+        var loader = document.getElementById('fluent-top-loading');
+        if (loader && !isUnloading) {
+          loader.classList.add('loaded');
+        }
+      }
+
+      function showLoading() {
+        var loader = document.getElementById('fluent-top-loading');
+        if (loader) {
+          loader.classList.remove('loaded');
+        }
+      }
+
+      // Hide loading bar when DOM is interactive
+      if (document.readyState === 'interactive' || document.readyState === 'complete') {
+        hideLoading();
+      } else {
+        document.addEventListener('DOMContentLoaded', hideLoading);
+      }
+
+      // Hide loading bar on window load as a fallback
+      window.addEventListener('load', hideLoading);
+
+      // Show loading bar when user navigates away
+      window.addEventListener('beforeunload', function() {
+        isUnloading = true;
+        showLoading();
+      });
+      
+      // Also listen to click events on links to show it immediately (since beforeunload can sometimes be delayed)
+      document.addEventListener('click', function(e) {
+        var a = e.target.closest('a');
+        if (a && a.href && !a.href.startsWith('#') && !a.href.startsWith('javascript:') && !a.getAttribute('target')) {
+          if (a.hostname === location.hostname) {
+            showLoading();
+          }
+        }
+      });
+      
+      // Also show loading bar on form submissions
+      document.addEventListener('submit', function(e) {
+        var form = e.target.closest('form');
+        if (form && !form.getAttribute('target')) {
+          showLoading();
+        }
+      });
+
+      // MutationObserver to watch for client-side AJAX view loading (e.g. .spinning element)
+      var observer = new MutationObserver(function() {
+        var hasSpinner = document.querySelector('.spinning, .loading, #view > .spinning') !== null;
+        if (hasSpinner) {
+          showLoading();
+        } else {
+          hideLoading();
+        }
+      });
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+    })();
+  </script>
 </head>
 
 <body
   class="lang_{{ dispatcher.lang }} {{ node ? entityencode(node.title, true) : '' }} {{ ctx.authsession ? 'logged-in' : '' }}"
   data-page="{{ entityencode(join('-', ctx.request_path), true) }}"
   data-theme-mode="{{ mode }}"
-  data-theme-custom-select="{{ custom_select }}">
+  data-theme-custom-select="{{ custom_select }}"
+  data-view-transition="{{ view_transition }}"
+  data-tab-animation="{{ tab_animation }}"
+  data-loading-bar="{{ loading_bar }}">
+
+  {% if (loading_bar == '1') { %}
+  <div id="fluent-top-loading" class="fluent-loading-bar" aria-hidden="true">
+    <div class="fluent-loading-bar-indicator"></div>
+  </div>
+  {% } %}
 
   <div class="main">
     {% if (ctx.authsession) { %}

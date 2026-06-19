@@ -27,6 +27,9 @@ if ! uci -q get fluent.@global[0] > /dev/null 2>&1; then
 	set fluent.global.card_border='1'
 	set fluent.global.transition_speed='normal'
 	set fluent.global.custom_select='1'
+	set fluent.global.view_transition='1'
+	set fluent.global.tab_animation='1'
+	set fluent.global.loading_bar='1'
 EOF
 	uci commit fluent
 fi

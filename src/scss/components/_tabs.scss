@@ -53,9 +53,19 @@ ul.cbi-tabmenu {
     border-radius: calc(var(--fluent-tab-indicator-height, 3px) / 2);
     transition:
       left var(--fluent-duration-normal) var(--fluent-easing-standard),
-      width var(--fluent-duration-normal) var(--fluent-easing-standard);
+      width var(--fluent-duration-normal) var(--fluent-easing-standard),
+      transform var(--fluent-duration-normal) var(--fluent-easing-standard);
+    transform-origin: center;
     pointer-events: none;
     z-index: 1;
+
+    body[data-tab-animation="0"] & {
+      transition: none !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none !important;
+    }
   }
 
   > li {
