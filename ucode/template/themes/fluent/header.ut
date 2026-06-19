@@ -537,9 +537,12 @@
       // Also listen to click events on links to show it immediately (since beforeunload can sometimes be delayed)
       document.addEventListener('click', function(e) {
         var a = e.target.closest('a');
-        if (a && a.href && !a.href.startsWith('#') && !a.href.startsWith('javascript:') && !a.getAttribute('target')) {
-          if (a.hostname === location.hostname) {
-            showLoading();
+        if (a) {
+          var href = a.getAttribute('href');
+          if (href && !href.startsWith('#') && !href.startsWith('javascript:') && !a.getAttribute('target')) {
+            if (a.hostname === location.hostname) {
+              showLoading();
+            }
           }
         }
       });
