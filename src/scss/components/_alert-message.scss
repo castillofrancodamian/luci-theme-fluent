@@ -59,14 +59,15 @@ $fluent-alert-icon-error: "<svg xmlns='http://www.w3.org/2000/svg' width='20' he
   }
   position: relative;
   // Dismiss / close button container (aligns button to top right)
-  > div:last-child {
+  // Use :last-of-type > :only-child to avoid matching containers with multiple buttons
+  > div:last-of-type:not(:first-of-type) {
     // float to top right of the alert box and do not take any space
     position: absolute;
     display: flex;
     top: 8px;
     right: 8px;
 
-    .btn:not(.cbi-button) {
+    > .btn:not(.cbi-button):only-child {
       &::after {
         content: "";
         width: 20px;

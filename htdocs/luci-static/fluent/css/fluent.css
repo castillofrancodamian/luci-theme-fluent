@@ -1768,8 +1768,8 @@ body.modal-overlay-active #modal_overlay {
   color: var(--fluent-text);
   line-height: var(--fluent-line-height-normal);
 }
-.modal .modal-close,
-.modal .close {
+.modal > .modal-close,
+.modal > .close {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1786,21 +1786,21 @@ body.modal-overlay-active #modal_overlay {
   text-decoration: none;
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
-.modal .modal-close:disabled,
-.modal .close:disabled {
+.modal > .modal-close:disabled,
+.modal > .close:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
   cursor: not-allowed;
   pointer-events: none;
 }
-.modal .modal-close:focus-visible,
-.modal .close:focus-visible {
+.modal > .modal-close:focus-visible,
+.modal > .close:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
-.modal .modal-close,
-.modal .close {
+.modal > .modal-close,
+.modal > .close {
   padding: 0;
   width: 32px;
   height: 32px;
@@ -1812,8 +1812,8 @@ body.modal-overlay-active #modal_overlay {
   right: var(--fluent-space-lg);
   z-index: 11;
 }
-.modal .modal-close::before,
-.modal .close::before {
+.modal > .modal-close::before,
+.modal > .close::before {
   content: "";
   display: inline-block;
   width: 20px;
@@ -1824,8 +1824,8 @@ body.modal-overlay-active #modal_overlay {
   background-repeat: no-repeat;
   background-position: center;
 }
-.modal .modal-close:hover,
-.modal .close:hover {
+.modal > .modal-close:hover,
+.modal > .close:hover {
   background: var(--fluent-bg-hover);
   color: var(--fluent-text);
 }
@@ -1844,41 +1844,44 @@ body.modal-overlay-active #modal_overlay {
   overflow: visible !important;
 }
 
-body.modal-overlay-active:has(#modal_overlay .modal.alert-message:not(:has(.button-row)):not(:has(button))) {
+body.modal-overlay-active:has(#modal_overlay .modal.notice),
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) {
   overflow: auto !important;
   height: auto !important;
 }
 
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) button,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) input,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) select,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) textarea,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) label,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) .cbi-button,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) .cbi-dropdown,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) .cbi-checkbox,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) .drag-handle,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) a.btn {
+body.modal-overlay-active:has(#modal_overlay .modal.notice) #maincontent button,
+body.modal-overlay-active:has(#modal_overlay .modal.notice) #maincontent input,
+body.modal-overlay-active:has(#modal_overlay .modal.notice) #maincontent select,
+body.modal-overlay-active:has(#modal_overlay .modal.notice) #maincontent textarea,
+body.modal-overlay-active:has(#modal_overlay .modal.notice) #maincontent label,
+body.modal-overlay-active:has(#modal_overlay .modal.notice) #maincontent .cbi-button,
+body.modal-overlay-active:has(#modal_overlay .modal.notice) #maincontent .cbi-dropdown,
+body.modal-overlay-active:has(#modal_overlay .modal.notice) #maincontent .cbi-checkbox,
+body.modal-overlay-active:has(#modal_overlay .modal.notice) #maincontent .drag-handle,
+body.modal-overlay-active:has(#modal_overlay .modal.notice) #maincontent a.btn,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent button,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent input,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent select,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent textarea,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent label,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent .cbi-button,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent .cbi-dropdown,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent .cbi-checkbox,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent .drag-handle,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn {
   pointer-events: none !important;
   cursor: not-allowed !important;
   filter: grayscale(0.5) opacity(0.6) !important;
 }
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning button,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning input,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning select,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning textarea,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning label,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning .cbi-button {
-  pointer-events: auto !important;
-  cursor: default !important;
-  filter: none !important;
-}
 
-body.modal-overlay-active:has(#modal_overlay .modal.alert-message:not(:has(.button-row)):not(:has(button))) #modal_overlay {
+body.modal-overlay-active #modal_overlay:has(.modal.notice),
+body.modal-overlay-active #modal_overlay:has(.modal.spinning) {
   background: transparent !important;
   pointer-events: none !important;
   align-items: flex-start !important;
   padding-top: var(--fluent-space-xl) !important;
+  display: flex !important;
 }
 
 .modal.alert-message:not(:has(.button-row)):not(:has(button)),
@@ -2596,15 +2599,15 @@ body.modal-overlay-active:has(#modal_overlay .modal.alert-message:not(:has(.butt
 .alert-message {
   position: relative;
 }
-.alert > div:last-child,
-.alert-message > div:last-child {
+.alert > div:last-of-type:not(:first-of-type),
+.alert-message > div:last-of-type:not(:first-of-type) {
   position: absolute;
   display: flex;
   top: 8px;
   right: 8px;
 }
-.alert > div:last-child .btn:not(.cbi-button)::after,
-.alert-message > div:last-child .btn:not(.cbi-button)::after {
+.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child::after,
+.alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child::after {
   content: "";
   width: 20px;
   height: 20px;
@@ -2615,8 +2618,8 @@ body.modal-overlay-active:has(#modal_overlay .modal.alert-message:not(:has(.butt
   background-repeat: no-repeat;
   background-position: center;
 }
-.alert > div:last-child .btn:not(.cbi-button),
-.alert-message > div:last-child .btn:not(.cbi-button) {
+.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child,
+.alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2633,35 +2636,35 @@ body.modal-overlay-active:has(#modal_overlay .modal.alert-message:not(:has(.butt
   text-decoration: none;
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
-.alert > div:last-child .btn:not(.cbi-button):disabled,
-.alert-message > div:last-child .btn:not(.cbi-button):disabled {
+.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:disabled,
+.alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
   cursor: not-allowed;
   pointer-events: none;
 }
-.alert > div:last-child .btn:not(.cbi-button):focus-visible,
-.alert-message > div:last-child .btn:not(.cbi-button):focus-visible {
+.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:focus-visible,
+.alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
-.alert > div:last-child .btn:not(.cbi-button),
-.alert-message > div:last-child .btn:not(.cbi-button) {
+.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child,
+.alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child {
   background: transparent;
   color: var(--fluent-text);
   border-color: transparent;
 }
-.alert > div:last-child .btn:not(.cbi-button):hover,
-.alert-message > div:last-child .btn:not(.cbi-button):hover {
+.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:hover,
+.alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:hover {
   background: var(--fluent-bg-hover);
 }
-.alert > div:last-child .btn:not(.cbi-button):active,
-.alert-message > div:last-child .btn:not(.cbi-button):active {
+.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:active,
+.alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:active {
   background: var(--fluent-bg-active);
 }
-.alert > div:last-child .btn:not(.cbi-button),
-.alert-message > div:last-child .btn:not(.cbi-button) {
+.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child,
+.alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child {
   font-size: 0 !important;
   display: inline-flex;
   align-items: center;
@@ -2678,13 +2681,13 @@ body.modal-overlay-active:has(#modal_overlay .modal.alert-message:not(:has(.butt
   background: transparent;
   border: none;
 }
-.alert > div:last-child .btn:not(.cbi-button):hover,
-.alert-message > div:last-child .btn:not(.cbi-button):hover {
+.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:hover,
+.alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:hover {
   background: var(--fluent-bg-hover);
   color: var(--fluent-text);
 }
-.alert > div:last-child .btn:not(.cbi-button):active,
-.alert-message > div:last-child .btn:not(.cbi-button):active {
+.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:active,
+.alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:active {
   background: var(--fluent-bg-active);
 }
 .alert h4,

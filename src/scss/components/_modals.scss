@@ -102,9 +102,9 @@ body.modal-overlay-active {
     line-height: var(--fluent-line-height-normal);
   }
 
-  // Close button
-  .modal-close,
-  .close {
+  // Close button — direct child only to avoid matching nested .close elements
+  > .modal-close,
+  > .close {
     @include button-base;
     padding: 0;
     width: 32px;
@@ -153,14 +153,18 @@ body.modal-overlay-active {
 // If the modal is active and spinning (saving), disable page inputs.
 // ============================================================
 
-// 1. Override body restriction to allow page scrolling for all non-interactive alert/notice modals
-body.modal-overlay-active:has(#modal_overlay .modal.alert-message:not(:has(.button-row)):not(:has(button))) {
+// 1. Override body restriction to allow page scrolling for all notice/spinning modals
+body.modal-overlay-active:has(#modal_overlay .modal.notice),
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) {
   overflow: auto !important;
   height: auto !important;
 }
 
-// 2. Temporarily disable all form interaction on the page ONLY during saving/spinning
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) {
+// 2. Temporarily disable all form interaction on the page content during save flow
+//    Covers both: .notice ("没有待应用的更改") and .spinning ("开始应用配置…")
+//    We scope this to #maincontent so sidebar navigation and header utilities remain interactive
+body.modal-overlay-active:has(#modal_overlay .modal.notice) #maincontent,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent {
   button,
   input,
   select,
@@ -175,28 +179,18 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) {
     cursor: not-allowed !important;
     filter: grayscale(0.5) opacity(0.6) !important;
   }
-
-  // Ensure the Toast itself is still clickable if needed
-  #modal_overlay .modal.spinning {
-    button,
-    input,
-    select,
-    textarea,
-    label,
-    .cbi-button {
-      pointer-events: auto !important;
-      cursor: default !important;
-      filter: none !important;
-    }
-  }
 }
 
-// 3. Transform modal overlay to a transparent top-aligned container for all non-interactive alert modals
-body.modal-overlay-active:has(#modal_overlay .modal.alert-message:not(:has(.button-row)):not(:has(button))) #modal_overlay {
-  background: transparent !important;
-  pointer-events: none !important;
-  align-items: flex-start !important;
-  padding-top: var(--fluent-space-xl) !important;
+// 3. Transform modal overlay to a transparent top-aligned container for all notice/spinning modals
+body.modal-overlay-active {
+  #modal_overlay:has(.modal.notice),
+  #modal_overlay:has(.modal.spinning) {
+    background: transparent !important;
+    pointer-events: none !important;
+    align-items: flex-start !important;
+    padding-top: var(--fluent-space-xl) !important;
+    display: flex !important;
+  }
 }
 
 // 4. Style all non-interactive alert/notice/spinning modals as top Toasts
