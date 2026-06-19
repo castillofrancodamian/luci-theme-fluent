@@ -354,16 +354,16 @@ function setupFluentSelects() {
 }
 function select_dropdown_l(e) {
     let t = e.querySelector("span.open");
-    t && !t.querySelector("svg") && (t.innerHTML = '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>');
+    t && "true" !== t.getAttribute("data-chevron-upgraded") && (t.setAttribute("data-chevron-upgraded", "true"), t.innerHTML = '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>');
 }
 function select_dropdown_r(l) {
     var r;
     if ((null == l ? void 0 : l.tagName) !== "SELECT" || "true" === l.getAttribute("data-fluent-transformed") || l.closest(".cbi-dropdown") || l.multiple) return;
     let i = l.getAttribute("style");
     l.setAttribute("data-fluent-transformed", "true"), l.style.setProperty("display", "none", "important");
-    let o = jsx("li", {});
-    o.setAttribute("selected", "");
-    let n = jsx("ul", {
+    let n = jsx("li", {});
+    n.setAttribute("selected", "");
+    let o = jsx("ul", {
         class: "dropdown"
     }), s = jsx("span", {
         class: "open"
@@ -373,10 +373,10 @@ function select_dropdown_r(l) {
         class: "cbi-dropdown fluent-custom-select",
         children: [
             jsx("ul", {
-                children: o
+                children: n
             }),
             s,
-            n
+            o
         ]
     });
     if (a.setAttribute("tabindex", "0"), i) {
@@ -385,28 +385,28 @@ function select_dropdown_r(l) {
     }
     l.disabled && (a.setAttribute("disabled", ""), a.removeAttribute("tabindex"));
     let c = ()=>{
-        n.innerHTML = "";
+        o.innerHTML = "";
         let t = "", r = !1;
         if (Array.from(l.options).forEach((l)=>{
             let i = jsx("li", {
                 children: l.text
             });
-            i.setAttribute("data-value", l.value), l.selected && (i.setAttribute("selected", ""), t = l.text, r = !0), l.disabled && i.setAttribute("disabled", ""), n.appendChild(i);
+            i.setAttribute("data-value", l.value), l.selected && (i.setAttribute("selected", ""), t = l.text, r = !0), l.disabled && i.setAttribute("disabled", ""), o.appendChild(i);
         }), !r && l.options.length > 0) {
             let e = l.options[l.selectedIndex >= 0 ? l.selectedIndex : 0];
             t = e.text;
-            let r = n.querySelector('li[data-value="'.concat(e.value, '"]'));
+            let r = o.querySelector('li[data-value="'.concat(e.value, '"]'));
             null == r || r.setAttribute("selected", "");
         }
-        o.textContent = t;
+        n.textContent = t;
     };
     c(), null == (r = l.parentNode) || r.insertBefore(a, l.nextSibling), a.addEventListener("click", (e)=>{
         var t, r, i;
         if (a.hasAttribute("disabled")) return;
-        let o = e.target.closest("ul.dropdown > li");
-        if (o) {
-            let r = o.getAttribute("data-value");
-            null === r || o.hasAttribute("disabled") || (l.value = r, l.dispatchEvent(new Event("change", {
+        let n = e.target.closest("ul.dropdown > li");
+        if (n) {
+            let r = n.getAttribute("data-value");
+            null === r || n.hasAttribute("disabled") || (l.value = r, l.dispatchEvent(new Event("change", {
                 bubbles: !0
             })), l.dispatchEvent(new Event("input", {
                 bubbles: !0
@@ -421,8 +421,8 @@ function select_dropdown_r(l) {
             });
             let e = a.getBoundingClientRect(), t = window.innerHeight - e.bottom, r = e.top;
             t < Math.min(32 * l.options.length + 10, 250) && r > t ? a.setAttribute("data-open-direction", "up") : a.setAttribute("data-open-direction", "down"), a.setAttribute("open", ""), null == (i = a.closest(".cbi-value-field, .cbi-value")) || i.classList.add("cbi-dropdown-open");
-            let o = n.querySelector("li[selected]");
-            o && o.scrollIntoView({
+            let n = o.querySelector("li[selected]");
+            n && n.scrollIntoView({
                 block: "nearest"
             });
         }
@@ -437,12 +437,12 @@ function select_dropdown_r(l) {
     document.addEventListener("click", d, !0), a.addEventListener("keydown", (e)=>{
         var t, r;
         if (a.hasAttribute("disabled")) return;
-        let i = a.hasAttribute("open"), o = Array.from(n.querySelectorAll("li:not([disabled])")), s = o.findIndex((e)=>e.hasAttribute("selected"));
+        let i = a.hasAttribute("open"), n = Array.from(o.querySelectorAll("li:not([disabled])")), s = n.findIndex((e)=>e.hasAttribute("selected"));
         switch(e.key){
             case "Enter":
             case " ":
                 if (e.preventDefault(), i) {
-                    let e = o[s];
+                    let e = n[s];
                     e && e.click();
                 } else a.click();
                 break;
@@ -451,9 +451,9 @@ function select_dropdown_r(l) {
                 break;
             case "ArrowDown":
                 if (e.preventDefault(), i) {
-                    if (o.length > 0) {
-                        let e = (s + 1) % o.length;
-                        o.forEach((t, r)=>{
+                    if (n.length > 0) {
+                        let e = (s + 1) % n.length;
+                        n.forEach((t, r)=>{
                             if (r === e) {
                                 t.setAttribute("selected", ""), t.scrollIntoView({
                                     block: "nearest"
@@ -471,9 +471,9 @@ function select_dropdown_r(l) {
                 break;
             case "ArrowUp":
                 if (e.preventDefault(), i) {
-                    if (o.length > 0) {
-                        let e = (s - 1 + o.length) % o.length;
-                        o.forEach((t, r)=>{
+                    if (n.length > 0) {
+                        let e = (s - 1 + n.length) % n.length;
+                        n.forEach((t, r)=>{
                             if (r === e) {
                                 t.setAttribute("selected", ""), t.scrollIntoView({
                                     block: "nearest"
@@ -493,10 +493,10 @@ function select_dropdown_r(l) {
                 i && (a.removeAttribute("open"), null == (r = a.closest(".cbi-value-field, .cbi-value")) || r.classList.remove("cbi-dropdown-open"));
         }
     }), l.addEventListener("change", ()=>{
-        let e = l.value, t = Array.from(n.querySelectorAll("li")), r = "";
+        let e = l.value, t = Array.from(o.querySelectorAll("li")), r = "";
         t.forEach((t)=>{
             t.getAttribute("data-value") === e ? (t.setAttribute("selected", ""), r = t.textContent || "") : t.removeAttribute("selected");
-        }), o.textContent = r;
+        }), n.textContent = r;
     });
     let u = new MutationObserver(()=>{
         c();
