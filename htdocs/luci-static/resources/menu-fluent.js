@@ -43,7 +43,7 @@ __webpack_require__.d(__webpack_exports__, {
   main: () => (/* binding */ main)
 });
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_define_property.js
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_define_property.js
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
@@ -53,7 +53,7 @@ function _define_property(obj, key, value) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_spread.js
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_spread.js
 
 
 function _object_spread(target) {
@@ -78,7 +78,7 @@ function _object_spread(target) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_spread_props.js
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_spread_props.js
 function _object_spread_props_ownKeys(object, enumerableOnly) {
     var keys = Object.keys(object);
 
@@ -108,7 +108,7 @@ function _object_spread_props(target, source) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_without_properties_loose.js
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_without_properties_loose.js
 function _object_without_properties_loose(source, excluded) {
     if (source == null) return {};
 
@@ -124,7 +124,7 @@ function _object_without_properties_loose(source, excluded) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_without_properties.js
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_without_properties.js
 
 
 function _object_without_properties(source, excluded) {
@@ -159,7 +159,7 @@ function _object_without_properties(source, excluded) {
 
 
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/@lazulikao+luci-types@https_733ea5061d64f8228fe879348d9f10be/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_733ea5061d64f8228fe879348d9f10be/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
 
 
 
@@ -200,10 +200,10 @@ function jsxDEV(e, t) {
     return jsx_factory_o(e, t);
 }
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/@lazulikao+luci-types@https_733ea5061d64f8228fe879348d9f10be/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_733ea5061d64f8228fe879348d9f10be/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
 
 
-;// CONCATENATED MODULE: ./src/resources/utils/error-tooltips.tsx
+;// CONCATENATED MODULE: ./web/resources/utils/error-tooltips.tsx
 
 function setupErrorTooltips() {
     document.querySelectorAll(".cbi-input-invalid").forEach((t)=>{
@@ -252,7 +252,7 @@ function error_tooltips_i(i) {
     })).insertAdjacentHTML("afterbegin", '<svg fill="currentColor" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;"><path d="M6 1a5 5 0 1 0 0 10A5 5 0 0 0 6 1Zm2.12 3.28a.5.5 0 0 1 0 .7L6.7 6.42l1.41 1.41a.5.5 0 1 1-.7.7L6 7.12 4.59 8.53a.5.5 0 0 1-.7-.7L5.3 6.42 3.88 5.01a.5.5 0 0 1 .7-.7L6 5.72l1.41-1.41a.5.5 0 0 1 .71 0Z" fill="currentColor"></path></svg>'), null == (n = l.parentNode) || n.insertBefore(s, l.nextSibling);
 }
 
-;// CONCATENATED MODULE: ./src/resources/utils/poll-pause.ts
+;// CONCATENATED MODULE: ./web/resources/utils/poll-pause.ts
 function setupSelectionPause() {
     let t = !1;
     document.addEventListener("selectionchange", ()=>{
@@ -266,7 +266,7 @@ function setupSelectionPause() {
     });
 }
 
-;// CONCATENATED MODULE: ./src/resources/utils/slide-animations.ts
+;// CONCATENATED MODULE: ./web/resources/utils/slide-animations.ts
 const SlideAnimations = {
     durations: {
         fast: 200,
@@ -330,7 +330,7 @@ const SlideAnimations = {
     }
 };
 
-;// CONCATENATED MODULE: ./src/resources/utils/select-dropdown.tsx
+;// CONCATENATED MODULE: ./web/resources/utils/select-dropdown.tsx
 
 function setupFluentSelects() {
     "0" === document.body.getAttribute("data-theme-custom-select") || (document.querySelectorAll("select").forEach((e)=>{
@@ -555,7 +555,7 @@ function select_dropdown_r(l) {
     });
 }
 
-;// CONCATENATED MODULE: ./src/resources/menu-fluent.tsx
+;// CONCATENATED MODULE: ./web/resources/menu-fluent.tsx
 
 
 

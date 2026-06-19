@@ -1,3 +1,7 @@
+packages:
+  - '.'
+  - 'src'
+
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - cpu-features

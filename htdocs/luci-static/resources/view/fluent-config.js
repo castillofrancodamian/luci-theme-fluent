@@ -43,7 +43,7 @@ __webpack_require__.d(__webpack_exports__, {
   main: () => (/* binding */ main)
 });
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_define_property.js
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_define_property.js
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
@@ -53,7 +53,7 @@ function _define_property(obj, key, value) {
 }
 
 
-;// CONCATENATED MODULE: ./src/resources/view/fluent-config.tsx
+;// CONCATENATED MODULE: ./web/resources/view/fluent-config.tsx
 
 let fluent_config_t = L.form, fluent_config_a = L.uci, fluent_config_r = [
     0,

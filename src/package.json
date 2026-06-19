@@ -1,5 +1,5 @@
 {
-  "name": "luci-theme-fluent-ui",
+  "name": "luci-theme-fluent-src",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,7 +9,9 @@
   },
   "devDependencies": {
     "@lazulikao/luci-types": "github:LazuliKao/luci-types#8fc5d1a370992d411c2c2c2c27b77cad189d0b6b",
-    "@rsbuild/core": "^2.0.7",
+    "@rspack/core": "^2.0.8",
+    "@rsbuild/core": "^2.0.15",
+    "@rsbuild/plugin-sass": "^1.5.3",
     "@types/node": "^22.19.19",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3"
