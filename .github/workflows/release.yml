@@ -1,0 +1,138 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag (e.g. v1.0.0)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  scss:
+    name: Build CSS
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build CSS & JS
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run build
+          test -s htdocs/luci-static/fluent/css/fluent.css
+
+      - name: Upload CSS artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fluent-css
+          path: htdocs/luci-static/fluent/css/fluent.css
+
+  release:
+    name: Build & Publish (${{ matrix.version }})
+    needs: scss
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ['24.10.7', '25.12.4']
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download CSS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: fluent-css
+          path: htdocs/luci-static/fluent/css/
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y zstd wget
+
+      - name: Prepare package sources
+        run: |
+          mkdir -p ${HOME}/builder/packages
+          cp -r "$PWD" "${HOME}/builder/packages/luci-theme-fluent"
+
+      - name: Build packages
+        run: |
+          chmod +x .github/workflows/build.sh
+          bash .github/workflows/build.sh "${{ matrix.version }}"
+
+      - name: Collect built packages
+        run: |
+          mkdir -p release
+          cp ${HOME}/builder/output/*.ipk release/ 2>/dev/null || true
+          cp ${HOME}/builder/output/*.apk release/ 2>/dev/null || true
+          echo "Built packages:"
+          ls -lh release/
+
+      - name: Upload release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ env.TAG }}-openwrt-${{ matrix.version }}
+          path: |
+            release/*.ipk
+            release/*.apk
+
+  publish:
+    name: Create GitHub Release
+    needs: release
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+    steps:
+      - name: Download all release artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+          pattern: release-${{ env.TAG }}-*
+          merge-multiple: true
+
+      - name: List all packages
+        run: |
+          echo "All packages for release ${{ env.TAG }}:"
+          find artifacts/ -type f \( -name "*.ipk" -o -name "*.apk" \) -exec ls -lh {} \;
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.TAG }}
+          name: "Release ${{ env.TAG }}"
+          body: |
+            ## LuCI Theme Fluent ${{ env.TAG }}
+
+            ### Packages
+            - `luci-theme-fluent` — FluentUI theme for OpenWrt LuCI
+
+            ### Installation
+
+            **OpenWrt 24.10.x (opkg/ipk):**
+            ```bash
+            opkg install luci-theme-fluent_*.ipk
+            ```
+
+            **OpenWrt 25.12.x (apk):**
+            ```bash
+            apk add luci-theme-fluent_*.apk
+            ```
+          files: |
+            artifacts/**/*.ipk
+            artifacts/**/*.apk
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

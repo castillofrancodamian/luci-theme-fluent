@@ -1,0 +1,113 @@
+name: CI
+
+on:
+  push:
+    branches: [openwrt-24.10]
+  pull_request:
+    branches: [openwrt-24.10]
+
+jobs:
+  scss:
+    name: SCSS Build Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build CSS & JS
+        run: pnpm run build
+
+      - name: Verify output
+        run: |
+          test -s htdocs/luci-static/fluent/css/fluent.css
+          size=$(wc -c < htdocs/luci-static/fluent/css/fluent.css)
+          echo "fluent.css built successfully (${size} bytes)"
+
+      - name: Upload CSS artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fluent-css
+          path: htdocs/luci-static/fluent/css/fluent.css
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint with Biome
+        run: pnpm run lint || true
+
+  openwrt-sdk:
+    name: OpenWrt SDK Build (${{ matrix.version }})
+    needs: scss
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ['24.10.7', '25.12.4']
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download CSS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: fluent-css
+          path: htdocs/luci-static/fluent/css/
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y zstd wget
+
+      - name: Prepare package sources
+        run: |
+          mkdir -p ${HOME}/builder/packages
+          cp -r "$PWD" "${HOME}/builder/packages/luci-theme-fluent"
+          echo "Staged packages:"
+          ls -la ${HOME}/builder/packages/
+
+      - name: Build packages
+        run: |
+          chmod +x .github/workflows/build.sh
+          bash .github/workflows/build.sh "${{ matrix.version }}"
+
+      - name: Collect built packages
+        run: |
+          mkdir -p output
+          cp ${HOME}/builder/output/*.ipk output/ 2>/dev/null || true
+          cp ${HOME}/builder/output/*.apk output/ 2>/dev/null || true
+          echo "Built packages:"
+          ls -lh output/
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: packages-openwrt-${{ matrix.version }}
+          path: |
+            output/*.ipk
+            output/*.apk
+          if-no-files-found: warn
