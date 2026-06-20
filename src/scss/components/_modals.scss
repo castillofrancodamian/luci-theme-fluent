@@ -49,6 +49,31 @@ body.modal-overlay-active {
   position: relative;
   @include slide-in-up;
 
+  // Simple dialogs / alert dialogs should be narrower
+  &:has(.alert-message),
+  &:has(.alert) {
+    max-width: 600px;
+  }
+
+  // Clean up alert messages inside modals to fit Fluent UI Dialog specifications
+  // (borderless, background-less inline layout to avoid box-in-a-box clutter)
+  .alert,
+  .alert-message {
+    background: transparent !important;
+    border: none !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: var(--fluent-modal-padding) !important;
+    padding-right: var(--fluent-modal-padding) !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    color: var(--fluent-text) !important;
+
+    &::before {
+      margin-top: 2px !important;
+    }
+  }
+
   // Support both h4 (standard LuCI) and .modal-header (custom)
   h4,
   .modal-header {
@@ -68,9 +93,10 @@ body.modal-overlay-active {
     }
   }
 
-  // Support both .button-row (standard LuCI) and .modal-footer (custom)
+  // Support both .button-row (standard LuCI), .modal-footer (custom), and direct child .right (common button alignment)
   .button-row,
-  .modal-footer {
+  .modal-footer,
+  > .right {
     flex: 0 0 auto;
     background: var(--fluent-modal-bg);
     padding: var(--fluent-space-lg) var(--fluent-modal-padding) var(--fluent-modal-padding);
@@ -87,7 +113,7 @@ body.modal-overlay-active {
   }
 
   // Content area: make any direct child that is not a header, footer, or close button scrollable
-  > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.close):not(.modal-close):not(style):not(script) {
+  > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script) {
     flex: 1 1 auto;
     overflow-y: auto;
     min-height: 0; // Essential for nested flexbox scrolling

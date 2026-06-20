@@ -631,7 +631,7 @@ div[id="view"] > :not(.spinning) {
   border-color: var(--fluent-btn-secondary-border-active);
 }
 
-.cbi-button.cbi-button-save, .cbi-button.cbi-button-apply, .cbi-button.cbi-button-positive, .btn.cbi-button-save, .btn.cbi-button-apply, .btn.cbi-button-positive {
+.cbi-button.cbi-button-save, .cbi-button.cbi-button-apply, .cbi-button.cbi-button-positive, .cbi-button.primary, .btn.cbi-button-save, .btn.cbi-button-apply, .btn.cbi-button-positive, .btn.primary {
   height: var(--fluent-btn-height);
   font-family: var(--fluent-font-family);
   font-size: var(--fluent-font-size-base);
@@ -650,7 +650,7 @@ div[id="view"] > :not(.spinning) {
   display: inline-flex;
 }
 
-.cbi-button.cbi-button-save:disabled, .cbi-button.cbi-button-apply:disabled, .cbi-button.cbi-button-positive:disabled, .btn.cbi-button-save:disabled, .btn.cbi-button-apply:disabled, .btn.cbi-button-positive:disabled {
+.cbi-button.cbi-button-save:disabled, .cbi-button.cbi-button-apply:disabled, .cbi-button.cbi-button-positive:disabled, .cbi-button.primary:disabled, .btn.cbi-button-save:disabled, .btn.cbi-button-apply:disabled, .btn.cbi-button-positive:disabled, .btn.primary:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
@@ -658,23 +658,23 @@ div[id="view"] > :not(.spinning) {
   pointer-events: none;
 }
 
-.cbi-button.cbi-button-save:focus-visible, .cbi-button.cbi-button-apply:focus-visible, .cbi-button.cbi-button-positive:focus-visible, .btn.cbi-button-save:focus-visible, .btn.cbi-button-apply:focus-visible, .btn.cbi-button-positive:focus-visible {
+.cbi-button.cbi-button-save:focus-visible, .cbi-button.cbi-button-apply:focus-visible, .cbi-button.cbi-button-positive:focus-visible, .cbi-button.primary:focus-visible, .btn.cbi-button-save:focus-visible, .btn.cbi-button-apply:focus-visible, .btn.cbi-button-positive:focus-visible, .btn.primary:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 
-.cbi-button.cbi-button-save, .cbi-button.cbi-button-apply, .cbi-button.cbi-button-positive, .btn.cbi-button-save, .btn.cbi-button-apply, .btn.cbi-button-positive {
+.cbi-button.cbi-button-save, .cbi-button.cbi-button-apply, .cbi-button.cbi-button-positive, .cbi-button.primary, .btn.cbi-button-save, .btn.cbi-button-apply, .btn.cbi-button-positive, .btn.primary {
   background: var(--fluent-btn-primary-bg);
   color: var(--fluent-text-on-primary);
   border-color: var(--fluent-btn-primary-bg);
 }
 
-.cbi-button.cbi-button-save:hover, .cbi-button.cbi-button-apply:hover, .cbi-button.cbi-button-positive:hover, .btn.cbi-button-save:hover, .btn.cbi-button-apply:hover, .btn.cbi-button-positive:hover {
+.cbi-button.cbi-button-save:hover, .cbi-button.cbi-button-apply:hover, .cbi-button.cbi-button-positive:hover, .cbi-button.primary:hover, .btn.cbi-button-save:hover, .btn.cbi-button-apply:hover, .btn.cbi-button-positive:hover, .btn.primary:hover {
   background: var(--fluent-btn-primary-bg-hover);
   border-color: var(--fluent-btn-primary-bg-hover);
 }
 
-.cbi-button.cbi-button-save:active, .cbi-button.cbi-button-apply:active, .cbi-button.cbi-button-positive:active, .btn.cbi-button-save:active, .btn.cbi-button-apply:active, .btn.cbi-button-positive:active {
+.cbi-button.cbi-button-save:active, .cbi-button.cbi-button-apply:active, .cbi-button.cbi-button-positive:active, .cbi-button.primary:active, .btn.cbi-button-save:active, .btn.cbi-button-apply:active, .btn.cbi-button-positive:active, .btn.primary:active {
   background: var(--fluent-btn-primary-bg-active);
   border-color: var(--fluent-btn-primary-bg-active);
 }
@@ -1827,6 +1827,26 @@ body.modal-overlay-active #modal_overlay {
   overflow: hidden;
 }
 
+:is(.modal:has(.alert-message), .modal:has(.alert)) {
+  max-width: 600px;
+}
+
+.modal .alert, .modal .alert-message {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: var(--fluent-modal-padding) !important;
+  padding-right: var(--fluent-modal-padding) !important;
+  box-shadow: none !important;
+  color: var(--fluent-text) !important;
+  background: none !important;
+  border: none !important;
+  margin: 0 !important;
+}
+
+.modal .alert:before, .modal .alert-message:before {
+  margin-top: 2px !important;
+}
+
 .modal h4, .modal .modal-header {
   background: var(--fluent-modal-bg);
   padding: var(--fluent-modal-padding) var(--fluent-modal-padding) var(--fluent-space-md);
@@ -1844,7 +1864,7 @@ body.modal-overlay-active #modal_overlay {
   margin: 0;
 }
 
-.modal .button-row, .modal .modal-footer {
+.modal .button-row, .modal .modal-footer, .modal > .right {
   background: var(--fluent-modal-bg);
   padding: var(--fluent-space-lg) var(--fluent-modal-padding) var(--fluent-modal-padding);
   justify-content: flex-end;
@@ -1856,44 +1876,44 @@ body.modal-overlay-active #modal_overlay {
   display: flex;
 }
 
-.modal .button-row > :nth-child(2), .modal .modal-footer > :nth-child(2) {
+.modal .button-row > :nth-child(2), .modal .modal-footer > :nth-child(2), .modal > .right > :nth-child(2) {
   margin-left: auto;
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.close):not(.modal-close):not(style):not(script) {
+.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script) {
   min-height: 0;
   padding: 0 var(--fluent-modal-padding);
   flex: auto;
   overflow-y: auto;
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar {
+.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar {
   width: var(--fluent-scrollbar-width);
   height: var(--fluent-scrollbar-width);
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar:horizontal {
+.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar:horizontal {
   height: var(--fluent-scrollbar-horizontal-height, 5px);
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-track {
+.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-track {
   background: var(--fluent-scrollbar-track-bg);
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-thumb {
+.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-thumb {
   background: var(--fluent-scrollbar-thumb-bg);
   border-radius: 3px;
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-thumb:hover {
+.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-thumb:horizontal {
+.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-thumb:horizontal {
   background: var(--fluent-scrollbar-thumb-horizontal-bg, #00000026);
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-thumb:horizontal:hover {
+.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-thumb:horizontal:hover {
   background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, #00000059);
 }
 
