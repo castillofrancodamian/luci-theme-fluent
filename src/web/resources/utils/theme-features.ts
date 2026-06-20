@@ -303,4 +303,182 @@ export function setupThemeFeatures() {
     });
     ajaxObserver.observe(document.documentElement, { childList: true, subtree: true });
   }
+
+  // ============================================================
+  // 5. SLIDING SIDEBAR INDICATOR BEHAVIOR
+  // ============================================================
+  function updateSidebarSlider(ul: HTMLElement, isParent: boolean) {
+    const sliderClass = isParent ? 'fluent-sidebar-parent-slider' : 'fluent-sidebar-slider';
+    let slider = ul.querySelector(`.${sliderClass}`) as HTMLElement | null;
+    if (!slider) {
+      slider = document.createElement('div');
+      slider.className = sliderClass;
+      ul.appendChild(slider);
+    }
+
+    const activeLi = ul.querySelector('li.active') as HTMLElement | null;
+    if (!activeLi || (isParent && (activeLi.classList.contains('slide') || activeLi.querySelector('.slide-menu')))) {
+      slider.style.height = '0px';
+      slider.style.opacity = '0';
+      return;
+    }
+    slider.style.opacity = '1';
+
+    const targetEl = isParent 
+      ? (activeLi.querySelector('a.menu, a.food') as HTMLElement | null)
+      : (activeLi as HTMLElement | null);
+      
+    if (!targetEl) return;
+
+    const rectTarget = targetEl.getBoundingClientRect();
+    const rectUl = ul.getBoundingClientRect();
+
+    let top: number;
+    let height: number;
+
+    if (isParent) {
+      top = rectTarget.top - rectUl.top + ul.scrollTop;
+      height = rectTarget.height;
+    } else {
+      top = rectTarget.top - rectUl.top + ul.scrollTop + rectTarget.height * 0.15;
+      height = rectTarget.height * 0.7;
+    }
+
+    slider.style.top = `${top}px`;
+    slider.style.height = `${height}px`;
+  }
+
+  function initSidebarSliders() {
+    const sidebar = document.querySelector('#mainmenu') as HTMLElement | null;
+    if (!sidebar) return;
+
+    // 1. Parent Menu Slider (ul.nav)
+    const navUl = sidebar.querySelector('ul.nav') as HTMLElement | null;
+    if (navUl) {
+      let slider = navUl.querySelector('.fluent-sidebar-parent-slider') as HTMLElement | null;
+      if (!slider) {
+        slider = document.createElement('div');
+        slider.className = 'fluent-sidebar-parent-slider';
+        navUl.appendChild(slider);
+      }
+      navUl.classList.add('has-slider');
+
+      if (!navUl.dataset.sliderInit) {
+        navUl.dataset.sliderInit = 'true';
+
+        if (tabAnimationEnabled) {
+          navUl.querySelectorAll('li > a.menu, li > a.food').forEach((el) => {
+            const a = el as HTMLAnchorElement;
+            const href = a.getAttribute('href');
+            if (href && href !== '#') {
+              a.addEventListener('click', () => {
+                try {
+                  const currentSlider = navUl.querySelector('.fluent-sidebar-parent-slider') as HTMLElement | null;
+                  if (currentSlider) {
+                    sessionStorage.setItem('fluent-sidebar-parent-pos', JSON.stringify({
+                      top: currentSlider.style.top,
+                      height: currentSlider.style.height
+                    }));
+                  }
+                } catch {}
+              });
+            }
+          });
+        }
+      }
+
+      if (tabAnimationEnabled) {
+        let saved: string | null = null;
+        try { saved = sessionStorage.getItem('fluent-sidebar-parent-pos'); } catch {}
+        if (saved) {
+          try {
+            const pos = JSON.parse(saved);
+            sessionStorage.removeItem('fluent-sidebar-parent-pos');
+            slider.style.transition = 'none';
+            slider.style.top = pos.top;
+            slider.style.height = pos.height;
+            slider.offsetHeight; // force reflow
+            slider.style.transition = '';
+          } catch {}
+        }
+      }
+
+      updateSidebarSlider(navUl, true);
+    }
+
+    // 2. Submenu Sliders (ul.slide-menu)
+    const submenuLists = sidebar.querySelectorAll('ul.slide-menu');
+    submenuLists.forEach((node) => {
+      const ul = node as HTMLElement;
+      const isActiveSubmenu = ul.classList.contains('active');
+
+      let slider = ul.querySelector('.fluent-sidebar-slider') as HTMLElement | null;
+      if (!slider) {
+        slider = document.createElement('div');
+        slider.className = 'fluent-sidebar-slider';
+        ul.appendChild(slider);
+      }
+      ul.classList.add('has-slider');
+
+      if (!ul.dataset.sliderInit) {
+        ul.dataset.sliderInit = 'true';
+
+        if (tabAnimationEnabled) {
+          ul.querySelectorAll('li > a').forEach((el) => {
+            const a = el as HTMLAnchorElement;
+            const href = a.getAttribute('href');
+            if (href && href !== '#') {
+              a.addEventListener('click', () => {
+                try {
+                  const currentSlider = ul.querySelector('.fluent-sidebar-slider') as HTMLElement | null;
+                  if (currentSlider) {
+                    sessionStorage.setItem('fluent-sidebar-submenu-pos', JSON.stringify({
+                      top: currentSlider.style.top,
+                      height: currentSlider.style.height
+                    }));
+                  }
+                } catch {}
+              });
+            }
+          });
+        }
+      }
+
+      if (tabAnimationEnabled && isActiveSubmenu) {
+        let saved: string | null = null;
+        try { saved = sessionStorage.getItem('fluent-sidebar-submenu-pos'); } catch {}
+        if (saved) {
+          try {
+            const pos = JSON.parse(saved);
+            sessionStorage.removeItem('fluent-sidebar-submenu-pos');
+            slider.style.transition = 'none';
+            slider.style.top = pos.top;
+            slider.style.height = pos.height;
+            slider.offsetHeight; // force reflow
+            slider.style.transition = '';
+          } catch {}
+        }
+      }
+
+      updateSidebarSlider(ul, false);
+    });
+  }
+
+  // Initialize sidebar sliders
+  initSidebarSliders();
+  
+  // Watch for dynamic rendering of menu in LuCI
+  const sidebarObserver = new MutationObserver(() => initSidebarSliders());
+  sidebarObserver.observe(body, { childList: true, subtree: true });
+
+  window.addEventListener('resize', () => {
+    const sidebar = document.querySelector('#mainmenu') as HTMLElement | null;
+    if (sidebar) {
+      const navUl = sidebar.querySelector('ul.nav') as HTMLElement | null;
+      if (navUl) updateSidebarSlider(navUl, true);
+      sidebar.querySelectorAll('ul.slide-menu').forEach((node) => {
+        updateSidebarSlider(node as HTMLElement, false);
+      });
+    }
+  });
 }

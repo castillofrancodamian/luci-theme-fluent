@@ -49,10 +49,6 @@
         background: var(--fluent-sidebar-item-active);
         color: var(--fluent-primary);
         font-weight: var(--fluent-font-weight-semibold);
-
-        // Left accent bar
-        border-left: 3px solid var(--fluent-primary);
-        padding-left: calc(var(--fluent-space-sm) - 3px);
       }
 
       // Sub-menu indentation

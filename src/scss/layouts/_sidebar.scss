@@ -86,6 +86,30 @@
   margin-top: var(--fluent-space-xs);
   padding: 0 var(--fluent-space-xs);
   transition: all var(--fluent-duration-normal) var(--fluent-easing-standard);
+  position: relative;
+
+  .fluent-sidebar-parent-slider {
+    position: absolute;
+    left: 4px;
+    width: 4px;
+    background-color: var(--fluent-primary);
+    border-radius: 2px;
+    transition:
+      top var(--fluent-duration-normal) var(--fluent-easing-standard),
+      height var(--fluent-duration-normal) var(--fluent-easing-standard),
+      opacity var(--fluent-duration-normal) var(--fluent-easing-standard);
+    pointer-events: none;
+    z-index: 10;
+
+    body[data-tab-animation="0"] & {
+      transition: none !important;
+    }
+    body[data-reduce-motion="true"] & {
+      transition: none !important;
+    }
+  }
+
+
 
   // ============================================================
   // TOP-LEVEL MENU ITEMS
@@ -142,15 +166,11 @@
       outline-offset: -2px;
     }
 
-    // Active state - FluentUI selected: subtle bg + primary text + left accent
+    // Active state - FluentUI selected: subtle bg + primary text
     &.active {
       color: var(--fluent-text);
       background: var(--fluent-sidebar-item-active);
       font-weight: var(--fluent-font-weight-semibold);
-
-      // Left accent bar (FluentUI Nav selected indicator)
-      border-left: 3px solid var(--fluent-primary);
-      padding-left: calc(var(--fluent-space-sm) - 3px);
 
       &::before {
         color: var(--fluent-primary);
@@ -200,6 +220,33 @@
         background: rgba(0, 0, 0, 0.02);
         border-radius: var(--fluent-radius-md);
         transition: all var(--fluent-duration-normal) var(--fluent-easing-standard);
+        position: relative;
+
+        .fluent-sidebar-slider {
+          position: absolute;
+          left: 4px;
+          width: 4px;
+          background-color: var(--fluent-primary);
+          border-radius: 2px;
+          transition:
+            top var(--fluent-duration-normal) var(--fluent-easing-standard),
+            height var(--fluent-duration-normal) var(--fluent-easing-standard);
+          pointer-events: none;
+          z-index: 10;
+
+          body[data-tab-animation="0"] & {
+            transition: none !important;
+          }
+          body[data-reduce-motion="true"] & {
+            transition: none !important;
+          }
+        }
+
+        &.has-slider {
+          li.active::before {
+            background-color: transparent !important;
+          }
+        }
 
         // Active submenu - visible
         &.active {
@@ -222,7 +269,7 @@
           &::before {
             content: "";
             position: absolute;
-            left: 4px;
+            left: 0;
             top: 15%;
             height: 70%;
             width: 4px;
@@ -389,10 +436,6 @@
         color: var(--fluent-text);
         background: var(--fluent-sidebar-item-active);
         font-weight: var(--fluent-font-weight-semibold);
-
-        // Left accent bar
-        border-left: 3px solid var(--fluent-primary);
-        padding-left: calc(var(--fluent-space-sm) - 3px);
 
         &::before {
           color: var(--fluent-primary);

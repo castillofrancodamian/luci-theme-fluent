@@ -182,10 +182,12 @@ const module: Module = {
         slideClass = slideClass ? `${slideClass} active` : "null active";
       }
 
+      const menuClassCombined = isActive ? `${menuClass} active` : menuClass;
+
       // Create menu item with link and submenu
       const menuItem = (
         <li class={slideClass ?? undefined}>
-          <a href={L.url(url, child.name)} onclick={currentLevel === 1 ? ui.createHandlerFn(this, "handleMenuExpand") : null} class={menuClass} data-title={(child.title || "").replace(/ /g, "_")}>
+          <a href={L.url(url, child.name)} onclick={currentLevel === 1 ? ui.createHandlerFn(this, "handleMenuExpand") : null} class={menuClassCombined} data-title={(child.title || "").replace(/ /g, "_")}>
             {_(child.title || "")}
           </a>
           {submenu}
