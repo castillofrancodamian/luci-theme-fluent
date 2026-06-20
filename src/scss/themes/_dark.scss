@@ -3,6 +3,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
     // Backgrounds - FluentUI dark: Grey12 for page, Grey16 for card
     --fluent-bg: #1f1f1f; // Grey12
     --fluent-bg-card: #292929; // Grey16
@@ -132,6 +134,8 @@
 
 // Manual dark mode toggle via data attribute
 [data-theme="dark"] {
+  color-scheme: dark;
+
   // Backgrounds
   --fluent-bg: #1f1f1f;
   --fluent-bg-card: #292929;

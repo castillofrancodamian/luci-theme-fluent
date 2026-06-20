@@ -341,6 +341,15 @@ $breakpoint-xxl: 1400px;
       }
     }
   }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+    display: none;
+  }
+
+  &::-webkit-resizer {
+    background: transparent;
+  }
 }
 
 // ============================================================

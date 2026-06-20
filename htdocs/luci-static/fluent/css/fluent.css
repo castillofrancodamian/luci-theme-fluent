@@ -1,4 +1,7 @@
 :root {
+  --lightningcss-light: initial;
+  --lightningcss-dark: ;
+  color-scheme: light;
   --fluent-primary: #0078d4;
   --fluent-primary-hover: #106ebe;
   --fluent-primary-active: #005a9e;
@@ -314,6 +317,15 @@ body::-webkit-scrollbar-thumb:horizontal {
 
 body::-webkit-scrollbar-thumb:horizontal:hover {
   background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, #00000059);
+}
+
+body::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+body::-webkit-resizer {
+  background: none;
 }
 
 .sr-only {
@@ -1364,6 +1376,24 @@ input[type="week"]::-webkit-calendar-picker-indicator:hover {
   .cbi-section.cbi-tblsection::-webkit-scrollbar-thumb:horizontal:hover {
     background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, #00000059);
   }
+
+  .cbi-tblsection::-webkit-scrollbar-corner {
+    background: none;
+    display: none;
+  }
+
+  .cbi-section.cbi-tblsection::-webkit-scrollbar-corner {
+    background: none;
+    display: none;
+  }
+
+  .cbi-tblsection::-webkit-resizer {
+    background: none;
+  }
+
+  .cbi-section.cbi-tblsection::-webkit-resizer {
+    background: none;
+  }
 }
 
 .tr {
@@ -1653,6 +1683,24 @@ div.td, div.th {
   .cbi-section-table::-webkit-scrollbar-thumb:horizontal:hover {
     background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, #00000059);
   }
+
+  .table::-webkit-scrollbar-corner {
+    background: none;
+    display: none;
+  }
+
+  .cbi-section-table::-webkit-scrollbar-corner {
+    background: none;
+    display: none;
+  }
+
+  .table::-webkit-resizer {
+    background: none;
+  }
+
+  .cbi-section-table::-webkit-resizer {
+    background: none;
+  }
 }
 
 .main-left .nav {
@@ -1885,6 +1933,15 @@ body.modal-overlay-active #modal_overlay {
 
 .modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-thumb:horizontal:hover {
   background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, #00000059);
+}
+
+.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-resizer {
+  background: none;
 }
 
 .modal .modal-body {
@@ -2515,6 +2572,15 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
 
 .uci-change-list::-webkit-scrollbar-thumb:horizontal:hover {
   background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, #00000059);
+}
+
+.uci-change-list::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+.uci-change-list::-webkit-resizer {
+  background: none;
 }
 
 .uci-change-list {
@@ -3392,6 +3458,15 @@ td > .ifacebadge, .td > .ifacebadge {
   background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, #00000059);
 }
 
+#syslog::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+#syslog::-webkit-resizer {
+  background: none;
+}
+
 #syslog {
   width: 100%;
   min-height: 20rem;
@@ -3469,6 +3544,24 @@ td > .ifacebadge, .td > .ifacebadge {
 
 #command-rc-output > pre::-webkit-scrollbar-thumb:horizontal:hover {
   background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, #00000059);
+}
+
+#diag-rc-output > pre::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+#command-rc-output > pre::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+#diag-rc-output > pre::-webkit-resizer {
+  background: none;
+}
+
+#command-rc-output > pre::-webkit-resizer {
+  background: none;
 }
 
 #diag-rc-output > pre, #command-rc-output > pre {
@@ -4705,6 +4798,15 @@ html::-webkit-scrollbar-thumb:horizontal:hover {
   background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, #00000059);
 }
 
+html::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+html::-webkit-resizer {
+  background: none;
+}
+
 .cbi-section::-webkit-scrollbar {
   width: var(--fluent-scrollbar-width);
   height: var(--fluent-scrollbar-width);
@@ -4885,6 +4987,60 @@ code::-webkit-scrollbar-thumb:horizontal:hover {
   background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, #00000059);
 }
 
+.cbi-section::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+.modal::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+.main-content::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+.sidebar::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+pre::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+code::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+.cbi-section::-webkit-resizer {
+  background: none;
+}
+
+.modal::-webkit-resizer {
+  background: none;
+}
+
+.main-content::-webkit-resizer {
+  background: none;
+}
+
+.sidebar::-webkit-resizer {
+  background: none;
+}
+
+pre::-webkit-resizer {
+  background: none;
+}
+
+code::-webkit-resizer {
+  background: none;
+}
+
 .cbi-dropdown ul.dropdown::-webkit-scrollbar {
   width: var(--fluent-scrollbar-width);
   height: var(--fluent-scrollbar-width);
@@ -4913,6 +5069,15 @@ code::-webkit-scrollbar-thumb:horizontal:hover {
 
 .cbi-dropdown ul.dropdown::-webkit-scrollbar-thumb:horizontal:hover {
   background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, #00000059);
+}
+
+.cbi-dropdown ul.dropdown::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+.cbi-dropdown ul.dropdown::-webkit-resizer {
+  background: none;
 }
 
 * {
@@ -7468,6 +7633,84 @@ textarea:focus, .cbi-input-textarea:focus {
   outline: none;
 }
 
+textarea::-webkit-scrollbar {
+  width: var(--fluent-scrollbar-width);
+  height: var(--fluent-scrollbar-width);
+}
+
+.cbi-input-textarea::-webkit-scrollbar {
+  width: var(--fluent-scrollbar-width);
+  height: var(--fluent-scrollbar-width);
+}
+
+textarea::-webkit-scrollbar:horizontal {
+  height: var(--fluent-scrollbar-horizontal-height, 5px);
+}
+
+.cbi-input-textarea::-webkit-scrollbar:horizontal {
+  height: var(--fluent-scrollbar-horizontal-height, 5px);
+}
+
+textarea::-webkit-scrollbar-track {
+  background: var(--fluent-scrollbar-track-bg);
+}
+
+.cbi-input-textarea::-webkit-scrollbar-track {
+  background: var(--fluent-scrollbar-track-bg);
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: var(--fluent-scrollbar-thumb-bg);
+  border-radius: 3px;
+}
+
+.cbi-input-textarea::-webkit-scrollbar-thumb {
+  background: var(--fluent-scrollbar-thumb-bg);
+  border-radius: 3px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background: var(--fluent-scrollbar-thumb-bg-hover);
+}
+
+.cbi-input-textarea::-webkit-scrollbar-thumb:hover {
+  background: var(--fluent-scrollbar-thumb-bg-hover);
+}
+
+textarea::-webkit-scrollbar-thumb:horizontal {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg, #00000026);
+}
+
+.cbi-input-textarea::-webkit-scrollbar-thumb:horizontal {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg, #00000026);
+}
+
+textarea::-webkit-scrollbar-thumb:horizontal:hover {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, #00000059);
+}
+
+.cbi-input-textarea::-webkit-scrollbar-thumb:horizontal:hover {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, #00000059);
+}
+
+textarea::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+.cbi-input-textarea::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+textarea::-webkit-resizer {
+  background: none;
+}
+
+.cbi-input-textarea::-webkit-resizer {
+  background: none;
+}
+
 textarea, .cbi-input-textarea {
   width: 100%;
   max-width: 100%;
@@ -8851,6 +9094,15 @@ body.login-page {
   background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, #00000059);
 }
 
+.main-left::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
+.main-left::-webkit-resizer {
+  background: none;
+}
+
 .main-left .sidenav-header {
   padding: 0 var(--fluent-space-lg);
   height: var(--fluent-header-height, 48px);
@@ -9537,6 +9789,9 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
+    --lightningcss-light: ;
+    --lightningcss-dark: initial;
+    color-scheme: dark;
     --fluent-bg: #1f1f1f;
     --fluent-bg-card: #292929;
     --fluent-bg-hover: #383838;
@@ -9629,6 +9884,9 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
 }
 
 [data-theme="dark"] {
+  --lightningcss-light: ;
+  --lightningcss-dark: initial;
+  color-scheme: dark;
   --fluent-bg: #1f1f1f;
   --fluent-bg-card: #292929;
   --fluent-bg-hover: #383838;

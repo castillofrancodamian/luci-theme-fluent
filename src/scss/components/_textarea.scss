@@ -6,6 +6,7 @@
 textarea {
   @include input-base;
   @include input-focus-ripple-v2;
+  @include custom-scrollbar;
   width: 100%;
   max-width: 100%;
   min-height: 80px;
