@@ -66,6 +66,22 @@
   --fluent-progress-height: 4px;
   --fluent-badge-radius: 10px;
   --fluent-toast-radius: var(--fluent-radius-lg);
+  --fluent-brand-10: color-mix(in srgb, var(--fluent-primary) 10%, #000);
+  --fluent-brand-20: color-mix(in srgb, var(--fluent-primary) 20%, #000);
+  --fluent-brand-30: color-mix(in srgb, var(--fluent-primary) 30%, #000);
+  --fluent-brand-40: color-mix(in srgb, var(--fluent-primary) 40%, #000);
+  --fluent-brand-50: color-mix(in srgb, var(--fluent-primary) 50%, #000);
+  --fluent-brand-60: color-mix(in srgb, var(--fluent-primary) 65%, #000);
+  --fluent-brand-70: color-mix(in srgb, var(--fluent-primary) 80%, #000);
+  --fluent-brand-80: var(--fluent-primary);
+  --fluent-brand-90: color-mix(in srgb, var(--fluent-primary) 90%, #fff);
+  --fluent-brand-100: color-mix(in srgb, var(--fluent-primary) 80%, #fff);
+  --fluent-brand-110: color-mix(in srgb, var(--fluent-primary) 70%, #fff);
+  --fluent-brand-120: color-mix(in srgb, var(--fluent-primary) 60%, #fff);
+  --fluent-brand-130: color-mix(in srgb, var(--fluent-primary) 45%, #fff);
+  --fluent-brand-140: color-mix(in srgb, var(--fluent-primary) 30%, #fff);
+  --fluent-brand-150: color-mix(in srgb, var(--fluent-primary) 15%, #fff);
+  --fluent-brand-160: color-mix(in srgb, var(--fluent-primary) 5%, #fff);
 }
 
 *, :before, :after {
@@ -3129,14 +3145,17 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
 
 .alert.info:before, .alert.alert-info:before, .alert-message.info:before, .alert-message.alert-info:before {
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M18 10a8 8 0 1 0-16 0 8 8 0 0 0 16 0ZM9.5 8.91a.5.5 0 0 1 1 0V13.6a.5.5 0 0 1-1 0V8.9Zm-.25-2.16a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Z' fill='%230078d4'/></svg>");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 18px 18px;
+  background-color: var(--fluent-primary);
   flex-shrink: 0;
   width: 18px;
   height: 18px;
   display: inline-block;
+  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M18 10a8 8 0 1 0-16 0 8 8 0 0 0 16 0ZM9.5 8.91a.5.5 0 0 1 1 0V13.6a.5.5 0 0 1-1 0V8.9Zm-.25-2.16a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Z' fill='%23212121'/></svg>");
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M18 10a8 8 0 1 0-16 0 8 8 0 0 0 16 0ZM9.5 8.91a.5.5 0 0 1 1 0V13.6a.5.5 0 0 1-1 0V8.9Zm-.25-2.16a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Z' fill='%23212121'/></svg>");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
 .ifacebadge {
@@ -9420,7 +9439,7 @@ body.login-page {
 }
 
 .main-left .nav li.slide .slide-menu li:hover:before {
-  background-color: #0078d44d;
+  background-color: color-mix(in srgb, var(--fluent-primary) 30%, transparent);
 }
 
 .main-left .nav li.slide .slide-menu li:hover a {
@@ -9557,27 +9576,15 @@ body.login-page {
 }
 
 .main-left .nav li .menu.active:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M15.8537 7.64582C16.0493 7.84073 16.0499 8.15731 15.855 8.35292L10.39 13.8374C10.1751 14.0531 9.82574 14.0531 9.6108 13.8374L4.14582 8.35292C3.9509 8.15731 3.95147 7.84073 4.14708 7.64582C4.34269 7.4509 4.65927 7.45147 4.85418 7.64708L10.0004 12.8117L15.1466 7.64708C15.3415 7.45147 15.6581 7.4509 15.8537 7.64582Z' fill='%230078d4'/></svg>");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 14px 14px;
+  background-color: var(--fluent-primary);
   transform: translateY(-50%) rotate(0);
-}
-
-[data-theme="dark"] .main-left .nav li .menu.active:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M15.8537 7.64582C16.0493 7.84073 16.0499 8.15731 15.855 8.35292L10.39 13.8374C10.1751 14.0531 9.82574 14.0531 9.6108 13.8374L4.14582 8.35292C3.9509 8.15731 3.95147 7.84073 4.14708 7.64582C4.34269 7.4509 4.65927 7.45147 4.85418 7.64708L10.0004 12.8117L15.1466 7.64708C15.3415 7.45147 15.6581 7.4509 15.8537 7.64582Z' fill='%234da6ff'/></svg>");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 14px 14px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .main-left .nav li .menu.active:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M15.8537 7.64582C16.0493 7.84073 16.0499 8.15731 15.855 8.35292L10.39 13.8374C10.1751 14.0531 9.82574 14.0531 9.6108 13.8374L4.14582 8.35292C3.9509 8.15731 3.95147 7.84073 4.14708 7.64582C4.34269 7.4509 4.65927 7.45147 4.85418 7.64708L10.0004 12.8117L15.1466 7.64708C15.3415 7.45147 15.6581 7.4509 15.8537 7.64582Z' fill='%234da6ff'/></svg>");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 14px 14px;
-  }
+  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M15.8537 7.64582C16.0493 7.84073 16.0499 8.15731 15.855 8.35292L10.39 13.8374C10.1751 14.0531 9.82574 14.0531 9.6108 13.8374L4.14582 8.35292C3.9509 8.15731 3.95147 7.84073 4.14708 7.64582C4.34269 7.4509 4.65927 7.45147 4.85418 7.64708L10.0004 12.8117L15.1466 7.64708C15.3415 7.45147 15.6581 7.4509 15.8537 7.64582Z' fill='%23212121'/></svg>");
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M15.8537 7.64582C16.0493 7.84073 16.0499 8.15731 15.855 8.35292L10.39 13.8374C10.1751 14.0531 9.82574 14.0531 9.6108 13.8374L4.14582 8.35292C3.9509 8.15731 3.95147 7.84073 4.14708 7.64582C4.34269 7.4509 4.65927 7.45147 4.85418 7.64708L10.0004 12.8117L15.1466 7.64708C15.3415 7.45147 15.6581 7.4509 15.8537 7.64582Z' fill='%23212121'/></svg>");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  background-image: none !important;
 }
 
 #mainmenu > ul > li.slide.active > ul.slide-menu {
@@ -9911,11 +9918,11 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   --lightningcss-dark: ;
   color-scheme: light;
   --fluent-primary: #0078d4;
-  --fluent-primary-hover: #106ebe;
-  --fluent-primary-active: #005a9e;
-  --fluent-primary-light: #c7e0f4;
-  --fluent-primary-lighter: #deecf9;
-  --fluent-primary-lightest: #eff6fc;
+  --fluent-primary-hover: var(--fluent-brand-70);
+  --fluent-primary-active: var(--fluent-brand-60);
+  --fluent-primary-light: var(--fluent-brand-140);
+  --fluent-primary-lighter: var(--fluent-brand-150);
+  --fluent-primary-lightest: var(--fluent-brand-160);
   --fluent-white: #fff;
   --fluent-black: #000;
   --fluent-bg: #fff;
@@ -9927,11 +9934,11 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   --fluent-text-secondary: #616161;
   --fluent-text-disabled: #a0a0a0;
   --fluent-text-on-primary: #fff;
-  --fluent-text-link: #0078d4;
-  --fluent-text-link-hover: #006cbd;
+  --fluent-text-link: var(--fluent-primary);
+  --fluent-text-link-hover: var(--fluent-primary-hover);
   --fluent-border: #d1d1d1;
   --fluent-border-hover: #a0a0a0;
-  --fluent-border-active: #0078d4;
+  --fluent-border-active: var(--fluent-primary);
   --fluent-success: #107c10;
   --fluent-success-light: #f1faf1;
   --fluent-warning: #ffb900;
@@ -9940,16 +9947,16 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   --fluent-error-hover: #b42b2f;
   --fluent-error-active: #9a2226;
   --fluent-error-light: #fde7e9;
-  --fluent-info: #0078d4;
-  --fluent-info-light: #f3f9fd;
+  --fluent-info: var(--fluent-primary);
+  --fluent-info-light: var(--fluent-primary-lightest);
   --fluent-shadow-sm: 0 2px 4px #0000000a, 0 2px 10px #0000000f;
   --fluent-shadow-md: 0 4px 8px #0000000f, 0 4px 18px #00000014;
   --fluent-shadow-lg: 0 8px 16px #00000014, 0 8px 32px #0000001a;
   --fluent-shadow-xl: 0 20px 40px #0000001f, 0 10px 20px #00000014;
   --fluent-sidebar-bg: #fff;
   --fluent-sidebar-item-hover: #0000000a;
-  --fluent-sidebar-item-active: #0078d40f;
-  --fluent-header-bg: #0078d4;
+  --fluent-sidebar-item-active: color-mix(in srgb, var(--fluent-primary) 6%, transparent);
+  --fluent-header-bg: var(--fluent-primary);
   --fluent-header-text: #fff;
   --fluent-input-border: #d1d1d1;
   --fluent-input-border-bottom: #616161;
@@ -9960,9 +9967,9 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   --fluent-input-bg-disabled: #f0f0f0;
   --fluent-input-bg-hover: #f5f5f5;
   --fluent-calendar-picker-invert: 0;
-  --fluent-btn-primary-bg: #0078d4;
-  --fluent-btn-primary-bg-hover: #106ebe;
-  --fluent-btn-primary-bg-active: #005a9e;
+  --fluent-btn-primary-bg: var(--fluent-primary);
+  --fluent-btn-primary-bg-hover: var(--fluent-primary-hover);
+  --fluent-btn-primary-bg-active: var(--fluent-primary-active);
   --fluent-btn-secondary-bg: #fff;
   --fluent-btn-secondary-bg-hover: #f5f5f5;
   --fluent-btn-secondary-bg-active: #e0e0e0;
@@ -9974,23 +9981,23 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   --fluent-card-shadow: var(--fluent-shadow-sm);
   --fluent-table-header-bg: #f5f5f5;
   --fluent-table-row-hover: #f5f5f5;
-  --fluent-table-row-selected: #e6f2fb;
+  --fluent-table-row-selected: var(--fluent-primary-lightest);
   --fluent-table-border: #e0e0e0;
   --fluent-modal-bg: #fff;
   --fluent-modal-overlay: #0006;
-  --fluent-tab-indicator-color: #0078d4;
+  --fluent-tab-indicator-color: var(--fluent-primary);
   --fluent-checkbox-border: #616161;
   --fluent-checkbox-bg: #fff;
-  --fluent-checkbox-checked-bg: #0078d4;
-  --fluent-checkbox-checked-border: #0078d4;
+  --fluent-checkbox-checked-bg: var(--fluent-primary);
+  --fluent-checkbox-checked-border: var(--fluent-primary);
   --fluent-checkbox-hover-border: #242424;
   --fluent-scrollbar-thumb-bg: #c2c2c2;
   --fluent-scrollbar-thumb-bg-hover: #a0a0a0;
   --fluent-scrollbar-thumb-horizontal-bg: #00000026;
   --fluent-scrollbar-thumb-horizontal-bg-hover: #00000059;
   --fluent-progress-bg: #e0e0e0;
-  --fluent-progress-bar-bg: #0078d4;
-  --fluent-badge-bg: #0078d4;
+  --fluent-progress-bar-bg: var(--fluent-primary);
+  --fluent-badge-bg: var(--fluent-primary);
   --fluent-badge-text: #fff;
   --fluent-toast-bg: #fff;
   --fluent-toast-shadow: var(--fluent-shadow-lg);
@@ -10019,13 +10026,13 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
     --fluent-bg-active: #424242;
     --fluent-bg-page: #1a1a1a;
     --fluent-primary: #4da6ff;
-    --fluent-primary-hover: #80c4ff;
-    --fluent-primary-active: #b3d9ff;
-    --fluent-primary-light: #0f253d;
-    --fluent-primary-lighter: #0c1b2c;
-    --fluent-primary-lightest: #13253a;
-    --fluent-info: #4da6ff;
-    --fluent-info-light: #024;
+    --fluent-primary-hover: var(--fluent-brand-90);
+    --fluent-primary-active: var(--fluent-brand-100);
+    --fluent-primary-light: color-mix(in srgb, var(--fluent-primary) 15%, #000);
+    --fluent-primary-lighter: color-mix(in srgb, var(--fluent-primary) 8%, #000);
+    --fluent-primary-lightest: color-mix(in srgb, var(--fluent-primary) 12%, #000);
+    --fluent-info: var(--fluent-primary);
+    --fluent-info-light: var(--fluent-primary-light);
     --fluent-success: #6feb6f;
     --fluent-success-light: #133c13;
     --fluent-warning: #ff8c00;
@@ -10040,18 +10047,18 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
     --fluent-text-secondary: #adadad;
     --fluent-text-disabled: #6b6b6b;
     --fluent-text-on-primary: #fff;
-    --fluent-text-link: #4da6ff;
-    --fluent-text-link-hover: #80c4ff;
+    --fluent-text-link: var(--fluent-primary);
+    --fluent-text-link-hover: var(--fluent-primary-hover);
     --fluent-border: #525252;
     --fluent-border-hover: #7a7a7a;
-    --fluent-border-active: #4da6ff;
+    --fluent-border-active: var(--fluent-primary);
     --fluent-shadow-sm: 0 2px 4px #0003, 0 2px 10px #0000004d;
     --fluent-shadow-md: 0 4px 8px #00000040, 0 4px 18px #00000059;
     --fluent-shadow-lg: 0 8px 16px #0000004d, 0 8px 32px #0006;
     --fluent-shadow-xl: 0 20px 40px #0006, 0 10px 20px #0000004d;
     --fluent-sidebar-bg: #1f1f1f;
     --fluent-sidebar-item-hover: #ffffff0f;
-    --fluent-sidebar-item-active: #4da6ff14;
+    --fluent-sidebar-item-active: color-mix(in srgb, var(--fluent-primary) 8%, transparent);
     --fluent-input-bg: #292929;
     --fluent-input-border: #666;
     --fluent-input-border-bottom: #adadad;
@@ -10061,9 +10068,9 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
     --fluent-input-bg-disabled: #333;
     --fluent-input-bg-hover: #333;
     --fluent-calendar-picker-invert: 1;
-    --fluent-btn-primary-bg: #115ea3;
-    --fluent-btn-primary-bg-hover: #0f6cbd;
-    --fluent-btn-primary-bg-active: #0c3b5e;
+    --fluent-btn-primary-bg: color-mix(in srgb, var(--fluent-primary) 65%, #000);
+    --fluent-btn-primary-bg-hover: color-mix(in srgb, var(--fluent-primary) 75%, #000);
+    --fluent-btn-primary-bg-active: color-mix(in srgb, var(--fluent-primary) 50%, #000);
     --fluent-btn-secondary-bg: #292929;
     --fluent-btn-secondary-bg-hover: #3d3d3d;
     --fluent-btn-secondary-bg-active: #1f1f1f;
@@ -10074,21 +10081,21 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
     --fluent-card-border: #3d3d3d;
     --fluent-table-header-bg: #292929;
     --fluent-table-row-hover: #383838;
-    --fluent-table-row-selected: #1a3a5c;
+    --fluent-table-row-selected: color-mix(in srgb, var(--fluent-primary) 25%, #000);
     --fluent-table-border: #3d3d3d;
     --fluent-modal-bg: #292929;
     --fluent-modal-overlay: #0009;
     --fluent-checkbox-border: #adadad;
     --fluent-checkbox-bg: #292929;
-    --fluent-checkbox-checked-bg: #4da6ff;
-    --fluent-checkbox-checked-border: #4da6ff;
+    --fluent-checkbox-checked-bg: var(--fluent-primary);
+    --fluent-checkbox-checked-border: var(--fluent-primary);
     --fluent-checkbox-hover-border: #fff;
     --fluent-scrollbar-thumb-bg: #525252;
     --fluent-scrollbar-thumb-bg-hover: #7a7a7a;
     --fluent-scrollbar-thumb-horizontal-bg: #ffffff26;
     --fluent-scrollbar-thumb-horizontal-bg-hover: #ffffff59;
     --fluent-progress-bg: #3d3d3d;
-    --fluent-progress-bar-bg: #4da6ff;
+    --fluent-progress-bar-bg: var(--fluent-primary);
     --fluent-login-bg: #1f1f1feb;
     --fluent-login-border: #525252b3;
     --fluent-login-icon-color: var(--fluent-text-secondary);
@@ -10114,13 +10121,13 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   --fluent-bg-active: #424242;
   --fluent-bg-page: #1a1a1a;
   --fluent-primary: #4da6ff;
-  --fluent-primary-hover: #80c4ff;
-  --fluent-primary-active: #b3d9ff;
-  --fluent-primary-light: #0f253d;
-  --fluent-primary-lighter: #0c1b2c;
-  --fluent-primary-lightest: #13253a;
-  --fluent-info: #4da6ff;
-  --fluent-info-light: #024;
+  --fluent-primary-hover: var(--fluent-brand-90);
+  --fluent-primary-active: var(--fluent-brand-100);
+  --fluent-primary-light: color-mix(in srgb, var(--fluent-primary) 15%, #000);
+  --fluent-primary-lighter: color-mix(in srgb, var(--fluent-primary) 8%, #000);
+  --fluent-primary-lightest: color-mix(in srgb, var(--fluent-primary) 12%, #000);
+  --fluent-info: var(--fluent-primary);
+  --fluent-info-light: var(--fluent-primary-light);
   --fluent-success: #6feb6f;
   --fluent-success-light: #133c13;
   --fluent-warning: #ff8c00;
@@ -10135,18 +10142,18 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   --fluent-text-secondary: #adadad;
   --fluent-text-disabled: #6b6b6b;
   --fluent-text-on-primary: #fff;
-  --fluent-text-link: #4da6ff;
-  --fluent-text-link-hover: #80c4ff;
+  --fluent-text-link: var(--fluent-primary);
+  --fluent-text-link-hover: var(--fluent-primary-hover);
   --fluent-border: #525252;
   --fluent-border-hover: #7a7a7a;
-  --fluent-border-active: #4da6ff;
+  --fluent-border-active: var(--fluent-primary);
   --fluent-shadow-sm: 0 2px 4px #0003, 0 2px 10px #0000004d;
   --fluent-shadow-md: 0 4px 8px #00000040, 0 4px 18px #00000059;
   --fluent-shadow-lg: 0 8px 16px #0000004d, 0 8px 32px #0006;
   --fluent-shadow-xl: 0 20px 40px #0006, 0 10px 20px #0000004d;
   --fluent-sidebar-bg: #1f1f1f;
   --fluent-sidebar-item-hover: #ffffff0f;
-  --fluent-sidebar-item-active: #4da6ff14;
+  --fluent-sidebar-item-active: color-mix(in srgb, var(--fluent-primary) 8%, transparent);
   --fluent-input-bg: #292929;
   --fluent-input-border: #666;
   --fluent-input-border-bottom: #adadad;
@@ -10156,9 +10163,9 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   --fluent-input-bg-disabled: #333;
   --fluent-input-bg-hover: #333;
   --fluent-calendar-picker-invert: 1;
-  --fluent-btn-primary-bg: #115ea3;
-  --fluent-btn-primary-bg-hover: #0f6cbd;
-  --fluent-btn-primary-bg-active: #0c3b5e;
+  --fluent-btn-primary-bg: color-mix(in srgb, var(--fluent-primary) 65%, #000);
+  --fluent-btn-primary-bg-hover: color-mix(in srgb, var(--fluent-primary) 75%, #000);
+  --fluent-btn-primary-bg-active: color-mix(in srgb, var(--fluent-primary) 50%, #000);
   --fluent-btn-secondary-bg: #292929;
   --fluent-btn-secondary-bg-hover: #3d3d3d;
   --fluent-btn-secondary-bg-active: #1f1f1f;
@@ -10169,21 +10176,21 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   --fluent-card-border: #3d3d3d;
   --fluent-table-header-bg: #292929;
   --fluent-table-row-hover: #383838;
-  --fluent-table-row-selected: #1a3a5c;
+  --fluent-table-row-selected: color-mix(in srgb, var(--fluent-primary) 25%, #000);
   --fluent-table-border: #3d3d3d;
   --fluent-modal-bg: #292929;
   --fluent-modal-overlay: #0009;
   --fluent-checkbox-border: #adadad;
   --fluent-checkbox-bg: #292929;
-  --fluent-checkbox-checked-bg: #4da6ff;
-  --fluent-checkbox-checked-border: #4da6ff;
+  --fluent-checkbox-checked-bg: var(--fluent-primary);
+  --fluent-checkbox-checked-border: var(--fluent-primary);
   --fluent-checkbox-hover-border: #fff;
   --fluent-scrollbar-thumb-bg: #525252;
   --fluent-scrollbar-thumb-bg-hover: #7a7a7a;
   --fluent-scrollbar-thumb-horizontal-bg: #ffffff26;
   --fluent-scrollbar-thumb-horizontal-bg-hover: #ffffff59;
   --fluent-progress-bg: #3d3d3d;
-  --fluent-progress-bar-bg: #4da6ff;
+  --fluent-progress-bar-bg: var(--fluent-primary);
   --fluent-login-bg: #1f1f1feb;
   --fluent-login-border: #525252b3;
   --fluent-login-icon-color: var(--fluent-text-secondary);

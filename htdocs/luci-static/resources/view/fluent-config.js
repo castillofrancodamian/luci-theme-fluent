@@ -116,14 +116,14 @@ const configureHexColorValue = function(t, l) {
 let colors_e = L.form;
 
 const registerColorsTab = (o)=>{
-    o.tab("colors", _("Colors"), _("Set separate accent and progress-bar label colors for light and dark mode."));
+    o.tab("colors", _("Colors"), _("Set separate accent, progress-bar text, and background colors for light and dark mode."));
     {
         let a = o.taboption("colors", colors_e.Value, "primary", _("Light mode accent color"), _("HEX color used as the primary Fluent accent when the interface is rendered in light mode."));
         a.default = "#0078d4", configureHexColorValue(a, "primary");
     }
     {
         let a = o.taboption("colors", colors_e.Value, "dark_primary", _("Dark mode accent color"), _("HEX color used as the primary Fluent accent when the interface is rendered in dark mode."));
-        a.default = "#1a1a2e", configureHexColorValue(a, "dark_primary", !0);
+        a.default = "#4da6ff", configureHexColorValue(a, "dark_primary", !0);
     }
     {
         let a = o.taboption("colors", colors_e.Value, "progressbar_font", _("Light mode progress bar text color"), _("HEX color used for progress-bar labels while the interface is rendered in light mode."));
@@ -132,6 +132,30 @@ const registerColorsTab = (o)=>{
     {
         let a = o.taboption("colors", colors_e.Value, "dark_progressbar_font", _("Dark mode progress bar text color"), _("HEX color used for progress-bar labels while the interface is rendered in dark mode."));
         a.default = "#d6d9e5", configureHexColorValue(a, "dark_progressbar_font", !0);
+    }
+    {
+        let a = o.taboption("colors", colors_e.Value, "page_bg", _("Light mode page background"), _("HEX color used for the main page background in light mode."));
+        a.default = "#fafafa", configureHexColorValue(a, "page_bg");
+    }
+    {
+        let a = o.taboption("colors", colors_e.Value, "card_bg", _("Light mode card background"), _("HEX color used for container/card elements in light mode."));
+        a.default = "#ffffff", configureHexColorValue(a, "card_bg");
+    }
+    {
+        let a = o.taboption("colors", colors_e.Value, "sidebar_bg", _("Light mode sidebar background"), _("HEX color used for the navigation sidebar in light mode."));
+        a.default = "#ffffff", configureHexColorValue(a, "sidebar_bg");
+    }
+    {
+        let a = o.taboption("colors", colors_e.Value, "dark_page_bg", _("Dark mode page background"), _("HEX color used for the main page background in dark mode."));
+        a.default = "#1b1b1b", configureHexColorValue(a, "dark_page_bg", !0);
+    }
+    {
+        let a = o.taboption("colors", colors_e.Value, "dark_card_bg", _("Dark mode card background"), _("HEX color used for container/card elements in dark mode."));
+        a.default = "#2d2d2d", configureHexColorValue(a, "dark_card_bg", !0);
+    }
+    {
+        let a = o.taboption("colors", colors_e.Value, "dark_sidebar_bg", _("Dark mode sidebar background"), _("HEX color used for the navigation sidebar in dark mode."));
+        a.default = "#1f1f1f", configureHexColorValue(a, "dark_sidebar_bg", !0);
     }
 };
 

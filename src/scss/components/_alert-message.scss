@@ -192,7 +192,18 @@ $fluent-alert-icon-error: "<svg xmlns='http://www.w3.org/2000/svg' width='20' he
     border-color: color-mix(in srgb, var(--fluent-info) 35%, transparent);
 
     &::before {
-      @include fluent-icon-content($fluent-alert-icon-info, 18px, #0078d4);
+      content: "";
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      background-color: var(--fluent-primary);
+      -webkit-mask-image: url("data:image/svg+xml,#{$fluent-alert-icon-info}");
+      mask-image: url("data:image/svg+xml,#{$fluent-alert-icon-info}");
+      -webkit-mask-size: contain;
+      mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
     }
   }
 }

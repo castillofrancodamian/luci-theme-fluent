@@ -5,11 +5,11 @@
 
   // BRAND / PRIMARY COLORS (BrandBlue)
   --fluent-primary: #0078d4;
-  --fluent-primary-hover: #106ebe;
-  --fluent-primary-active: #005a9e;
-  --fluent-primary-light: #c7e0f4;
-  --fluent-primary-lighter: #deecf9;
-  --fluent-primary-lightest: #eff6fc;
+  --fluent-primary-hover: var(--fluent-brand-70);
+  --fluent-primary-active: var(--fluent-brand-60);
+  --fluent-primary-light: var(--fluent-brand-140);
+  --fluent-primary-lighter: var(--fluent-brand-150);
+  --fluent-primary-lightest: var(--fluent-brand-160);
 
   // NEUTRAL COLORS (Grey14 / Grey98)
   --fluent-white: #ffffff;
@@ -27,13 +27,13 @@
   --fluent-text-secondary: #616161; // Grey38
   --fluent-text-disabled: #a0a0a0; // Grey62
   --fluent-text-on-primary: #ffffff;
-  --fluent-text-link: #0078d4; // BrandBlue
-  --fluent-text-link-hover: #006cbd; // BrandBlueHover
+  --fluent-text-link: var(--fluent-primary); // BrandBlue
+  --fluent-text-link-hover: var(--fluent-primary-hover); // BrandBlueHover
 
   // Border - FluentUI NeutralStroke
   --fluent-border: #d1d1d1; // Grey82
   --fluent-border-hover: #a0a0a0; // Grey62
-  --fluent-border-active: #0078d4; // BrandBlue
+  --fluent-border-active: var(--fluent-primary); // BrandBlue
 
   // STATUS COLORS (FluentUI Status)
   --fluent-success: #107c10; // Green primary
@@ -44,8 +44,8 @@
   --fluent-error-hover: #b42b2f; // Red shade10
   --fluent-error-active: #9a2226; // Red shade20
   --fluent-error-light: #fde7e9; // Red tint50
-  --fluent-info: #0078d4; // BrandBlue
-  --fluent-info-light: #f3f9fd; // BrandBlue tint60
+  --fluent-info: var(--fluent-primary); // BrandBlue
+  --fluent-info-light: var(--fluent-primary-lightest); // BrandBlue tint60
 
   // Shadows - FluentUI shadow tokens
   --fluent-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04), 0 2px 10px rgba(0, 0, 0, 0.06);
@@ -56,10 +56,10 @@
   // Sidebar
   --fluent-sidebar-bg: #ffffff;
   --fluent-sidebar-item-hover: rgba(0, 0, 0, 0.04);
-  --fluent-sidebar-item-active: rgba(0, 120, 212, 0.06);
+  --fluent-sidebar-item-active: color-mix(in srgb, var(--fluent-primary) 6%, transparent);
 
   // Header
-  --fluent-header-bg: #0078d4;
+  --fluent-header-bg: var(--fluent-primary);
   --fluent-header-text: #ffffff;
 
   // Input
@@ -74,9 +74,9 @@
   --fluent-calendar-picker-invert: 0;
 
   // Button
-  --fluent-btn-primary-bg: #0078d4;
-  --fluent-btn-primary-bg-hover: #106ebe;
-  --fluent-btn-primary-bg-active: #005a9e;
+  --fluent-btn-primary-bg: var(--fluent-primary);
+  --fluent-btn-primary-bg-hover: var(--fluent-primary-hover);
+  --fluent-btn-primary-bg-active: var(--fluent-primary-active);
   --fluent-btn-secondary-bg: #ffffff;
   --fluent-btn-secondary-bg-hover: #f5f5f5;
   --fluent-btn-secondary-bg-active: #e0e0e0;
@@ -92,7 +92,7 @@
   // Table
   --fluent-table-header-bg: #f5f5f5; // Grey96
   --fluent-table-row-hover: #f5f5f5; // Grey96
-  --fluent-table-row-selected: #e6f2fb; // BrandBlue tint40
+  --fluent-table-row-selected: var(--fluent-primary-lightest); // BrandBlue tint40
   --fluent-table-border: #e0e0e0; // Grey88
 
   // Modal
@@ -100,13 +100,13 @@
   --fluent-modal-overlay: rgba(0, 0, 0, 0.4);
 
   // Tab
-  --fluent-tab-indicator-color: #0078d4;
+  --fluent-tab-indicator-color: var(--fluent-primary);
 
   // Checkbox & Radio
   --fluent-checkbox-border: #616161; // Grey38
   --fluent-checkbox-bg: #ffffff;
-  --fluent-checkbox-checked-bg: #0078d4;
-  --fluent-checkbox-checked-border: #0078d4;
+  --fluent-checkbox-checked-bg: var(--fluent-primary);
+  --fluent-checkbox-checked-border: var(--fluent-primary);
   --fluent-checkbox-hover-border: #242424; // Grey14
 
   // Scrollbar
@@ -117,10 +117,10 @@
 
   // Progress
   --fluent-progress-bg: #e0e0e0; // Grey88
-  --fluent-progress-bar-bg: #0078d4;
+  --fluent-progress-bar-bg: var(--fluent-primary);
 
   // Badge
-  --fluent-badge-bg: #0078d4;
+  --fluent-badge-bg: var(--fluent-primary);
   --fluent-badge-text: #ffffff;
 
   // Toast

@@ -127,6 +127,24 @@
 
   // Toast
   --fluent-toast-radius: var(--fluent-radius-lg);
+
+  // Dynamic 16-Stop Brand Ramp (computed at runtime from primary accent color)
+  --fluent-brand-10: color-mix(in srgb, var(--fluent-primary) 10%, #000000);
+  --fluent-brand-20: color-mix(in srgb, var(--fluent-primary) 20%, #000000);
+  --fluent-brand-30: color-mix(in srgb, var(--fluent-primary) 30%, #000000);
+  --fluent-brand-40: color-mix(in srgb, var(--fluent-primary) 40%, #000000);
+  --fluent-brand-50: color-mix(in srgb, var(--fluent-primary) 50%, #000000);
+  --fluent-brand-60: color-mix(in srgb, var(--fluent-primary) 65%, #000000);
+  --fluent-brand-70: color-mix(in srgb, var(--fluent-primary) 80%, #000000);
+  --fluent-brand-80: var(--fluent-primary);
+  --fluent-brand-90: color-mix(in srgb, var(--fluent-primary) 90%, #ffffff);
+  --fluent-brand-100: color-mix(in srgb, var(--fluent-primary) 80%, #ffffff);
+  --fluent-brand-110: color-mix(in srgb, var(--fluent-primary) 70%, #ffffff);
+  --fluent-brand-120: color-mix(in srgb, var(--fluent-primary) 60%, #ffffff);
+  --fluent-brand-130: color-mix(in srgb, var(--fluent-primary) 45%, #ffffff);
+  --fluent-brand-140: color-mix(in srgb, var(--fluent-primary) 30%, #ffffff);
+  --fluent-brand-150: color-mix(in srgb, var(--fluent-primary) 15%, #ffffff);
+  --fluent-brand-160: color-mix(in srgb, var(--fluent-primary) 5%, #ffffff);
 }
 
 // ============================================================
@@ -136,3 +154,4 @@
 // --fluent-primary-hover (auto-calculated)
 // --fluent-primary-active (auto-calculated)
 // --fluent-header-bg (defaults to primary)
+// ...

@@ -254,7 +254,7 @@
             background: var(--fluent-sidebar-item-hover);
 
             &::before {
-              background-color: rgba(0, 120, 212, 0.3);
+              background-color: color-mix(in srgb, var(--fluent-primary) 30%, transparent);
             }
 
             a {
@@ -401,17 +401,14 @@
         // Rotate arrow when expanded
         &::after {
           transform: translateY(-50%) rotate(0deg);
-          @include fluent-icon($fluent-icon-chevron-down, 14px, #0078d4);
-
-          [data-theme="dark"] & {
-            @include fluent-icon($fluent-icon-chevron-down, 14px, #4da6ff);
-          }
-
-          @media (prefers-color-scheme: dark) {
-            :root:not([data-theme="light"]) & {
-              @include fluent-icon($fluent-icon-chevron-down, 14px, #4da6ff);
-            }
-          }
+          background-image: none !important;
+          background-color: var(--fluent-primary);
+          -webkit-mask-image: url("data:image/svg+xml,#{$fluent-icon-chevron-down}");
+          mask-image: url("data:image/svg+xml,#{$fluent-icon-chevron-down}");
+          -webkit-mask-size: contain;
+          mask-size: contain;
+          -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
         }
       }
     }

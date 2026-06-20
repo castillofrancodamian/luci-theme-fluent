@@ -48,9 +48,12 @@
   let tab_animation = '1';
   let prefers_reduced_motion = '1';
   let loading_bar = '1';
-  let dark_sidebar_bg = '';
-  let dark_card_bg = '';
-  let dark_page_bg = '';
+  let page_bg = '#fafafa';
+  let card_bg = '#ffffff';
+  let sidebar_bg = '#ffffff';
+  let dark_page_bg = '#1b1b1b';
+  let dark_card_bg = '#2d2d2d';
+  let dark_sidebar_bg = '#1f1f1f';
 
   // Transition speed mapping
   let transition_map = {
@@ -87,9 +90,12 @@
     control_height = cfg.get_first('fluent', 'global', 'control_height') || '32';
     transition_speed = cfg.get_first('fluent', 'global', 'transition_speed') || 'normal';
     custom_css = cfg.get_first('fluent', 'global', 'custom_css') || '';
-    dark_sidebar_bg = cfg.get_first('fluent', 'global', 'dark_sidebar_bg') || '';
-    dark_card_bg = cfg.get_first('fluent', 'global', 'dark_card_bg') || '';
-    dark_page_bg = cfg.get_first('fluent', 'global', 'dark_page_bg') || '';
+    page_bg = cfg.get_first('fluent', 'global', 'page_bg') || '#fafafa';
+    card_bg = cfg.get_first('fluent', 'global', 'card_bg') || '#ffffff';
+    sidebar_bg = cfg.get_first('fluent', 'global', 'sidebar_bg') || '#ffffff';
+    dark_page_bg = cfg.get_first('fluent', 'global', 'dark_page_bg') || '#1b1b1b';
+    dark_card_bg = cfg.get_first('fluent', 'global', 'dark_card_bg') || '#2d2d2d';
+    dark_sidebar_bg = cfg.get_first('fluent', 'global', 'dark_sidebar_bg') || '#1f1f1f';
     custom_select = cfg.get_first('fluent', 'global', 'custom_select') || '1';
     view_transition = cfg.get_first('fluent', 'global', 'view_transition') || '1';
     tab_animation = cfg.get_first('fluent', 'global', 'tab_animation') || '1';
@@ -152,6 +158,9 @@
     {# Default light values #}
     :root {
       --fluent-primary: {{ primary }};
+      --fluent-bg: {{ page_bg }};
+      --fluent-bg-card: {{ card_bg }};
+      --fluent-sidebar-bg: {{ sidebar_bg }};
       --fluent-font-weight: {{ font_weight }};
       --fluent-font-size: {{ font_size }}px;
       --fluent-sidebar-width: {{ sidebar_width }}px;
@@ -175,29 +184,25 @@
       @media (prefers-color-scheme: dark) {
         :root:not([data-theme="light"]) {
           --fluent-primary: {{ dark_primary }};
-          --fluent-bg: #1b1b1b;
-          --fluent-bg-card: #2d2d2d;
+          --fluent-bg: {{ dark_page_bg }};
+          --fluent-bg-card: {{ dark_card_bg }};
+          --fluent-sidebar-bg: {{ dark_sidebar_bg }};
           --fluent-text: #f3f2f1;
           --fluent-text-secondary: #a0a0a0;
           --fluent-border: #404040;
           --fluent-progressbar-font-color: {{ dark_progressbar_font }};
-          {% if (dark_sidebar_bg) { %}--fluent-sidebar-bg: {{ dark_sidebar_bg }};{% } %}
-          {% if (dark_card_bg) { %}--fluent-bg-card: {{ dark_card_bg }};{% } %}
-          {% if (dark_page_bg) { %}--fluent-bg: {{ dark_page_bg }};{% } %}
         }
       }
     {% } else if (mode === 'dark') { %}
       :root {
         --fluent-primary: {{ dark_primary }};
-        --fluent-bg: #1b1b1b;
-        --fluent-bg-card: #2d2d2d;
+        --fluent-bg: {{ dark_page_bg }};
+        --fluent-bg-card: {{ dark_card_bg }};
+        --fluent-sidebar-bg: {{ dark_sidebar_bg }};
         --fluent-text: #f3f2f1;
         --fluent-text-secondary: #a0a0a0;
         --fluent-border: #404040;
         --fluent-progressbar-font-color: {{ dark_progressbar_font }};
-        {% if (dark_sidebar_bg) { %}--fluent-sidebar-bg: {{ dark_sidebar_bg }};{% } %}
-        {% if (dark_card_bg) { %}--fluent-bg-card: {{ dark_card_bg }};{% } %}
-        {% if (dark_page_bg) { %}--fluent-bg: {{ dark_page_bg }};{% } %}
       }
     {% } %}
 
