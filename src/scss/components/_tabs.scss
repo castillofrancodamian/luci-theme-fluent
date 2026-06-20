@@ -181,7 +181,11 @@ ul.cbi-tabmenu {
     }
   }
 }
-
+.cbi-section {
+  > .cbi-tabmenu + .cbi-section-node {
+    padding-top: var(--fluent-space-lg);
+  }
+}
 // ============================================================
 // STRUCTURE 2: #tabmenu / .tabmenu > ul.tabs (header tabs)
 // Shared layout structure, keep wrapper constraints if any
@@ -199,20 +203,21 @@ ul.cbi-tabmenu {
 // ============================================================
 // Tab content panels
 // ============================================================
-
-[data-tab-title] {
-  padding: var(--fluent-space-sm);
-}
-
-[data-tab-active="false"] {
-  display: none !important;
-}
-
-[data-tab-active="true"] {
-  display: block;
-  overflow: visible;
-  height: auto;
-  opacity: 1;
+[data-initialized="true"] {
+  > [data-tab][data-tab-title] {
+    &[data-tab-title] {
+      padding-left: var(--fluent-space-sm);
+    }
+    &[data-tab-active="true"] {
+      display: block;
+      overflow: visible;
+      height: auto;
+      opacity: 1;
+    }
+    &:not([data-tab-active="true"]) {
+      display: none !important;
+    }
+  }
 }
 
 .cbi-tabcontainer {

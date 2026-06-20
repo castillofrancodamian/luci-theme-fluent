@@ -555,7 +555,33 @@ function select_dropdown_r(l) {
     });
 }
 
+;// CONCATENATED MODULE: ./web/resources/utils/ifacebox-tooltip.ts
+let ifacebox_tooltip_e = null;
+function setupIfaceboxTooltips() {
+    document.addEventListener("mouseover", (t)=>{
+        let o = t.target.closest(".cbi-tooltip-container");
+        if (!(null == o ? void 0 : o.closest('td[data-name="_ifacebox"] .ifacebox-body, .td[data-name="_ifacebox"] .ifacebox-body'))) {
+            ifacebox_tooltip_e && "none" !== ifacebox_tooltip_e.style.display && (ifacebox_tooltip_e.style.display = "none", ifacebox_tooltip_e.style.opacity = "0");
+            return;
+        }
+        let n = o.querySelector(".cbi-tooltip");
+        if (!n) return;
+        ifacebox_tooltip_e || ((ifacebox_tooltip_e = document.createElement("div")).id = "fluent-global-tooltip", ifacebox_tooltip_e.className = "cbi-tooltip ifacebadge large", ifacebox_tooltip_e.style.position = "absolute", ifacebox_tooltip_e.style.zIndex = "10000", ifacebox_tooltip_e.style.pointerEvents = "none", ifacebox_tooltip_e.style.display = "none", document.body.appendChild(ifacebox_tooltip_e)), ifacebox_tooltip_e.innerHTML = n.innerHTML, ifacebox_tooltip_e.style.display = "block", ifacebox_tooltip_e.style.opacity = "0";
+        let i = o.getBoundingClientRect(), l = ifacebox_tooltip_e.getBoundingClientRect(), s = window.pageYOffset + i.bottom + 6, d = window.pageXOffset + i.left + i.width / 2 - l.width / 2;
+        d < 10 && (d = 10), d + l.width > window.innerWidth - 10 && (d = window.innerWidth - l.width - 10), ifacebox_tooltip_e.style.top = "".concat(s, "px"), ifacebox_tooltip_e.style.left = "".concat(d, "px"), ifacebox_tooltip_e.offsetWidth, ifacebox_tooltip_e.style.opacity = "1";
+        let a = window.pageXOffset + i.left + i.width / 2 - d;
+        ifacebox_tooltip_e.style.setProperty("--arrow-left", "".concat(a, "px"));
+        let c = ()=>{
+            ifacebox_tooltip_e && (ifacebox_tooltip_e.style.display = "none", ifacebox_tooltip_e.style.opacity = "0"), o.removeEventListener("mouseleave", c), window.removeEventListener("scroll", r, !0);
+        }, r = ()=>{
+            ifacebox_tooltip_e && (ifacebox_tooltip_e.style.display = "none", ifacebox_tooltip_e.style.opacity = "0"), o.removeEventListener("mouseleave", c), window.removeEventListener("scroll", r, !0);
+        };
+        o.addEventListener("mouseleave", c), window.addEventListener("scroll", r, !0);
+    }, !0);
+}
+
 ;// CONCATENATED MODULE: ./web/resources/menu-fluent.tsx
+
 
 
 
@@ -564,7 +590,7 @@ function select_dropdown_r(l) {
 const main = baseclass.extend({
     async __init__ () {
         let e = await ui.menu.load();
-        this.render(e), setupSelectionPause(), setupErrorTooltips(), setupFluentSelects();
+        this.render(e), setupSelectionPause(), setupErrorTooltips(), setupFluentSelects(), setupIfaceboxTooltips();
     },
     render (e) {
         var t, n, a;

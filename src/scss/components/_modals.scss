@@ -161,10 +161,8 @@ body.modal-overlay-active {
     position: relative;
     margin-top: var(--fluent-space-lg);
     margin-bottom: var(--fluent-space-lg);
-    &::before {
-      
-       //spinning icon is here
-    }
+    overflow: visible !important; // Prevent clipping of the spinner icon due to modal's overflow-y: auto
+
   }
 }
 
