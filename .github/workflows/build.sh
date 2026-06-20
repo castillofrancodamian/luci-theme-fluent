@@ -101,10 +101,10 @@ echo ">>> Building packages..."
 make -j$(nproc) V=s BUILD_LOG=1 \
   package/luci-theme-fluent/compile
 
-# Collect built packages
+# Collect built packages — only luci-theme-fluent, not SDK dependencies
 echo ">>> Collecting ${PKG_EXT} files..."
 mkdir -p "${OUTPUT_DIR}"
-find bin -name "*.${PKG_EXT}" -exec cp {} "${OUTPUT_DIR}/" \;
+find bin -name "luci-theme-fluent*.${PKG_EXT}" -exec cp {} "${OUTPUT_DIR}/" \;
 tar -cJf "${OUTPUT_DIR}/logs.tar.xz" logs 2>/dev/null || true
 
 echo "=== Build complete ==="

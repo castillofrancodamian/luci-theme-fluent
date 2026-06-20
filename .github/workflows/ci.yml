@@ -95,8 +95,8 @@ jobs:
       - name: Collect built packages
         run: |
           mkdir -p output
-          cp ${HOME}/builder/output/*.ipk output/ 2>/dev/null || true
-          cp ${HOME}/builder/output/*.apk output/ 2>/dev/null || true
+          cp ${HOME}/builder/output/luci-theme-fluent*.ipk output/ 2>/dev/null || true
+          cp ${HOME}/builder/output/luci-theme-fluent*.apk output/ 2>/dev/null || true
           echo "Built packages:"
           ls -lh output/
 
@@ -105,6 +105,7 @@ jobs:
         with:
           name: packages-openwrt-${{ matrix.version }}
           path: |
-            output/*.ipk
-            output/*.apk
+            output/luci-theme-fluent*.ipk
+            output/luci-theme-fluent*.apk
           if-no-files-found: warn
+

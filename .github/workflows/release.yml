@@ -74,8 +74,8 @@ jobs:
       - name: Collect built packages
         run: |
           mkdir -p release
-          cp ${HOME}/builder/output/*.ipk release/ 2>/dev/null || true
-          cp ${HOME}/builder/output/*.apk release/ 2>/dev/null || true
+          cp ${HOME}/builder/output/luci-theme-fluent*.ipk release/ 2>/dev/null || true
+          cp ${HOME}/builder/output/luci-theme-fluent*.apk release/ 2>/dev/null || true
           echo "Built packages:"
           ls -lh release/
 
@@ -84,8 +84,8 @@ jobs:
         with:
           name: release-${{ env.TAG }}-openwrt-${{ matrix.version }}
           path: |
-            release/*.ipk
-            release/*.apk
+            release/luci-theme-fluent*.ipk
+            release/luci-theme-fluent*.apk
 
   publish:
     name: Create GitHub Release
