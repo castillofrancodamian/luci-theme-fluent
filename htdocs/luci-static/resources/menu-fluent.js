@@ -809,8 +809,8 @@ const main = baseclass.extend({
     },
     render (e) {
         var t, n, a;
-        let l = e, i = "", r = ui.menu.getChildren(e);
-        for(let e = 0; e < r.length; e++)(L.env.requestpath.length ? r[e].name === L.env.requestpath[0] : 0 === e) && this.renderMainMenu(r[e], r[e].name);
+        let l = e, i = "", s = ui.menu.getChildren(e);
+        for(let e = 0; e < s.length; e++)(L.env.requestpath.length ? s[e].name === L.env.requestpath[0] : 0 === e) && this.renderMainMenu(s[e], s[e].name);
         if (L.env.dispatchpath.length >= 3) {
             for(let e = 0; e < 3 && l; e++){
                 let t = L.env.dispatchpath[e];
@@ -818,8 +818,8 @@ const main = baseclass.extend({
             }
             l && this.renderTabMenu(l, i);
         }
-        let s = document.querySelector("a.showSide"), d = document.querySelector(".darkMask");
-        s && s.addEventListener("click", null != (t = ui.createHandlerFn(this, "handleSidebarToggle")) ? t : ()=>{
+        let r = document.querySelector("a.showSide"), d = document.querySelector(".darkMask");
+        r && r.addEventListener("click", null != (t = ui.createHandlerFn(this, "handleSidebarToggle")) ? t : ()=>{
             console.warn("Fluent menu: missing sidebar toggle handler");
         }), d && d.addEventListener("click", null != (n = ui.createHandlerFn(this, "handleSidebarToggle")) ? n : ()=>{
             console.warn("Fluent menu: missing sidebar toggle handler");
@@ -841,54 +841,59 @@ const main = baseclass.extend({
         }
     },
     renderMainMenu (a, l, i) {
-        let r = (i || 0) + 1, s = jsx("ul", {
+        let s = (i || 0) + 1, r = jsx("ul", {
             class: i ? "slide-menu" : "nav"
         }), d = ui.menu.getChildren(a);
-        if (0 === d.length || r > 2) return jsx(Fragment, {});
+        if (0 === d.length || s > 2) return jsx(Fragment, {});
         for(let n = 0; n < d.length; n++){
-            let i = d[n], c = L.env.dispatchpath[r] === i.name && L.env.dispatchpath[r - 1] === a.name, o = this.renderMainMenu(i, "".concat(l, "/").concat(i.name), r), u = o.children.length > 0, m = u ? "slide" : null, h = u ? "menu" : "food";
-            c && (s.classList.add("active"), m = m ? "".concat(m, " active") : "null active");
+            let i = d[n], c = L.env.dispatchpath[s] === i.name && L.env.dispatchpath[s - 1] === a.name, o = this.renderMainMenu(i, "".concat(l, "/").concat(i.name), s), u = o.children.length > 0, m = u ? "slide" : null, h = u ? "menu" : "food";
+            c && (r.classList.add("active"), m = m ? "".concat(m, " active") : "null active");
             let p = c ? "".concat(h, " active") : h, v = jsxs("li", {
                 class: null != m ? m : void 0,
                 children: [
-                    jsx("a", {
+                    jsxs("a", {
                         href: L.url(l, i.name),
-                        onclick: 1 === r ? ui.createHandlerFn(this, "handleMenuExpand") : null,
+                        onclick: 1 === s ? ui.createHandlerFn(this, "handleMenuExpand") : null,
                         class: p,
                         "data-title": (i.title || "").replace(/ /g, "_"),
-                        children: _(i.title || "")
+                        children: [
+                            1 === s ? jsx("span", {
+                                class: "menu-icon"
+                            }) : null,
+                            _(i.title || "")
+                        ]
                     }),
                     o
                 ]
             });
-            s.appendChild(v);
+            r.appendChild(v);
         }
-        if (1 === r) {
+        if (1 === s) {
             let e = document.querySelector("#mainmenu");
-            e && (e.appendChild(s), e.style.display = "", this.adjustBrandTextSize());
+            e && (e.appendChild(r), e.style.display = "", this.adjustBrandTextSize());
         }
-        return s;
+        return r;
     },
     renderTabMenu (t, a, l) {
-        let i = document.querySelector("#tabmenu"), r = (l || 0) + 1, s = jsx("ul", {
+        let i = document.querySelector("#tabmenu"), s = (l || 0) + 1, r = jsx("ul", {
             class: "tabs"
         }), d = ui.menu.getChildren(t), c = null;
         if (0 === d.length) return jsx(Fragment, {});
         for(let t = 0; t < d.length; t++){
-            let n = d[t], l = L.env.dispatchpath[r + 2] === n.name, i = l ? " active" : "", o = jsx("li", {
+            let n = d[t], l = L.env.dispatchpath[s + 2] === n.name, i = l ? " active" : "", o = jsx("li", {
                 class: "tabmenu-item-".concat(n.name).concat(i),
                 children: jsx("a", {
                     href: L.url(a, n.name),
                     children: _(n.title || "")
                 })
             });
-            s.appendChild(o), l && (c = n);
+            r.appendChild(o), l && (c = n);
         }
-        if (i && (i.appendChild(s), i.style.display = "", c)) {
-            let e = this.renderTabMenu(c, "".concat(a, "/").concat(c.name), r);
+        if (i && (i.appendChild(r), i.style.display = "", c)) {
+            let e = this.renderTabMenu(c, "".concat(a, "/").concat(c.name), s);
             e.children.length > 0 && i.appendChild(e);
         }
-        return s;
+        return r;
     },
     adjustBrandTextSize () {
         let e = document.querySelector(".sidenav-header .brand-text");

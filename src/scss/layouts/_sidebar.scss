@@ -136,73 +136,120 @@
       color var(--fluent-duration-fast) var(--fluent-easing-standard),
       border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 
-    // Icon positioning (via ::before pseudo-element)
-    &::before {
-      content: "";
+    // Icon positioning (via dedicated container)
+    .menu-icon {
       position: relative;
-      left: 0;
       margin-right: var(--fluent-space-sm);
       width: 20px;
       height: 20px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background-color: currentColor;
-      -webkit-mask-size: contain;
-      mask-size: contain;
-      -webkit-mask-repeat: no-repeat;
-      mask-repeat: no-repeat;
-      -webkit-mask-position: center;
-      mask-position: center;
-      transition:
-        color var(--fluent-duration-fast) var(--fluent-easing-standard),
-        background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
-    }
+      flex-shrink: 0;
 
-    // --- Icon Mappings via CSS Masks ---
-    $sidebar-icons: (
-      "Dashboard": "home-20-regular",
-      "QuickStart": "flash-20-regular",
-      "NetworkGuide": "compass-northwest-20-regular",
-      "Status": "heart-pulse-20-regular",
-      "System": "settings-20-regular",
-      "Services": "apps-20-regular",
-      "iStore": "store-20-regular",
-      "NAS": "database-20-regular",
-      "VPN": "shield-lock-20-regular",
-      "Network": "router-20-regular",
-      "Statistics": "data-trending-20-regular",
-      "Log_out": "arrow-exit-20-regular"
-    );
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: currentColor;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        transition: opacity var(--fluent-duration-normal) var(--fluent-easing-standard);
+      }
 
-    @each $title, $icon in $sidebar-icons {
-      &[data-title="#{$title}"]::before {
-        $svg: map.get($fluent-icons, $icon);
-        -webkit-mask-image: url("data:image/svg+xml,#{$svg}");
-        mask-image: url("data:image/svg+xml,#{$svg}");
+      &::before {
+        opacity: 1;
+      }
+
+      &::after {
+        opacity: 0;
       }
     }
 
-    // Builder Scanner hints:
+    // --- Icon Mappings via CSS Masks (Fading Regular to Filled) ---
+    $sidebar-icons: (
+      "Dashboard": "home-20",
+      "QuickStart": "flash-20",
+      "NetworkGuide": "compass-northwest-20",
+      "Status": "heart-pulse-20",
+      "System": "settings-20",
+      "Services": "apps-20",
+      "iStore": "store-20",
+      "NAS": "database-20",
+      "VPN": "shield-lock-20",
+      "Network": "router-20",
+      "Statistics": "data-trending-20",
+      "Log_out": "arrow-exit-20"
+    );
+
+    @each $title, $icon in $sidebar-icons {
+      &[data-title="#{$title}"] {
+        .menu-icon::before {
+          $svg-reg: map.get($fluent-icons, "#{$icon}-regular");
+          -webkit-mask-image: url("data:image/svg+xml,#{$svg-reg}");
+          mask-image: url("data:image/svg+xml,#{$svg-reg}");
+        }
+        .menu-icon::after {
+          $svg-fill: map.get($fluent-icons, "#{$icon}-filled");
+          -webkit-mask-image: url("data:image/svg+xml,#{$svg-fill}");
+          mask-image: url("data:image/svg+xml,#{$svg-fill}");
+        }
+      }
+    }
+
+    // Builder Scanner hints (regular and filled versions):
     // @include fluent-icon-by-name("home-20-regular", 20px);
+    // @include fluent-icon-by-name("home-20-filled", 20px);
     // @include fluent-icon-by-name("flash-20-regular", 20px);
+    // @include fluent-icon-by-name("flash-20-filled", 20px);
     // @include fluent-icon-by-name("compass-northwest-20-regular", 20px);
+    // @include fluent-icon-by-name("compass-northwest-20-filled", 20px);
     // @include fluent-icon-by-name("heart-pulse-20-regular", 20px);
+    // @include fluent-icon-by-name("heart-pulse-20-filled", 20px);
     // @include fluent-icon-by-name("settings-20-regular", 20px);
+    // @include fluent-icon-by-name("settings-20-filled", 20px);
     // @include fluent-icon-by-name("apps-20-regular", 20px);
+    // @include fluent-icon-by-name("apps-20-filled", 20px);
     // @include fluent-icon-by-name("store-20-regular", 20px);
+    // @include fluent-icon-by-name("store-20-filled", 20px);
     // @include fluent-icon-by-name("database-20-regular", 20px);
+    // @include fluent-icon-by-name("database-20-filled", 20px);
     // @include fluent-icon-by-name("shield-lock-20-regular", 20px);
+    // @include fluent-icon-by-name("shield-lock-20-filled", 20px);
     // @include fluent-icon-by-name("router-20-regular", 20px);
+    // @include fluent-icon-by-name("router-20-filled", 20px);
     // @include fluent-icon-by-name("data-trending-20-regular", 20px);
+    // @include fluent-icon-by-name("data-trending-20-filled", 20px);
     // @include fluent-icon-by-name("arrow-exit-20-regular", 20px);
+    // @include fluent-icon-by-name("arrow-exit-20-filled", 20px);
+
+    // Subtle Hover & Active transitions
+    &:hover,
+    &.active {
+      .menu-icon {
+        &::before {
+          opacity: 0;
+        }
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
 
     // Subtle FluentUI hover
     &:hover {
       background: var(--fluent-sidebar-item-hover);
       color: var(--fluent-text);
 
-      &::before {
+      .menu-icon {
         color: var(--fluent-text);
       }
     }
@@ -219,7 +266,7 @@
       background: var(--fluent-sidebar-item-active);
       font-weight: var(--fluent-font-weight-semibold);
 
-      &::before {
+      .menu-icon {
         color: var(--fluent-primary);
       }
     }
