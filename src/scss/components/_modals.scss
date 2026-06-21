@@ -123,7 +123,11 @@ body.modal-overlay-active {
     // padding: 0 var(--fluent-modal-padding);
     @include custom-scrollbar;
   }
-
+  .cbi-map {
+    .cbi-section {
+      padding: 0 !important;
+    }
+  }
   .modal-body {
     margin-bottom: var(--fluent-space-lg);
     font-size: var(--fluent-font-size-base);

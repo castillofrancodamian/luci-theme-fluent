@@ -4,14 +4,15 @@
 // 20x20 viewBox, regular style
 // ============================================================
 
-@use 'sass:string';
+@use "sass:string";
 
 // ---- String replace helper ----
 /// Replace all occurrences of $search in $string with $replace.
 @function str-replace($string, $search, $replace: "") {
   $index: string.index($string, $search);
   @if $index {
-    @return string.slice($string, 1, $index - 1) + $replace + str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
+    @return string.slice($string, 1, $index - 1) + $replace +
+      str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
   }
   @return $string;
 }
@@ -20,6 +21,9 @@
 
 // person (user icon)
 $fluent-icon-person: "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z' fill='%23212121'/></svg>";
+
+// add / plus icon (FluentUI fluent:add-16-filled)
+$fluent-icon-add: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%23212121" d="M8 1.75a.75.75 0 0 1 .75.75v4.75h4.75a.75.75 0 0 1 0 1.5H8.75v4.75a.75.75 0 0 1-1.5 0V8.75H2.5a.75.75 0 0 1 0-1.5h4.75V2.5A.75.75 0 0 1 8 1.75"/></svg>';
 
 // lock_closed (password/lock icon)
 $fluent-icon-lock: "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M10 1C12.2091 1 14 2.79086 14 5V7.0498C15.1411 7.28142 16 8.29051 16 9.5V15.5C16 16.8807 14.8807 18 13.5 18H6.5C5.11929 18 4 16.8807 4 15.5V9.5C4 8.29051 4.85886 7.28142 6 7.0498V5C6 2.79086 7.79086 1 10 1ZM6.5 8C5.67157 8 5 8.67157 5 9.5V15.5C5 16.3284 5.67157 17 6.5 17H13.5C14.3284 17 15 16.3284 15 15.5V9.5C15 8.67157 14.3284 8 13.5 8H6.5ZM10 11.5C10.5523 11.5 11 11.9477 11 12.5C11 13.0523 10.5523 13.5 10 13.5C9.44772 13.5 9 13.0523 9 12.5C9 11.9477 9.44772 11.5 10 11.5ZM10 2C8.34315 2 7 3.34315 7 5V7H13V5C13 3.34315 11.6569 2 10 2Z' fill='%23212121'/></svg>";

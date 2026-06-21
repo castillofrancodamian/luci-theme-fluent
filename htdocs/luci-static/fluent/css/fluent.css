@@ -1238,15 +1238,52 @@ input[type="week"]::-webkit-calendar-picker-indicator:hover {
   display: flex;
 }
 
-.cbi-section .cbi-section-create .cbi-button {
-  background: var(--fluent-primary);
-  border-color: var(--fluent-primary);
-  color: var(--fluent-button-text);
+.cbi-section .cbi-section-create .cbi-button-add {
+  height: var(--fluent-btn-height);
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-base);
+  font-weight: var(--fluent-font-weight-regular);
+  border-radius: var(--fluent-radius-md);
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),border-color var(--fluent-duration-fast) var(--fluent-easing-standard),color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  border: 1px solid #0000;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
 }
 
-.cbi-section .cbi-section-create .cbi-button:hover, .cbi-section .cbi-section-create .cbi-button:focus {
-  background: var(--fluent-primary-dark);
-  border-color: var(--fluent-primary-dark);
+.cbi-section .cbi-section-create .cbi-button-add:disabled {
+  color: var(--fluent-text-disabled);
+  background: var(--fluent-bg-active);
+  border-color: var(--fluent-bg-active);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.cbi-section .cbi-section-create .cbi-button-add:focus-visible {
+  outline: 2px solid var(--fluent-focus-color);
+  outline-offset: 2px;
+}
+
+.cbi-section .cbi-section-create .cbi-button-add {
+  background: var(--fluent-btn-primary-bg);
+  color: var(--fluent-text-on-primary);
+  border-color: var(--fluent-btn-primary-bg);
+}
+
+.cbi-section .cbi-section-create .cbi-button-add:hover {
+  background: var(--fluent-btn-primary-bg-hover);
+  border-color: var(--fluent-btn-primary-bg-hover);
+}
+
+.cbi-section .cbi-section-create .cbi-button-add:active {
+  background: var(--fluent-btn-primary-bg-active);
+  border-color: var(--fluent-btn-primary-bg-active);
 }
 
 .cbi-section-error {
@@ -1949,6 +1986,10 @@ body.modal-overlay-active #modal_overlay {
 
 .modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-resizer {
   background: none;
+}
+
+.modal .cbi-map .cbi-section {
+  padding: 0 !important;
 }
 
 .modal .modal-body {
@@ -6798,35 +6839,88 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
   flex: 0 0 var(--fluent-input-height);
   max-width: var(--fluent-input-height);
   height: var(--fluent-input-height);
-  color: var(--fluent-text-on-primary);
-  background-color: var(--fluent-primary);
-  border: 1px solid var(--fluent-primary);
-  border-bottom-width: 2px;
-  border-bottom-color: var(--fluent-primary);
-  border-radius: 0 var(--fluent-radius-md) var(--fluent-radius-md) 0;
+  height: var(--fluent-btn-height);
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-base);
+  font-weight: var(--fluent-font-weight-regular);
+  border-radius: var(--fluent-radius-md);
   cursor: pointer;
-  box-sizing: border-box;
-  transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard),border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  -webkit-user-select: none;
+  user-select: none;
+  transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),border-color var(--fluent-duration-fast) var(--fluent-easing-standard),color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  border: 1px solid #0000;
   justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
-  font-weight: normal;
-  display: flex;
+  padding: 0 16px;
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
   width: var(--fluent-input-height) !important;
   min-width: var(--fluent-input-height) !important;
+  color: #0000 !important;
   padding: 0 !important;
+  font-size: 0 !important;
+}
+
+.cbi-dynlist > .add-item > .cbi-button-add:disabled {
+  color: var(--fluent-text-disabled);
+  background: var(--fluent-bg-active);
+  border-color: var(--fluent-bg-active);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.cbi-dynlist > .add-item > .cbi-button-add:focus-visible {
+  outline: 2px solid var(--fluent-focus-color);
+  outline-offset: 2px;
+}
+
+.cbi-dynlist > .add-item > .cbi-button-add {
+  background: var(--fluent-btn-primary-bg);
+  color: var(--fluent-text-on-primary);
+  border-color: var(--fluent-btn-primary-bg);
 }
 
 .cbi-dynlist > .add-item > .cbi-button-add:hover {
-  background-color: var(--fluent-primary-hover);
-  border-color: var(--fluent-primary-hover);
-  border-bottom-color: var(--fluent-primary-hover);
+  background: var(--fluent-btn-primary-bg-hover);
+  border-color: var(--fluent-btn-primary-bg-hover);
 }
 
 .cbi-dynlist > .add-item > .cbi-button-add:active {
-  background-color: var(--fluent-primary-active);
-  border-color: var(--fluent-primary-active);
-  border-bottom-color: var(--fluent-primary-active);
+  background: var(--fluent-btn-primary-bg-active);
+  border-color: var(--fluent-btn-primary-bg-active);
+}
+
+.cbi-dynlist > .add-item > .cbi-button-add {
+  border-bottom-width: 2px;
+  border-bottom-color: var(--fluent-btn-primary-bg);
+  border-radius: 0 var(--fluent-radius-md) var(--fluent-radius-md) 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-image: url("data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\"><path fill=\"%23ffffff\" d=\"M8 1.75a.75.75 0 0 1 .75.75v4.75h4.75a.75.75 0 0 1 0 1.5H8.75v4.75a.75.75 0 0 1-1.5 0V8.75H2.5a.75.75 0 0 1 0-1.5h4.75V2.5A.75.75 0 0 1 8 1.75\"/></svg>");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+}
+
+.cbi-dynlist > .add-item > .cbi-button-add:hover {
+  background-color: var(--fluent-btn-primary-bg-hover);
+  border-color: var(--fluent-btn-primary-bg-hover);
+  border-bottom-color: var(--fluent-btn-primary-bg-hover);
+  background-image: url("data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\"><path fill=\"%23ffffff\" d=\"M8 1.75a.75.75 0 0 1 .75.75v4.75h4.75a.75.75 0 0 1 0 1.5H8.75v4.75a.75.75 0 0 1-1.5 0V8.75H2.5a.75.75 0 0 1 0-1.5h4.75V2.5A.75.75 0 0 1 8 1.75\"/></svg>");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+}
+
+.cbi-dynlist > .add-item > .cbi-button-add:active {
+  background-color: var(--fluent-btn-primary-bg-active);
+  border-color: var(--fluent-btn-primary-bg-active);
+  border-bottom-color: var(--fluent-btn-primary-bg-active);
+  background-image: url("data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\"><path fill=\"%23ffffff\" d=\"M8 1.75a.75.75 0 0 1 .75.75v4.75h4.75a.75.75 0 0 1 0 1.5H8.75v4.75a.75.75 0 0 1-1.5 0V8.75H2.5a.75.75 0 0 1 0-1.5h4.75V2.5A.75.75 0 0 1 8 1.75\"/></svg>");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
 }
 
 .cbi-dynlist > .add-item > .cbi-button-add.drag-over {

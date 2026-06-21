@@ -199,31 +199,28 @@
       align-items: center;
       justify-content: center;
 
-      font-weight: normal;
-      font-size: 1.2rem;
-      color: var(--fluent-text-on-primary);
-      background-color: var(--fluent-primary);
-      border: 1px solid var(--fluent-primary);
+      font-size: 0 !important; // Hide the text '+'
+      color: transparent !important; // Enforce hiding the text '+'
+      @include button-primary;
+      @include fluent-icon($fluent-icon-add, 14px, #ffffff);
       border-bottom-width: 2px;
-      border-bottom-color: var(--fluent-primary);
+      border-bottom-color: var(--fluent-btn-primary-bg);
       border-radius: 0 var(--fluent-radius-md) var(--fluent-radius-md) 0;
       cursor: pointer;
       box-sizing: border-box;
 
-      transition:
-        background-color var(--fluent-duration-fast) var(--fluent-easing-standard),
-        border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
-
       &:hover {
-        background-color: var(--fluent-primary-hover);
-        border-color: var(--fluent-primary-hover);
-        border-bottom-color: var(--fluent-primary-hover);
+        background-color: var(--fluent-btn-primary-bg-hover);
+        border-color: var(--fluent-btn-primary-bg-hover);
+        border-bottom-color: var(--fluent-btn-primary-bg-hover);
+        @include fluent-icon($fluent-icon-add, 14px, #ffffff);
       }
 
       &:active {
-        background-color: var(--fluent-primary-active);
-        border-color: var(--fluent-primary-active);
-        border-bottom-color: var(--fluent-primary-active);
+        background-color: var(--fluent-btn-primary-bg-active);
+        border-color: var(--fluent-btn-primary-bg-active);
+        border-bottom-color: var(--fluent-btn-primary-bg-active);
+        @include fluent-icon($fluent-icon-add, 14px, #ffffff);
       }
 
       &.drag-over {

@@ -55,16 +55,8 @@
     margin-right: var(--fluent-space-sm);
     margin-bottom: var(--fluent-space-sm);
 
-    .cbi-button {
-      background: var(--fluent-primary);
-      border-color: var(--fluent-primary);
-      color: var(--fluent-button-text);
-
-      &:hover,
-      &:focus {
-        background: var(--fluent-primary-dark);
-        border-color: var(--fluent-primary-dark);
-      }
+    .cbi-button-add {
+      @include button-primary;
     }
   }
 }
