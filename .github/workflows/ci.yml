@@ -7,6 +7,9 @@ on:
     branches: [main, openwrt-24.10]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   scss:
     name: SCSS Build Validation
@@ -113,3 +116,60 @@ jobs:
             output/luci-i18n-fluent*.apk
           if-no-files-found: warn
 
+  nightly:
+    name: Nightly Release
+    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/openwrt-24.10')
+    needs: openwrt-sdk
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download all packages
+        uses: actions/download-artifact@v4
+        with:
+          path: packages/
+          pattern: packages-openwrt-*
+          merge-multiple: true
+      - name: List packages
+        run: |
+          echo "Nightly packages:"
+          find packages/ -type f \( -name "*.ipk" -o -name "*.apk" \) -exec ls -lh {} \;
+      - name: Delete old nightly release
+        run: gh release delete nightly --yes || true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create and push nightly tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -f nightly
+          git push origin nightly --force
+      - name: Create Nightly Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: nightly
+          name: "Nightly Build"
+          body: |
+            ## LuCI Theme Fluent - Nightly Build
+
+            Automatic build from commit `${{ github.sha }}`.
+
+            ### Packages
+            - `luci-theme-fluent` — FluentUI theme for OpenWrt LuCI
+            - `luci-i18n-fluent` — Translations
+
+            ### Installation
+
+            **OpenWrt 24.10.x (opkg/ipk):**
+            ```bash
+            opkg install luci-theme-fluent_*.ipk
+            ```
+
+            **OpenWrt 25.12.x (apk):**
+            ```bash
+            apk add luci-theme-fluent_*.apk
+            ```
+          files: |
+            packages/**/*.ipk
+            packages/**/*.apk
+          prerelease: true
