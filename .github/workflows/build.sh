@@ -105,6 +105,7 @@ make -j$(nproc) V=s BUILD_LOG=1 \
 echo ">>> Collecting ${PKG_EXT} files..."
 mkdir -p "${OUTPUT_DIR}"
 find bin -name "luci-theme-fluent*.${PKG_EXT}" -exec cp {} "${OUTPUT_DIR}/" \;
+find bin -name "luci-i18n-fluent*.${PKG_EXT}" -exec cp {} "${OUTPUT_DIR}/" \;
 tar -cJf "${OUTPUT_DIR}/logs.tar.xz" logs 2>/dev/null || true
 
 echo "=== Build complete ==="

@@ -97,6 +97,8 @@ jobs:
           mkdir -p output
           cp ${HOME}/builder/output/luci-theme-fluent*.ipk output/ 2>/dev/null || true
           cp ${HOME}/builder/output/luci-theme-fluent*.apk output/ 2>/dev/null || true
+          cp ${HOME}/builder/output/luci-i18n-fluent*.ipk output/ 2>/dev/null || true
+          cp ${HOME}/builder/output/luci-i18n-fluent*.apk output/ 2>/dev/null || true
           echo "Built packages:"
           ls -lh output/
 
@@ -107,5 +109,7 @@ jobs:
           path: |
             output/luci-theme-fluent*.ipk
             output/luci-theme-fluent*.apk
+            output/luci-i18n-fluent*.ipk
+            output/luci-i18n-fluent*.apk
           if-no-files-found: warn
 
