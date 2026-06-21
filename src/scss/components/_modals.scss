@@ -50,8 +50,8 @@ body.modal-overlay-active {
   @include slide-in-up;
 
   // Simple dialogs / alert dialogs should be narrower
-  &:has(.alert-message),
-  &:has(.alert) {
+  &:has(>.alert-message),
+  &:has(>.alert) {
     max-width: 600px;
   }
 

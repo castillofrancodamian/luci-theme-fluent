@@ -1893,7 +1893,7 @@ body.modal-overlay-active #modal_overlay {
   overflow: hidden;
 }
 
-:is(.modal:has(.alert-message), .modal:has(.alert)) {
+:is(.modal:has( > .alert-message), .modal:has( > .alert)) {
   max-width: 600px;
 }
 
