@@ -165,13 +165,17 @@ function generateScss(names: string[], collections: Record<IconCollectionName, I
     try {
       resolved = resolveIconName(rawName);
     } catch (error) {
-      errors.push(`⚠ ${(error as Error).message}, skipping`);
+      const msg = `⚠ ${(error as Error).message}, skipping`;
+      errors.push(msg);
+      console.error(`✖ ${msg}`);
       continue;
     }
 
     const icon = collections[resolved.collection].icons[resolved.icon];
     if (!icon) {
-      errors.push(`⚠ "${resolved.canonical}" — not found in @iconify-json/${resolved.collection}, skipping`);
+      const msg = `⚠ "${resolved.canonical}" — not found in @iconify-json/${resolved.collection}, skipping`;
+      errors.push(msg);
+      console.warn(`✖ ${msg}`);
       continue;
     }
 

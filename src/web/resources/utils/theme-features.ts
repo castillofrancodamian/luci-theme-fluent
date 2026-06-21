@@ -471,6 +471,20 @@ export function setupThemeFeatures() {
   const sidebarObserver = new MutationObserver(() => initSidebarSliders());
   sidebarObserver.observe(body, { childList: true, subtree: true });
 
+  // Listen to menu expand/collapse events to update the parent slider
+  document.addEventListener('fluent-menu-expand', () => {
+    const sidebar = document.querySelector('#mainmenu') as HTMLElement | null;
+    if (sidebar) {
+      const navUl = sidebar.querySelector('ul.nav') as HTMLElement | null;
+      if (navUl) {
+        updateSidebarSlider(navUl, true);
+        setTimeout(() => {
+          updateSidebarSlider(navUl, true);
+        }, 250);
+      }
+    }
+  });
+
   window.addEventListener('resize', () => {
     const sidebar = document.querySelector('#mainmenu') as HTMLElement | null;
     if (sidebar) {

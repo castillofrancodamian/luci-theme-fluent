@@ -592,14 +592,14 @@ function setupThemeFeatures() {
     '1' === t && window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (t)=>{
         e.setAttribute('data-reduce-motion', t.matches ? 'true' : 'false');
     });
-    let i = e.getAttribute('data-theme-mode') || 'normal', s = document.getElementById('theme-toggle');
-    if (s) {
+    let i = e.getAttribute('data-theme-mode') || 'normal', l = document.getElementById('theme-toggle');
+    if (l) {
         let e = 'dark' === document.documentElement.getAttribute('data-theme');
-        s.setAttribute('data-active-theme', e ? 'dark' : 'light'), requestAnimationFrame(()=>{
-            s.classList.add('visible');
-        }), s.addEventListener('click', ()=>{
+        l.setAttribute('data-active-theme', e ? 'dark' : 'light'), requestAnimationFrame(()=>{
+            l.classList.add('visible');
+        }), l.addEventListener('click', ()=>{
             let e = 'dark' === document.documentElement.getAttribute('data-theme') ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', e), s.setAttribute('data-active-theme', e);
+            document.documentElement.setAttribute('data-theme', e), l.setAttribute('data-active-theme', e);
             try {
                 localStorage.setItem('fluent-theme', e);
             } catch (e) {}
@@ -608,22 +608,22 @@ function setupThemeFeatures() {
                 if (localStorage.getItem('fluent-theme')) return;
             } catch (e) {}
             let t = e.matches ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', t), s.setAttribute('data-active-theme', t);
+            document.documentElement.setAttribute('data-theme', t), l.setAttribute('data-active-theme', t);
         });
     }
-    let l = '1' === e.getAttribute('data-tab-animation');
-    function n(e) {
+    let n = '1' === e.getAttribute('data-tab-animation');
+    function s(e) {
         var t;
         let i = e.querySelector('.fluent-tab-slider');
         i || ((i = document.createElement('div')).className = 'fluent-tab-slider', e.appendChild(i));
-        let s = e.querySelector('li.cbi-tab, li.active');
-        if (!s) {
+        let l = e.querySelector('li.cbi-tab, li.active');
+        if (!l) {
             i.style.width = '0px';
             return;
         }
-        let l = s.querySelector('a');
-        if (!l) return;
-        let n = l.getBoundingClientRect(), r = e.getBoundingClientRect(), a = window.getComputedStyle(l), o = parseFloat(a.paddingLeft) || 16, d = parseFloat(a.paddingRight) || 16, u = n.left - r.left + e.scrollLeft + o, c = n.width - o - d, m = "".concat(u, "px"), f = "".concat(c, "px");
+        let n = l.querySelector('a');
+        if (!n) return;
+        let s = n.getBoundingClientRect(), r = e.getBoundingClientRect(), a = window.getComputedStyle(n), o = parseFloat(a.paddingLeft) || 16, d = parseFloat(a.paddingRight) || 16, u = s.left - r.left + e.scrollLeft + o, c = s.width - o - d, m = "".concat(u, "px"), f = "".concat(c, "px");
         if (i.style.left === m && i.style.width === f) return;
         let h = function(e) {
             if (e.classList.contains('tabs')) return 'header-tabs';
@@ -638,21 +638,21 @@ function setupThemeFeatures() {
     }
     function r() {
         document.querySelectorAll('ul.cbi-tabmenu, ul.tabs').forEach((e)=>{
-            if (e.dataset.sliderInit) return void n(e);
+            if (e.dataset.sliderInit) return void s(e);
             e.dataset.sliderInit = 'true';
             let t = e.querySelector('.fluent-tab-slider');
-            if (t || ((t = document.createElement('div')).className = 'fluent-tab-slider', e.appendChild(t)), l && e.classList.contains('tabs')) {
+            if (t || ((t = document.createElement('div')).className = 'fluent-tab-slider', e.appendChild(t)), n && e.classList.contains('tabs')) {
                 let i = null;
                 try {
                     i = sessionStorage.getItem('fluent-tab-slider-pos');
                 } catch (e) {}
                 if (i) try {
-                    let s = JSON.parse(i);
-                    sessionStorage.removeItem('fluent-tab-slider-pos'), t.style.transition = 'none', t.style.left = s.left, t.style.width = s.width, t.offsetHeight, t.style.transition = '', n(e);
+                    let l = JSON.parse(i);
+                    sessionStorage.removeItem('fluent-tab-slider-pos'), t.style.transition = 'none', t.style.left = l.left, t.style.width = l.width, t.offsetHeight, t.style.transition = '', s(e);
                 } catch (t) {
-                    n(e);
+                    s(e);
                 }
-                else n(e), t.style.transition = 'none', t.style.transform = 'scaleX(0)', t.offsetHeight, t.style.transition = '', t.style.transform = 'scaleX(1)';
+                else s(e), t.style.transition = 'none', t.style.transform = 'scaleX(0)', t.offsetHeight, t.style.transition = '', t.style.transform = 'scaleX(1)';
                 e.querySelectorAll('li > a').forEach((e)=>{
                     let i = e.getAttribute('href');
                     i && '#' !== i && e.addEventListener('click', ()=>{
@@ -664,9 +664,9 @@ function setupThemeFeatures() {
                         } catch (e) {}
                     });
                 });
-            } else n(e);
+            } else s(e);
             new MutationObserver(()=>{
-                n(e);
+                s(e);
             }).observe(e, {
                 attributes: !0,
                 subtree: !0,
@@ -681,49 +681,49 @@ function setupThemeFeatures() {
         subtree: !0
     }), window.addEventListener('resize', ()=>{
         document.querySelectorAll('ul.cbi-tabmenu, ul.tabs').forEach((e)=>{
-            n(e);
+            s(e);
         });
     }), '1' === e.getAttribute('data-loading-bar')) {
         let e = !1, t = document.getElementById('fluent-top-loading'), i = ()=>{
             t && !e && t.classList.add('loaded');
-        }, s = ()=>{
+        }, l = ()=>{
             t && t.classList.remove('loaded');
         };
         'interactive' === document.readyState || 'complete' === document.readyState ? i() : document.addEventListener('DOMContentLoaded', i), window.addEventListener('load', i), window.addEventListener('beforeunload', ()=>{
-            e = !0, s();
+            e = !0, l();
         }), document.addEventListener('click', (e)=>{
             let t = e.target;
             if (!t) return;
             let i = t.closest('a');
             if (i) {
                 let e = i.getAttribute('href');
-                !e || e.startsWith('#') || e.startsWith("javascript:") || i.getAttribute('target') || i.hostname !== location.hostname || s();
+                !e || e.startsWith('#') || e.startsWith("javascript:") || i.getAttribute('target') || i.hostname !== location.hostname || l();
             }
         }), document.addEventListener('submit', (e)=>{
             let t = e.target;
             if (!t) return;
             let i = t.closest('form');
-            i && !i.getAttribute('target') && s();
+            i && !i.getAttribute('target') && l();
         }), new MutationObserver(()=>{
-            null !== document.querySelector('.spinning, .loading, #view > .spinning') ? s() : i();
+            null !== document.querySelector('.spinning, .loading, #view > .spinning') ? l() : i();
         }).observe(document.documentElement, {
             childList: !0,
             subtree: !0
         });
     }
     function a(e, t) {
-        let i, s, l = t ? 'fluent-sidebar-parent-slider' : 'fluent-sidebar-slider', n = e.querySelector(".".concat(l));
-        n || ((n = document.createElement('div')).className = l, e.appendChild(n));
+        let i, l, n = t ? 'fluent-sidebar-parent-slider' : 'fluent-sidebar-slider', s = e.querySelector(".".concat(n));
+        s || ((s = document.createElement('div')).className = n, e.appendChild(s));
         let r = e.querySelector('li.active');
         if (!r || t && (r.classList.contains('slide') || r.querySelector('.slide-menu'))) {
-            n.style.height = '0px', n.style.opacity = '0';
+            s.style.height = '0px', s.style.opacity = '0';
             return;
         }
-        n.style.opacity = '1';
+        s.style.opacity = '1';
         let a = t ? r.querySelector('a.menu, a.food') : r;
         if (!a) return;
         let o = a.getBoundingClientRect(), d = e.getBoundingClientRect();
-        t ? (i = o.top - d.top + e.scrollTop, s = o.height) : (i = o.top - d.top + e.scrollTop + 0.15 * o.height, s = 0.7 * o.height), n.style.top = "".concat(i, "px"), n.style.height = "".concat(s, "px");
+        t ? (i = o.top - d.top + e.scrollTop, l = o.height) : (i = o.top - d.top + e.scrollTop + 0.15 * o.height, l = 0.7 * o.height), s.style.top = "".concat(i, "px"), s.style.height = "".concat(l, "px");
     }
     function o() {
         let e = document.querySelector('#mainmenu');
@@ -731,7 +731,7 @@ function setupThemeFeatures() {
         let t = e.querySelector('ul.nav');
         if (t) {
             let e = t.querySelector('.fluent-sidebar-parent-slider');
-            if (e || ((e = document.createElement('div')).className = 'fluent-sidebar-parent-slider', t.appendChild(e)), t.classList.add('has-slider'), !t.dataset.sliderInit && (t.dataset.sliderInit = 'true', l && t.querySelectorAll('li > a.menu, li > a.food').forEach((e)=>{
+            if (e || ((e = document.createElement('div')).className = 'fluent-sidebar-parent-slider', t.appendChild(e)), t.classList.add('has-slider'), !t.dataset.sliderInit && (t.dataset.sliderInit = 'true', n && t.querySelectorAll('li > a.menu, li > a.food').forEach((e)=>{
                 let i = e.getAttribute('href');
                 i && '#' !== i && e.addEventListener('click', ()=>{
                     try {
@@ -742,7 +742,7 @@ function setupThemeFeatures() {
                         }));
                     } catch (e) {}
                 });
-            })), l) {
+            })), n) {
                 let t = null;
                 try {
                     t = sessionStorage.getItem('fluent-sidebar-parent-pos');
@@ -756,7 +756,7 @@ function setupThemeFeatures() {
         }
         e.querySelectorAll('ul.slide-menu').forEach((e)=>{
             let t = e.classList.contains('active'), i = e.querySelector('.fluent-sidebar-slider');
-            if (i || ((i = document.createElement('div')).className = 'fluent-sidebar-slider', e.appendChild(i)), e.classList.add('has-slider'), !e.dataset.sliderInit && (e.dataset.sliderInit = 'true', l && e.querySelectorAll('li > a').forEach((t)=>{
+            if (i || ((i = document.createElement('div')).className = 'fluent-sidebar-slider', e.appendChild(i)), e.classList.add('has-slider'), !e.dataset.sliderInit && (e.dataset.sliderInit = 'true', n && e.querySelectorAll('li > a').forEach((t)=>{
                 let i = t.getAttribute('href');
                 i && '#' !== i && t.addEventListener('click', ()=>{
                     try {
@@ -767,7 +767,7 @@ function setupThemeFeatures() {
                         }));
                     } catch (e) {}
                 });
-            })), l && t) {
+            })), n && t) {
                 let e = null;
                 try {
                     e = sessionStorage.getItem('fluent-sidebar-submenu-pos');
@@ -783,6 +783,14 @@ function setupThemeFeatures() {
     o(), new MutationObserver(()=>o()).observe(e, {
         childList: !0,
         subtree: !0
+    }), document.addEventListener('fluent-menu-expand', ()=>{
+        let e = document.querySelector('#mainmenu');
+        if (e) {
+            let t = e.querySelector('ul.nav');
+            t && (a(t, !0), setTimeout(()=>{
+                a(t, !0);
+            }, 250));
+        }
     }), window.addEventListener('resize', ()=>{
         let e = document.querySelector('#mainmenu');
         if (e) {
@@ -837,7 +845,7 @@ const main = baseclass.extend({
                 let e = null == n ? void 0 : n.querySelector(".slide-menu");
                 e && (a.classList.add("active"), t.classList.add("active"), SlideAnimations.slideDown(e, "fast")), t.blur();
             }
-            e.preventDefault(), e.stopPropagation();
+            document.dispatchEvent(new CustomEvent("fluent-menu-expand")), e.preventDefault(), e.stopPropagation();
         }
     },
     renderMainMenu (a, l, i) {

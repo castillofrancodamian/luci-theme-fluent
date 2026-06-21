@@ -140,6 +140,9 @@ const module: Module = {
       target.blur(); // Remove focus from the clicked element
     }
 
+    // Dispatch custom event to notify theme-features to update the sidebar slider position
+    document.dispatchEvent(new CustomEvent("fluent-menu-expand"));
+
     // Prevent default link behavior and event bubbling
     ev.preventDefault();
     ev.stopPropagation();
