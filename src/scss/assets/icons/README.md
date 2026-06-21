@@ -44,4 +44,5 @@ $accept-svg: map.get($fluent-icons, "fluent-mdl2:accept");
 mask-image: url("data:image/svg+xml,#{$chevron-svg}");
 ```
 
-If an icon is not referenced through the name-based mixins but still needs to exist in the generated map, add its name to `src/scss/assets/icons/fluent-icons.json`.
+All icons are dynamically scanned and resolved from the SCSS source files during the build process.
+

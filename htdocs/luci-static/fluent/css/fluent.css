@@ -7542,8 +7542,10 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
 input[type="text"].cbi-input-invalid {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
-  background-size: 100% 4px !important;
+  background-image: linear-gradient(0deg, var(--fluent-error) 0%, var(--fluent-error) 100%) !important;
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: 0 2px !important;
 }
 
 input[type="text"].cbi-input-invalid:hover:not(:focus) {
@@ -7554,15 +7556,17 @@ input[type="text"].cbi-input-invalid:hover:not(:focus) {
 input[type="text"].cbi-input-invalid:focus {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
-  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 1px var(--fluent-error) inset !important;
+  background-size: 100% 2px !important;
 }
 
 input[type="password"].cbi-input-invalid {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
-  background-size: 100% 4px !important;
+  background-image: linear-gradient(0deg, var(--fluent-error) 0%, var(--fluent-error) 100%) !important;
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: 0 2px !important;
 }
 
 input[type="password"].cbi-input-invalid:hover:not(:focus) {
@@ -7573,15 +7577,17 @@ input[type="password"].cbi-input-invalid:hover:not(:focus) {
 input[type="password"].cbi-input-invalid:focus {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
-  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 1px var(--fluent-error) inset !important;
+  background-size: 100% 2px !important;
 }
 
 input[type="email"].cbi-input-invalid {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
-  background-size: 100% 4px !important;
+  background-image: linear-gradient(0deg, var(--fluent-error) 0%, var(--fluent-error) 100%) !important;
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: 0 2px !important;
 }
 
 input[type="email"].cbi-input-invalid:hover:not(:focus) {
@@ -7592,15 +7598,17 @@ input[type="email"].cbi-input-invalid:hover:not(:focus) {
 input[type="email"].cbi-input-invalid:focus {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
-  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 1px var(--fluent-error) inset !important;
+  background-size: 100% 2px !important;
 }
 
 input[type="number"].cbi-input-invalid {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
-  background-size: 100% 4px !important;
+  background-image: linear-gradient(0deg, var(--fluent-error) 0%, var(--fluent-error) 100%) !important;
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: 0 2px !important;
 }
 
 input[type="number"].cbi-input-invalid:hover:not(:focus) {
@@ -7611,15 +7619,17 @@ input[type="number"].cbi-input-invalid:hover:not(:focus) {
 input[type="number"].cbi-input-invalid:focus {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
-  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 1px var(--fluent-error) inset !important;
+  background-size: 100% 2px !important;
 }
 
 input[type="search"].cbi-input-invalid {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
-  background-size: 100% 4px !important;
+  background-image: linear-gradient(0deg, var(--fluent-error) 0%, var(--fluent-error) 100%) !important;
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: 0 2px !important;
 }
 
 input[type="search"].cbi-input-invalid:hover:not(:focus) {
@@ -7630,15 +7640,17 @@ input[type="search"].cbi-input-invalid:hover:not(:focus) {
 input[type="search"].cbi-input-invalid:focus {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
-  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 1px var(--fluent-error) inset !important;
+  background-size: 100% 2px !important;
 }
 
 input[type="tel"].cbi-input-invalid {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
-  background-size: 100% 4px !important;
+  background-image: linear-gradient(0deg, var(--fluent-error) 0%, var(--fluent-error) 100%) !important;
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: 0 2px !important;
 }
 
 input[type="tel"].cbi-input-invalid:hover:not(:focus) {
@@ -7649,15 +7661,17 @@ input[type="tel"].cbi-input-invalid:hover:not(:focus) {
 input[type="tel"].cbi-input-invalid:focus {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
-  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 1px var(--fluent-error) inset !important;
+  background-size: 100% 2px !important;
 }
 
 input[type="url"].cbi-input-invalid {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
-  background-size: 100% 4px !important;
+  background-image: linear-gradient(0deg, var(--fluent-error) 0%, var(--fluent-error) 100%) !important;
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: 0 2px !important;
 }
 
 input[type="url"].cbi-input-invalid:hover:not(:focus) {
@@ -7668,15 +7682,17 @@ input[type="url"].cbi-input-invalid:hover:not(:focus) {
 input[type="url"].cbi-input-invalid:focus {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
-  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 1px var(--fluent-error) inset !important;
+  background-size: 100% 2px !important;
 }
 
 select.cbi-input-invalid {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
-  background-size: 100% 4px !important;
+  background-image: linear-gradient(0deg, var(--fluent-error) 0%, var(--fluent-error) 100%) !important;
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: 0 2px !important;
 }
 
 select.cbi-input-invalid:hover:not(:focus) {
@@ -7687,15 +7703,17 @@ select.cbi-input-invalid:hover:not(:focus) {
 select.cbi-input-invalid:focus {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
-  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 1px var(--fluent-error) inset !important;
+  background-size: 100% 2px !important;
 }
 
 .cbi-dropdown.cbi-input-invalid {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
-  background-size: 100% 4px !important;
+  background-image: linear-gradient(0deg, var(--fluent-error) 0%, var(--fluent-error) 100%) !important;
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: 0 2px !important;
 }
 
 .cbi-dropdown.cbi-input-invalid:hover:not(:focus) {
@@ -7706,15 +7724,17 @@ select.cbi-input-invalid:focus {
 .cbi-dropdown.cbi-input-invalid:focus {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
-  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 1px var(--fluent-error) inset !important;
+  background-size: 100% 2px !important;
 }
 
 .cbi-input-text.cbi-input-invalid {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
-  background-size: 100% 4px !important;
+  background-image: linear-gradient(0deg, var(--fluent-error) 0%, var(--fluent-error) 100%) !important;
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: 0 2px !important;
 }
 
 .cbi-input-text.cbi-input-invalid:hover:not(:focus) {
@@ -7725,15 +7745,17 @@ select.cbi-input-invalid:focus {
 .cbi-input-text.cbi-input-invalid:focus {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
-  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 1px var(--fluent-error) inset !important;
+  background-size: 100% 2px !important;
 }
 
 .cbi-input-password.cbi-input-invalid {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
-  background-size: 100% 4px !important;
+  background-image: linear-gradient(0deg, var(--fluent-error) 0%, var(--fluent-error) 100%) !important;
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: 0 2px !important;
 }
 
 .cbi-input-password.cbi-input-invalid:hover:not(:focus) {
@@ -7744,15 +7766,17 @@ select.cbi-input-invalid:focus {
 .cbi-input-password.cbi-input-invalid:focus {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
-  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 1px var(--fluent-error) inset !important;
+  background-size: 100% 2px !important;
 }
 
 .password-input.cbi-input-invalid {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
-  background-size: 100% 4px !important;
+  background-image: linear-gradient(0deg, var(--fluent-error) 0%, var(--fluent-error) 100%) !important;
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: 0 2px !important;
 }
 
 .password-input.cbi-input-invalid:hover:not(:focus) {
@@ -7763,8 +7787,8 @@ select.cbi-input-invalid:focus {
 .password-input.cbi-input-invalid:focus {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
-  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 1px var(--fluent-error) inset !important;
+  background-size: 100% 2px !important;
 }
 
 .fluent-error-message {
@@ -8929,6 +8953,7 @@ body.login-page {
 
 .login-page .login-container .login-form .form-login .ms-input-wrapper .ms-input.cbi-input-invalid {
   background-image: linear-gradient(0deg, #e81123 0% 100%) !important;
+  background-size: 0 2px !important;
   border-color: #e81123 !important;
 }
 
@@ -9154,6 +9179,7 @@ body.login-page {
 
   :root:not([data-theme="light"]) .login-page .login-container .login-form .form-login .ms-input-wrapper .ms-input.cbi-input-invalid {
     background-image: linear-gradient(0deg, #e37d80 0% 100%) !important;
+    background-size: 0 2px !important;
     border-color: #e37d80 !important;
   }
 
@@ -9200,6 +9226,7 @@ body.login-page {
 
 [data-theme="dark"] .login-page .login-container .login-form .form-login .ms-input-wrapper .ms-input.cbi-input-invalid {
   background-image: linear-gradient(0deg, #e37d80 0% 100%) !important;
+  background-size: 0 2px !important;
   border-color: #e37d80 !important;
 }
 

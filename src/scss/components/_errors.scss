@@ -30,8 +30,10 @@ $fluent-error-inputs: (
   #{$selector}.cbi-input-invalid {
     border-color: var(--fluent-error) !important;
     border-bottom-color: var(--fluent-error) !important;
-    background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
-    background-size: 100% 4px !important;
+    background-image: linear-gradient(0deg, var(--fluent-error) 0%, var(--fluent-error) 100%) !important;
+    background-size: 0 2px !important;
+    background-repeat: no-repeat !important;
+    background-position: center bottom !important;
   }
 
   // Error input field on hover
@@ -44,8 +46,8 @@ $fluent-error-inputs: (
   #{$selector}.cbi-input-invalid:focus {
     border-color: var(--fluent-error) !important;
     border-bottom-color: var(--fluent-error) !important;
-    background-size: 100% 4px !important;
-    box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
+    background-size: 100% 2px !important;
+    box-shadow: 0 0 0 1px var(--fluent-error) inset !important;
   }
 }
 

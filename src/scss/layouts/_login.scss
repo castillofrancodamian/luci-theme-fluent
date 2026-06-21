@@ -403,6 +403,7 @@ body.login-page {
               border-color: #e81123 !important;
               border-bottom-color: #e81123 !important;
               background-image: linear-gradient(0deg, #e81123 0%, #e81123 100%) !important;
+              background-size: 0 2px !important;
 
               &:hover:not(:focus):not(:disabled) {
                 border-color: #e81123 !important;
@@ -665,6 +666,7 @@ body.login-page {
             border-color: #e37d80 !important;
             border-bottom-color: #e37d80 !important;
             background-image: linear-gradient(0deg, #e37d80 0%, #e37d80 100%) !important;
+            background-size: 0 2px !important;
 
             &:hover:not(:focus):not(:disabled) {
               border-color: #e37d80 !important;
