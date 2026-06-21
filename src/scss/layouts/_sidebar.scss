@@ -110,8 +110,6 @@
     }
   }
 
-
-
   // ============================================================
   // TOP-LEVEL MENU ITEMS
   // FluentUI NavItem: 36px height, 4px radius, subtle hover
@@ -136,116 +134,117 @@
       color var(--fluent-duration-fast) var(--fluent-easing-standard),
       border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 
-    // Icon positioning (via dedicated container)
-    .menu-icon {
-      position: relative;
-      margin-right: var(--fluent-space-sm);
-      width: 20px;
-      height: 20px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: currentColor;
-        -webkit-mask-size: contain;
-        mask-size: contain;
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-position: center;
-        mask-position: center;
-        transition: opacity var(--fluent-duration-normal) var(--fluent-easing-standard);
-      }
-
-      &::before {
-        opacity: 1;
-      }
-
-      &::after {
-        opacity: 0;
-      }
-    }
-
-    // --- Icon Mappings via CSS Masks (Fading Regular to Filled) ---
-    $sidebar-icons: (
-      "Dashboard": (
-        "reg": "__icon__(home-20-regular)",
-        "fill": "__icon__(home-20-filled)"
-      ),
-      "QuickStart": (
-        "reg": "__icon__(flash-20-regular)",
-        "fill": "__icon__(flash-20-filled)"
-      ),
-      "NetworkGuide": (
-        "reg": "__icon__(compass-northwest-20-regular)",
-        "fill": "__icon__(compass-northwest-20-filled)"
-      ),
-      "Status": (
-        "reg": "__icon__(heart-pulse-20-regular)",
-        "fill": "__icon__(heart-pulse-20-filled)"
-      ),
-      "System": (
-        "reg": "__icon__(settings-20-regular)",
-        "fill": "__icon__(settings-20-filled)"
-      ),
-      "Services": (
-        "reg": "__icon__(apps-20-regular)",
-        "fill": "__icon__(apps-20-filled)"
-      ),
-      "iStore": (
-        "reg": "__icon__(app-store-24-regular)",
-        "fill": "__icon__(app-store-24-filled)"
-      ),
-      "NAS": (
-        "reg": "__icon__(database-20-regular)",
-        "fill": "__icon__(database-20-filled)"
-      ),
-      "VPN": (
-        "reg": "__icon__(shield-lock-20-regular)",
-        "fill": "__icon__(shield-lock-20-filled)"
-      ),
-      "Network": (
-        "reg": "__icon__(router-20-regular)",
-        "fill": "__icon__(router-20-filled)"
-      ),
-      "Statistics": (
-        "reg": "__icon__(data-trending-20-regular)",
-        "fill": "__icon__(data-trending-20-filled)"
-      ),
-      "Log_out": (
-        "reg": "__icon__(arrow-exit-20-regular)",
-        "fill": "__icon__(arrow-exit-20-filled)"
-      )
-    );
-
-    @each $title, $pair in $sidebar-icons {
-      &[data-title="#{$title}"] {
-        $reg-raw: map.get($pair, "reg");
-        $fill-raw: map.get($pair, "fill");
-
-        $reg: str-replace(str-replace($reg-raw, "__icon__(", ""), ")", "");
-        $fill: str-replace(str-replace($fill-raw, "__icon__(", ""), ")", "");
-
-        .menu-icon::before {
-          $svg-reg: map.get($fluent-icons, $reg);
-          -webkit-mask-image: url("data:image/svg+xml,#{$svg-reg}");
-          mask-image: url("data:image/svg+xml,#{$svg-reg}");
-        }
-        .menu-icon::after {
-          $svg-fill: map.get($fluent-icons, $fill);
-          -webkit-mask-image: url("data:image/svg+xml,#{$svg-fill}");
-          mask-image: url("data:image/svg+xml,#{$svg-fill}");
-        }
-      }
-    }
+     // Icon positioning (via dedicated container)
+     .menu-icon {
+       position: relative;
+       margin-right: var(--fluent-space-sm);
+       width: 20px;
+       height: 20px;
+       display: inline-flex;
+       align-items: center;
+       justify-content: center;
+       flex-shrink: 0;
+ 
+       &::before,
+       &::after {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: currentColor;
+         -webkit-mask-size: contain;
+         mask-size: contain;
+         -webkit-mask-repeat: no-repeat;
+         mask-repeat: no-repeat;
+         -webkit-mask-position: center;
+         mask-position: center;
+         transition: opacity var(--fluent-duration-normal) var(--fluent-easing-standard);
+       }
+ 
+       &::before {
+         -webkit-mask-image: var(--icon-reg);
+         mask-image: var(--icon-reg);
+         opacity: 1;
+       }
+ 
+       &::after {
+         -webkit-mask-image: var(--icon-fill);
+         mask-image: var(--icon-fill);
+         opacity: 0;
+       }
+     }
+ 
+     // --- Icon Mappings via CSS Masks (Fading Regular to Filled) ---
+     $sidebar-icons: (
+       "Dashboard": (
+         "reg": "__icon__(home-20-regular)",
+         "fill": "__icon__(home-20-filled)"
+       ),
+       "QuickStart": (
+         "reg": "__icon__(flash-20-regular)",
+         "fill": "__icon__(flash-20-filled)"
+       ),
+       "NetworkGuide": (
+         "reg": "__icon__(compass-northwest-20-regular)",
+         "fill": "__icon__(compass-northwest-20-filled)"
+       ),
+       "Status": (
+         "reg": "__icon__(heart-pulse-20-regular)",
+         "fill": "__icon__(heart-pulse-20-filled)"
+       ),
+       "System": (
+         "reg": "__icon__(settings-20-regular)",
+         "fill": "__icon__(settings-20-filled)"
+       ),
+       "Services": (
+         "reg": "__icon__(apps-20-regular)",
+         "fill": "__icon__(apps-20-filled)"
+       ),
+       "iStore": (
+         "reg": "__icon__(app-store-24-regular)",
+         "fill": "__icon__(app-store-24-filled)"
+       ),
+       "NAS": (
+         "reg": "__icon__(database-20-regular)",
+         "fill": "__icon__(database-20-filled)"
+       ),
+       "VPN": (
+         "reg": "__icon__(shield-lock-20-regular)",
+         "fill": "__icon__(shield-lock-20-filled)"
+       ),
+       "Network": (
+         "reg": "__icon__(router-20-regular)",
+         "fill": "__icon__(router-20-filled)"
+       ),
+       "Statistics": (
+         "reg": "__icon__(data-trending-20-regular)",
+         "fill": "__icon__(data-trending-20-filled)"
+       ),
+       "Log_out": (
+         "reg": "__icon__(arrow-exit-20-regular)",
+         "fill": "__icon__(arrow-exit-20-filled)"
+       )
+     );
+ 
+     @each $title, $pair in $sidebar-icons {
+       &[data-title="#{$title}"] {
+         $reg-raw: map.get($pair, "reg");
+         $fill-raw: map.get($pair, "fill");
+ 
+         $reg: str-replace(str-replace($reg-raw, "__icon__(", ""), ")", "");
+         $fill: str-replace(str-replace($fill-raw, "__icon__(", ""), ")", "");
+ 
+         $svg-reg: map.get($fluent-icons, $reg);
+         $svg-fill: map.get($fluent-icons, $fill);
+ 
+         .menu-icon {
+           --icon-reg: url("data:image/svg+xml,#{$svg-reg}");
+           --icon-fill: url("data:image/svg+xml,#{$svg-fill}");
+         }
+       }
+     }
 
     // Subtle Hover & Active transitions
     &:hover,
