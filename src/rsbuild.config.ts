@@ -1,5 +1,6 @@
 import { defineConfig, rspack } from "@rsbuild/core";
 import { pluginSass } from "@rsbuild/plugin-sass";
+import { generateIcons } from "./script/generate-fluent-icons";
 import type { Compiler } from "@rspack/core";
 
 const luciRequires = `"use strict";
@@ -121,6 +122,24 @@ export default defineConfig({
               compiler.hooks.emit.tapAsync("RemoveEntryJsPlugin", (compilation, callback) => {
                 delete compilation.assets["fluent.js"];
                 delete compilation.assets["fluent.js.map"];
+                callback();
+              });
+            },
+          });
+          config.plugins.push({
+            name: "GenerateFluentIconsPlugin",
+            apply(compiler: Compiler) {
+              const regenerate = () => {
+                if (!generateIcons()) {
+                  throw new Error("Failed to generate Fluent icons");
+                }
+              };
+              compiler.hooks.beforeRun.tapAsync("GenerateFluentIconsPlugin", (_, callback) => {
+                regenerate();
+                callback();
+              });
+              compiler.hooks.watchRun.tapAsync("GenerateFluentIconsPlugin", (_, callback) => {
+                regenerate();
                 callback();
               });
             },

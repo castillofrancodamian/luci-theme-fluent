@@ -151,7 +151,7 @@ body.modal-overlay-active {
     z-index: 11;
 
     &::before {
-      @include fluent-icon-content($fluent-icon-dismiss, 20px);
+      @include fluent-icon-content-by-name("dismiss-20-regular", 20px);
     }
 
     &:hover {

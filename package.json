@@ -5,7 +5,6 @@
   "description": "FluentUI theme for OpenWrt LuCI",
   "scripts": {
     "css:build": "cd src && pnpm exec rsbuild build --environment css",
-    "css:watch": "cd src && pnpm exec rsbuild build --environment css --watch",
     "build:js": "cd src && pnpm exec rsbuild build --environment js",
     "build": "cd src && pnpm run build",
     "watch:css": "cd src && pnpm exec rsbuild build --environment css --watch",
@@ -13,8 +12,8 @@
     "watch": "cd src && pnpm run watch",
     "lint": "biome lint --no-errors-on-unmatched htdocs src/web/resources",
     "format": "biome format --write --no-errors-on-unmatched htdocs src/web/resources",
-    "i18n:extract": "tsx src/script/extract-ucode.ts --generate && luci-types i18n -i htdocs/luci-static/resources -i src/script/extra-strings.js --po po/templates/fluent.pot -p luci-theme-fluent",
-    "i18n:export": "tsx src/script/extract-ucode.ts --generate && dotenvx run -- luci-types i18n -i htdocs/luci-static/resources -i src/script/extra-strings.js --po po/zh_Hans/fluent.po -l zh_Hans -p luci-theme-fluent --merge --translate --batch-size 20 --prompt src/script/translate.md",
+    "i18n:extract": "tsx src/script/extract-ucode.ts --generate && luci-types i18n -i htdocs/luci-static/resources -i src/script/.cache/extra-strings.js --po po/templates/fluent.pot -p luci-theme-fluent",
+    "i18n:export": "tsx src/script/extract-ucode.ts --generate && dotenvx run -- luci-types i18n -i htdocs/luci-static/resources -i src/script/.cache/extra-strings.js --po po/zh_Hans/fluent.po -l zh_Hans -p luci-theme-fluent --merge --translate --batch-size 20 --prompt src/script/translate.md",
     "i18n:extract-ucode": "tsx src/script/extract-ucode.ts",
     "i18n:build": "pnpm run i18n:extract-ucode && pnpm run i18n:extract && pnpm run i18n:export",
     "test": "echo \"No tests yet\" && exit 0",
@@ -22,6 +21,8 @@
     "icons:generate": "tsx src/script/generate-icons.ts"
   },
   "devDependencies": {
+    "@iconify-json/fluent": "^1.2.51",
+    "@iconify-json/fluent-mdl2": "^1.2.1",
     "@biomejs/biome": "^2.5.0",
     "@lazulikao/luci-types": "github:LazuliKao/luci-types#6b7f0bd4ec583246912842d40477c68bb75d2e17",
     "@dotenvx/dotenvx": "^1.38.0",

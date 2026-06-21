@@ -69,7 +69,7 @@ body > div.main > div.main-right > header {
       transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
 
       &::before {
-        @include fluent-icon-content($fluent-icon-menu, 20px, #323130);
+        @include fluent-icon-content-by-name("line-horizontal-3-20-regular", 20px, #323130);
       }
 
       &:hover {
@@ -78,12 +78,12 @@ body > div.main > div.main-right > header {
 
       // In dark mode or on bg-primary (blue header), icon should be white
       [data-theme="dark"] &::before {
-        @include fluent-icon($fluent-icon-menu, 20px, #ffffff);
+        @include fluent-icon-by-name("line-horizontal-3-20-regular", 20px, #ffffff);
       }
 
       @media (prefers-color-scheme: dark) {
         :root:not([data-theme="light"]) &::before {
-          @include fluent-icon($fluent-icon-menu, 20px, #ffffff);
+          @include fluent-icon-by-name("line-horizontal-3-20-regular", 20px, #ffffff);
         }
       }
 

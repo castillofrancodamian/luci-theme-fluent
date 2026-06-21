@@ -3,6 +3,7 @@
 // Aligned with @fluentui/react-nav, @fluentui/react-tree
 @use "../mixins" as *;
 @use "../icons" as *;
+@use "sass:map";
 
 // ============================================================
 // SIDEBAR CONTAINER
@@ -401,15 +402,15 @@
         transition:
           transform var(--fluent-duration-fast) var(--fluent-easing-standard),
           background-image var(--fluent-duration-fast) var(--fluent-easing-standard);
-        @include fluent-icon-content($fluent-icon-chevron-down, 14px, #605e5c);
+        @include fluent-icon-content-by-name("chevron-down-20-regular", 14px, #605e5c);
 
         [data-theme="dark"] & {
-          @include fluent-icon($fluent-icon-chevron-down, 14px, #a0a0a0);
+          @include fluent-icon-by-name("chevron-down-20-regular", 14px, #a0a0a0);
         }
 
         @media (prefers-color-scheme: dark) {
           :root:not([data-theme="light"]) & {
-            @include fluent-icon($fluent-icon-chevron-down, 14px, #a0a0a0);
+            @include fluent-icon-by-name("chevron-down-20-regular", 14px, #a0a0a0);
           }
         }
       }
@@ -446,8 +447,9 @@
           transform: translateY(-50%) rotate(0deg);
           background-image: none !important;
           background-color: var(--fluent-primary);
-          -webkit-mask-image: url("data:image/svg+xml,#{$fluent-icon-chevron-down}");
-          mask-image: url("data:image/svg+xml,#{$fluent-icon-chevron-down}");
+          $chevron-svg: map.get($fluent-icons, "chevron-down-20-regular");
+          -webkit-mask-image: url("data:image/svg+xml,#{$chevron-svg}");
+          mask-image: url("data:image/svg+xml,#{$chevron-svg}");
           -webkit-mask-size: contain;
           mask-size: contain;
           -webkit-mask-repeat: no-repeat;

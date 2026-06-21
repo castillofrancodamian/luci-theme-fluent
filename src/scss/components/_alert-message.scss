@@ -4,15 +4,7 @@
 // ============================================================
 @use "../mixins" as *;
 @use "../icons" as *;
-
-// SVG Icon Data URIs for MessageBar Statuses (Official Fluent UI 2 System Icons)
-$fluent-alert-icon-info: "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M18 10a8 8 0 1 0-16 0 8 8 0 0 0 16 0ZM9.5 8.91a.5.5 0 0 1 1 0V13.6a.5.5 0 0 1-1 0V8.9Zm-.25-2.16a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Z' fill='%23212121'/></svg>";
-
-$fluent-alert-icon-success: "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M10 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm3.36 5.65a.5.5 0 0 0-.64-.06l-.07.06L9 11.3 7.35 9.65l-.07-.06a.5.5 0 0 0-.7.7l.07.07 2 2 .07.06c.17.11.4.11.56 0l.07-.06 4-4 .07-.08a.5.5 0 0 0-.06-.63Z' fill='%23212121'/></svg>";
-
-$fluent-alert-icon-warning: "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M8.68 2.79a1.5 1.5 0 0 1 2.64 0l6.5 12a1.5 1.5 0 0 1-1.32 2.21h-13a1.5 1.5 0 0 1-1.32-2.21l6.5-12ZM10.5 7.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 1 0v-4Zm.25 6.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z' fill='%23212121'/></svg>";
-
-$fluent-alert-icon-error: "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M7.88 2.88a3 3 0 0 1 4.24 0l5 5a3 3 0 0 1 0 4.24l-5 5a3 3 0 0 1-4.24 0l-5-5a3 3 0 0 1 0-4.24l5-5Zm-.03 4.27a.5.5 0 1 0-.7.7L9.29 10l-2.14 2.15a.5.5 0 0 0 .7.7L10 10.71l2.15 2.14a.5.5 0 0 0 .7-.7L10.71 10l2.14-2.15a.5.5 0 0 0-.7-.7L10 9.29 7.85 7.15Z' fill='%23212121'/></svg>";
+@use "sass:map";
 
 .alert,
 .alert-message {
@@ -32,7 +24,7 @@ $fluent-alert-icon-error: "<svg xmlns='http://www.w3.org/2000/svg' width='20' he
 
   // Fallback / default icon (informative info)
   &::before {
-    @include fluent-icon-content($fluent-alert-icon-info, 18px, #616161);
+    @include fluent-icon-content-by-name("info-20-regular", 18px, #616161);
     margin-top: 2px;
   }
 
@@ -158,7 +150,7 @@ $fluent-alert-icon-error: "<svg xmlns='http://www.w3.org/2000/svg' width='20' he
     border-color: color-mix(in srgb, var(--fluent-success) 35%, transparent);
 
     &::before {
-      @include fluent-icon-content($fluent-alert-icon-success, 18px, #107c10);
+      @include fluent-icon-content-by-name("checkmark-circle-20-regular", 18px, #107c10);
     }
   }
 
@@ -169,7 +161,7 @@ $fluent-alert-icon-error: "<svg xmlns='http://www.w3.org/2000/svg' width='20' he
     border-color: color-mix(in srgb, var(--fluent-warning) 45%, transparent);
 
     &::before {
-      @include fluent-icon-content($fluent-alert-icon-warning, 18px, #d83b01);
+      @include fluent-icon-content-by-name("warning-20-regular", 18px, #d83b01);
     }
   }
 
@@ -181,7 +173,7 @@ $fluent-alert-icon-error: "<svg xmlns='http://www.w3.org/2000/svg' width='20' he
     border-color: color-mix(in srgb, var(--fluent-error) 35%, transparent);
 
     &::before {
-      @include fluent-icon-content($fluent-alert-icon-error, 18px, #d13438);
+      @include fluent-icon-content-by-name("dismiss-circle-20-regular", 18px, #d13438);
     }
   }
 
@@ -198,8 +190,9 @@ $fluent-alert-icon-error: "<svg xmlns='http://www.w3.org/2000/svg' width='20' he
       height: 18px;
       flex-shrink: 0;
       background-color: var(--fluent-primary);
-      -webkit-mask-image: url("data:image/svg+xml,#{$fluent-alert-icon-info}");
-      mask-image: url("data:image/svg+xml,#{$fluent-alert-icon-info}");
+      $info-svg: map.get($fluent-icons, "info-20-regular");
+      -webkit-mask-image: url("data:image/svg+xml,#{$info-svg}");
+      mask-image: url("data:image/svg+xml,#{$info-svg}");
       -webkit-mask-size: contain;
       mask-size: contain;
       -webkit-mask-repeat: no-repeat;

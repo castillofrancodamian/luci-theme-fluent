@@ -58,6 +58,7 @@ The settings view is implemented in `src/web/resources/view/fluent-config.tsx`.
 ```bash
 pnpm install
 pnpm run build
+pnpm run watch
 pnpm run lint
 pnpm run i18n:extract
 pnpm run i18n:export

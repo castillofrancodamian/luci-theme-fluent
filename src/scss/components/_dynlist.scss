@@ -85,7 +85,7 @@
       z-index: 2; // Ensure it sits on top of span and receives pointer events
 
       // Use standard Fluent delete SVG icon (perfectly centered, 16px size)
-      @include fluent-icon($fluent-icon-delete, 16px, #616161);
+      @include fluent-icon-by-name("delete-20-regular", 16px, #616161);
 
       transition:
         background-color var(--fluent-duration-fast) var(--fluent-easing-standard),
@@ -93,38 +93,38 @@
 
       &:hover {
         background-color: var(--fluent-error-light);
-        @include fluent-icon($fluent-icon-delete, 16px, #d13438); // Fluent error red (light mode)
+        @include fluent-icon-by-name("delete-20-regular", 16px, #d13438); // Fluent error red (light mode)
       }
 
       &:active {
         background-color: var(--fluent-error-hover);
-        @include fluent-icon($fluent-icon-delete, 16px, #ffffff); // white
+        @include fluent-icon-by-name("delete-20-regular", 16px, #ffffff); // white
       }
     }
 
     // Dark mode icon overrides (since SVGs cannot dynamically resolve CSS custom properties)
     [data-theme="dark"] & {
       &::after {
-        @include fluent-icon($fluent-icon-delete, 16px, #a0a0a0);
+        @include fluent-icon-by-name("delete-20-regular", 16px, #a0a0a0);
 
         &:hover {
-          @include fluent-icon($fluent-icon-delete, 16px, #ff5f5f); // Bright error red for dark mode
+          @include fluent-icon-by-name("delete-20-regular", 16px, #ff5f5f); // Bright error red for dark mode
         }
         &:active {
-          @include fluent-icon($fluent-icon-delete, 16px, #ffffff);
+          @include fluent-icon-by-name("delete-20-regular", 16px, #ffffff);
         }
       }
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) & {
         &::after {
-          @include fluent-icon($fluent-icon-delete, 16px, #a0a0a0);
+          @include fluent-icon-by-name("delete-20-regular", 16px, #a0a0a0);
 
           &:hover {
-            @include fluent-icon($fluent-icon-delete, 16px, #ff5f5f); // Bright error red for dark mode
+            @include fluent-icon-by-name("delete-20-regular", 16px, #ff5f5f); // Bright error red for dark mode
           }
           &:active {
-            @include fluent-icon($fluent-icon-delete, 16px, #ffffff);
+            @include fluent-icon-by-name("delete-20-regular", 16px, #ffffff);
           }
         }
       }
@@ -202,7 +202,7 @@
       font-size: 0 !important; // Hide the text '+'
       color: transparent !important; // Enforce hiding the text '+'
       @include button-primary;
-      @include fluent-icon($fluent-icon-add, 14px, #ffffff);
+      @include fluent-icon-by-name("add-16-filled", 14px, #ffffff);
       border-bottom-width: 2px;
       border-bottom-color: var(--fluent-btn-primary-bg);
       border-radius: 0 var(--fluent-radius-md) var(--fluent-radius-md) 0;
@@ -213,14 +213,14 @@
         background-color: var(--fluent-btn-primary-bg-hover);
         border-color: var(--fluent-btn-primary-bg-hover);
         border-bottom-color: var(--fluent-btn-primary-bg-hover);
-        @include fluent-icon($fluent-icon-add, 14px, #ffffff);
+        @include fluent-icon-by-name("add-16-filled", 14px, #ffffff);
       }
 
       &:active {
         background-color: var(--fluent-btn-primary-bg-active);
         border-color: var(--fluent-btn-primary-bg-active);
         border-bottom-color: var(--fluent-btn-primary-bg-active);
-        @include fluent-icon($fluent-icon-add, 14px, #ffffff);
+        @include fluent-icon-by-name("add-16-filled", 14px, #ffffff);
       }
 
       &.drag-over {

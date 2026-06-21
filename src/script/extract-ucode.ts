@@ -18,7 +18,7 @@ import { globSync } from "node:fs";
 import { dirname } from "node:path";
 
 const UCODE_GLOB = "ucode/template/themes/fluent/*.ut";
-const EXTRA_STRINGS_PATH = "src/script/extra-strings.js";
+const EXTRA_STRINGS_PATH = "src/script/.cache/extra-strings.js";
 const EXTRACT_RE = /\{\{\s*_\(['"]([^'"]+)['"]\)\s*\}\}/g;
 
 // URL for LuCI base POT file — source of standard translatable strings.
@@ -98,6 +98,7 @@ function extractAll(): string[] {
 		const content = readFileSync(file, "utf-8");
 		EXTRACT_RE.lastIndex = 0;
 		let match: RegExpExecArray | null;
+		// biome-ignore lint/suspicious/noAssignInExpressions: common pattern for regex extraction loops
 		while ((match = EXTRACT_RE.exec(content)) !== null) {
 			seen.add(match[1]);
 		}
@@ -128,6 +129,7 @@ function printAll(
 		const content = fileContent.get(file)!;
 		EXTRACT_RE.lastIndex = 0;
 		let match: RegExpExecArray | null;
+		// biome-ignore lint/suspicious/noAssignInExpressions: common pattern for regex extraction loops
 		while ((match = EXTRACT_RE.exec(content)) !== null) {
 			const msgid = match[1];
 			if (seen.has(msgid)) continue;
