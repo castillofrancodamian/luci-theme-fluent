@@ -20,7 +20,7 @@ luci-theme-fluent/
 │       ├── menu-fluent.js       # Sidebar navigation (LuCI module)
 │       └── view/
 │           └── fluent-config.js # Configuration UI
-├── scss/
+├── src/scss/
 │   ├── fluent.scss              # Main entry point
 │   ├── _variables.scss          # Design tokens
 │   ├── _mixins.scss             # Reusable patterns

@@ -45,6 +45,26 @@ pnpm run lint         # Biome lint for htdocs/ and src/web/resources
 | `pnpm run watch`     | Watch mode for SCSS + LuCI JS/TSX                                       |
 | `pnpm run lint`      | Run Biome linter                                                        |
 | `pnpm run typecheck` | Type-check `src/` (`cd src && pnpm run typecheck`)                         |
+
+### i18n / Translation
+| Command | Action |
+| ------- | ------ |
+| `pnpm run i18n:extract` | Extract translatable strings from compiled JS + ucode templates → `po/templates/fluent.pot` (POT template, 66 strings) |
+| `pnpm run i18n:export` | Extract + merge existing translations + auto-translate via AI → `po/zh_Hans/fluent.po` (requires `OPENAI_API_KEY` in `.env`) |
+| `pnpm run i18n:extract-ucode` | List custom ucode-only translatable strings (discovery/verification) |
+
+**Workflow:**
+1. `pnpm run build` — compile JS (extraction scans compiled output)
+2. `pnpm run i18n:extract` — regenerate POT template (committed as reference)
+3. Set up `.env` with `OPENAI_API_KEY` for auto-translation
+4. `pnpm run i18n:export` — extract, merge, and auto-translate zh_Hans PO
+5. OpenWrt `luci.mk` automatically processes `po/` → translation JSON at build time
+
+**Ucode handling:** `src/script/extract-ucode.ts` scans `.ut` files for `{{ _('...') }}` calls, filters out standard LuCI core strings (14 strings) from theme-specific ones (currently 1: `Toggle dark mode`). Run with `--generate` to auto-update `src/script/extra-strings.js`, which is then fed into the TypeScript AST extraction pipeline.
+
+**PO file locations (auto-processed by `luci.mk`):**
+- `po/templates/fluent.pot` — msgid-only template
+- `po/zh_Hans/fluent.po` — Simplified Chinese translations
 ## Project Structure (luci-theme-fluent)
 
 ```

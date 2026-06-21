@@ -1,0 +1,259 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: luci-theme-fluent\n"
+"POT-Creation-Date: 2026-06-21 20:16+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Adjust login card opacity and blur separately for light and dark mode."
+msgstr ""
+
+msgid ""
+"Animate the active underline when switching between native LuCI tabs and themed "
+"tab menus."
+msgstr ""
+
+msgid "Animation"
+msgstr ""
+
+msgid ""
+"Applies to standard buttons, inputs, selects, and similar form controls across t"
+"he theme."
+msgstr ""
+
+msgid "Blur radius in pixels behind the login card in dark mode. Use 0 to disable blur."
+msgstr ""
+
+msgid ""
+"Blur radius in pixels behind the login card in light mode. Use 0 to disable blur"
+"."
+msgstr ""
+
+msgid "Choose color"
+msgstr ""
+
+msgid "Choose how the theme selects its mode and how large core controls should render."
+msgstr ""
+
+msgid "Color mode"
+msgstr ""
+
+msgid "Colors"
+msgstr ""
+
+msgid "Comfortable (42px)"
+msgstr ""
+
+msgid "Compact (32px)"
+msgstr ""
+
+msgid ""
+"Configure color mode, accent colors, animation behavior, and login-page appearan"
+"ce for luci-theme-fluent."
+msgstr ""
+
+msgid "Control height"
+msgstr ""
+
+msgid ""
+"Control page transitions, tab underline animation, and the top loading indicator"
+"."
+msgstr ""
+
+msgid ""
+"Controls the font weight used by main navigation labels and related theme text a"
+"ccents."
+msgstr ""
+
+msgid "Dark mode accent color"
+msgstr ""
+
+msgid "Dark mode backdrop blur radius"
+msgstr ""
+
+msgid "Dark mode card background"
+msgstr ""
+
+msgid "Dark mode login card opacity"
+msgstr ""
+
+msgid "Dark mode page background"
+msgstr ""
+
+msgid "Dark mode progress bar text color"
+msgstr ""
+
+msgid "Dark mode sidebar background"
+msgstr ""
+
+msgid ""
+"Display the themed loading indicator at the top edge during page loads and trans"
+"itions."
+msgstr ""
+
+msgid "Enable page transition animation"
+msgstr ""
+
+msgid "Enable tab underline animation"
+msgstr ""
+
+msgid "Expecting: %s"
+msgstr ""
+
+msgid "Fluent theme settings"
+msgstr ""
+
+msgid "Follow system"
+msgstr ""
+
+msgid "Force dark mode"
+msgstr ""
+
+msgid "Force light mode"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid ""
+"HEX color used as the primary Fluent accent when the interface is rendered in da"
+"rk mode."
+msgstr ""
+
+msgid ""
+"HEX color used as the primary Fluent accent when the interface is rendered in li"
+"ght mode."
+msgstr ""
+
+msgid "HEX color used for container/card elements in dark mode."
+msgstr ""
+
+msgid "HEX color used for container/card elements in light mode."
+msgstr ""
+
+msgid ""
+"HEX color used for progress-bar labels while the interface is rendered in dark m"
+"ode."
+msgstr ""
+
+msgid ""
+"HEX color used for progress-bar labels while the interface is rendered in light "
+"mode."
+msgstr ""
+
+msgid "HEX color used for the main page background in dark mode."
+msgstr ""
+
+msgid "HEX color used for the main page background in light mode."
+msgstr ""
+
+msgid "HEX color used for the navigation sidebar in dark mode."
+msgstr ""
+
+msgid "HEX color used for the navigation sidebar in light mode."
+msgstr ""
+
+msgid "Light mode accent color"
+msgstr ""
+
+msgid "Light mode backdrop blur radius"
+msgstr ""
+
+msgid "Light mode card background"
+msgstr ""
+
+msgid "Light mode login card opacity"
+msgstr ""
+
+msgid "Light mode page background"
+msgstr ""
+
+msgid "Light mode progress bar text color"
+msgstr ""
+
+msgid "Light mode sidebar background"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "Login page"
+msgstr ""
+
+msgid "Navigation font weight"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "Normal"
+msgstr ""
+
+msgid ""
+"Opacity of the login card in dark mode. 0 is fully transparent and 1 is fully op"
+"aque."
+msgstr ""
+
+msgid ""
+"Opacity of the login card in light mode. 0 is fully transparent and 1 is fully o"
+"paque."
+msgstr ""
+
+msgid "Please enter your password."
+msgstr ""
+
+msgid "Please enter your username."
+msgstr ""
+
+msgid "Replace native select elements with the theme's custom dropdown widget."
+msgstr ""
+
+msgid "Respect reduced-motion preference"
+msgstr ""
+
+msgid "Semibold"
+msgstr ""
+
+msgid ""
+"Set separate accent, progress-bar text, and background colors for light and dark"
+" mode."
+msgstr ""
+
+msgid "Show top loading bar"
+msgstr ""
+
+msgid "Theme settings"
+msgstr ""
+
+msgid "Toggle dark mode"
+msgstr ""
+
+msgid "Use Fluent custom select dropdowns"
+msgstr ""
+
+msgid ""
+"Use the browser View Transition API to animate navigation between LuCI pages whe"
+"n supported."
+msgstr ""
+
+msgid ""
+"Use the system/browser preference, or always render the Fluent theme in a fixed "
+"light or dark palette."
+msgstr ""
+
+msgid "Username is required."
+msgstr ""
+
+msgid "valid HEX color value"
+msgstr ""
+
+msgid ""
+"When enabled, Fluent animations follow the browser or operating system reduced-m"
+"otion preference."
+msgstr ""
