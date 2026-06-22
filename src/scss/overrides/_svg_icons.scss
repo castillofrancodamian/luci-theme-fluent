@@ -1,0 +1,43 @@
+@use "../icons" as *;
+
+img[src="/luci-static/resources/icons/port_down.svg"] {
+    content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") !important;
+    display: inline-block;
+    width: var(--fluent-space-lg);
+    height: var(--fluent-space-lg);
+    background: var(--fluent-text-secondary) !important;
+    -webkit-mask-image: url(../assets/icons/override/ethernet_plug_disconnected.svg);
+    mask-image: url(../assets/icons/override/ethernet_plug_disconnected.svg);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+img[src="/luci-static/resources/icons/port_up.svg"] {
+    content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") !important;
+    display: inline-block;
+    width: var(--fluent-space-lg);
+    height: var(--fluent-space-lg);
+    background: var(--fluent-success) !important;
+    -webkit-mask-image: url(../assets/icons/override/ethernet_plug_connected.svg);
+    mask-image: url(../assets/icons/override/ethernet_plug_connected.svg);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+
+img[src="/luci-static/resources/icons/signal-000-000.svg"] {}
+img[src="/luci-static/resources/icons/signal-000-025.svg"] {}
+img[src="/luci-static/resources/icons/signal-025-050.svg"] {}
+img[src="/luci-static/resources/icons/signal-050-075.svg"] {}
+img[src="/luci-static/resources/icons/signal-075-100.svg"] {
+    @include fluent-icon-by-name("fluent:cellular-data-1-20-filled", 16px, #ffffff);
+}
+img[src="/luci-static/resources/icons/signal-none.svg"] {
+    @include fluent-icon-by-name("fluent:cellular-warning-20-filled", 16px, #ffffff);
+}

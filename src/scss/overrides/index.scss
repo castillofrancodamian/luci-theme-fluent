@@ -1,6 +1,7 @@
 // Directory entry point — manually maintained.
 // Add a @forward line for each new override partial.
 
+@forward "svg_icons";
 @forward "overrides-utils";
 @forward "luci-mod-dashboard";
 @forward "luci-app-firewall";
