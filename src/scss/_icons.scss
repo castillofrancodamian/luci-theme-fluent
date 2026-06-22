@@ -85,3 +85,46 @@
   flex-shrink: 0;
   @include fluent-icon-by-name($name, $size, $color);
 }
+
+/// Apply a Fluent icon via CSS mask for dynamic CSS custom property coloring.
+/// E.g. @include fluent-mask-icon-by-name("person-20-regular", 16px, var(--fluent-text));
+@mixin fluent-mask-icon-by-name($name, $size: 16px, $color-var: var(--fluent-text)) {
+  $svg: map.get($fluent-icons, $name);
+  @if $svg == null {
+    @warn "Icon '#{$name}' not found in $fluent-icons map";
+    $svg: "";
+  }
+  content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") !important;
+  display: inline-block;
+  width: $size;
+  height: $size;
+  background: $color-var !important;
+  -webkit-mask-image: url("data:image/svg+xml,#{$svg}");
+  mask-image: url("data:image/svg+xml,#{$svg}");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+/// Apply an icon from a file path via CSS mask for dynamic CSS custom property coloring.
+/// E.g. @include fluent-mask-icon-by-path("../assets/icons/override/ethernet_default.svg", $icon-size, var(--fluent-text-secondary));
+@mixin fluent-mask-icon-by-path($path, $size: 16px, $color-var: var(--fluent-text)) {
+  content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") !important;
+  display: inline-block;
+  width: $size;
+  height: $size;
+  background: $color-var !important;
+  -webkit-mask-image: url($path);
+  mask-image: url($path);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+

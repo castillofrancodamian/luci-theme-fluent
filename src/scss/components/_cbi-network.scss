@@ -20,6 +20,14 @@ $indicator-left-offset: 10px;
   line-height: var(--fluent-line-height-tight);
   box-sizing: border-box;
   vertical-align: middle;
+  // Truncate name with ellipsis when container overflows
+  > span:not(.cbi-tooltip-container) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+    flex-shrink: 1;
+  }
 
   > em {
     display: inline-flex;
@@ -29,14 +37,20 @@ $indicator-left-offset: 10px;
     color: var(--fluent-text-secondary);
     font-style: normal;
     line-height: 1;
+    flex-shrink: 0;
   }
 
-  > img {
+  .cbi-tooltip-container {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  img {
     width: var(--fluent-space-lg);
     height: var(--fluent-space-lg);
     flex-shrink: 0;
     object-fit: contain;
-    background: var(--fluent-bg-card);
   }
 }
 
