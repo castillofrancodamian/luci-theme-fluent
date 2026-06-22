@@ -2361,7 +2361,6 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
 }
 
 .cbi-section .cbi-title {
-  border-bottom: 1px solid var(--fluent-card-border);
   color: var(--fluent-text);
   font-family: var(--fluent-font-family);
   font-size: var(--fluent-font-size-md);
@@ -2390,8 +2389,8 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   border-radius: var(--fluent-radius-sm);
   transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
   position: relative;
-  width: 20px !important;
-  height: 20px !important;
+  width: 24px !important;
+  height: 24px !important;
   min-width: unset !important;
   color: #0000 !important;
   background: none !important;
@@ -2413,8 +2412,8 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   content: "";
   border-right: 1.5px solid var(--fluent-text-secondary);
   border-bottom: 1.5px solid var(--fluent-text-secondary);
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   transition: transform var(--fluent-duration-normal) var(--fluent-easing-standard),border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
   display: block;
   transform: rotate(-45deg) translate(-1px, -1px);
