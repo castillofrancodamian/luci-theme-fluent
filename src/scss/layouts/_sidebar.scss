@@ -447,6 +447,97 @@
             }
 
             // --- Submenu Icon Mappings via CSS Masks ---
+            $submenu-fuzzy-icons: (
+              "Clash": (
+                "reg": "__icon__(shield-keyhole-20-regular)",
+                "fill": "__icon__(shield-keyhole-20-filled)"
+              ),
+              "Passwall": (
+                "reg": "__icon__(shield-lock-20-regular)",
+                "fill": "__icon__(shield-lock-20-filled)"
+              ),
+              "SSR": (
+                "reg": "__icon__(shield-lock-20-regular)",
+                "fill": "__icon__(shield-lock-20-filled)"
+              ),
+              "Bypass": (
+                "reg": "__icon__(shield-dismiss-20-regular)",
+                "fill": "__icon__(shield-dismiss-20-filled)"
+              ),
+              "AdGuard": (
+                "reg": "__icon__(shield-checkmark-20-regular)",
+                "fill": "__icon__(shield-checkmark-20-filled)"
+              ),
+              "SmartDNS": (
+                "reg": "__icon__(globe-shield-20-regular)",
+                "fill": "__icon__(globe-shield-20-filled)"
+              ),
+              "VPN": (
+                "reg": "__icon__(shield-lock-20-regular)",
+                "fill": "__icon__(shield-lock-20-filled)"
+              ),
+              "DNS": (
+                "reg": "__icon__(globe-20-regular)",
+                "fill": "__icon__(globe-20-filled)"
+              ),
+              "DDNS": (
+                "reg": "__icon__(globe-arrow-up-20-regular)",
+                "fill": "__icon__(globe-arrow-up-20-filled)"
+              ),
+              "Docker": (
+                "reg": "__icon__(box-20-regular)",
+                "fill": "__icon__(box-20-filled)"
+              ),
+              "File": (
+                "reg": "__icon__(folder-open-20-regular)",
+                "fill": "__icon__(folder-open-20-filled)"
+              ),
+              "Theme": (
+                "reg": "__icon__(paint-brush-20-regular)",
+                "fill": "__icon__(paint-brush-20-filled)"
+              ),
+              "Config": (
+                "reg": "__icon__(paint-brush-20-regular)",
+                "fill": "__icon__(paint-brush-20-filled)"
+              ),
+              "Log": (
+                "reg": "__icon__(document-bullet-list-clock-20-regular)",
+                "fill": "__icon__(document-bullet-list-clock-20-filled)"
+              ),
+              "Monitor": (
+                "reg": "__icon__(data-usage-20-regular)",
+                "fill": "__icon__(data-usage-20-filled)"
+              ),
+              "CPU": (
+                "reg": "__icon__(developer-board-20-regular)",
+                "fill": "__icon__(developer-board-20-filled)"
+              ),
+              "LED": (
+                "reg": "__icon__(lightbulb-20-regular)",
+                "fill": "__icon__(lightbulb-20-filled)"
+              ),
+              "IPsec": (
+                "reg": "__icon__(shield-lock-20-regular)",
+                "fill": "__icon__(shield-lock-20-filled)"
+              ),
+              "KMS": (
+                "reg": "__icon__(key-20-regular)",
+                "fill": "__icon__(key-20-filled)"
+              ),
+              "UPnP": (
+                "reg": "__icon__(server-20-regular)",
+                "fill": "__icon__(server-20-filled)"
+              ),
+              "Network": (
+                "reg": "__icon__(network-adapter-16-regular)",
+                "fill": "__icon__(network-adapter-16-filled)"
+              ),
+              "Wireless": (
+                "reg": "__icon__(wifi-1-20-regular)",
+                "fill": "__icon__(wifi-1-20-filled)"
+              )
+            );
+
             $submenu-icons: (
               "Overview": (
                 "reg": "__icon__(document-text-20-regular)",
@@ -511,8 +602,109 @@
               "Terminal": (
                 "reg": "__icon__(window-console-20-regular)",
                 "fill": "__icon__(window-console-20-filled)"
+              ),
+              "System_Log": (
+                "reg": "__icon__(document-bullet-list-clock-20-regular)",
+                "fill": "__icon__(document-bullet-list-clock-20-filled)"
+              ),
+              "Processes": (
+                "reg": "__icon__(window-dev-tools-20-regular)",
+                "fill": "__icon__(window-dev-tools-20-filled)"
+              ),
+              "Channel_Analysis": (
+                "reg": "__icon__(radar-20-regular)",
+                "fill": "__icon__(radar-20-filled)"
+              ),
+              "Realtime_Graphs": (
+                "reg": "__icon__(desktop-pulse-20-regular)",
+                "fill": "__icon__(desktop-pulse-20-filled)"
+              ),
+              "Traffic_Monitor": (
+                "reg": "__icon__(data-usage-20-regular)",
+                "fill": "__icon__(data-usage-20-filled)"
+              ),
+              "AmneziaWG": (
+                "reg": "__icon__(shield-keyhole-20-regular)",
+                "fill": "__icon__(shield-keyhole-20-filled)"
+              ),
+              "WireGuard": (
+                "reg": "__icon__(shield-lock-20-regular)",
+                "fill": "__icon__(shield-lock-20-filled)"
+              ),
+              "Release_RAM": (
+                "reg": "__icon__(broom-20-regular)",
+                "fill": "__icon__(broom-20-filled)"
+              ),
+              "System": (
+                "reg": "__icon__(settings-20-regular)",
+                "fill": "__icon__(settings-20-filled)"
+              ),
+              "Disk_Man": (
+                "reg": "__icon__(storage-20-regular)",
+                "fill": "__icon__(storage-20-filled)"
+              ),
+              "LED_Configuration": (
+                "reg": "__icon__(lightbulb-20-regular)",
+                "fill": "__icon__(lightbulb-20-filled)"
+              ),
+              "Advanced_plus": (
+                "reg": "__icon__(wrench-settings-20-regular)",
+                "fill": "__icon__(wrench-settings-20-filled)"
+              ),
+              "Athena_LED_Ctrl": (
+                "reg": "__icon__(desktop-20-regular)",
+                "fill": "__icon__(desktop-20-filled)"
+              ),
+              "Quick_File_Manager": (
+                "reg": "__icon__(folder-open-20-regular)",
+                "fill": "__icon__(folder-open-20-filled)"
+              ),
+              "Scheduled_Reboot": (
+                "reg": "__icon__(timer-20-regular)",
+                "fill": "__icon__(timer-20-filled)"
+              ),
+              "Argon_Config": (
+                "reg": "__icon__(paint-brush-20-regular)",
+                "fill": "__icon__(paint-brush-20-filled)"
+              ),
+              "CPU_Freq": (
+                "reg": "__icon__(developer-board-20-regular)",
+                "fill": "__icon__(developer-board-20-filled)"
+              ),
+              "Fluent_Theme": (
+                "reg": "__icon__(paint-brush-20-regular)",
+                "fill": "__icon__(paint-brush-20-filled)"
               )
             );
+
+            @each $keyword, $pair in $submenu-fuzzy-icons {
+              &[data-title*="#{$keyword}" i] {
+                .menu-icon {
+                  display: inline-flex;
+
+                  $reg-raw: map.get($pair, "reg");
+                  $fill-raw: map.get($pair, "fill");
+
+                  $reg: str-replace(str-replace($reg-raw, "__icon__(", ""), ")", "");
+                  $fill: str-replace(str-replace($fill-raw, "__icon__(", ""), ")", "");
+
+                  $svg-reg: str-replace(map.get($fluent-icons, $reg), '"', "'");
+                  $svg-fill: str-replace(map.get($fluent-icons, $fill), '"', "'");
+
+                  $svg-reg-encoded: str-replace(str-replace($svg-reg, "<", "%3C"), ">", "%3E");
+                  $svg-fill-encoded: str-replace(str-replace($svg-fill, "<", "%3C"), ">", "%3E");
+
+                  &::before {
+                    -webkit-mask-image: url("data:image/svg+xml,#{$svg-reg-encoded}");
+                    mask-image: url("data:image/svg+xml,#{$svg-reg-encoded}");
+                  }
+                  &::after {
+                    -webkit-mask-image: url("data:image/svg+xml,#{$svg-fill-encoded}");
+                    mask-image: url("data:image/svg+xml,#{$svg-fill-encoded}");
+                  }
+                }
+              }
+            }
 
             @each $title, $pair in $submenu-icons {
               &[data-title="#{$title}"] {

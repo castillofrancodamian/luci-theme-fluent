@@ -60,7 +60,7 @@ img[src="/luci-static/resources/icons/port_down.svg"] {
     @include fluent-mask-icon-by-path("../assets/icons/override/ethernet_plug_disconnected.svg", $icon-size, var(--fluent-text-secondary));
 }
 img[src="/luci-static/resources/icons/port_up.svg"] {
-    @include fluent-mask-icon-by-path("../assets/icons/override/ethernet_plug_connected.svg", $icon-size, var(--fluent-success));
+    @include fluent-mask-icon-by-path("../assets/icons/override/ethernet_plug_connected.svg", $icon-size, var(--fluent-primary));
 }
 img[src="/luci-static/resources/icons/ethernet.svg"] {
     @include fluent-mask-icon-by-path("../assets/icons/override/ethernet_default.svg", $icon-size, var(--fluent-text-secondary));

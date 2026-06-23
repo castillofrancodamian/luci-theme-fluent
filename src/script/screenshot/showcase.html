@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>luci-theme-fluent Showcase</title>
+  <!-- Load Iconify SVG Framework to render FluentUI Icons -->
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <style>
+    :root {
+      --primary: #0078d4;
+      --bg-gradient: linear-gradient(135deg, #0a0f1d 0%, #111827 50%, #1e1b4b 100%);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1920px;
+      height: 1080px;
+      background: var(--bg-gradient);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Segoe UI Emoji", sans-serif;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      padding: 50px 70px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Decorative background glows */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 70%);
+      top: -100px;
+      right: -100px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(192, 132, 252, 0.1) 0%, rgba(192, 132, 252, 0) 70%);
+      bottom: -200px;
+      left: -200px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Top title */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      z-index: 10;
+    }
+    
+    .title-area h1 {
+      font-size: 72px;
+      font-weight: 800;
+      margin: 0 0 10px 0;
+      background: linear-gradient(to right, #60a5fa, #a78bfa, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -1.5px;
+    }
+    
+    .title-area p {
+      font-size: 26px;
+      color: var(--text-muted);
+      margin: 0;
+      font-weight: 300;
+    }
+
+    /* Three-device stacked showcase */
+    .device-showcase {
+      position: relative;
+      flex-grow: 1;
+      height: 640px;
+      z-index: 5;
+    }
+
+    /* Device shell base styles (CSS mockups) */
+    .device {
+      position: absolute;
+      box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(255, 255, 255, 0.1) inset;
+      border-radius: 16px;
+      background: #1e293b;
+      border: 12px solid #0b0f19;
+      overflow: hidden;
+    }
+
+    /* Desktop mockup - larger and lower to avoid covering text */
+    .device-pc {
+      left: 50px;
+      top: 90px;
+      width: 1060px;
+      height: 596px;
+      z-index: 1;
+      position: relative;
+    }
+    
+    /* Desktop top control bar */
+    .device-pc::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 30px;
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
+      z-index: 10;
+    }
+
+    /* Desktop traffic-light buttons */
+    .device-pc-dots {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      display: flex;
+      gap: 6px;
+      z-index: 11;
+    }
+    .device-pc-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-r { background: #ef4444; }
+    .dot-y { background: #f59e0b; }
+    .dot-g { background: #10b981; }
+
+    /* Absolute positioning avoids the top control bar */
+    .device-pc img {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 30px);
+      object-fit: cover;
+      display: block;
+    }
+    
+    /* Tablet mockup - larger and more tightly stacked */
+    .device-tablet {
+      left: 1000px;
+      bottom: 30px;
+      width: 560px;
+      height: 388px;
+      z-index: 2;
+      border-width: 14px;
+      border-radius: 20px;
+    }
+
+    /* Mobile mockup - larger and more tightly stacked */
+    .device-phone {
+      right: 40px;
+      bottom: 50px;
+      width: 240px;
+      height: 519px;
+      z-index: 3;
+      border-radius: 36px;
+      border-width: 12px;
+    }
+    
+    /* Simulated phone notch / earpiece */
+    .device-phone::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 20px;
+      background: #0b0f19;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      z-index: 10;
+    }
+
+    .device img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Bottom notes and features */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 25px;
+      z-index: 10;
+    }
+    
+    .features {
+      display: flex;
+      gap: 50px;
+    }
+    
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .feature-title {
+      font-weight: 700;
+      font-size: 22px;
+      color: #60a5fa;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Iconify Icon styling */
+    .feature-title .iconify {
+      font-size: 32px;
+      color: #60a5fa;
+    }
+    
+    .feature-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+    }
+    
+    .github-link {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px 22px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="title-area">
+      <h1>FluentUI Theme for OpenWrt</h1>
+      <p>An elegant, responsive Fluent-style theme for modern OpenWrt LuCI</p>
+    </div>
+  </header>
+
+    <div class="device-showcase">
+    <div class="device device-pc">
+      <div class="device-pc-dots">
+        <span class="dot-r"></span>
+        <span class="dot-y"></span>
+        <span class="dot-g"></span>
+      </div>
+      <img src="../../../screenshots/.cache/overview.png" alt="Desktop Overview">
+    </div>
+    <!-- Tablet -->
+    <div class="device device-tablet">
+      <img src="../../../screenshots/.cache/tablet_overview.png" alt="Tablet Overview">
+    </div>
+    <!-- Mobile -->
+    <div class="device device-phone">
+      <img src="../../../screenshots/.cache/mobile_overview.png" alt="Mobile Overview">
+    </div>
+  </div>
+
+  <footer>
+    <div class="features">
+      <div class="feature-item">
+        <span class="feature-title">
+          <span class="iconify" data-icon="fluent:window-multiple-24-regular"></span>
+          Multi-device
+        </span>
+        <span class="feature-desc">Fully responsive design for desktop, tablet, and mobile interactions</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-title">
+          <span class="iconify" data-icon="fluent:weather-moon-24-regular"></span>
+          Dark Mode
+        </span>
+        <span class="feature-desc">Supports automatic and manual switching with high-contrast visuals</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-title">
+          <span class="iconify" data-icon="fluent:rocket-24-regular"></span>
+          Smooth Motion
+        </span>
+        <span class="feature-desc">View Transitions-based loading and navigation</span>
+      </div>
+    </div>
+    <div class="github-link">
+      <span>GitHub: LazuliKao/luci-theme-fluent</span>
+    </div>
+  </footer>
+
+</body>
+</html>

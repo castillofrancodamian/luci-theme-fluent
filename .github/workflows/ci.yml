@@ -135,7 +135,10 @@ jobs:
           echo "Nightly packages:"
           find packages/ -type f \( -name "*.ipk" -o -name "*.apk" \) -exec ls -lh {} \;
       - name: Delete old nightly release
-        run: gh release delete nightly --yes || true
+        run: |
+          if gh release view nightly >/dev/null 2>&1; then
+            gh release delete nightly --yes --cleanup-tag
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Nightly Release
@@ -143,6 +146,7 @@ jobs:
         with:
           tag_name: nightly
           name: "Nightly Build"
+          overwrite_files: true
           body: |
             ## LuCI Theme Fluent - Nightly Build
 

@@ -9,10 +9,24 @@ A FluentUI-inspired OpenWrt LuCI theme with SCSS, CSS custom properties, and uco
 [![node](https://img.shields.io/badge/node-%3E%3D18-339933.svg?style=flat-square)](./package.json)
 [![pnpm](https://img.shields.io/badge/pnpm-10.12.4-f69220.svg?style=flat-square)](./package.json)
 
-**English** | [简体中文](#简体中文导航)
+**English**
 
-[特性](#key-features) • [安装](#getting-started) • [配置](#configuration) • [构建](#build) • [目录](#project-structure) • [开发](#development) • [参考](#credits)
+[Features](#key-features) • [Showcase](#showcase) • [Getting Started](#getting-started) • [Configuration](#configuration) • [Build](#build) • [Project Structure](#project-structure) • [Development](#development) • [Credits](#credits)
 </div>
+
+## Showcase
+
+<p align="center">
+  <img src="./screenshots/overview_theme_comparison.png" alt="Theme comparison overview" width="100%" />
+</p>
+
+<p align="center">
+  <img src="./screenshots/login_theme_comparison.png" alt="Login theme comparison" width="100%" />
+</p>
+
+<p align="center">
+  <img src="./screenshots/showcase_banner.png" alt="Showcase banner" width="100%" />
+</p>
 
 ## Key Features
 

@@ -18,15 +18,18 @@
     "i18n:build": "pnpm run i18n:extract-ucode && pnpm run i18n:extract && pnpm run i18n:export",
     "test": "echo \"No tests yet\" && exit 0",
     "dev:remote": "luci-types dev",
-    "icons:generate": "tsx src/script/generate-icons.ts"
+    "icons:generate": "tsx src/script/generate-icons.ts",
+    "screenshot": "tsx src/script/screenshot/screenshot.ts && tsx src/script/screenshot/generate-showcase.ts",
+    "screenshot:showcase": "tsx src/script/screenshot/generate-showcase.ts"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.5.0",
+    "@dotenvx/dotenvx": "^1.38.0",
     "@iconify-json/fluent": "^1.2.51",
     "@iconify-json/fluent-mdl2": "^1.2.1",
-    "@biomejs/biome": "^2.5.0",
     "@lazulikao/luci-types": "github:LazuliKao/luci-types#6b7f0bd4ec583246912842d40477c68bb75d2e17",
-    "@dotenvx/dotenvx": "^1.38.0",
     "@types/node": "^22.19.21",
+    "playwright": "^1.61.0",
     "sass": "^1.101.0",
     "sharp": "^0.33.5",
     "tsx": "^4.22.4",

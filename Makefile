@@ -15,7 +15,7 @@ define Package/$(PKG_NAME)/postinst
 #!/bin/sh
 [ -n "$${IPKG_INSTROOT}" ] || {
 	uci batch <<-EOF
-		set luci.themes.fluent=/luci-static/fluent
+		set luci.themes.Fluent=/luci-static/fluent
 		commit luci
 	EOF
 }
