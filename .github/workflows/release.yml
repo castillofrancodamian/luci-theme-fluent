@@ -160,6 +160,8 @@ jobs:
           mkdir -p release
           cp ${HOME}/builder/output/luci-theme-fluent*.ipk release/ 2>/dev/null || true
           cp ${HOME}/builder/output/luci-theme-fluent*.apk release/ 2>/dev/null || true
+          cp ${HOME}/builder/output/luci-i18n-fluent*.ipk release/ 2>/dev/null || true
+          cp ${HOME}/builder/output/luci-i18n-fluent*.apk release/ 2>/dev/null || true
           echo "Built packages:"
           ls -lh release/
 
@@ -170,6 +172,8 @@ jobs:
           path: |
             release/luci-theme-fluent*.ipk
             release/luci-theme-fluent*.apk
+            release/luci-i18n-fluent*.ipk
+            release/luci-i18n-fluent*.apk
 
   publish:
     name: Create GitHub Release
@@ -200,6 +204,7 @@ jobs:
 
             ### Packages
             - `luci-theme-fluent` — FluentUI theme for OpenWrt LuCI
+            - `luci-i18n-fluent` — Translations
 
             ### Installation
 
