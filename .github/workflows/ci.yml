@@ -17,7 +17,7 @@ jobs:
     outputs:
       version: ${{ steps.meta.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - id: meta
         name: Resolve CI version
@@ -36,13 +36,6 @@ jobs:
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
           echo "Using CI version ${VERSION}"
 
-      - name: Sync version files
-        run: |
-          VERSION="${{ steps.meta.outputs.version }}"
-          sed -i "s/^PKG_VERSION:=.*/PKG_VERSION:=${VERSION}/" Makefile
-          sed -i "s/^  \"version\": \"[^\"]*\",/  \"version\": \"${VERSION}\",/" package.json
-          grep '^PKG_VERSION:=' Makefile
-          grep '^  "version":' package.json
 
       - name: Pack prepared source
         run: tar --exclude=.git -czf "$RUNNER_TEMP/ci-source.tar.gz" .
@@ -66,7 +59,7 @@ jobs:
       - name: Extract prepared source
         run: tar -xzf ci-source.tar.gz
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
 
       - uses: actions/setup-node@v4
         with:
@@ -107,9 +100,9 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
 
       - uses: actions/setup-node@v4
         with:
