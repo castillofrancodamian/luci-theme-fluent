@@ -44,7 +44,6 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-$mask-content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 /// Apply a Fluent icon via a pseudo-element (content + background).
 /// Sets content: "" and applies the icon as background-image on the element.
 /// Use on ::before or ::after pseudo-elements.
@@ -95,7 +94,7 @@ $mask-content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALA
     @warn "Icon '#{$name}' not found in $fluent-icons map";
     $svg: "";
   }
-  content: $mask-content !important;
+  @include set-mask-content();
   display: inline-block;
   width: $size;
   height: $size;
@@ -112,7 +111,7 @@ $mask-content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALA
 /// Apply an icon from a file path via CSS mask for dynamic CSS custom property coloring.
 /// E.g. @include fluent-mask-icon-by-path("../assets/icons/override/ethernet_default.svg", $icon-size, var(--fluent-text-secondary));
 @mixin fluent-mask-icon-by-path($path, $size: 16px, $color-var: var(--fluent-text)) {
-  content: $mask-content !important;
+  @include set-mask-content();
   display: inline-block;
   width: $size;
   height: $size;
@@ -140,4 +139,9 @@ $mask-content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALA
     --icon-data: url("#{$escaped}");
     mask-image: var(--icon-data);
   }
+}
+
+$mask-content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+@mixin set-mask-content() {
+  content: $mask-content !important;
 }

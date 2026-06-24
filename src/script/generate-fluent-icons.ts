@@ -58,7 +58,9 @@ function enc(str: string): string {
 function toSvg(icon: IconEntry): string {
   const w = icon.width ?? 20;
   const h = icon.height ?? 20;
-  const inner = icon.body;
+  // Strip fill attributes — mask icons get their color from CSS background,
+  // so baked-in fill colors are dead weight and may differ per theme.
+  const inner = icon.body.replace(/\s*fill\s*=\s*(["']).*?\1/g, " fill='currentColor'");
   return `<svg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}' viewBox='0 0 ${w} ${h}' fill='none'>${inner}</svg>`;
 }
 

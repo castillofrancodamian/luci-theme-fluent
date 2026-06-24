@@ -888,7 +888,7 @@ div[id="view"] > :not(.spinning) {
 
 .cbi-button.cbi-button-find:before, .btn.cbi-button-find:before {
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22currentColor%22 d=%22M10.837 3.13a.5.5 0 0 0-.674.74L16.33 9.5H2.5a.5.5 0 0 0 0 1h13.828l-6.165 5.628a.5.5 0 0 0 .674.739l6.916-6.314a.747.747 0 0 0 0-1.108z%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M10.837 3.13a.5.5 0 0 0-.674.74L16.33 9.5H2.5a.5.5 0 0 0 0 1h13.828l-6.165 5.628a.5.5 0 0 0 .674.739l6.916-6.314a.747.747 0 0 0 0-1.108z%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -2046,7 +2046,7 @@ body.modal-overlay-active #modal_overlay {
 
 .modal > .modal-close:before, .modal > .close:before {
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22currentColor%22 d=%22m4.089 4.216l.057-.07a.5.5 0 0 1 .638-.057l.07.057L10 9.293l5.146-5.147a.5.5 0 0 1 .638-.057l.07.057a.5.5 0 0 1 .057.638l-.057.07L10.707 10l5.147 5.146a.5.5 0 0 1 .057.638l-.057.07a.5.5 0 0 1-.638.057l-.07-.057L10 10.707l-5.146 5.147a.5.5 0 0 1-.638.057l-.07-.057a.5.5 0 0 1-.057-.638l.057-.07L9.293 10L4.146 4.854a.5.5 0 0 1-.057-.638l.057-.07z%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22m4.089 4.216l.057-.07a.5.5 0 0 1 .638-.057l.07.057L10 9.293l5.146-5.147a.5.5 0 0 1 .638-.057l.07.057a.5.5 0 0 1 .057.638l-.057.07L10.707 10l5.147 5.146a.5.5 0 0 1 .057.638l-.057.07a.5.5 0 0 1-.638.057l-.07-.057L10 10.707l-5.146 5.147a.5.5 0 0 1-.638.057l-.07-.057a.5.5 0 0 1-.057-.638l.057-.07L9.293 10L4.146 4.854a.5.5 0 0 1-.057-.638l.057-.07z%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 20px 20px;
@@ -2936,7 +2936,7 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
 
 .alert:before, .alert-message:before {
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23616161%22 d=%22M10.492 8.91A.5.5 0 0 0 9.5 9v4.502l.008.09a.5.5 0 0 0 .992-.09V9zm.307-2.16a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0M18 10a8 8 0 1 0-16 0a8 8 0 0 0 16 0M3 10a7 7 0 1 1 14 0a7 7 0 0 1-14 0%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23616161' d=%22M10.492 8.91A.5.5 0 0 0 9.5 9v4.502l.008.09a.5.5 0 0 0 .992-.09V9zm.307-2.16a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0M18 10a8 8 0 1 0-16 0a8 8 0 0 0 16 0M3 10a7 7 0 1 1 14 0a7 7 0 0 1-14 0%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 18px 18px;
@@ -3132,7 +3132,7 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
 
 .alert.success:before, .alert.alert-success:before, .alert.notice:before, .alert-message.success:before, .alert-message.alert-success:before, .alert-message.notice:before {
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23107c10%22 d=%22M10 2a8 8 0 1 1 0 16a8 8 0 0 1 0-16m0 1a7 7 0 1 0 0 14a7 7 0 0 0 0-14m3.358 4.646a.5.5 0 0 1 .058.638l-.058.07l-4.004 4.004a.5.5 0 0 1-.638.058l-.07-.058l-2-2a.5.5 0 0 1 .638-.765l.07.058L9 11.298l3.651-3.652a.5.5 0 0 1 .707 0%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23107c10' d=%22M10 2a8 8 0 1 1 0 16a8 8 0 0 1 0-16m0 1a7 7 0 1 0 0 14a7 7 0 0 0 0-14m3.358 4.646a.5.5 0 0 1 .058.638l-.058.07l-4.004 4.004a.5.5 0 0 1-.638.058l-.07-.058l-2-2a.5.5 0 0 1 .638-.765l.07.058L9 11.298l3.651-3.652a.5.5 0 0 1 .707 0%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 18px 18px;
@@ -3149,7 +3149,7 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
 
 .alert.warning:before, .alert.alert-warning:before, .alert-message.warning:before, .alert-message.alert-warning:before {
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23d83b01%22 d=%22M7.37 3.556c1.14-2.074 4.12-2.074 5.259 0l5.496 10.005c1.098 1.999-.35 4.444-2.63 4.444H4.504c-2.281 0-3.727-2.445-2.629-4.444zm4.383.481c-.76-1.383-2.746-1.382-3.506 0L2.751 14.042c-.732 1.333.232 2.963 1.753 2.963h10.991c1.52 0 2.485-1.63 1.753-2.963zM10 12.75a.75.75 0 1 1 0 1.5a.75.75 0 0 1 0-1.5m0-6.25a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23d83b01' d=%22M7.37 3.556c1.14-2.074 4.12-2.074 5.259 0l5.496 10.005c1.098 1.999-.35 4.444-2.63 4.444H4.504c-2.281 0-3.727-2.445-2.629-4.444zm4.383.481c-.76-1.383-2.746-1.382-3.506 0L2.751 14.042c-.732 1.333.232 2.963 1.753 2.963h10.991c1.52 0 2.485-1.63 1.753-2.963zM10 12.75a.75.75 0 1 1 0 1.5a.75.75 0 0 1 0-1.5m0-6.25a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 18px 18px;
@@ -3166,7 +3166,7 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
 
 .alert.error:before, .alert.alert-danger:before, .alert.danger:before, .alert-message.error:before, .alert-message.alert-danger:before, .alert-message.danger:before {
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23d13438%22 d=%22M10 2a8 8 0 1 1 0 16a8 8 0 0 1 0-16m0 1a7 7 0 1 0 0 14a7 7 0 0 0 0-14M7.81 7.114l.069.058L10 9.292l2.121-2.12a.5.5 0 0 1 .638-.058l.07.058a.5.5 0 0 1 .057.637l-.058.07L10.708 10l2.12 2.121a.5.5 0 0 1 .058.638l-.058.07a.5.5 0 0 1-.637.057l-.07-.058L10 10.708l-2.121 2.12a.5.5 0 0 1-.638.058l-.07-.058a.5.5 0 0 1-.057-.637l.058-.07L9.292 10l-2.12-2.121a.5.5 0 0 1-.058-.638l.058-.07a.5.5 0 0 1 .637-.057%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23d13438' d=%22M10 2a8 8 0 1 1 0 16a8 8 0 0 1 0-16m0 1a7 7 0 1 0 0 14a7 7 0 0 0 0-14M7.81 7.114l.069.058L10 9.292l2.121-2.12a.5.5 0 0 1 .638-.058l.07.058a.5.5 0 0 1 .057.637l-.058.07L10.708 10l2.12 2.121a.5.5 0 0 1 .058.638l-.058.07a.5.5 0 0 1-.637.057l-.07-.058L10 10.708l-2.121 2.12a.5.5 0 0 1-.638.058l-.07-.058a.5.5 0 0 1-.057-.637l.058-.07L9.292 10l-2.12-2.121a.5.5 0 0 1-.058-.638l.058-.07a.5.5 0 0 1 .637-.057%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 18px 18px;
@@ -3188,8 +3188,8 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   width: 18px;
   height: 18px;
   display: inline-block;
-  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=\"currentColor\" d=\"M10.492 8.91A.5.5 0 0 0 9.5 9v4.502l.008.09a.5.5 0 0 0 .992-.09V9zm.307-2.16a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0M18 10a8 8 0 1 0-16 0a8 8 0 0 0 16 0M3 10a7 7 0 1 1 14 0a7 7 0 0 1-14 0\"/></svg>");
-  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=\"currentColor\" d=\"M10.492 8.91A.5.5 0 0 0 9.5 9v4.502l.008.09a.5.5 0 0 0 .992-.09V9zm.307-2.16a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0M18 10a8 8 0 1 0-16 0a8 8 0 0 0 16 0M3 10a7 7 0 1 1 14 0a7 7 0 0 1-14 0\"/></svg>");
+  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=\"M10.492 8.91A.5.5 0 0 0 9.5 9v4.502l.008.09a.5.5 0 0 0 .992-.09V9zm.307-2.16a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0M18 10a8 8 0 1 0-16 0a8 8 0 0 0 16 0M3 10a7 7 0 1 1 14 0a7 7 0 0 1-14 0\"/></svg>");
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=\"M10.492 8.91A.5.5 0 0 0 9.5 9v4.502l.008.09a.5.5 0 0 0 .992-.09V9zm.307-2.16a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0M18 10a8 8 0 1 0-16 0a8 8 0 0 0 16 0M3 10a7 7 0 1 1 14 0a7 7 0 0 1-14 0\"/></svg>");
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -6679,7 +6679,7 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
   z-index: 2;
   transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard),color var(--fluent-duration-fast) var(--fluent-easing-standard);
   background-color: #0000;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23616161%22 d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23616161' d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -6695,7 +6695,7 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
 
 .cbi-dynlist > .item:after:hover {
   background-color: var(--fluent-error-light);
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23d13438%22 d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23d13438' d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -6703,28 +6703,28 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
 
 .cbi-dynlist > .item:after:active {
   background-color: var(--fluent-error-hover);
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .cbi-dynlist > .item:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23a0a0a0%22 d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23a0a0a0' d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .cbi-dynlist > .item:after:hover {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ff5f5f%22 d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ff5f5f' d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .cbi-dynlist > .item:after:active {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -6732,21 +6732,21 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .cbi-dynlist > .item:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23a0a0a0%22 d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23a0a0a0' d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
   }
 
   :root:not([data-theme="light"]) .cbi-dynlist > .item:after:hover {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ff5f5f%22 d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ff5f5f' d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
   }
 
   :root:not([data-theme="light"]) .cbi-dynlist > .item:after:active {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM5.741 15.23A2 2 0 0 0 7.728 17h4.544a2 2 0 0 0 1.987-1.77L15.439 5H4.561zM8.5 7.5A.5.5 0 0 1 9 8v6a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5M12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
@@ -6910,7 +6910,7 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
   border-radius: 0 var(--fluent-radius-md) var(--fluent-radius-md) 0;
   cursor: pointer;
   box-sizing: border-box;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path fill=%22%23ffffff%22 d=%22M8 1.75a.75.75 0 0 1 .75.75v4.75h4.75a.75.75 0 0 1 0 1.5H8.75v4.75a.75.75 0 0 1-1.5 0V8.75H2.5a.75.75 0 0 1 0-1.5h4.75V2.5A.75.75 0 0 1 8 1.75%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path fill='%23ffffff' d=%22M8 1.75a.75.75 0 0 1 .75.75v4.75h4.75a.75.75 0 0 1 0 1.5H8.75v4.75a.75.75 0 0 1-1.5 0V8.75H2.5a.75.75 0 0 1 0-1.5h4.75V2.5A.75.75 0 0 1 8 1.75%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 14px 14px;
@@ -6920,7 +6920,7 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
   background-color: var(--fluent-btn-primary-bg-hover);
   border-color: var(--fluent-btn-primary-bg-hover);
   border-bottom-color: var(--fluent-btn-primary-bg-hover);
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path fill=%22%23ffffff%22 d=%22M8 1.75a.75.75 0 0 1 .75.75v4.75h4.75a.75.75 0 0 1 0 1.5H8.75v4.75a.75.75 0 0 1-1.5 0V8.75H2.5a.75.75 0 0 1 0-1.5h4.75V2.5A.75.75 0 0 1 8 1.75%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path fill='%23ffffff' d=%22M8 1.75a.75.75 0 0 1 .75.75v4.75h4.75a.75.75 0 0 1 0 1.5H8.75v4.75a.75.75 0 0 1-1.5 0V8.75H2.5a.75.75 0 0 1 0-1.5h4.75V2.5A.75.75 0 0 1 8 1.75%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 14px 14px;
@@ -6930,7 +6930,7 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
   background-color: var(--fluent-btn-primary-bg-active);
   border-color: var(--fluent-btn-primary-bg-active);
   border-bottom-color: var(--fluent-btn-primary-bg-active);
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path fill=%22%23ffffff%22 d=%22M8 1.75a.75.75 0 0 1 .75.75v4.75h4.75a.75.75 0 0 1 0 1.5H8.75v4.75a.75.75 0 0 1-1.5 0V8.75H2.5a.75.75 0 0 1 0-1.5h4.75V2.5A.75.75 0 0 1 8 1.75%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path fill='%23ffffff' d=%22M8 1.75a.75.75 0 0 1 .75.75v4.75h4.75a.75.75 0 0 1 0 1.5H8.75v4.75a.75.75 0 0 1-1.5 0V8.75H2.5a.75.75 0 0 1 0-1.5h4.75V2.5A.75.75 0 0 1 8 1.75%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 14px 14px;
@@ -7130,7 +7130,7 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
 
 .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ .cbi-button:after {
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23616161%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23616161' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -7142,7 +7142,7 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
 
 .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ .cbi-button-neutral:after {
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23616161%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23616161' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -7154,7 +7154,7 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
 
 .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ button.cbi-button:after {
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23616161%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23616161' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -7165,21 +7165,21 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
 }
 
 .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ .cbi-button:hover:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23242424%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23242424' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ .cbi-button-neutral:hover:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23242424%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23242424' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ button.cbi-button:hover:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23242424%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23242424' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -7187,7 +7187,7 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
 
 .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ .cbi-button:after {
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23616161%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23616161' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -7199,7 +7199,7 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
 
 .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ .cbi-button-neutral:after {
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23616161%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23616161' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -7211,7 +7211,7 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
 
 .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ button.cbi-button:after {
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23616161%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23616161' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -7222,105 +7222,105 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
 }
 
 .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ .cbi-button:hover:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23242424%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23242424' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ .cbi-button-neutral:hover:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23242424%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23242424' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ button.cbi-button:hover:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23242424%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23242424' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ .cbi-button:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23adadad%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23adadad' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ .cbi-button-neutral:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23adadad%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23adadad' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ button.cbi-button:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23adadad%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23adadad' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ .cbi-button:hover:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ .cbi-button-neutral:hover:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ button.cbi-button:hover:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ .cbi-button:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23adadad%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23adadad' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ .cbi-button-neutral:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23adadad%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23adadad' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ button.cbi-button:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23adadad%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23adadad' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ .cbi-button:hover:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ .cbi-button-neutral:hover:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 [data-theme="dark"] .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ button.cbi-button:hover:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -7328,84 +7328,84 @@ cbi-dropdown.fluent-custom-select[data-open-direction="down"][open] > ul.dropdow
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ .cbi-button:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23adadad%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23adadad' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
   }
 
   :root:not([data-theme="light"]) .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ .cbi-button-neutral:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23adadad%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23adadad' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
   }
 
   :root:not([data-theme="light"]) .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ button.cbi-button:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23adadad%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23adadad' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
   }
 
   :root:not([data-theme="light"]) .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ .cbi-button:hover:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
   }
 
   :root:not([data-theme="light"]) .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ .cbi-button-neutral:hover:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
   }
 
   :root:not([data-theme="light"]) .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="password"] ~ button.cbi-button:hover:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M3.26 11.602C3.942 8.327 6.793 6 10 6s6.057 2.327 6.74 5.602a.5.5 0 0 0 .98-.204C16.943 7.673 13.693 5 10 5s-6.943 2.673-7.72 6.398a.5.5 0 0 0 .98.204M10 8a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7m-2.5 3.5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
   }
 
   :root:not([data-theme="light"]) .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ .cbi-button:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23adadad%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23adadad' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
   }
 
   :root:not([data-theme="light"]) .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ .cbi-button-neutral:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23adadad%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23adadad' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
   }
 
   :root:not([data-theme="light"]) .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ button.cbi-button:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23adadad%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23adadad' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
   }
 
   :root:not([data-theme="light"]) .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ .cbi-button:hover:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
   }
 
   :root:not([data-theme="light"]) .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ .cbi-button-neutral:hover:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
   }
 
   :root:not([data-theme="light"]) .control-group:has( > input.cbi-input-password) input.cbi-input-password[type="text"] ~ button.cbi-button:hover:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M2.854 2.146a.5.5 0 1 0-.708.708l3.5 3.498a8.1 8.1 0 0 0-3.366 5.046a.5.5 0 1 0 .98.204a7.1 7.1 0 0 1 3.107-4.528L7.953 8.66a3.5 3.5 0 1 0 4.886 4.886l4.307 4.308a.5.5 0 0 0 .708-.708zm9.265 10.68A2.5 2.5 0 1 1 8.673 9.38zm-1.995-4.824l3.374 3.374a3.5 3.5 0 0 0-3.374-3.374M10 6c-.57 0-1.129.074-1.666.213l-.803-.803A7.7 7.7 0 0 1 10 5c3.693 0 6.942 2.673 7.72 6.398a.5.5 0 0 1-.98.204C16.058 8.327 13.207 6 10 6%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
@@ -8731,7 +8731,7 @@ img[src="/luci-static/resources/icons/signal-075-100.svg"] {
 }
 
 img[src="/luci-static/resources/icons/signal-none.svg"] {
-  --fluent-mask-fluent-cellular-warning-20-filled: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22currentColor%22 d=%22M4.75 12a.75.75 0 0 1 .742.64l.008.11v2.5a.75.75 0 0 1-1.492.11L4 15.25v-2.5a.75.75 0 0 1 .75-.75m3-2a.75.75 0 0 1 .742.64l.008.11v4.5a.75.75 0 0 1-1.492.11L7 15.25v-4.5a.75.75 0 0 1 .75-.75m3-2a.75.75 0 0 1 .742.64l.008.11v3.786l-1.466 2.936a1 1 0 0 1-.026-.111L10 15.25v-6.5a.75.75 0 0 1 .75-.75M13 9.676c.391-.45.945-.675 1.5-.676V6.75l-.008-.11A.75.75 0 0 0 13 6.75zm3.293.43l1.196 2.394l.011-7.765l-.01-.11a.743.743 0 0 0-1.476.125l-.006 4.928q.163.188.285.428m-2.69.448l-3.496 6.998A1 1 0 0 0 11.002 19h6.996a1 1 0 0 0 .895-1.448l-3.5-6.999a1 1 0 0 0-1.79 0m1.395 1.941v3.003a.5.5 0 1 1-1 0v-3.003a.5.5 0 0 1 1 0m-.5 5.505a.5.5 0 1 1 0-1.001a.5.5 0 0 1 0 1%22/></svg>");
+  --fluent-mask-fluent-cellular-warning-20-filled: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M4.75 12a.75.75 0 0 1 .742.64l.008.11v2.5a.75.75 0 0 1-1.492.11L4 15.25v-2.5a.75.75 0 0 1 .75-.75m3-2a.75.75 0 0 1 .742.64l.008.11v4.5a.75.75 0 0 1-1.492.11L7 15.25v-4.5a.75.75 0 0 1 .75-.75m3-2a.75.75 0 0 1 .742.64l.008.11v3.786l-1.466 2.936a1 1 0 0 1-.026-.111L10 15.25v-6.5a.75.75 0 0 1 .75-.75M13 9.676c.391-.45.945-.675 1.5-.676V6.75l-.008-.11A.75.75 0 0 0 13 6.75zm3.293.43l1.196 2.394l.011-7.765l-.01-.11a.743.743 0 0 0-1.476.125l-.006 4.928q.163.188.285.428m-2.69.448l-3.496 6.998A1 1 0 0 0 11.002 19h6.996a1 1 0 0 0 .895-1.448l-3.5-6.999a1 1 0 0 0-1.79 0m1.395 1.941v3.003a.5.5 0 1 1-1 0v-3.003a.5.5 0 0 1 1 0m-.5 5.505a.5.5 0 1 1 0-1.001a.5.5 0 0 1 0 1%22/></svg>");
   width: 24px;
   height: 24px;
   -webkit-mask-image: var(--fluent-mask-fluent-cellular-warning-20-filled);
@@ -8745,10 +8745,11 @@ img[src="/luci-static/resources/icons/signal-none.svg"] {
   mask-repeat: no-repeat;
   content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") !important;
   background: var(--fluent-text-secondary) !important;
+  content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") !important;
 }
 
 img[src="/luci-static/resources/icons/wifi.svg"] {
-  --fluent-mask-fluent-wifi-1-20-filled: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22currentColor%22 d=%22M16.73 7.563c.403.404.783.864 1.115 1.344a.75.75 0 0 1-1.235.852A7.968 7.968 0 0 0 4.4 8.623c-.32.322-.64.712-.932 1.133a.75.75 0 1 1-1.233-.855c.34-.49.716-.95 1.105-1.338a9.47 9.47 0 0 1 13.39 0m-2.14 1.888c.473.473.88 1.045 1.192 1.653a.75.75 0 1 1-1.335.683a5.1 5.1 0 0 0-.918-1.275a4.943 4.943 0 0 0-7.904 1.26a.75.75 0 0 1-1.338-.677A6.443 6.443 0 0 1 14.59 9.451m-1.635 2.39c.363.363.662.808.87 1.282a.75.75 0 0 1-1.375.602a2.7 2.7 0 0 0-.556-.824a2.63 2.63 0 0 0-3.72 0a2.7 2.7 0 0 0-.547.814a.75.75 0 1 1-1.374-.601a4.2 4.2 0 0 1 .86-1.274a4.13 4.13 0 0 1 5.842 0m-2.034 2.04a1.242 1.242 0 1 1-1.757 1.758a1.242 1.242 0 0 1 1.757-1.757%22/></svg>");
+  --fluent-mask-fluent-wifi-1-20-filled: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M16.73 7.563c.403.404.783.864 1.115 1.344a.75.75 0 0 1-1.235.852A7.968 7.968 0 0 0 4.4 8.623c-.32.322-.64.712-.932 1.133a.75.75 0 1 1-1.233-.855c.34-.49.716-.95 1.105-1.338a9.47 9.47 0 0 1 13.39 0m-2.14 1.888c.473.473.88 1.045 1.192 1.653a.75.75 0 1 1-1.335.683a5.1 5.1 0 0 0-.918-1.275a4.943 4.943 0 0 0-7.904 1.26a.75.75 0 0 1-1.338-.677A6.443 6.443 0 0 1 14.59 9.451m-1.635 2.39c.363.363.662.808.87 1.282a.75.75 0 0 1-1.375.602a2.7 2.7 0 0 0-.556-.824a2.63 2.63 0 0 0-3.72 0a2.7 2.7 0 0 0-.547.814a.75.75 0 1 1-1.374-.601a4.2 4.2 0 0 1 .86-1.274a4.13 4.13 0 0 1 5.842 0m-2.034 2.04a1.242 1.242 0 1 1-1.757 1.758a1.242 1.242 0 0 1 1.757-1.757%22/></svg>");
   width: 24px;
   height: 24px;
   -webkit-mask-image: var(--fluent-mask-fluent-wifi-1-20-filled);
@@ -8762,10 +8763,11 @@ img[src="/luci-static/resources/icons/wifi.svg"] {
   mask-repeat: no-repeat;
   content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") !important;
   background: var(--fluent-text-secondary) !important;
+  content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") !important;
 }
 
 img[src="/luci-static/resources/icons/wifi_disabled.svg"] {
-  --fluent-mask-fluent-wifi-off-20-filled: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22currentColor%22 d=%22M3.28 2.22a.75.75 0 0 0-1.06 1.06l2.889 2.89a9.5 9.5 0 0 0-1.77 1.393a10 10 0 0 0-1.104 1.338a.75.75 0 1 0 1.233.855A8.4 8.4 0 0 1 4.4 8.624a8 8 0 0 1 1.807-1.357l.965.966A6.4 6.4 0 0 0 5.48 9.45a6.4 6.4 0 0 0-1.192 1.644a.75.75 0 0 0 1.338.677q.353-.697.914-1.26c.52-.52 1.126-.9 1.773-1.14l1.281 1.282a4.1 4.1 0 0 0-2.48 1.186a4.1 4.1 0 0 0-.86 1.274a.75.75 0 1 0 1.374.6c.136-.31.32-.586.547-.813a2.63 2.63 0 0 1 3.376-.29l5.17 5.17a.75.75 0 1 0 1.06-1.061zm8.088 7.026a4.9 4.9 0 0 1 2.161 1.266c.359.358.676.803.918 1.275a.75.75 0 1 0 1.335-.683a6.6 6.6 0 0 0-1.192-1.653a6.43 6.43 0 0 0-4.896-1.878zM8.55 6.43a7.96 7.96 0 0 1 8.06 3.33a.75.75 0 1 0 1.235-.852A9.47 9.47 0 0 0 7.31 5.188zm2.371 9.21a1.242 1.242 0 1 0-1.757-1.757a1.242 1.242 0 0 0 1.757 1.757%22/></svg>");
+  --fluent-mask-fluent-wifi-off-20-filled: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M3.28 2.22a.75.75 0 0 0-1.06 1.06l2.889 2.89a9.5 9.5 0 0 0-1.77 1.393a10 10 0 0 0-1.104 1.338a.75.75 0 1 0 1.233.855A8.4 8.4 0 0 1 4.4 8.624a8 8 0 0 1 1.807-1.357l.965.966A6.4 6.4 0 0 0 5.48 9.45a6.4 6.4 0 0 0-1.192 1.644a.75.75 0 0 0 1.338.677q.353-.697.914-1.26c.52-.52 1.126-.9 1.773-1.14l1.281 1.282a4.1 4.1 0 0 0-2.48 1.186a4.1 4.1 0 0 0-.86 1.274a.75.75 0 1 0 1.374.6c.136-.31.32-.586.547-.813a2.63 2.63 0 0 1 3.376-.29l5.17 5.17a.75.75 0 1 0 1.06-1.061zm8.088 7.026a4.9 4.9 0 0 1 2.161 1.266c.359.358.676.803.918 1.275a.75.75 0 1 0 1.335-.683a6.6 6.6 0 0 0-1.192-1.653a6.43 6.43 0 0 0-4.896-1.878zM8.55 6.43a7.96 7.96 0 0 1 8.06 3.33a.75.75 0 1 0 1.235-.852A9.47 9.47 0 0 0 7.31 5.188zm2.371 9.21a1.242 1.242 0 1 0-1.757-1.757a1.242 1.242 0 0 0 1.757 1.757%22/></svg>");
   width: 24px;
   height: 24px;
   -webkit-mask-image: var(--fluent-mask-fluent-wifi-off-20-filled);
@@ -8779,6 +8781,7 @@ img[src="/luci-static/resources/icons/wifi_disabled.svg"] {
   mask-repeat: no-repeat;
   content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") !important;
   background: var(--fluent-text-secondary) !important;
+  content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") !important;
 }
 
 body[data-page="admin-dashboard"] .main > .main-right > #maincontent {
@@ -10138,17 +10141,17 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
   opacity: 0;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="wall" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="clash" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="ssr" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="vpn" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="ipsec" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="wall" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="clash" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="ssr" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="vpn" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="ipsec" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="tailscale" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="nikki" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="tunnel" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="tier" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="proxy" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="wall" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="clash" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="ssr" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="vpn" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="ipsec" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="wall" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="clash" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="ssr" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="vpn" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="ipsec" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="tailscale" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="nikki" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="tunnel" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="tier" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="proxy" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M9.723 2.084a.5.5 0 0 1 .554 0a15.05 15.05 0 0 0 6.294 2.421A.5.5 0 0 1 17 5v4.341a3 3 0 0 0-1-.94V5.428a16 16 0 0 1-5.6-2.082l-.4-.249l-.4.249A16 16 0 0 1 4 5.428V9.5c0 3.392 1.968 5.863 6 7.463V17c0 .342.086.663.237.945l-.057.022a.5.5 0 0 1-.36 0C5.308 16.23 3 13.39 3 9.5V5a.5.5 0 0 1 .43-.495a15.05 15.05 0 0 0 6.293-2.421M12.5 12v-1a2 2 0 1 1 4 0v1h.5a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1zm1-1v1h2v-1a1 1 0 1 0-2 0m1.75 4a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="wall" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="clash" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="ssr" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="vpn" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="ipsec" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="wall" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="clash" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="ssr" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="vpn" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="ipsec" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="tailscale" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="nikki" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="tunnel" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="tier" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="proxy" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M12.5 12v-1a2 2 0 1 1 4 0v1h.5a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1zm1-1v1h2v-1a1 1 0 1 0-2 0m1.75 4a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0M9.723 2.084a.5.5 0 0 1 .554 0a15.05 15.05 0 0 0 6.294 2.421A.5.5 0 0 1 17 5v4.341A3 3 0 0 0 11.5 11v.063A2 2 0 0 0 10 13v4c0 .342.086.663.237.945l-.057.022a.5.5 0 0 1-.36 0C5.308 16.23 3 13.39 3 9.5V5a.5.5 0 0 1 .43-.495a15.05 15.05 0 0 0 6.293-2.421'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
@@ -10314,18 +10317,66 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="monitor" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="statistics" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="monitor" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="statistics" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="bandix" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="Graphs" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="monitor" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="statistics" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="monitor" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="statistics" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="bandix" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="Graphs" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10 10a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 1 0v-3a.5.5 0 0 0-.5-.5M6 8.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0zM13.5 6a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 1 0v-7a.5.5 0 0 0-.5-.5M3 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm1 0v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="monitor" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="statistics" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="monitor" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="statistics" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="bandix" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="Graphs" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M5 3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm5 7a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5M6 8.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0zM13.5 6a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="S.M.A.R.T." i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="info" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+  display: inline-flex;
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="S.M.A.R.T." i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="info" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10.492 8.91A.5.5 0 0 0 9.5 9v4.502l.008.09a.5.5 0 0 0 .992-.09V9zm.307-2.16a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0M18 10a8 8 0 1 0-16 0a8 8 0 0 0 16 0M3 10a7 7 0 1 1 14 0a7 7 0 0 1-14 0'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="S.M.A.R.T." i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="info" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M18 10a8 8 0 1 0-16 0a8 8 0 0 0 16 0M9.508 8.91a.5.5 0 0 1 .984 0L10.5 9v4.502l-.008.09a.5.5 0 0 1-.984 0l-.008-.09V9zM9.25 6.75a.75.75 0 1 1 1.5 0a.75.75 0 0 1-1.5 0'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="setting" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+  display: inline-flex;
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="setting" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M1.911 7.383a8.5 8.5 0 0 1 1.78-3.08a.5.5 0 0 1 .54-.135l1.918.686a1 1 0 0 0 1.32-.762l.366-2.006a.5.5 0 0 1 .388-.4a8.5 8.5 0 0 1 3.554 0a.5.5 0 0 1 .388.4l.366 2.006a1 1 0 0 0 1.32.762l1.919-.686a.5.5 0 0 1 .54.136a8.5 8.5 0 0 1 1.78 3.079a.5.5 0 0 1-.153.535l-1.555 1.32a1 1 0 0 0 0 1.524l1.555 1.32a.5.5 0 0 1 .152.535a8.5 8.5 0 0 1-1.78 3.08a.5.5 0 0 1-.54.135l-1.918-.686a1 1 0 0 0-1.32.762l-.366 2.007a.5.5 0 0 1-.388.399a8.5 8.5 0 0 1-3.554 0a.5.5 0 0 1-.388-.4l-.366-2.006a1 1 0 0 0-1.32-.762l-1.918.686a.5.5 0 0 1-.54-.136a8.5 8.5 0 0 1-1.78-3.079a.5.5 0 0 1 .152-.535l1.555-1.32a1 1 0 0 0 0-1.524l-1.555-1.32a.5.5 0 0 1-.152-.535m1.06-.006l1.294 1.098a2 2 0 0 1 0 3.05l-1.293 1.098c.292.782.713 1.51 1.244 2.152l1.596-.57q.155-.055.315-.085a2 2 0 0 1 2.326 1.609l.304 1.669a7.6 7.6 0 0 0 2.486 0l.304-1.67a1.998 1.998 0 0 1 2.641-1.524l1.596.571a7.5 7.5 0 0 0 1.245-2.152l-1.294-1.098a1.998 1.998 0 0 1 0-3.05l1.294-1.098a7.5 7.5 0 0 0-1.245-2.152l-1.596.57a2 2 0 0 1-2.64-1.524l-.305-1.669a7.6 7.6 0 0 0-2.486 0l-.304 1.669a2 2 0 0 1-2.64 1.525l-1.597-.571a7.5 7.5 0 0 0-1.244 2.152M7.502 10a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0m1 0a1.5 1.5 0 1 0 3 0a1.5 1.5 0 0 0-3 0'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="setting" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M1.911 7.383a8.5 8.5 0 0 1 1.78-3.08a.5.5 0 0 1 .54-.135l1.918.686a1 1 0 0 0 1.32-.762l.366-2.006a.5.5 0 0 1 .388-.4a8.5 8.5 0 0 1 3.554 0a.5.5 0 0 1 .388.4l.366 2.006a1 1 0 0 0 1.32.762l1.919-.686a.5.5 0 0 1 .54.136a8.5 8.5 0 0 1 1.78 3.079a.5.5 0 0 1-.153.535l-1.555 1.32a1 1 0 0 0 0 1.524l1.555 1.32a.5.5 0 0 1 .152.535a8.5 8.5 0 0 1-1.78 3.08a.5.5 0 0 1-.54.135l-1.918-.686a1 1 0 0 0-1.32.762l-.366 2.007a.5.5 0 0 1-.388.399a8.5 8.5 0 0 1-3.554 0a.5.5 0 0 1-.388-.4l-.366-2.006a1 1 0 0 0-1.32-.762l-1.918.686a.5.5 0 0 1-.54-.136a8.5 8.5 0 0 1-1.78-3.079a.5.5 0 0 1 .152-.535l1.555-1.32a1 1 0 0 0 0-1.524l-1.555-1.32a.5.5 0 0 1-.152-.535M8.001 10a2 2 0 1 0 4 0a2 2 0 0 0-4 0'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="Setup" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+  display: inline-flex;
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="Setup" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M15 11q.221 0 .435.023c.2.022.355.178.397.373l.222 1.036a.5.5 0 0 0 .642.37l1.006-.325a.46.46 0 0 1 .52.156q.26.352.439.758a.465.465 0 0 1-.125.529l-.785.709a.5.5 0 0 0 0 .742l.785.708a.465.465 0 0 1 .125.53q-.178.405-.439.757a.465.465 0 0 1-.52.157l-1.006-.326a.5.5 0 0 0-.642.371l-.222 1.034a.47.47 0 0 1-.397.374a4 4 0 0 1-.873 0a.465.465 0 0 1-.396-.373l-.22-1.035a.5.5 0 0 0-.643-.37l-1.006.325a.46.46 0 0 1-.52-.157a4 4 0 0 1-.44-.758a.46.46 0 0 1 .126-.529l.785-.708a.5.5 0 0 0 0-.742l-.785-.71a.46.46 0 0 1-.125-.528q.179-.406.438-.758a.46.46 0 0 1 .52-.156l1.007.326a.5.5 0 0 0 .642-.371l.22-1.036a.465.465 0 0 1 .397-.373Q14.778 11 15 11m0 3a1 1 0 1 0 0 2a1 1 0 0 0 0-2M7.499 1q.455 0 .892.063l.288.045l.073.02a.5.5 0 0 1 .326.368l.395 1.844a.5.5 0 0 0 .642.37l1.792-.58l.073-.018a.5.5 0 0 1 .461.168c.51.598.915 1.29 1.184 2.046a.5.5 0 0 1-.137.538l-1.4 1.265a.5.5 0 0 0 0 .742l1.4 1.264a.5.5 0 0 1 .137.538a6.5 6.5 0 0 1-1.184 2.046a.5.5 0 0 1-.534.15l-1.792-.58a.5.5 0 0 0-.642.371l-.395 1.843a.5.5 0 0 1-.4.388q-.57.107-1.18.109c-.404 0-.8-.04-1.18-.11a.5.5 0 0 1-.4-.387l-.393-1.843a.5.5 0 0 0-.642-.37l-1.793.58a.5.5 0 0 1-.534-.151a6.5 6.5 0 0 1-1.184-2.046a.5.5 0 0 1 .137-.538l1.4-1.264a.5.5 0 0 0 .072-.661l-.072-.081l-1.4-1.265a.5.5 0 0 1-.137-.538A6.5 6.5 0 0 1 2.556 3.28l.052-.052a.5.5 0 0 1 .482-.098l1.793.58a.5.5 0 0 0 .642-.37l.394-1.844l.021-.072a.5.5 0 0 1 .377-.316Q6.891 1.001 7.5 1m0 1q-.342 0-.674.043l-.321 1.506a1.5 1.5 0 0 1-1.93 1.113L3.11 4.188q-.407.537-.676 1.166L3.58 6.387l.116.116a1.5 1.5 0 0 1-.116 2.11L2.434 9.645c.178.417.406.808.676 1.165l1.464-.472a1.5 1.5 0 0 1 1.93 1.113l.321 1.504q.333.043.674.045q.34-.002.673-.045l.322-1.504a1.5 1.5 0 0 1 1.93-1.113l1.462.473c.27-.358.498-.749.675-1.166L11.42 8.613a1.5 1.5 0 0 1 0-2.226l1.142-1.033a5.5 5.5 0 0 0-.675-1.166l-1.462.474a1.5 1.5 0 0 1-1.93-1.113l-.322-1.506A6 6 0 0 0 7.499 2m0 3.25a2.25 2.25 0 1 1 0 4.5a2.25 2.25 0 0 1 0-4.5m0 1a1.25 1.25 0 1 0 .002 2.501A1.25 1.25 0 0 0 7.5 6.25'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="Setup" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M15.003 11q.221 0 .436.023c.2.022.355.178.397.373l.222 1.036a.5.5 0 0 0 .642.37l1.005-.325a.47.47 0 0 1 .522.156q.26.352.438.757a.465.465 0 0 1-.125.529l-.786.71a.5.5 0 0 0 0 .742l.786.71a.465.465 0 0 1 .125.528q-.18.405-.438.757a.47.47 0 0 1-.522.157l-1.005-.326a.5.5 0 0 0-.642.371l-.222 1.034a.47.47 0 0 1-.396.374a4 4 0 0 1-.874 0a.465.465 0 0 1-.396-.373l-.22-1.035a.5.5 0 0 0-.644-.37l-1.006.325a.46.46 0 0 1-.52-.157a4 4 0 0 1-.438-.758a.465.465 0 0 1 .125-.529l.785-.708a.5.5 0 0 0 0-.742l-.785-.71a.465.465 0 0 1-.125-.528q.178-.406.437-.758a.46.46 0 0 1 .52-.156l1.007.326a.5.5 0 0 0 .643-.371l.22-1.036a.465.465 0 0 1 .397-.373q.216-.023.437-.023m0 3a1 1 0 1 0 0 2a1 1 0 0 0 0-2M7.5 1q.455 0 .892.063l.288.045l.073.02a.5.5 0 0 1 .326.368l.395 1.844a.5.5 0 0 0 .642.37l1.792-.58l.073-.018a.5.5 0 0 1 .461.168a6.5 6.5 0 0 1 1.184 2.046a.5.5 0 0 1-.137.538l-1.4 1.265a.5.5 0 0 0 0 .742l1.4 1.264a.5.5 0 0 1 .137.538a6.5 6.5 0 0 1-1.184 2.046a.5.5 0 0 1-.534.15l-1.792-.58a.5.5 0 0 0-.642.371l-.395 1.843a.5.5 0 0 1-.4.388q-.57.107-1.179.109c-.405 0-.8-.04-1.182-.11a.5.5 0 0 1-.398-.387l-.394-1.843a.5.5 0 0 0-.642-.37l-1.793.58a.5.5 0 0 1-.534-.151a6.5 6.5 0 0 1-1.184-2.046a.5.5 0 0 1 .137-.538l1.4-1.264a.5.5 0 0 0 .072-.661l-.072-.081l-1.4-1.265a.5.5 0 0 1-.137-.538A6.5 6.5 0 0 1 2.556 3.28l.052-.052a.5.5 0 0 1 .482-.098l1.793.58a.5.5 0 0 0 .642-.37l.394-1.844l.021-.072a.5.5 0 0 1 .377-.316Q6.891 1.001 7.5 1m0 4.75a1.75 1.75 0 1 0 0 3.5a1.75 1.75 0 0 0 0-3.5'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
@@ -10422,6 +10473,150 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
 
 .main-left .nav li.slide .slide-menu li a[data-title*="wireless" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M16.73 7.563c.403.404.783.864 1.115 1.344a.75.75 0 0 1-1.235.852A7.968 7.968 0 0 0 4.4 8.623c-.32.322-.64.712-.932 1.133a.75.75 0 1 1-1.233-.855c.34-.49.716-.95 1.105-1.338a9.47 9.47 0 0 1 13.39 0m-2.14 1.888c.473.473.88 1.045 1.192 1.653a.75.75 0 1 1-1.335.683a5.1 5.1 0 0 0-.918-1.275a4.943 4.943 0 0 0-7.904 1.26a.75.75 0 0 1-1.338-.677A6.443 6.443 0 0 1 14.59 9.451m-1.635 2.39c.363.363.662.808.87 1.282a.75.75 0 0 1-1.375.602a2.7 2.7 0 0 0-.556-.824a2.63 2.63 0 0 0-3.72 0a2.7 2.7 0 0 0-.547.814a.75.75 0 1 1-1.374-.601a4.2 4.2 0 0 1 .86-1.274a4.13 4.13 0 0 1 5.842 0m-2.034 2.04a1.242 1.242 0 1 1-1.757 1.758a1.242 1.242 0 0 1 1.757-1.757'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="address" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+  display: inline-flex;
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="address" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M4.5 4A2.5 2.5 0 0 0 2 6.5v7A2.5 2.5 0 0 0 4.5 16h11a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 15.5 4zM3 6.5A1.5 1.5 0 0 1 4.5 5h11A1.5 1.5 0 0 1 17 6.5v7a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 3 13.5zM4.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h8a.5.5 0 0 0 0-1zm.5 3a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1z'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="address" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M2 6.5A2.5 2.5 0 0 1 4.5 4h11A2.5 2.5 0 0 1 18 6.5v7a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 13.5zM9.5 6h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1m3 2h-8a.5.5 0 0 0 0 1h8a.5.5 0 0 0 0-1M5 11a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1z'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="qos" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+  display: inline-flex;
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="qos" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M2 4a2 2 0 0 1 2-2h12a2 2 0 1 1 0 4H4a2 2 0 0 1-2-2m2-1a1 1 0 0 0 0 2h12a1 1 0 1 0 0-2zm0 7a2 2 0 0 1 2-2h8a2 2 0 1 1 0 4H6a2 2 0 0 1-2-2m2-1a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2zm2 5a2 2 0 1 0 0 4h4a2 2 0 1 0 0-4zm-1 2a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="qos" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M2 4a2 2 0 0 1 2-2h12a2 2 0 1 1 0 4H4a2 2 0 0 1-2-2m2 6a2 2 0 0 1 2-2h8a2 2 0 1 1 0 4H6a2 2 0 0 1-2-2m4 4a2 2 0 1 0 0 4h4a2 2 0 1 0 0-4z'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="PortWeaver" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="socat" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+  display: inline-flex;
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="PortWeaver" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="socat" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M12.146 3.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L14.293 7H4.5a.5.5 0 0 1 0-1h9.793l-2.147-2.146a.5.5 0 0 1 0-.708m-4.292 7a.5.5 0 0 1 0 .708L5.707 13H15.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="PortWeaver" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="socat" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M12.78 3.22a.75.75 0 1 0-1.06 1.06L13.44 6H4.75a.75.75 0 0 0 0 1.5h8.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3a.75.75 0 0 0 0-1.06zm-4.5 7.56a.75.75 0 1 0-1.06-1.06l-3 3a.75.75 0 0 0 0 1.06l3 3a.75.75 0 0 0 1.06-1.06L6.56 14h8.69a.75.75 0 0 0 0-1.5H6.56z'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="usteer" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="roam" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="mesh" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+  display: inline-flex;
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="usteer" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="roam" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="mesh" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M5.879 6.586a2.5 2.5 0 1 1 .707-.707L8.62 7.914A2.5 2.5 0 0 1 9.999 7.5c.51 0 .983.152 1.379.414l2.035-2.035a2.5 2.5 0 1 1 .707.707L12.086 8.62c.262.396.414.87.414 1.379c0 .51-.152.983-.414 1.379l2.035 2.035a2.5 2.5 0 1 1-.707.707l-2.035-2.035a2.5 2.5 0 0 1-1.379.414c-.51 0-.983-.152-1.379-.414L6.586 14.12a2.5 2.5 0 1 1-.707-.707l2.035-2.035A2.5 2.5 0 0 1 7.5 10c0-.51.152-.983.414-1.379zM6 4.5a1.5 1.5 0 1 0-3 0a1.5 1.5 0 0 0 3 0m11 0a1.5 1.5 0 1 0-3 0a1.5 1.5 0 0 0 3 0M4.5 17a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3M17 15.5a1.5 1.5 0 1 0-3 0a1.5 1.5 0 0 0 3 0M11.5 10a1.5 1.5 0 1 0-3 0a1.5 1.5 0 0 0 3 0'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="usteer" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="roam" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="mesh" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M7 4.5c0 .51-.152.983-.414 1.379L8.62 7.914A2.5 2.5 0 0 1 9.999 7.5c.51 0 .983.152 1.379.414l2.035-2.035a2.5 2.5 0 1 1 .707.707L12.086 8.62c.262.396.414.87.414 1.379c0 .51-.152.983-.414 1.379l2.035 2.035a2.5 2.5 0 1 1-.707.707l-2.035-2.035a2.5 2.5 0 0 1-1.379.414c-.51 0-.983-.152-1.379-.414L6.586 14.12a2.5 2.5 0 1 1-.707-.707l2.035-2.035A2.5 2.5 0 0 1 7.5 10c0-.51.152-.983.414-1.379L5.88 6.586A2.5 2.5 0 1 1 7 4.5'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="share" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+  display: inline-flex;
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="share" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M12 5.502a2.502 2.502 0 1 1 .531 1.541L7.915 9.351a2.5 2.5 0 0 1 0 1.297l4.618 2.31a2.5 2.5 0 1 1-.448.894l-4.618-2.31a2.5 2.5 0 1 1 0-3.086l4.618-2.307A2.5 2.5 0 0 1 12 5.502M14.502 4a1.501 1.501 0 1 0 0 3.003a1.501 1.501 0 0 0 0-3.003m-.002 9a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3M4 10a1.5 1.5 0 1 0 3 0a1.5 1.5 0 0 0-3 0'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="share" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M17 5.5a2.5 2.5 0 0 1-4.467 1.543L7.915 9.352a2.5 2.5 0 0 1 0 1.297l4.618 2.308a2.5 2.5 0 1 1-.448.894l-4.618-2.308a2.5 2.5 0 1 1 0-3.085l4.618-2.31A2.504 2.504 0 0 1 14.5 3A2.5 2.5 0 0 1 17 5.5'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="usb" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+  display: inline-flex;
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="usb" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M7.5 2h5a.5.5 0 0 1 .5.5V6h.079C14.137 6 15 6.853 15 7.912v5.176A1.916 1.916 0 0 1 13.079 15H12v2.5a.5.5 0 0 1-1 0V15H9v2.5a.5.5 0 0 1-1 0V15H6.921A1.916 1.916 0 0 1 5 13.088V7.912C5 6.852 5.863 6 6.921 6H7V2.5a.5.5 0 0 1 .5-.5m5.579 12a.916.916 0 0 0 .921-.912V7.912c0-.5-.41-.912-.921-.912H6.92a.916.916 0 0 0-.92.912v5.176c0 .5.41.912.921.912zM12 6V3H8v3z'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="usb" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M7 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5V6h.079C14.137 6 15 6.853 15 7.912v5.176A1.916 1.916 0 0 1 13.079 15H12v2.5a.5.5 0 0 1-1 0V15H9v2.5a.5.5 0 0 1-1 0V15H6.921A1.916 1.916 0 0 1 5 13.088V7.912C5 6.852 5.863 6 6.921 6H7zM8 6h4V3H8z'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="raid" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+  display: inline-flex;
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="raid" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M4 5c0-1.007.875-1.755 1.904-2.223C6.978 2.289 8.427 2 10 2s3.022.289 4.096.777C15.125 3.245 16 3.993 16 5v6h-1V6.698a5 5 0 0 1-.904.525C13.022 7.711 11.573 8 10 8s-3.022-.289-4.096-.777A5 5 0 0 1 5 6.698V15c0 .374.356.875 1.318 1.313c.916.416 2.218.687 3.682.687h.05c.434.425.978.738 1.585.892c-.521.07-1.07.108-1.635.108c-1.573 0-3.022-.289-4.096-.777C4.875 16.755 4 16.007 4 15zm1 0c0 .374.356.875 1.318 1.313C7.234 6.729 8.536 7 10 7s2.766-.27 3.682-.687C14.644 5.875 15 5.373 15 5c0-.374-.356-.875-1.318-1.313C12.766 3.271 11.464 3 10 3s-2.766.27-3.682.687C5.356 4.125 5 4.627 5 5m7.5 7a2.5 2.5 0 0 0 0 5h.5a.5.5 0 0 0 0-1h-.5a1.5 1.5 0 0 1 0-3h.5a.5.5 0 0 0 0-1zm3.5 0a.5.5 0 0 0 0 1h.5a1.5 1.5 0 0 1 0 3H16a.5.5 0 0 0 0 1h.5a2.5 2.5 0 0 0 0-5zm-4 2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="raid" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10 8c3.314 0 6-1.343 6-3s-2.686-3-6-3s-6 1.343-6 3s2.686 3 6 3m4.69.016c.47-.235.927-.534 1.31-.896V11h-3.5a3.5 3.5 0 0 0-.878 6.889c-.516.072-1.06.111-1.622.111c-3.314 0-6-1.343-6-3V7.12c.383.362.84.661 1.31.896C6.562 8.642 8.222 9 10 9s3.438-.358 4.69-.984M12.5 12a2.5 2.5 0 0 0 0 5h.5a.5.5 0 0 0 0-1h-.5a1.5 1.5 0 0 1 0-3h.5a.5.5 0 0 0 0-1zm3.5 0a.5.5 0 0 0 0 1h.5a1.5 1.5 0 0 1 0 3H16a.5.5 0 0 0 0 1h.5a2.5 2.5 0 0 0 0-5zm-4 2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="filter" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+  display: inline-flex;
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="filter" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M7.5 13h5a.5.5 0 0 1 .09.992L12.5 14h-5a.5.5 0 0 1-.09-.992zh5zm-2-4h9a.5.5 0 0 1 .09.992L14.5 10h-9a.5.5 0 0 1-.09-.992zh9zm-2-4h13a.5.5 0 0 1 .09.992L16.5 6h-13a.5.5 0 0 1-.09-.992zh13z'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="filter" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M12.25 13.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5zm2-4.25a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5zm2-4.25a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1 0-1.5z'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="speed" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="homebox" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+  display: inline-flex;
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="speed" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="homebox" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10 2a8 8 0 0 1 5.44 13.866l-.082.062a.5.5 0 0 1-.6-.794l.254-.246A6.97 6.97 0 0 0 16.98 10.5h-1.503A.49.49 0 0 1 15 10c0-.268.208-.5.477-.5h1.503a7 7 0 0 0-6.479-6.48v1.502A.49.49 0 0 1 10 5a.49.49 0 0 1-.499-.476V3.02a6.97 6.97 0 0 0-4.083 1.69l1.063 1.063a.49.49 0 0 1-.016.69a.49.49 0 0 1-.69.017L4.71 5.417A6.97 6.97 0 0 0 3.02 9.5h1.503A.49.49 0 0 1 5 10a.49.49 0 0 1-.477.5H3.02a6.97 6.97 0 0 0 1.968 4.388l.253.246l.067.075a.5.5 0 0 1-.747.657A8 8 0 0 1 10 2m3.196 4.102a.502.502 0 0 1 .74.64v.002l-.001.002l-.005.009l-.02.037l-.078.138a195 195 0 0 1-1.15 2.026a80 80 0 0 1-.947 1.61c-.141.232-.271.44-.38.603a3 3 0 0 1-.295.391a1.5 1.5 0 0 1-2.12-2.12c.123-.124.464-.4.865-.718c.415-.33.93-.73 1.432-1.118a347 347 0 0 1 1.795-1.376l.121-.093l.032-.025l.01-.006z'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="speed" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="homebox" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10 2a8 8 0 0 1 5.518 13.793a.75.75 0 0 1-1.036-1.086A6.5 6.5 0 0 0 16.422 11h-1.174a.75.75 0 0 1 0-1.5h1.232a6.5 6.5 0 0 0-5.729-5.956v1.265c0 .394-.356.691-.751.691c-.394 0-.749-.297-.749-.69V3.544a6.47 6.47 0 0 0-3.285 1.36l.811.812a.75.75 0 0 1-1.06 1.06l-.812-.811A6.47 6.47 0 0 0 3.521 9.5h1.227l.076.004a.75.75 0 0 1 0 1.492L4.748 11h-1.17a6.5 6.5 0 0 0 1.712 3.48l.228.227l.052.056a.75.75 0 0 1-1.088 1.03A8 8 0 0 1 10 2m3.196 4.102a.502.502 0 0 1 .74.64v.002l-.001.002l-.005.009l-.02.037l-.078.138a195 195 0 0 1-1.15 2.026a80 80 0 0 1-.947 1.61c-.141.232-.271.44-.38.603a3 3 0 0 1-.295.391a1.5 1.5 0 0 1-2.12-2.12c.123-.124.464-.4.865-.718c.415-.33.93-.73 1.432-1.118a347 347 0 0 1 1.795-1.376l.121-.093l.032-.025l.01-.006z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
@@ -11171,7 +11366,7 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
   right: var(--fluent-space-sm);
   transition: transform var(--fluent-duration-fast) var(--fluent-easing-standard),background-image var(--fluent-duration-fast) var(--fluent-easing-standard);
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23605e5c%22 d=%22M15.854 7.646a.5.5 0 0 1 .001.707l-5.465 5.484a.55.55 0 0 1-.78 0L4.147 8.353a.5.5 0 1 1 .708-.706L10 12.812l5.147-5.165a.5.5 0 0 1 .707-.001%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23605e5c' d=%22M15.854 7.646a.5.5 0 0 1 .001.707l-5.465 5.484a.55.55 0 0 1-.78 0L4.147 8.353a.5.5 0 1 1 .708-.706L10 12.812l5.147-5.165a.5.5 0 0 1 .707-.001%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 14px 14px;
@@ -11185,7 +11380,7 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
 }
 
 [data-theme="dark"] .main-left .nav li .menu:after {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23a0a0a0%22 d=%22M15.854 7.646a.5.5 0 0 1 .001.707l-5.465 5.484a.55.55 0 0 1-.78 0L4.147 8.353a.5.5 0 1 1 .708-.706L10 12.812l5.147-5.165a.5.5 0 0 1 .707-.001%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23a0a0a0' d=%22M15.854 7.646a.5.5 0 0 1 .001.707l-5.465 5.484a.55.55 0 0 1-.78 0L4.147 8.353a.5.5 0 1 1 .708-.706L10 12.812l5.147-5.165a.5.5 0 0 1 .707-.001%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 14px 14px;
@@ -11193,7 +11388,7 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .main-left .nav li .menu:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23a0a0a0%22 d=%22M15.854 7.646a.5.5 0 0 1 .001.707l-5.465 5.484a.55.55 0 0 1-.78 0L4.147 8.353a.5.5 0 1 1 .708-.706L10 12.812l5.147-5.165a.5.5 0 0 1 .707-.001%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23a0a0a0' d=%22M15.854 7.646a.5.5 0 0 1 .001.707l-5.465 5.484a.55.55 0 0 1-.78 0L4.147 8.353a.5.5 0 1 1 .708-.706L10 12.812l5.147-5.165a.5.5 0 0 1 .707-.001%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 14px 14px;
@@ -11227,7 +11422,7 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
 
 .main-left .nav li .menu.active:after {
   background-color: var(--fluent-primary);
-  --icon-data: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22currentColor%22 d=%22M15.854 7.646a.5.5 0 0 1 .001.707l-5.465 5.484a.55.55 0 0 1-.78 0L4.147 8.353a.5.5 0 1 1 .708-.706L10 12.812l5.147-5.165a.5.5 0 0 1 .707-.001%22/></svg>");
+  --icon-data: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M15.854 7.646a.5.5 0 0 1 .001.707l-5.465 5.484a.55.55 0 0 1-.78 0L4.147 8.353a.5.5 0 1 1 .708-.706L10 12.812l5.147-5.165a.5.5 0 0 1 .707-.001%22/></svg>");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
   transform: translateY(-50%) rotate(0);
@@ -11332,7 +11527,7 @@ body > div.main > div.main-right > header .header__toggle {
 
 body > div.main > div.main-right > header .header__toggle:before {
   content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23323130%22 d=%22M2 4.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m.5 4.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1z%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23323130' d=%22M2 4.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m.5 4.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1z%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 20px 20px;
@@ -11347,7 +11542,7 @@ body > div.main > div.main-right > header .header__toggle:hover {
 }
 
 [data-theme="dark"] body > div.main > div.main-right > header .header__toggle:before {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M2 4.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m.5 4.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1z%22/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M2 4.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m.5 4.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1z%22/></svg>");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 20px 20px;
@@ -11355,7 +11550,7 @@ body > div.main > div.main-right > header .header__toggle:hover {
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) body > div.main > div.main-right > header .header__toggle:before {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill=%22%23ffffff%22 d=%22M2 4.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m.5 4.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1z%22/></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23ffffff' d=%22M2 4.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m.5 4.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1z%22/></svg>");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 20px 20px;

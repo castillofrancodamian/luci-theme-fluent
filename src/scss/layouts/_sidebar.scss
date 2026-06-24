@@ -457,7 +457,14 @@
                   "clash",
                   "ssr",
                   "vpn",
-                  "ipsec"
+                  "ipsec",
+                  "tailscale",
+                  "nikki"
+                ),
+                "suffixes": (
+                  "tunnel",
+                  "tier",
+                  "proxy"
                 ),
                 "reg": "__icon__(fluent:shield-lock-20-regular)",
                 "fill": "__icon__(fluent:shield-lock-20-filled)"
@@ -535,10 +542,34 @@
               (
                 "keywords": (
                   "monitor",
-                  "statistics"
+                  "statistics",
+                  "bandix",
+                  "Graphs"
                 ),
                 "reg": "__icon__(fluent:data-usage-20-regular)",
                 "fill": "__icon__(fluent:data-usage-20-filled)"
+              ),
+              (
+                "keywords": (
+                  "S.M.A.R.T.",
+                  "info"
+                ),
+                "reg": "__icon__(fluent:info-20-regular)",
+                "fill": "__icon__(fluent:info-20-filled)"
+              ),
+              (
+                "keywords": (
+                  "setting"
+                ),
+                "reg": "__icon__(fluent:settings-20-regular)",
+                "fill": "__icon__(fluent:settings-20-filled)"
+              ),
+              (
+                "keywords": (
+                  "Setup"
+                ),
+                "reg": "__icon__(fluent:settings-cog-multiple-20-regular)",
+                "fill": "__icon__(fluent:settings-cog-multiple-20-filled)"
               ),
               (
                 "keywords": (
@@ -581,6 +612,73 @@
                 ),
                 "reg": "__icon__(fluent:wifi-1-20-regular)",
                 "fill": "__icon__(fluent:wifi-1-20-filled)"
+              ),
+              (
+                "keywords": (
+                  "address"
+                ),
+                "reg": "__icon__(fluent:card-ui-20-regular)",
+                "fill": "__icon__(fluent:card-ui-20-filled)"
+              ),
+              (
+                "keywords": (
+                  "qos"
+                ),
+                "reg": "__icon__(fluent:data-funnel-20-regular)",
+                "fill": "__icon__(fluent:data-funnel-20-filled)"
+              ),
+              (
+                "keywords": (
+                  "PortWeaver",
+                  "socat"
+                ),
+                "reg": "__icon__(fluent:arrow-swap-20-regular)",
+                "fill": "__icon__(fluent:arrow-swap-20-filled)"
+              ),
+              (
+                "keywords": (
+                  "usteer",
+                  "roam",
+                  "mesh"
+                ),
+                "reg": "__icon__(fluent:connected-20-regular)",
+                "fill": "__icon__(fluent:connected-20-filled)"
+              ),
+              (
+                "keywords": (
+                  "share"
+                ),
+                "reg": "__icon__(fluent:share-android-20-regular)",
+                "fill": "__icon__(fluent:share-android-20-filled)"
+              ),
+              (
+                "keywords": (
+                  "usb"
+                ),
+                "reg": "__icon__(fluent:usb-plug-20-regular)",
+                "fill": "__icon__(fluent:usb-plug-20-filled)"
+              ),
+              (
+                "keywords": (
+                  "raid"
+                ),
+                "reg": "__icon__(fluent:database-link-20-regular)",
+                "fill": "__icon__(fluent:database-link-20-filled)"
+              ),
+              (
+                "keywords": (
+                  "filter"
+                ),
+                "reg": "__icon__(fluent:filter-20-regular)",
+                "fill": "__icon__(fluent:filter-20-filled)"
+              ),
+              (
+                "keywords": (
+                  "speed",
+                  "homebox"
+                ),
+                "reg": "__icon__(fluent:top-speed-20-regular)",
+                "fill": "__icon__(fluent:top-speed-20-filled)"
               )
             );
 

@@ -104,11 +104,7 @@ img[src="/luci-static/resources/icons/tunnel_disabled.svg"] {
     );
 }
 img[src="/luci-static/resources/icons/switch.svg"] {
-    @include fluent-mask-icon-by-path(
-        "../assets/icons/override/switch.svg",
-        $icon-size,
-        var(--fluent-text-secondary)
-    );
+    @include fluent-mask-icon-by-path("../assets/icons/override/switch.svg", $icon-size, var(--fluent-text-secondary));
 }
 img[src="/luci-static/resources/icons/switch_disabled.svg"] {
     @include fluent-mask-icon-by-path(
@@ -135,10 +131,13 @@ img[src="/luci-static/resources/icons/signal-075-100.svg"] {
 }
 img[src="/luci-static/resources/icons/signal-none.svg"] {
     @include fluent-mask-icon-by-name("fluent:cellular-warning-20-filled", $icon-size, var(--fluent-text-secondary));
+    @include set-mask-content();
 }
 img[src="/luci-static/resources/icons/wifi.svg"] {
     @include fluent-mask-icon-by-name("fluent:wifi-1-20-filled", $icon-size, var(--fluent-text-secondary));
+    @include set-mask-content();
 }
 img[src="/luci-static/resources/icons/wifi_disabled.svg"] {
     @include fluent-mask-icon-by-name("fluent:wifi-off-20-filled", $icon-size, var(--fluent-text-secondary));
+    @include set-mask-content();
 }
