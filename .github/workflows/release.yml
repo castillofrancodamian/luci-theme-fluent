@@ -61,15 +61,15 @@ jobs:
           fi
 
       - name: Pack prepared source
-        run: tar --exclude=.git -czf release-source.tar.gz .
+        run: tar --exclude=.git -czf "$RUNNER_TEMP/release-source.tar.gz" .
 
       - name: Upload prepared source
         uses: actions/upload-artifact@v4
         with:
           name: release-source-${{ env.TAG }}
-          path: release-source.tar.gz
+          path: ${{ runner.temp }}/release-source.tar.gz
 
-  scss:
+  assets:
     name: Build minified assets
     needs: prepare
     runs-on: ubuntu-latest
@@ -119,7 +119,7 @@ jobs:
 
   release:
     name: Build & Publish (${{ matrix.version }})
-    needs: [prepare, scss]
+    needs: [prepare, assets]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false

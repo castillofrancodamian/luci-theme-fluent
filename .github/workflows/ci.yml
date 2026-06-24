@@ -45,16 +45,16 @@ jobs:
           grep '^  "version":' package.json
 
       - name: Pack prepared source
-        run: tar --exclude=.git -czf ci-source.tar.gz .
+        run: tar --exclude=.git -czf "$RUNNER_TEMP/ci-source.tar.gz" .
 
       - name: Upload prepared source
         uses: actions/upload-artifact@v4
         with:
           name: ci-source-${{ github.run_id }}
-          path: ci-source.tar.gz
+          path: ${{ runner.temp }}/ci-source.tar.gz
 
-  scss:
-    name: SCSS Build Validation
+  assets:
+    name: Build minified assets
     needs: prepare
     runs-on: ubuntu-latest
     steps:
@@ -125,7 +125,7 @@ jobs:
 
   openwrt-sdk:
     name: OpenWrt SDK Build (${{ matrix.version }})
-    needs: scss
+    needs: assets
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
