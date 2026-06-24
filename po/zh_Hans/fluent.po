@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: luci-theme-fluent\n"
-"POT-Creation-Date: 2026-06-21 20:16+0800\n"
+"POT-Creation-Date: 2026-06-24 21:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,6 +10,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Accent color"
+msgstr "强调色"
 
 msgid "Adjust login card opacity and blur separately for light and dark mode."
 msgstr "分别为亮色模式和深色模式调整登录卡片的不透明度和模糊效果。"
@@ -27,6 +30,9 @@ msgid ""
 "he theme."
 msgstr "适用于整个主题中的标准按钮、输入框、选择框及类似表单控件。"
 
+msgid "Backdrop blur radius"
+msgstr "背景模糊半径"
+
 msgid "Blur radius in pixels behind the login card in dark mode. Use 0 to disable blur."
 msgstr "深色模式下，登录卡片背后的模糊半径（单位：像素）。使用 0 可禁用模糊效果。"
 
@@ -34,6 +40,9 @@ msgid ""
 "Blur radius in pixels behind the login card in light mode. Use 0 to disable blur"
 "."
 msgstr "亮色模式下，登录卡片背后的模糊半径（单位：像素）。使用 0 可禁用模糊效果。"
+
+msgid "Card background"
+msgstr "卡片背景"
 
 msgid "Choose color"
 msgstr "选择颜色"
@@ -71,26 +80,8 @@ msgid ""
 "ccents."
 msgstr "控制主导航标签及相关主题强调文本的字体粗细。"
 
-msgid "Dark mode accent color"
-msgstr "深色模式强调色"
-
-msgid "Dark mode backdrop blur radius"
-msgstr "深色模式背景模糊半径"
-
-msgid "Dark mode card background"
-msgstr "深色模式卡片背景"
-
-msgid "Dark mode login card opacity"
-msgstr "深色模式登录卡片不透明度"
-
-msgid "Dark mode page background"
-msgstr "深色模式页面背景"
-
-msgid "Dark mode progress bar text color"
-msgstr "深色模式进度条文本颜色"
-
-msgid "Dark mode sidebar background"
-msgstr "深色模式侧边栏背景"
+msgid "Dark mode"
+msgstr "深色模式"
 
 msgid ""
 "Display the themed loading indicator at the top edge during page loads and trans"
@@ -159,29 +150,14 @@ msgstr "深色模式下导航侧边栏使用的十六进制颜色。"
 msgid "HEX color used for the navigation sidebar in light mode."
 msgstr "亮色模式下导航侧边栏使用的十六进制颜色。"
 
-msgid "Light mode accent color"
-msgstr "亮色模式强调色"
-
-msgid "Light mode backdrop blur radius"
-msgstr "亮色模式背景模糊半径"
-
-msgid "Light mode card background"
-msgstr "亮色模式卡片背景"
-
-msgid "Light mode login card opacity"
-msgstr "亮色模式登录卡片不透明度"
-
-msgid "Light mode page background"
-msgstr "亮色模式页面背景"
-
-msgid "Light mode progress bar text color"
-msgstr "亮色模式进度条文本颜色"
-
-msgid "Light mode sidebar background"
-msgstr "亮色模式侧边栏背景"
+msgid "Light mode"
+msgstr "亮色模式"
 
 msgid "Login"
 msgstr "登录"
+
+msgid "Login card opacity"
+msgstr "登录卡片不透明度"
 
 msgid "Login page"
 msgstr "登录页"
@@ -205,11 +181,17 @@ msgid ""
 "paque."
 msgstr "亮色模式下登录卡片的不透明度。0 表示完全透明，1 表示完全不透明。"
 
+msgid "Page background"
+msgstr "页面背景"
+
 msgid "Please enter your password."
 msgstr "请输入您的密码。"
 
 msgid "Please enter your username."
 msgstr "请输入您的用户名。"
+
+msgid "Progress bar text color"
+msgstr "进度条文本颜色"
 
 msgid "Replace native select elements with the theme's custom dropdown widget."
 msgstr "使用主题的自定义下拉组件替换原生的选择元素。"
@@ -227,6 +209,9 @@ msgstr "分别为亮色模式和深色模式设置不同的强调色、进度条
 
 msgid "Show top loading bar"
 msgstr "显示顶部加载条"
+
+msgid "Sidebar background"
+msgstr "侧边栏背景"
 
 msgid "Theme settings"
 msgstr "主题设置"

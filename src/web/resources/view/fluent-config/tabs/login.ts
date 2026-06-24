@@ -1,6 +1,6 @@
 const form = L.form;
 
-import { transparencySteps } from "../shared";
+import { createModeSubtabs, transparencySteps } from "../shared";
 
 export const registerLoginTab = (section: LuCI.form.TypedSection): void => {
   section.tab(
@@ -9,12 +9,14 @@ export const registerLoginTab = (section: LuCI.form.TypedSection): void => {
     _("Adjust login card opacity and blur separately for light and dark mode."),
   );
 
+  const modeSection = createModeSubtabs(section, "login", "login_mode_tabs");
+
   {
-    const option = section.taboption(
-      "login",
+    const option = modeSection.taboption(
+      "light",
       form.ListValue,
       "transparency",
-      _("Light mode login card opacity"),
+      _("Login card opacity"),
       _("Opacity of the login card in light mode. 0 is fully transparent and 1 is fully opaque."),
     );
     for (const step of transparencySteps) option.value(String(step));
@@ -23,11 +25,11 @@ export const registerLoginTab = (section: LuCI.form.TypedSection): void => {
   }
 
   {
-    const option = section.taboption(
-      "login",
+    const option = modeSection.taboption(
+      "light",
       form.Value,
       "blur",
-      _("Light mode backdrop blur radius"),
+      _("Backdrop blur radius"),
       _("Blur radius in pixels behind the login card in light mode. Use 0 to disable blur."),
     );
     option.datatype = "ufloat";
@@ -36,11 +38,11 @@ export const registerLoginTab = (section: LuCI.form.TypedSection): void => {
   }
 
   {
-    const option = section.taboption(
-      "login",
+    const option = modeSection.taboption(
+      "dark",
       form.ListValue,
       "transparency_dark",
-      _("Dark mode login card opacity"),
+      _("Login card opacity"),
       _("Opacity of the login card in dark mode. 0 is fully transparent and 1 is fully opaque."),
     );
     for (const step of transparencySteps) option.value(String(step));
@@ -49,11 +51,11 @@ export const registerLoginTab = (section: LuCI.form.TypedSection): void => {
   }
 
   {
-    const option = section.taboption(
-      "login",
+    const option = modeSection.taboption(
+      "dark",
       form.Value,
       "blur_dark",
-      _("Dark mode backdrop blur radius"),
+      _("Backdrop blur radius"),
       _("Blur radius in pixels behind the login card in dark mode. Use 0 to disable blur."),
     );
     option.datatype = "ufloat";

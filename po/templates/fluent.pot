@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: luci-theme-fluent\n"
-"POT-Creation-Date: 2026-06-21 20:16+0800\n"
+"POT-Creation-Date: 2026-06-24 21:29+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,6 +10,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Accent color"
+msgstr ""
 
 msgid "Adjust login card opacity and blur separately for light and dark mode."
 msgstr ""
@@ -27,12 +30,18 @@ msgid ""
 "he theme."
 msgstr ""
 
+msgid "Backdrop blur radius"
+msgstr ""
+
 msgid "Blur radius in pixels behind the login card in dark mode. Use 0 to disable blur."
 msgstr ""
 
 msgid ""
 "Blur radius in pixels behind the login card in light mode. Use 0 to disable blur"
 "."
+msgstr ""
+
+msgid "Card background"
 msgstr ""
 
 msgid "Choose color"
@@ -71,25 +80,7 @@ msgid ""
 "ccents."
 msgstr ""
 
-msgid "Dark mode accent color"
-msgstr ""
-
-msgid "Dark mode backdrop blur radius"
-msgstr ""
-
-msgid "Dark mode card background"
-msgstr ""
-
-msgid "Dark mode login card opacity"
-msgstr ""
-
-msgid "Dark mode page background"
-msgstr ""
-
-msgid "Dark mode progress bar text color"
-msgstr ""
-
-msgid "Dark mode sidebar background"
+msgid "Dark mode"
 msgstr ""
 
 msgid ""
@@ -159,28 +150,13 @@ msgstr ""
 msgid "HEX color used for the navigation sidebar in light mode."
 msgstr ""
 
-msgid "Light mode accent color"
-msgstr ""
-
-msgid "Light mode backdrop blur radius"
-msgstr ""
-
-msgid "Light mode card background"
-msgstr ""
-
-msgid "Light mode login card opacity"
-msgstr ""
-
-msgid "Light mode page background"
-msgstr ""
-
-msgid "Light mode progress bar text color"
-msgstr ""
-
-msgid "Light mode sidebar background"
+msgid "Light mode"
 msgstr ""
 
 msgid "Login"
+msgstr ""
+
+msgid "Login card opacity"
 msgstr ""
 
 msgid "Login page"
@@ -205,10 +181,16 @@ msgid ""
 "paque."
 msgstr ""
 
+msgid "Page background"
+msgstr ""
+
 msgid "Please enter your password."
 msgstr ""
 
 msgid "Please enter your username."
+msgstr ""
+
+msgid "Progress bar text color"
 msgstr ""
 
 msgid "Replace native select elements with the theme's custom dropdown widget."
@@ -226,6 +208,9 @@ msgid ""
 msgstr ""
 
 msgid "Show top loading bar"
+msgstr ""
+
+msgid "Sidebar background"
 msgstr ""
 
 msgid "Theme settings"

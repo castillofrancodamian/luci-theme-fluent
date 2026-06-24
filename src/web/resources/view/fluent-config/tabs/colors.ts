@@ -1,6 +1,6 @@
 const form = L.form;
 
-import { configureHexColorValue } from "../shared";
+import { configureHexColorValue, createModeSubtabs } from "../shared";
 
 export const registerColorsTab = (section: LuCI.form.TypedSection): void => {
   section.tab(
@@ -9,13 +9,15 @@ export const registerColorsTab = (section: LuCI.form.TypedSection): void => {
     _("Set separate accent, progress-bar text, and background colors for light and dark mode."),
   );
 
-  // --- Accent Colors ---
+  const modeSection = createModeSubtabs(section, "colors", "colors_mode_tabs");
+
+  // --- Light Mode Colors ---
   {
-    const option = section.taboption(
-      "colors",
+    const option = modeSection.taboption(
+      "light",
       form.Value,
       "primary",
-      _("Light mode accent color"),
+      _("Accent color"),
       _("HEX color used as the primary Fluent accent when the interface is rendered in light mode."),
     );
     option.default = "#0078d4";
@@ -23,24 +25,11 @@ export const registerColorsTab = (section: LuCI.form.TypedSection): void => {
   }
 
   {
-    const option = section.taboption(
-      "colors",
-      form.Value,
-      "dark_primary",
-      _("Dark mode accent color"),
-      _("HEX color used as the primary Fluent accent when the interface is rendered in dark mode."),
-    );
-    option.default = "#4da6ff";
-    configureHexColorValue(option, "dark_primary", true);
-  }
-
-  // --- Progress Bar Text Colors ---
-  {
-    const option = section.taboption(
-      "colors",
+    const option = modeSection.taboption(
+      "light",
       form.Value,
       "progressbar_font",
-      _("Light mode progress bar text color"),
+      _("Progress bar text color"),
       _("HEX color used for progress-bar labels while the interface is rendered in light mode."),
     );
     option.default = "#2e2b60";
@@ -48,24 +37,11 @@ export const registerColorsTab = (section: LuCI.form.TypedSection): void => {
   }
 
   {
-    const option = section.taboption(
-      "colors",
-      form.Value,
-      "dark_progressbar_font",
-      _("Dark mode progress bar text color"),
-      _("HEX color used for progress-bar labels while the interface is rendered in dark mode."),
-    );
-    option.default = "#d6d9e5";
-    configureHexColorValue(option, "dark_progressbar_font", true);
-  }
-
-  // --- Light Mode Background Colors ---
-  {
-    const option = section.taboption(
-      "colors",
+    const option = modeSection.taboption(
+      "light",
       form.Value,
       "page_bg",
-      _("Light mode page background"),
+      _("Page background"),
       _("HEX color used for the main page background in light mode."),
     );
     option.default = "#fafafa";
@@ -73,11 +49,11 @@ export const registerColorsTab = (section: LuCI.form.TypedSection): void => {
   }
 
   {
-    const option = section.taboption(
-      "colors",
+    const option = modeSection.taboption(
+      "light",
       form.Value,
       "card_bg",
-      _("Light mode card background"),
+      _("Card background"),
       _("HEX color used for container/card elements in light mode."),
     );
     option.default = "#ffffff";
@@ -85,24 +61,48 @@ export const registerColorsTab = (section: LuCI.form.TypedSection): void => {
   }
 
   {
-    const option = section.taboption(
-      "colors",
+    const option = modeSection.taboption(
+      "light",
       form.Value,
       "sidebar_bg",
-      _("Light mode sidebar background"),
+      _("Sidebar background"),
       _("HEX color used for the navigation sidebar in light mode."),
     );
     option.default = "#ffffff";
     configureHexColorValue(option, "sidebar_bg");
   }
 
-  // --- Dark Mode Background Colors ---
+  // --- Dark Mode Colors ---
   {
-    const option = section.taboption(
-      "colors",
+    const option = modeSection.taboption(
+      "dark",
+      form.Value,
+      "dark_primary",
+      _("Accent color"),
+      _("HEX color used as the primary Fluent accent when the interface is rendered in dark mode."),
+    );
+    option.default = "#4da6ff";
+    configureHexColorValue(option, "dark_primary", true);
+  }
+
+  {
+    const option = modeSection.taboption(
+      "dark",
+      form.Value,
+      "dark_progressbar_font",
+      _("Progress bar text color"),
+      _("HEX color used for progress-bar labels while the interface is rendered in dark mode."),
+    );
+    option.default = "#d6d9e5";
+    configureHexColorValue(option, "dark_progressbar_font", true);
+  }
+
+  {
+    const option = modeSection.taboption(
+      "dark",
       form.Value,
       "dark_page_bg",
-      _("Dark mode page background"),
+      _("Page background"),
       _("HEX color used for the main page background in dark mode."),
     );
     option.default = "#1b1b1b";
@@ -110,11 +110,11 @@ export const registerColorsTab = (section: LuCI.form.TypedSection): void => {
   }
 
   {
-    const option = section.taboption(
-      "colors",
+    const option = modeSection.taboption(
+      "dark",
       form.Value,
       "dark_card_bg",
-      _("Dark mode card background"),
+      _("Card background"),
       _("HEX color used for container/card elements in dark mode."),
     );
     option.default = "#2d2d2d";
@@ -122,11 +122,11 @@ export const registerColorsTab = (section: LuCI.form.TypedSection): void => {
   }
 
   {
-    const option = section.taboption(
-      "colors",
+    const option = modeSection.taboption(
+      "dark",
       form.Value,
       "dark_sidebar_bg",
-      _("Dark mode sidebar background"),
+      _("Sidebar background"),
       _("HEX color used for the navigation sidebar in dark mode."),
     );
     option.default = "#1f1f1f";

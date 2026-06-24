@@ -100,3 +100,19 @@ export const configureHexColorValue = (
     return el;
   }) as unknown as () => Node | Promise<Node>;
 };
+
+export const createModeSubtabs = (
+  section: LuCI.form.TypedSection,
+  parentTab: string,
+  optionName: string,
+): LuCI.form.TypedSection => {
+  const container = section.taboption(parentTab, form.SectionValue, optionName, form.TypedSection, "global") ;
+
+  const modeSection = container.subsection as LuCI.form.TypedSection;
+  modeSection.anonymous = true;
+  modeSection.addremove = false;
+  modeSection.tab("light", _("Light mode"));
+  modeSection.tab("dark", _("Dark mode"));
+
+  return modeSection;
+};

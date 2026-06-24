@@ -81,9 +81,9 @@ const transparencySteps = [
     1
 ];
 const configureHexColorValue = function(t, l) {
-    let r = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
-    t.rmempty = !1, t.validate = (e, t)=>!e || /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(String(t)) || _("Expecting: %s").format(_("valid HEX color value")), t.render = (o, a, n)=>{
-        let c = shared_e.Value.prototype.render.call(t, o, a, n), i = ()=>{
+    let o = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
+    t.rmempty = !1, t.validate = (e, t)=>!e || /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(String(t)) || _("Expecting: %s").format(_("valid HEX color value")), t.render = (a, r, n)=>{
+        let c = shared_e.Value.prototype.render.call(t, a, r, n), i = ()=>{
             let e = document.querySelector('[id^="widget.cbid.fluent."][id$=".'.concat(l, '"]'));
             e && ((e)=>{
                 if ("true" === e.dataset.fluentColorPicker) return;
@@ -92,24 +92,28 @@ const configureHexColorValue = function(t, l) {
                 e.dataset.fluentColorPicker = "true", e.classList.add("fluent-color-field__text");
                 let l = document.createElement("div");
                 l.className = "fluent-color-field";
-                let r = document.createElement("label");
-                r.className = "fluent-color-swatch", r.title = _("Choose color");
-                let o = document.createElement("input");
-                o.type = "color", o.className = "fluent-color-swatch__input", o.setAttribute("aria-label", _("Choose color"));
-                let a = document.createElement("span");
-                a.className = "fluent-color-swatch__preview";
+                let o = document.createElement("label");
+                o.className = "fluent-color-swatch", o.title = _("Choose color");
+                let a = document.createElement("input");
+                a.type = "color", a.className = "fluent-color-swatch__input", a.setAttribute("aria-label", _("Choose color"));
+                let r = document.createElement("span");
+                r.className = "fluent-color-swatch__preview";
                 let n = (e)=>{
-                    /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(e) && (o.value = e, a.style.backgroundColor = e);
+                    /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(e) && (a.value = e, r.style.backgroundColor = e);
                 };
-                n(e.value), o.addEventListener("input", ()=>{
-                    e.value = o.value, a.style.backgroundColor = o.value;
+                n(e.value), a.addEventListener("input", ()=>{
+                    e.value = a.value, r.style.backgroundColor = a.value;
                 }), e.addEventListener("input", ()=>{
                     n(e.value);
-                }), r.appendChild(o), r.appendChild(a), t.insertBefore(l, e), l.appendChild(e), l.appendChild(r);
+                }), o.appendChild(a), o.appendChild(r), t.insertBefore(l, e), l.appendChild(e), l.appendChild(o);
             })(e);
         };
-        return r ? requestAnimationFrame(i) : setTimeout(i, 0), c;
+        return o ? requestAnimationFrame(i) : setTimeout(i, 0), c;
     };
+};
+const createModeSubtabs = (t, l, o)=>{
+    let a = t.taboption(l, shared_e.SectionValue, o, shared_e.TypedSection, "global").subsection;
+    return a.anonymous = !0, a.addremove = !1, a.tab("light", _("Light mode")), a.tab("dark", _("Dark mode")), a;
 };
 
 ;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/colors.ts
@@ -117,44 +121,45 @@ let colors_e = L.form;
 
 const registerColorsTab = (o)=>{
     o.tab("colors", _("Colors"), _("Set separate accent, progress-bar text, and background colors for light and dark mode."));
+    let t = createModeSubtabs(o, "colors", "colors_mode_tabs");
     {
-        let a = o.taboption("colors", colors_e.Value, "primary", _("Light mode accent color"), _("HEX color used as the primary Fluent accent when the interface is rendered in light mode."));
+        let a = t.taboption("light", colors_e.Value, "primary", _("Accent color"), _("HEX color used as the primary Fluent accent when the interface is rendered in light mode."));
         a.default = "#0078d4", configureHexColorValue(a, "primary");
     }
     {
-        let a = o.taboption("colors", colors_e.Value, "dark_primary", _("Dark mode accent color"), _("HEX color used as the primary Fluent accent when the interface is rendered in dark mode."));
-        a.default = "#4da6ff", configureHexColorValue(a, "dark_primary", !0);
-    }
-    {
-        let a = o.taboption("colors", colors_e.Value, "progressbar_font", _("Light mode progress bar text color"), _("HEX color used for progress-bar labels while the interface is rendered in light mode."));
+        let a = t.taboption("light", colors_e.Value, "progressbar_font", _("Progress bar text color"), _("HEX color used for progress-bar labels while the interface is rendered in light mode."));
         a.default = "#2e2b60", configureHexColorValue(a, "progressbar_font");
     }
     {
-        let a = o.taboption("colors", colors_e.Value, "dark_progressbar_font", _("Dark mode progress bar text color"), _("HEX color used for progress-bar labels while the interface is rendered in dark mode."));
-        a.default = "#d6d9e5", configureHexColorValue(a, "dark_progressbar_font", !0);
-    }
-    {
-        let a = o.taboption("colors", colors_e.Value, "page_bg", _("Light mode page background"), _("HEX color used for the main page background in light mode."));
+        let a = t.taboption("light", colors_e.Value, "page_bg", _("Page background"), _("HEX color used for the main page background in light mode."));
         a.default = "#fafafa", configureHexColorValue(a, "page_bg");
     }
     {
-        let a = o.taboption("colors", colors_e.Value, "card_bg", _("Light mode card background"), _("HEX color used for container/card elements in light mode."));
+        let a = t.taboption("light", colors_e.Value, "card_bg", _("Card background"), _("HEX color used for container/card elements in light mode."));
         a.default = "#ffffff", configureHexColorValue(a, "card_bg");
     }
     {
-        let a = o.taboption("colors", colors_e.Value, "sidebar_bg", _("Light mode sidebar background"), _("HEX color used for the navigation sidebar in light mode."));
+        let a = t.taboption("light", colors_e.Value, "sidebar_bg", _("Sidebar background"), _("HEX color used for the navigation sidebar in light mode."));
         a.default = "#ffffff", configureHexColorValue(a, "sidebar_bg");
     }
     {
-        let a = o.taboption("colors", colors_e.Value, "dark_page_bg", _("Dark mode page background"), _("HEX color used for the main page background in dark mode."));
+        let a = t.taboption("dark", colors_e.Value, "dark_primary", _("Accent color"), _("HEX color used as the primary Fluent accent when the interface is rendered in dark mode."));
+        a.default = "#4da6ff", configureHexColorValue(a, "dark_primary", !0);
+    }
+    {
+        let a = t.taboption("dark", colors_e.Value, "dark_progressbar_font", _("Progress bar text color"), _("HEX color used for progress-bar labels while the interface is rendered in dark mode."));
+        a.default = "#d6d9e5", configureHexColorValue(a, "dark_progressbar_font", !0);
+    }
+    {
+        let a = t.taboption("dark", colors_e.Value, "dark_page_bg", _("Page background"), _("HEX color used for the main page background in dark mode."));
         a.default = "#1b1b1b", configureHexColorValue(a, "dark_page_bg", !0);
     }
     {
-        let a = o.taboption("colors", colors_e.Value, "dark_card_bg", _("Dark mode card background"), _("HEX color used for container/card elements in dark mode."));
+        let a = t.taboption("dark", colors_e.Value, "dark_card_bg", _("Card background"), _("HEX color used for container/card elements in dark mode."));
         a.default = "#2d2d2d", configureHexColorValue(a, "dark_card_bg", !0);
     }
     {
-        let a = o.taboption("colors", colors_e.Value, "dark_sidebar_bg", _("Dark mode sidebar background"), _("HEX color used for the navigation sidebar in dark mode."));
+        let a = t.taboption("dark", colors_e.Value, "dark_sidebar_bg", _("Sidebar background"), _("HEX color used for the navigation sidebar in dark mode."));
         a.default = "#1f1f1f", configureHexColorValue(a, "dark_sidebar_bg", !0);
     }
 };
@@ -184,24 +189,25 @@ const registerGeneralTab = (t)=>{
 ;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/login.ts
 let login_a = L.form;
 
-const registerLoginTab = (e)=>{
-    e.tab("login", _("Login page"), _("Adjust login card opacity and blur separately for light and dark mode."));
+const registerLoginTab = (l)=>{
+    l.tab("login", _("Login page"), _("Adjust login card opacity and blur separately for light and dark mode."));
+    let r = createModeSubtabs(l, "login", "login_mode_tabs");
     {
-        let l = e.taboption("login", login_a.ListValue, "transparency", _("Light mode login card opacity"), _("Opacity of the login card in light mode. 0 is fully transparent and 1 is fully opaque."));
-        for (let a of transparencySteps)l.value(String(a));
-        l.default = "0.5", l.rmempty = !1;
+        let t = r.taboption("light", login_a.ListValue, "transparency", _("Login card opacity"), _("Opacity of the login card in light mode. 0 is fully transparent and 1 is fully opaque."));
+        for (let a of transparencySteps)t.value(String(a));
+        t.default = "0.5", t.rmempty = !1;
     }
     {
-        let t = e.taboption("login", login_a.Value, "blur", _("Light mode backdrop blur radius"), _("Blur radius in pixels behind the login card in light mode. Use 0 to disable blur."));
+        let t = r.taboption("light", login_a.Value, "blur", _("Backdrop blur radius"), _("Blur radius in pixels behind the login card in light mode. Use 0 to disable blur."));
         t.datatype = "ufloat", t.default = "0", t.rmempty = !1;
     }
     {
-        let l = e.taboption("login", login_a.ListValue, "transparency_dark", _("Dark mode login card opacity"), _("Opacity of the login card in dark mode. 0 is fully transparent and 1 is fully opaque."));
-        for (let a of transparencySteps)l.value(String(a));
-        l.default = "0.5", l.rmempty = !1;
+        let t = r.taboption("dark", login_a.ListValue, "transparency_dark", _("Login card opacity"), _("Opacity of the login card in dark mode. 0 is fully transparent and 1 is fully opaque."));
+        for (let a of transparencySteps)t.value(String(a));
+        t.default = "0.5", t.rmempty = !1;
     }
     {
-        let t = e.taboption("login", login_a.Value, "blur_dark", _("Dark mode backdrop blur radius"), _("Blur radius in pixels behind the login card in dark mode. Use 0 to disable blur."));
+        let t = r.taboption("dark", login_a.Value, "blur_dark", _("Backdrop blur radius"), _("Blur radius in pixels behind the login card in dark mode. Use 0 to disable blur."));
         t.datatype = "ufloat", t.default = "0", t.rmempty = !1;
     }
 };
