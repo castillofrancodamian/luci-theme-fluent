@@ -35,8 +35,10 @@
     @if string.slice($color-str, 1, 1) == "#" {
       $color-str: string.slice($color-str, 2);
     }
-    $encoded: str-replace($encoded, "%23212121", "%23" + $color-str);
+    $encoded: str-replace($encoded, "currentColor", "%23" + $color-str);
   }
+  // Escape double quotes to prevent broken url() parsing in CSS
+  $encoded: str-replace($encoded, '"', "%22");
   background-image: url("data:image/svg+xml,#{$encoded}");
   background-size: $size $size;
   background-repeat: no-repeat;
@@ -98,7 +100,7 @@ $mask-content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALA
   width: $size;
   height: $size;
   background: $color-var !important;
-  @include set-icon-mask("data:image/svg+xml,#{$svg}");
+  @include set-icon-mask("data:image/svg+xml,#{$svg}", $name);
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-position: center;
@@ -124,8 +126,18 @@ $mask-content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALA
   mask-repeat: no-repeat;
 }
 
-@mixin set-icon-mask($icon) {
-  --icon-data: url("#{$icon}");
-  // -webkit-mask-image: var(--icon-data);
-  mask-image: var(--icon-data);
+@mixin set-icon-mask($icon, $name: null) {
+  // Escape double quotes in SVG data URI to prevent broken url() parsing
+  $escaped: str-replace($icon, '"', "%22");
+  @if $name {
+    // Use a unique variable name per icon to prevent Lightning CSS from
+    // incorrectly merging rules that share identical properties but differ
+    // in --icon-data values (e.g. multiple mask-icon-by-name rules).
+    $var-name: str-replace(str-replace($name, ":", "-"), ".", "-");
+    --fluent-mask-#{$var-name}: url("#{$escaped}");
+    mask-image: var(--fluent-mask-#{$var-name});
+  } @else {
+    --icon-data: url("#{$escaped}");
+    mask-image: var(--icon-data);
+  }
 }
