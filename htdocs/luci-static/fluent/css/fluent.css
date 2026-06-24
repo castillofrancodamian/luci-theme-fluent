@@ -8864,6 +8864,10 @@ body[data-page^="admin-status-realtime"] .main > .main-right > #maincontent .cbi
   stroke: var(--fluent-text-secondary) !important;
 }
 
+body[data-page^="admin-status-overview"] .main > .main-right > #maincontent .ifacebox > .ifacebox-body > br {
+  display: none;
+}
+
 body.login-page {
   width: 100vw !important;
   min-width: 100vw !important;
