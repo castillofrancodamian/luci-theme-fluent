@@ -1,5 +1,6 @@
 // Themes - Dark Mode
 // Based on FluentUI 2 dark theme tokens (Grey, Brand)
+@use "../mixins" as *;
 
 @mixin dark-theme-tokens {
   color-scheme: dark;
@@ -130,13 +131,6 @@
   --fluent-focus-inner-color: #000000;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    @include dark-theme-tokens;
-  }
-}
-
-// Manual dark mode toggle via data attribute
-[data-theme="dark"] {
+@include theme-dark {
   @include dark-theme-tokens;
 }

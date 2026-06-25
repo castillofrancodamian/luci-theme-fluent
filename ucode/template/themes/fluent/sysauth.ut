@@ -155,9 +155,7 @@
       let w = canvas.width = window.innerWidth;
       let h = canvas.height = window.innerHeight;
       
-      // Determine light/dark mode
-      const isDark = document.body.getAttribute('data-theme-mode') === 'dark' || 
-                     (document.body.getAttribute('data-theme-mode') === 'normal' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       
       // Dynamic color options based on theme
       const colors = isDark ? {

@@ -12,6 +12,8 @@ declare global {
 export function setupThemeFeatures() {
   const body = document.body;
   if (!body) return;
+  const ui = L.ui;
+  const callFluentSetMode = L.rpc.declare<number, [string]>({ object: 'luci.fluent', method: 'set_mode', params: ['mode'], expect: { result: 0 } });
 
   // ============================================================
   // 1. ACCESSIBILITY: PREFERS REDUCED MOTION SETTINGS
@@ -39,38 +41,46 @@ export function setupThemeFeatures() {
   // 2. DARK MODE TOGGLE BEHAVIOR
   // ============================================================
   const mode = body.getAttribute('data-theme-mode') || 'normal';
-  const toggle = document.getElementById('theme-toggle');
-  
+  const toggle = document.getElementById('theme-toggle') as HTMLButtonElement | null;
+
   if (toggle) {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     toggle.setAttribute('data-active-theme', isDark ? 'dark' : 'light');
-    
+    toggle.hidden = false;
+
     // Smoothly fade-in theme toggle icon once DOM is fully interactive
     requestAnimationFrame(() => {
       toggle.classList.add('visible');
     });
 
-    // Theme toggle click handler
-    toggle.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      const newTheme = current === 'dark' ? 'light' : 'dark';
-      
-      document.documentElement.setAttribute('data-theme', newTheme);
-      toggle.setAttribute('data-active-theme', newTheme);
-      
+    toggle.addEventListener('click', async () => {
+      if (toggle.disabled) return;
+
+      const currentMode = body.getAttribute('data-theme-mode') || mode;
+      const effectiveTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const nextMode = currentMode === 'normal' ? (effectiveTheme === 'dark' ? 'light' : 'dark') : (currentMode === 'dark' ? 'light' : 'dark');
+      const nextTheme = nextMode === 'dark' ? 'dark' : 'light';
+
+      toggle.disabled = true;
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      toggle.setAttribute('data-active-theme', nextTheme);
+
       try {
-        localStorage.setItem('fluent-theme', newTheme);
-      } catch {}
+        await callFluentSetMode(nextMode);
+        body.setAttribute('data-theme-mode', nextMode);
+      } catch (error) {
+        const rollbackTheme = currentMode === 'dark' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', rollbackTheme);
+        toggle.setAttribute('data-active-theme', rollbackTheme);
+        toggle.disabled = false;
+        ui.addNotification(null, `Failed to save theme mode: ${error instanceof Error ? error.message : String(error)}`, 'error');
+      }
     });
 
-    // System dark mode listener (active only when theme mode is set to 'normal')
     if (mode === 'normal') {
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        try {
-          if (localStorage.getItem('fluent-theme')) return;
-        } catch {}
-        const dark = e.matches;
-        const targetTheme = dark ? 'dark' : 'light';
+        if ((body.getAttribute('data-theme-mode') || 'normal') !== 'normal') return;
+        const targetTheme = e.matches ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', targetTheme);
         toggle.setAttribute('data-active-theme', targetTheme);
       });

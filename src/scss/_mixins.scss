@@ -392,3 +392,31 @@ $breakpoint-xxl: 1400px;
   white-space: nowrap;
   border: 0;
 }
+
+// ============================================================
+// THEME STATE HELPERS
+// Unified effective theme selectors driven by html[data-theme]
+// ============================================================
+@mixin theme-dark {
+  [data-theme="dark"] {
+    @content;
+  }
+}
+
+@mixin theme-light {
+  [data-theme="light"] {
+    @content;
+  }
+}
+
+@mixin theme-dark-context {
+  [data-theme="dark"] & {
+    @content;
+  }
+}
+
+@mixin theme-light-context {
+  [data-theme="light"] & {
+    @content;
+  }
+}

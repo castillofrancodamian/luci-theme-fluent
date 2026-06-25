@@ -1,5 +1,6 @@
 @use "sass:string";
 @use "../icons" as *;
+@use "../mixins" as *;
 
 // --- Cellular Data Icon Paths (from Fluent UI System Icons) ---
 // 5 bars (full strength)
@@ -46,13 +47,8 @@ $icon-size: 24px;
     height: $icon-size;
     vertical-align: middle;
 
-    [data-theme="dark"] & {
+    @include theme-dark-context {
         content: url("data:image/svg+xml,#{$svg-dark}") !important;
-    }
-    @media (prefers-color-scheme: dark) {
-        body:not([data-theme="light"]) & {
-            content: url("data:image/svg+xml,#{$svg-dark}") !important;
-        }
     }
 }
 img[src="/luci-static/resources/icons/port_down.svg"] {

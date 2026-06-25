@@ -1,5 +1,6 @@
 // Themes - Light Mode
 
+@use "../mixins" as *;
 @mixin light-theme-tokens {
   color-scheme: light;
 
@@ -152,6 +153,6 @@
   @include light-theme-tokens;
 }
 
-[data-theme="light"] {
+@include theme-light {
   @include light-theme-tokens;
 }

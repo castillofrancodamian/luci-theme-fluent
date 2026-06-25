@@ -1,6 +1,7 @@
 // Layouts - Login Page
 // Microsoft-style Login Page Design for FluentUI 2
 @use "../icons" as *;
+@use "../mixins" as *;
 
 body.login-page {
   width: 100vw !important;
@@ -704,15 +705,7 @@ body.login-page {
 // ============================================================
 // DARK MODE STYLES
 // ============================================================
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    .login-page {
-      @include login-page-dark-styles;
-    }
-  }
-}
-
-[data-theme="dark"] {
+@include theme-dark {
   .login-page {
     @include login-page-dark-styles;
   }

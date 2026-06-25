@@ -584,31 +584,42 @@ function setupIfaceboxTooltips() {
 function setupThemeFeatures() {
     let e = document.body;
     if (!e) return;
-    let t = e.getAttribute('data-prefers-reduced-motion') || '1';
-    if ('1' === t) {
+    let t = L.ui, i = L.rpc.declare({
+        object: 'luci.fluent',
+        method: 'set_mode',
+        params: [
+            'mode'
+        ],
+        expect: {
+            result: 0
+        }
+    }), r = e.getAttribute('data-prefers-reduced-motion') || '1';
+    if ('1' === r) {
         let t = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         e.setAttribute('data-reduce-motion', t ? 'true' : 'false');
     } else e.setAttribute('data-reduce-motion', 'false');
-    '1' === t && window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (t)=>{
+    '1' === r && window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (t)=>{
         e.setAttribute('data-reduce-motion', t.matches ? 'true' : 'false');
     });
-    let i = e.getAttribute('data-theme-mode') || 'normal', l = document.getElementById('theme-toggle');
-    if (l) {
-        let e = 'dark' === document.documentElement.getAttribute('data-theme');
-        l.setAttribute('data-active-theme', e ? 'dark' : 'light'), requestAnimationFrame(()=>{
-            l.classList.add('visible');
-        }), l.addEventListener('click', ()=>{
-            let e = 'dark' === document.documentElement.getAttribute('data-theme') ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', e), l.setAttribute('data-active-theme', e);
+    let l = e.getAttribute('data-theme-mode') || 'normal', a = document.getElementById('theme-toggle');
+    if (a) {
+        let r = 'dark' === document.documentElement.getAttribute('data-theme');
+        a.setAttribute('data-active-theme', r ? 'dark' : 'light'), a.hidden = !1, requestAnimationFrame(()=>{
+            a.classList.add('visible');
+        }), a.addEventListener('click', async ()=>{
+            if (a.disabled) return;
+            let r = e.getAttribute('data-theme-mode') || l, n = 'dark' === document.documentElement.getAttribute('data-theme') ? 'dark' : 'light', s = 'normal' === r ? 'dark' === n ? 'light' : 'dark' : 'dark' === r ? 'light' : 'dark', d = 'dark' === s ? 'dark' : 'light';
+            a.disabled = !0, document.documentElement.setAttribute('data-theme', d), a.setAttribute('data-active-theme', d);
             try {
-                localStorage.setItem('fluent-theme', e);
-            } catch (e) {}
-        }), 'normal' === i && window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)=>{
-            try {
-                if (localStorage.getItem('fluent-theme')) return;
-            } catch (e) {}
-            let t = e.matches ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', t), l.setAttribute('data-active-theme', t);
+                await i(s), e.setAttribute('data-theme-mode', s);
+            } catch (i) {
+                let e = 'dark' === r ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', e), a.setAttribute('data-active-theme', e), a.disabled = !1, t.addNotification(null, "Failed to save theme mode: ".concat(i instanceof Error ? i.message : String(i)), 'error');
+            }
+        }), 'normal' === l && window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (t)=>{
+            if ('normal' !== (e.getAttribute('data-theme-mode') || 'normal')) return;
+            let i = t.matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', i), a.setAttribute('data-active-theme', i);
         });
     }
     let n = '1' === e.getAttribute('data-tab-animation');
@@ -616,14 +627,14 @@ function setupThemeFeatures() {
         var t;
         let i = e.querySelector('.fluent-tab-slider');
         i || ((i = document.createElement('div')).className = 'fluent-tab-slider', e.appendChild(i));
-        let l = e.querySelector('li.cbi-tab, li.active');
-        if (!l) {
+        let r = e.querySelector('li.cbi-tab, li.active');
+        if (!r) {
             i.style.width = '0px';
             return;
         }
-        let n = l.querySelector('a');
-        if (!n) return;
-        let s = n.getBoundingClientRect(), r = e.getBoundingClientRect(), a = window.getComputedStyle(n), o = parseFloat(a.paddingLeft) || 16, d = parseFloat(a.paddingRight) || 16, u = s.left - r.left + e.scrollLeft + o, c = s.width - o - d, m = "".concat(u, "px"), f = "".concat(c, "px");
+        let l = r.querySelector('a');
+        if (!l) return;
+        let a = l.getBoundingClientRect(), n = e.getBoundingClientRect(), s = window.getComputedStyle(l), d = parseFloat(s.paddingLeft) || 16, o = parseFloat(s.paddingRight) || 16, u = a.left - n.left + e.scrollLeft + d, c = a.width - d - o, m = "".concat(u, "px"), f = "".concat(c, "px");
         if (i.style.left === m && i.style.width === f) return;
         let h = function(e) {
             if (e.classList.contains('tabs')) return 'header-tabs';
@@ -636,7 +647,7 @@ function setupThemeFeatures() {
             time: Date.now()
         });
     }
-    function r() {
+    function d() {
         document.querySelectorAll('ul.cbi-tabmenu, ul.tabs').forEach((e)=>{
             if (e.dataset.sliderInit) return void s(e);
             e.dataset.sliderInit = 'true';
@@ -647,8 +658,8 @@ function setupThemeFeatures() {
                     i = sessionStorage.getItem('fluent-tab-slider-pos');
                 } catch (e) {}
                 if (i) try {
-                    let l = JSON.parse(i);
-                    sessionStorage.removeItem('fluent-tab-slider-pos'), t.style.transition = 'none', t.style.left = l.left, t.style.width = l.width, t.offsetHeight, t.style.transition = '', s(e);
+                    let r = JSON.parse(i);
+                    sessionStorage.removeItem('fluent-tab-slider-pos'), t.style.transition = 'none', t.style.left = r.left, t.style.width = r.width, t.offsetHeight, t.style.transition = '', s(e);
                 } catch (t) {
                     s(e);
                 }
@@ -676,7 +687,7 @@ function setupThemeFeatures() {
             });
         });
     }
-    if (window._fluent_last_tab_pos = window._fluent_last_tab_pos || {}, r(), new MutationObserver(()=>r()).observe(e, {
+    if (window._fluent_last_tab_pos = window._fluent_last_tab_pos || {}, d(), new MutationObserver(()=>d()).observe(e, {
         childList: !0,
         subtree: !0
     }), window.addEventListener('resize', ()=>{
@@ -686,47 +697,47 @@ function setupThemeFeatures() {
     }), '1' === e.getAttribute('data-loading-bar')) {
         let e = !1, t = document.getElementById('fluent-top-loading'), i = ()=>{
             t && !e && t.classList.add('loaded');
-        }, l = ()=>{
+        }, r = ()=>{
             t && t.classList.remove('loaded');
         };
         'interactive' === document.readyState || 'complete' === document.readyState ? i() : document.addEventListener('DOMContentLoaded', i), window.addEventListener('load', i), window.addEventListener('beforeunload', ()=>{
-            e = !0, l();
+            e = !0, r();
         }), document.addEventListener('click', (e)=>{
             let t = e.target;
             if (!t) return;
             let i = t.closest('a');
             if (i) {
                 let e = i.getAttribute('href');
-                !e || e.startsWith('#') || e.startsWith("javascript:") || i.getAttribute('target') || i.hostname !== location.hostname || l();
+                !e || e.startsWith('#') || e.startsWith("javascript:") || i.getAttribute('target') || i.hostname !== location.hostname || r();
             }
         }), document.addEventListener('submit', (e)=>{
             if (e.defaultPrevented) return;
             let t = e.target;
             if (!t) return;
             let i = t.closest('form');
-            i && !i.getAttribute('target') && l();
+            i && !i.getAttribute('target') && r();
         }), new MutationObserver(()=>{
-            null !== document.querySelector('.spinning, .loading, #view > .spinning') ? l() : i();
+            null !== document.querySelector('.spinning, .loading, #view > .spinning') ? r() : i();
         }).observe(document.documentElement, {
             childList: !0,
             subtree: !0
         });
     }
-    function a(e, t) {
-        let i, l, n = t ? 'fluent-sidebar-parent-slider' : 'fluent-sidebar-slider', s = e.querySelector(".".concat(n));
-        s || ((s = document.createElement('div')).className = n, e.appendChild(s));
-        let r = e.querySelector('li.active');
-        if (!r || t && (r.classList.contains('slide') || r.querySelector('.slide-menu'))) {
-            s.style.height = '0px', s.style.opacity = '0';
+    function o(e, t) {
+        let i, r, l = t ? 'fluent-sidebar-parent-slider' : 'fluent-sidebar-slider', a = e.querySelector(".".concat(l));
+        a || ((a = document.createElement('div')).className = l, e.appendChild(a));
+        let n = e.querySelector('li.active');
+        if (!n || t && (n.classList.contains('slide') || n.querySelector('.slide-menu'))) {
+            a.style.height = '0px', a.style.opacity = '0';
             return;
         }
-        s.style.opacity = '1';
-        let a = t ? r.querySelector('a.menu, a.food') : r;
-        if (!a) return;
-        let o = a.getBoundingClientRect(), d = e.getBoundingClientRect();
-        t ? (i = o.top - d.top + e.scrollTop, l = o.height) : (i = o.top - d.top + e.scrollTop + 0.15 * o.height, l = 0.7 * o.height), s.style.top = "".concat(i, "px"), s.style.height = "".concat(l, "px");
+        a.style.opacity = '1';
+        let s = t ? n.querySelector('a.menu, a.food') : n;
+        if (!s) return;
+        let d = s.getBoundingClientRect(), o = e.getBoundingClientRect();
+        t ? (i = d.top - o.top + e.scrollTop, r = d.height) : (i = d.top - o.top + e.scrollTop + 0.15 * d.height, r = 0.7 * d.height), a.style.top = "".concat(i, "px"), a.style.height = "".concat(r, "px");
     }
-    function o() {
+    function u() {
         let e = document.querySelector('#mainmenu');
         if (!e) return;
         let t = e.querySelector('ul.nav');
@@ -753,7 +764,7 @@ function setupThemeFeatures() {
                     sessionStorage.removeItem('fluent-sidebar-parent-pos'), e.style.transition = 'none', e.style.top = i.top, e.style.height = i.height, e.offsetHeight, e.style.transition = '';
                 } catch (e) {}
             }
-            a(t, !0);
+            o(t, !0);
         }
         e.querySelectorAll('ul.slide-menu').forEach((e)=>{
             let t = e.classList.contains('active'), i = e.querySelector('.fluent-sidebar-slider');
@@ -778,26 +789,26 @@ function setupThemeFeatures() {
                     sessionStorage.removeItem('fluent-sidebar-submenu-pos'), i.style.transition = 'none', i.style.top = t.top, i.style.height = t.height, i.offsetHeight, i.style.transition = '';
                 } catch (e) {}
             }
-            a(e, !1);
+            o(e, !1);
         });
     }
-    o(), new MutationObserver(()=>o()).observe(e, {
+    u(), new MutationObserver(()=>u()).observe(e, {
         childList: !0,
         subtree: !0
     }), document.addEventListener('fluent-menu-expand', ()=>{
         let e = document.querySelector('#mainmenu');
         if (e) {
             let t = e.querySelector('ul.nav');
-            t && (a(t, !0), setTimeout(()=>{
-                a(t, !0);
+            t && (o(t, !0), setTimeout(()=>{
+                o(t, !0);
             }, 250));
         }
     }), window.addEventListener('resize', ()=>{
         let e = document.querySelector('#mainmenu');
         if (e) {
             let t = e.querySelector('ul.nav');
-            t && a(t, !0), e.querySelectorAll('ul.slide-menu').forEach((e)=>{
-                a(e, !1);
+            t && o(t, !0), e.querySelectorAll('ul.slide-menu').forEach((e)=>{
+                o(e, !1);
             });
         }
     });

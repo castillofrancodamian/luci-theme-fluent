@@ -77,12 +77,8 @@ body > div.main > div.main-right > header {
       }
 
       // In dark mode or on bg-primary (blue header), icon should be white
-      [data-theme="dark"] &::before {
-        @include fluent-icon-by-name("line-horizontal-3-20-regular", 20px, #ffffff);
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root:not([data-theme="light"]) &::before {
+      @include theme-dark-context {
+        &::before {
           @include fluent-icon-by-name("line-horizontal-3-20-regular", 20px, #ffffff);
         }
       }
@@ -217,7 +213,7 @@ body > div.main > div.main-right > header {
   }
 
   // Dark mode overrides for status indicators
-  [data-theme="dark"] {
+  @include theme-dark {
     .status #xhr_poll_status {
       &[data-style="active"] {
         background-color: rgba(255, 255, 255, 0.06);
@@ -236,32 +232,6 @@ body > div.main > div.main-right > header {
 
         &:hover {
           background-color: rgba(251, 99, 64, 0.25);
-        }
-      }
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      .status #xhr_poll_status {
-        &[data-style="active"] {
-          background-color: rgba(255, 255, 255, 0.06);
-          color: var(--fluent-primary);
-          border-color: rgba(255, 255, 255, 0.15);
-
-          &:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-          }
-        }
-
-        &[data-style="inactive"] {
-          background-color: rgba(251, 99, 64, 0.15);
-          color: #ff8f73;
-          border-color: #ff8f73;
-
-          &:hover {
-            background-color: rgba(251, 99, 64, 0.25);
-          }
         }
       }
     }

@@ -1044,14 +1044,8 @@
           background-image var(--fluent-duration-fast) var(--fluent-easing-standard);
         @include fluent-icon-content-by-name("chevron-down-20-regular", 14px, #605e5c);
 
-        [data-theme="dark"] & {
+        @include theme-dark-context {
           @include fluent-icon-by-name("chevron-down-20-regular", 14px, #a0a0a0);
-        }
-
-        @media (prefers-color-scheme: dark) {
-          :root:not([data-theme="light"]) & {
-            @include fluent-icon-by-name("chevron-down-20-regular", 14px, #a0a0a0);
-          }
         }
       }
 

@@ -77,16 +77,18 @@
 	{% if (mode === 'normal') { %}
 	<meta name="theme-color" content="{{ bar_color }}">
 	<script type="text/javascript">
-		let prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-		if (prefersDarkMode) {
-			viewport = document.querySelector("meta[name=theme-color]");
-			viewport.setAttribute('content', '#444950');
-		}
+		(function() {
+			let isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+			document.querySelector("meta[name=theme-color]")?.setAttribute('content', isDark ? '#444950' : '{{ bar_color }}');
+		})();
 	</script>
 	{% } else if (mode === 'dark') { %}
 	<meta name="theme-color" content="#444950">
+	<script type="text/javascript">document.documentElement.setAttribute('data-theme', 'dark');</script>
 	{% } else if (mode === 'light') { %}
 	<meta name="theme-color" content="{{ bar_color }}">
+	<script type="text/javascript">document.documentElement.setAttribute('data-theme', 'light');</script>
 	{% } %}
 
 	<link rel="stylesheet" href="{{ media }}/css/fluent.css">
@@ -104,7 +106,7 @@
 		{# Dark mode overrides - must come AFTER default values #}
 		{% if (mode === 'normal') { %}
 			@media (prefers-color-scheme: dark) {
-				:root {
+				:root:not([data-theme="light"]) {
 					--fluent-primary: {{ dark_primary }};
 				}
 			}

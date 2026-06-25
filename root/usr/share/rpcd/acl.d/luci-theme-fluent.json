@@ -14,6 +14,9 @@
 			"file": {
 				"/tmp/fluent_background.tmp": [ "write" ]
 			},
+			"ubus": {
+				"luci.fluent": [ "set_mode" ]
+			},
 			"uci": [ "fluent" ]
 		}
 	}

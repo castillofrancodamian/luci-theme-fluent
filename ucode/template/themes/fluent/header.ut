@@ -303,24 +303,13 @@
     // Dark mode logic
     (function() {
       var mode = '{{ mode }}';
-      var isDark = false;
-      if (mode === 'dark') {
-        isDark = true;
-      } else if (mode === 'normal') {
+      var isDark = (mode === 'dark');
+
+      if (mode === 'normal') {
         isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       }
-      
-      // Restore stored preference immediately in head to avoid flash of light/dark mode
-      try {
-        var stored = localStorage.getItem('fluent-theme');
-        if (stored) isDark = (stored === 'dark');
-      } catch(e) {}
 
-      if (isDark) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-      }
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
     })();
   </script>
 </head>
