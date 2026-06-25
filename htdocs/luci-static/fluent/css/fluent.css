@@ -1753,103 +1753,6 @@ div.td, div.th {
   }
 }
 
-.main-left .nav {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.main-left .nav > li {
-  position: relative;
-}
-
-.main-left .nav > li > a {
-  padding: 0 var(--fluent-space-sm);
-  color: var(--fluent-text);
-  font-size: var(--fluent-font-size-base);
-  border-radius: var(--fluent-radius-md);
-  transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),color var(--fluent-duration-fast) var(--fluent-easing-standard);
-  align-items: center;
-  height: 36px;
-  line-height: 1;
-  text-decoration: none;
-  display: flex;
-}
-
-.main-left .nav > li > a:before {
-  margin-right: var(--fluent-space-sm);
-}
-
-.main-left .nav > li > a:hover {
-  background: var(--fluent-sidebar-item-hover);
-  color: var(--fluent-text);
-}
-
-.main-left .nav > li > a:focus-visible {
-  outline: 2px solid var(--fluent-focus-color);
-  outline-offset: -2px;
-}
-
-.main-left .nav > li.active > a, .main-left .nav > li.slide-active > a {
-  background: var(--fluent-sidebar-item-active);
-  color: var(--fluent-primary);
-  font-weight: var(--fluent-font-weight-semibold);
-}
-
-.main-left .nav > li .nav > li > a {
-  padding-left: calc(var(--fluent-space-sm) + var(--fluent-space-xl));
-}
-
-.slide-menu {
-  overflow: hidden;
-}
-
-.menu {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.menu li a {
-  padding: 0 var(--fluent-space-sm);
-  color: var(--fluent-text);
-  font-size: var(--fluent-font-size-base);
-  border-radius: var(--fluent-radius-md);
-  transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),color var(--fluent-duration-fast) var(--fluent-easing-standard);
-  align-items: center;
-  height: 32px;
-  text-decoration: none;
-  display: flex;
-}
-
-.menu li a:hover {
-  background: var(--fluent-sidebar-item-hover);
-  color: var(--fluent-text);
-}
-
-.menu li.active a {
-  background: var(--fluent-sidebar-item-active);
-  color: var(--fluent-primary);
-  font-weight: var(--fluent-font-weight-semibold);
-}
-
-.menu li.active a:before {
-  content: "";
-  background-color: var(--fluent-primary);
-  border-radius: 2px;
-  width: 4px;
-  height: 70%;
-  position: absolute;
-  top: 15%;
-  left: 4px;
-}
-
-#mainmenu {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
 #modal_overlay {
   background: var(--fluent-modal-overlay);
   width: 100%;
@@ -9579,11 +9482,11 @@ body.login-page {
   border-right: 1px solid var(--fluent-border);
   height: 100vh;
   z-index: var(--fluent-zindex-menu);
-  transition: transform var(--fluent-duration-normal) var(--fluent-easing-standard);
+  transition: width var(--fluent-duration-normal) var(--fluent-easing-standard),transform var(--fluent-duration-normal) var(--fluent-easing-standard);
   position: fixed;
   top: 0;
   left: 0;
-  overflow-y: auto;
+  overflow: hidden auto;
 }
 
 .main-left::-webkit-scrollbar {
@@ -9626,19 +9529,21 @@ body.login-page {
 }
 
 .main-left .sidenav-header {
-  padding: 0 var(--fluent-space-lg);
-  height: var(--fluent-header-height, 48px);
-  border-bottom: 1px solid var(--fluent-border);
-  flex-shrink: 0;
   align-items: center;
+  gap: var(--fluent-space-sm);
+  height: var(--fluent-header-height, 48px);
+  padding: 0 var(--fluent-space-md) 0 var(--fluent-space-sm);
+  border-bottom: none;
   display: flex;
 }
 
 .main-left .sidenav-header .brand {
   align-items: center;
-  gap: var(--fluent-space-sm, 8px);
-  flex: 1;
+  gap: var(--fluent-space-sm);
   min-width: 0;
+  height: 36px;
+  color: var(--fluent-text);
+  flex: auto;
   text-decoration: none;
   display: flex;
 }
@@ -9650,21 +9555,69 @@ body.login-page {
 }
 
 .main-left .sidenav-header .brand .brand-text {
-  font-family: var(--fluent-font-family);
-  font-size: var(--fluent-font-size-md, 16px);
-  font-weight: var(--fluent-font-weight-bold, 700);
-  color: var(--fluent-text);
   white-space: nowrap;
   text-overflow: ellipsis;
+  min-width: 0;
   max-width: 100%;
-  transition: font-size var(--fluent-duration-fast) var(--fluent-easing-standard);
+  color: var(--fluent-text);
+  font-size: 14px;
+  font-weight: var(--fluent-font-weight-semibold);
+  transition: font-size var(--fluent-duration-fast) var(--fluent-easing-standard),opacity var(--fluent-duration-fast) var(--fluent-easing-standard);
+  line-height: 1.2;
   display: inline-block;
   overflow: hidden;
 }
 
-.main-left .sidenav-header .ml-auto {
+.main-left .sidenav-header .sidebar-collapse-toggle {
+  width: 32px;
+  height: 32px;
+  color: var(--fluent-text-secondary);
+  border-radius: var(--fluent-radius-md);
+  cursor: pointer;
+  transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  background: none;
+  border: none;
   flex-shrink: 0;
-  margin-left: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  display: inline-flex;
+}
+
+.main-left .sidenav-header .sidebar-collapse-toggle:before {
+  content: "";
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23605e5c' d=%22M2 4.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m.5 4.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1z%22/></svg>");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.main-left .sidenav-header .sidebar-collapse-toggle:hover {
+  background: var(--fluent-sidebar-item-hover);
+  color: var(--fluent-text);
+}
+
+.main-left .sidenav-header .sidebar-collapse-toggle:focus-visible {
+  outline: 2px solid var(--fluent-focus-color);
+  outline-offset: -2px;
+}
+
+[data-theme="dark"] .main-left .sidenav-header .sidebar-collapse-toggle:before {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23a0a0a0' d=%22M2 4.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m.5 4.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1z%22/></svg>");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+
+[data-theme="dark"] .main-left .sidenav-header .sidebar-collapse-toggle:hover:before {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23f3f2f1' d=%22M2 4.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m.5 4.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1z%22/></svg>");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
 }
 
 .main-right {
@@ -9677,21 +9630,21 @@ body.login-page {
 }
 
 .main-left .nav {
-  margin-top: var(--fluent-space-xs);
-  padding: 0 var(--fluent-space-xs);
-  transition: all var(--fluent-duration-normal) var(--fluent-easing-standard);
+  padding: var(--fluent-space-xs) var(--fluent-space-sm) var(--fluent-space-sm);
+  margin: 0;
+  list-style: none;
   position: relative;
 }
 
 .main-left .nav .fluent-sidebar-parent-slider {
   background-color: var(--fluent-primary);
-  width: 4px;
+  width: 3px;
   transition: top var(--fluent-duration-normal) var(--fluent-easing-standard),height var(--fluent-duration-normal) var(--fluent-easing-standard),opacity var(--fluent-duration-normal) var(--fluent-easing-standard);
   pointer-events: none;
   z-index: 10;
-  border-radius: 2px;
+  border-radius: 999px;
   position: absolute;
-  left: 4px;
+  left: 3px;
 }
 
 body[data-tab-animation="0"] .main-left .nav .fluent-sidebar-parent-slider, body[data-reduce-motion="true"] .main-left .nav .fluent-sidebar-parent-slider {
@@ -9699,9 +9652,12 @@ body[data-tab-animation="0"] .main-left .nav .fluent-sidebar-parent-slider, body
 }
 
 .main-left .nav > li > a:first-child {
+  align-items: center;
+  gap: var(--fluent-space-sm);
   padding: 0 var(--fluent-space-sm);
   border-radius: var(--fluent-radius-md);
   cursor: pointer;
+  min-width: 0;
   height: 36px;
   font-size: var(--fluent-font-size-base);
   font-weight: var(--fluent-font-weight-regular);
@@ -9709,7 +9665,6 @@ body[data-tab-animation="0"] .main-left .nav .fluent-sidebar-parent-slider, body
   box-shadow: none;
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),color var(--fluent-duration-fast) var(--fluent-easing-standard),border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
   background: none;
-  align-items: center;
   margin: 2px 0;
   text-decoration: none;
   display: flex;
@@ -9717,12 +9672,12 @@ body[data-tab-animation="0"] .main-left .nav .fluent-sidebar-parent-slider, body
 }
 
 .main-left .nav > li > a:first-child .menu-icon {
-  margin-right: var(--fluent-space-sm);
+  width: 20px;
+  height: 20px;
+  color: var(--fluent-text-secondary);
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
-  width: 20px;
-  height: 20px;
   display: inline-flex;
   position: relative;
 }
@@ -9750,6 +9705,14 @@ body[data-tab-animation="0"] .main-left .nav .fluent-sidebar-parent-slider, body
 
 .main-left .nav > li > a:first-child .menu-icon:after {
   opacity: 0;
+}
+
+.main-left .nav > li > a:first-child .menu-label {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: auto;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .main-left .nav > li > a:first-child[data-title="Dashboard"] .menu-icon:before {
@@ -9946,6 +9909,7 @@ body[data-tab-animation="0"] .main-left .nav .fluent-sidebar-parent-slider, body
   user-select: none;
   transition: all var(--fluent-duration-normal) var(--fluent-easing-standard);
   padding: 0;
+  list-style: none;
 }
 
 .main-left .nav li a {
@@ -9969,23 +9933,23 @@ body[data-tab-animation="0"] .main-left .nav .fluent-sidebar-parent-slider, body
 }
 
 .main-left .nav li.slide .slide-menu {
-  padding: 0 var(--fluent-space-xs);
-  border-radius: var(--fluent-radius-md);
+  margin: 0 0 var(--fluent-space-xs) 36px;
   transition: all var(--fluent-duration-normal) var(--fluent-easing-standard);
-  background: #00000005;
-  margin: 0 0 0 20px;
+  background: none;
+  border-radius: 0;
+  padding: 0;
   position: relative;
 }
 
 .main-left .nav li.slide .slide-menu .fluent-sidebar-slider {
   background-color: var(--fluent-primary);
-  width: 4px;
+  border-radius: var(--fluent-radius-sm);
+  width: 3px;
   transition: top var(--fluent-duration-normal) var(--fluent-easing-standard),height var(--fluent-duration-normal) var(--fluent-easing-standard);
   pointer-events: none;
   z-index: 10;
-  border-radius: 2px;
   position: absolute;
-  left: 4px;
+  left: 0;
 }
 
 body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sidebar-slider, body[data-reduce-motion="true"] .main-left .nav li.slide .slide-menu .fluent-sidebar-slider {
@@ -10005,17 +9969,16 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
   background: none;
   margin: 2px 0;
-  list-style: none;
   position: relative;
 }
 
 .main-left .nav li.slide .slide-menu li:before {
   content: "";
-  width: 4px;
+  border-radius: var(--fluent-radius-sm);
+  width: 3px;
   height: 70%;
   transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
   background-color: #0000;
-  border-radius: 2px;
   position: absolute;
   top: 15%;
   left: 0;
@@ -10027,19 +9990,18 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
 }
 
 .main-left .nav li.slide .slide-menu li a {
-  padding: var(--fluent-space-xs) var(--fluent-space-sm);
-  padding-left: var(--fluent-space-md);
+  padding: 0 var(--fluent-space-sm);
   border-radius: var(--fluent-radius-md);
+  align-items: center;
+  gap: var(--fluent-space-xs);
   height: 32px;
   box-shadow: none;
-  transition: color var(--fluent-duration-fast) var(--fluent-easing-standard);
-  align-items: center;
+  transition: color var(--fluent-duration-fast) var(--fluent-easing-standard),background var(--fluent-duration-fast) var(--fluent-easing-standard);
   text-decoration: none;
   display: flex;
 }
 
 .main-left .nav li.slide .slide-menu li a .menu-icon {
-  margin-right: var(--fluent-space-xs);
   width: 16px;
   height: 16px;
   color: inherit;
@@ -10075,481 +10037,490 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
   opacity: 0;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="wall" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="clash" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="ssr" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="vpn" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="ipsec" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="tailscale" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="nikki" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="tunnel" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="tier" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="proxy" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a .menu-label {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: auto;
+  min-width: 0;
+  font-size: 13px;
+  overflow: hidden;
+}
+
+.main-left .nav li.slide .slide-menu li a[data-title*="wall" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="clash" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="ssr" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="vpn" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="ipsec" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="tailscale" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="nikki" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="tunnel" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="tier" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="proxy" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="wall" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="clash" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="ssr" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="vpn" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="ipsec" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="tailscale" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="nikki" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="tunnel" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="tier" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="proxy" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="wall" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="clash" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="ssr" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="vpn" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="ipsec" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="tailscale" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="nikki" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="tunnel" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="tier" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="proxy" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M9.723 2.084a.5.5 0 0 1 .554 0a15.05 15.05 0 0 0 6.294 2.421A.5.5 0 0 1 17 5v4.341a3 3 0 0 0-1-.94V5.428a16 16 0 0 1-5.6-2.082l-.4-.249l-.4.249A16 16 0 0 1 4 5.428V9.5c0 3.392 1.968 5.863 6 7.463V17c0 .342.086.663.237.945l-.057.022a.5.5 0 0 1-.36 0C5.308 16.23 3 13.39 3 9.5V5a.5.5 0 0 1 .43-.495a15.05 15.05 0 0 0 6.293-2.421M12.5 12v-1a2 2 0 1 1 4 0v1h.5a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1zm1-1v1h2v-1a1 1 0 1 0-2 0m1.75 4a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="wall" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="clash" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="ssr" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="vpn" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="ipsec" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="tailscale" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="nikki" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="tunnel" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="tier" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="proxy" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="wall" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="clash" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="ssr" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="vpn" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="ipsec" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="tailscale" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="nikki" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="tunnel" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="tier" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="proxy" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M12.5 12v-1a2 2 0 1 1 4 0v1h.5a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1zm1-1v1h2v-1a1 1 0 1 0-2 0m1.75 4a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0M9.723 2.084a.5.5 0 0 1 .554 0a15.05 15.05 0 0 0 6.294 2.421A.5.5 0 0 1 17 5v4.341A3 3 0 0 0 11.5 11v.063A2 2 0 0 0 10 13v4c0 .342.086.663.237.945l-.057.022a.5.5 0 0 1-.36 0C5.308 16.23 3 13.39 3 9.5V5a.5.5 0 0 1 .43-.495a15.05 15.05 0 0 0 6.293-2.421'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="bypass" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="bypass" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="bypass" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="bypass" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M7.854 7.146a.5.5 0 1 0-.708.708L9.293 10l-2.147 2.146a.5.5 0 0 0 .708.708L10 10.707l2.146 2.147a.5.5 0 0 0 .708-.708L10.707 10l2.147-2.146a.5.5 0 0 0-.708-.708L10 9.293zm2.423-5.062a.5.5 0 0 0-.554 0a15.05 15.05 0 0 1-6.294 2.421A.5.5 0 0 0 3 5v4.5c0 3.891 2.307 6.73 6.82 8.467a.5.5 0 0 0 .36 0C14.693 16.23 17 13.39 17 9.5V5a.5.5 0 0 0-.43-.495a15.05 15.05 0 0 1-6.293-2.421M4 5.428a16 16 0 0 0 5.6-2.082l.4-.249l.4.249A16 16 0 0 0 16 5.428V9.5c0 3.392-1.968 5.863-6 7.463c-4.032-1.6-6-4.071-6-7.463z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="bypass" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="bypass" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10.277 2.084a15.05 15.05 0 0 0 6.294 2.421A.5.5 0 0 1 17 5v4.5c0 3.891-2.307 6.73-6.82 8.467a.5.5 0 0 1-.36 0C5.308 16.23 3 13.39 3 9.5V5a.5.5 0 0 1 .43-.495a15.05 15.05 0 0 0 6.293-2.421a.5.5 0 0 1 .554 0M8.03 6.97a.75.75 0 0 0-1.06 1.06L8.94 10l-1.97 1.97a.75.75 0 1 0 1.06 1.06L10 11.06l1.97 1.97a.75.75 0 1 0 1.06-1.06L11.06 10l1.97-1.97a.75.75 0 0 0-1.06-1.06L10 8.94z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="guard" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="guard" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="guard" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="guard" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M9.723 2.084a.5.5 0 0 1 .554 0a15.05 15.05 0 0 0 6.294 2.421A.5.5 0 0 1 17 5v4.6a5.5 5.5 0 0 0-1-.393v-3.78a16 16 0 0 1-5.6-2.081l-.4-.249l-.4.249A16 16 0 0 1 4 5.428V9.5c0 3.242 1.798 5.643 5.478 7.246c.195.435.444.84.74 1.206l-.038.015a.5.5 0 0 1-.36 0C5.308 16.23 3 13.39 3 9.5V5a.5.5 0 0 1 .43-.495a15.05 15.05 0 0 0 6.293-2.421M19 14.5a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0m-2.146-1.854a.5.5 0 0 0-.708 0L13.5 15.293l-.646-.647a.5.5 0 0 0-.708.708l1 1a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0 0-.708'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="guard" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="guard" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M9.723 2.084a.5.5 0 0 1 .554 0a15.05 15.05 0 0 0 6.294 2.421A.5.5 0 0 1 17 5v4.6a5.5 5.5 0 0 0-6.782 8.352l-.038.015a.5.5 0 0 1-.36 0C5.308 16.23 3 13.39 3 9.5V5a.5.5 0 0 1 .43-.495a15.05 15.05 0 0 0 6.293-2.421M19 14.5a4.5 4.5 0 1 0-9 0a4.5 4.5 0 0 0 9 0m-2.146-1.854a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647l2.646-2.647a.5.5 0 0 1 .708 0'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="dns" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="dns" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="dns" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="dns" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10 18q.74 0 1.442-.13a6 6 0 0 1-.755-1.077c-.233.14-.465.207-.687.207c-.657 0-1.407-.59-2.022-1.908A9.3 9.3 0 0 1 7.42 13.5H10v-1H7.206A15 15 0 0 1 7 10c0-.883.073-1.725.206-2.5h5.588c.096.561.161 1.157.19 1.779a6.3 6.3 0 0 0 .867-.74q.038-.039.078-.074q-.047-.495-.122-.965h2.733c.21.55.354 1.132.419 1.738c.31.224.662.429 1.039.57A8 8 0 1 0 10 18m0-15c.657 0 1.407.59 2.022 1.908c.217.466.406 1.002.559 1.592H7.419c.153-.59.342-1.126.56-1.592C8.592 3.59 9.342 3 10 3M7.072 4.485A10.5 10.5 0 0 0 6.389 6.5H3.936a7.02 7.02 0 0 1 3.778-3.118c-.241.33-.456.704-.642 1.103M6.192 7.5A16 16 0 0 0 6 10c0 .87.067 1.712.193 2.5H3.46A7 7 0 0 1 3 10c0-.88.163-1.724.46-2.5zm.197 6c.176.743.407 1.422.683 2.015c.186.399.401.773.642 1.103A7.02 7.02 0 0 1 3.936 13.5zm5.897-10.118A7.02 7.02 0 0 1 16.064 6.5H13.61a10.5 10.5 0 0 0-.683-2.015a6.6 6.6 0 0 0-.642-1.103m6.215 7.583c-1.37-.193-2.486-1.134-3.066-1.726a.624.624 0 0 0-.87 0c-.58.592-1.695 1.533-3.066 1.726c-.274.038-.499.259-.499.535V14c0 3.468 3.182 4.727 3.87 4.959a.4.4 0 0 0 .26 0C15.818 18.727 19 17.469 19 14v-2.5c0-.276-.225-.497-.499-.535'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="dns" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="dns" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M7.987 4.18a12.2 12.2 0 0 0-.669 2.32h5.364a12.2 12.2 0 0 0-.67-2.32c-.301-.733-.648-1.294-1.008-1.663C10.646 2.149 10.307 2 10 2s-.646.149-1.004.517c-.36.37-.707.93-1.009 1.663m-.096-1.899c-.314.426-.59.941-.828 1.518c-.32.78-.58 1.694-.762 2.701H2.804a8.02 8.02 0 0 1 5.087-4.219m4.219 0c.313.426.59.941.827 1.518c.32.78.58 1.694.762 2.701h3.497a8.02 8.02 0 0 0-5.087-4.219M17.602 7.5H13.85q.057.466.094.952a1.626 1.626 0 0 1 2.205.087c.424.433 1.083.983 1.849 1.269a8 8 0 0 0-.396-2.308m-4.76 0q.111.85.145 1.776c-.47.33-1.03.614-1.628.698c-.68.096-1.36.669-1.359 1.526v1H7.158A19 19 0 0 1 7 10c0-.875.056-1.715.158-2.5zm-5.524 6H10v.5c0 1.424.454 2.547 1.074 3.409l-.07.074c-.358.368-.697.517-1.004.517s-.646-.149-1.004-.517c-.36-.37-.707-.93-1.009-1.663a12.2 12.2 0 0 1-.669-2.32m.573 4.219A8.02 8.02 0 0 1 2.804 13.5h3.497c.182 1.007.441 1.922.762 2.7c.237.578.514 1.093.828 1.519M2.398 12.5H6.15A21 21 0 0 1 6 10c0-.866.052-1.705.15-2.5H2.398A8 8 0 0 0 2 10c0 .873.14 1.713.398 2.5m16.103-1.535c-1.37-.193-2.486-1.134-3.066-1.726a.624.624 0 0 0-.87 0c-.58.592-1.695 1.533-3.066 1.726c-.274.038-.499.259-.499.535V14c0 3.468 3.182 4.727 3.87 4.959a.4.4 0 0 0 .26 0C15.818 18.727 19 17.469 19 14v-2.5c0-.276-.225-.497-.499-.535'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="ddns" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="ddns" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="ddns" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="ddns" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10 18q.128 0 .254-.004a5.5 5.5 0 0 1-.698-1.083c-.536-.207-1.098-.793-1.578-1.821A9.3 9.3 0 0 1 7.42 13.5h1.672q.096-.52.284-1h-2.17A15 15 0 0 1 7 10c0-.883.073-1.725.206-2.5h5.588c.092.541.156 1.115.186 1.713q.48-.138.992-.188a16 16 0 0 0-.165-1.525h2.733c.251.656.406 1.36.448 2.094q.543.276 1.008.66A8 8 0 1 0 10 18m0-15c.657 0 1.407.59 2.022 1.908c.217.466.406 1.002.559 1.592H7.419c.153-.59.342-1.126.56-1.592C8.592 3.59 9.342 3 10 3M7.072 4.485A10.5 10.5 0 0 0 6.389 6.5H3.936a7.02 7.02 0 0 1 3.778-3.118c-.241.33-.456.704-.642 1.103M6.192 7.5A16 16 0 0 0 6 10c0 .87.067 1.712.193 2.5H3.46A7 7 0 0 1 3 10c0-.88.163-1.724.46-2.5zm.197 6c.176.743.407 1.422.683 2.015c.186.399.401.773.642 1.103A7.02 7.02 0 0 1 3.936 13.5zm5.897-10.118A7.02 7.02 0 0 1 16.064 6.5H13.61a10.5 10.5 0 0 0-.683-2.015a6.6 6.6 0 0 0-.642-1.103M19 14.5a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0m-4.854-2.353l-2 2a.5.5 0 0 0 .708.707L14 13.707V16.5a.5.5 0 0 0 1 0v-2.793l1.146 1.147a.5.5 0 0 0 .708-.708l-2-2a.5.5 0 0 0-.351-.146h-.006a.5.5 0 0 0-.348.144z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="ddns" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="ddns" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M7.987 4.18a12.2 12.2 0 0 0-.669 2.32h5.364a12.2 12.2 0 0 0-.67-2.32c-.301-.733-.648-1.294-1.008-1.663C10.646 2.149 10.307 2 10 2s-.646.149-1.004.517c-.36.37-.707.93-1.009 1.663m-.096-1.899c-.314.426-.59.941-.828 1.518c-.32.78-.58 1.694-.762 2.701H2.804a8.02 8.02 0 0 1 5.087-4.219m4.219 0c.313.426.59.941.827 1.518c.32.78.58 1.694.762 2.701h3.497a8.02 8.02 0 0 0-5.087-4.219M17.602 7.5H13.85q.091.74.128 1.524Q14.236 9 14.5 9c1.328 0 2.546.47 3.496 1.254a8 8 0 0 0-.394-2.754m-4.76 0c.071.546.12 1.119.143 1.711a5.51 5.51 0 0 0-3.61 3.289H7.158A19 19 0 0 1 7 10c0-.875.056-1.715.158-2.5zm-5.524 6h1.773q-.09.487-.091 1c0 1.316.462 2.525 1.234 3.471A1 1 0 0 1 10 18c-.307 0-.646-.149-1.004-.517c-.36-.37-.707-.93-1.009-1.663a12.2 12.2 0 0 1-.669-2.32m.573 4.219A8.02 8.02 0 0 1 2.804 13.5h3.497c.182 1.007.441 1.922.762 2.7c.237.578.514 1.093.828 1.519M2.398 12.5H6.15A21 21 0 0 1 6 10c0-.866.052-1.705.15-2.5H2.398A8 8 0 0 0 2 10c0 .873.14 1.713.398 2.5M19 14.5a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0m-4.854-2.353l-2 2a.5.5 0 0 0 .708.707L14 13.707V16.5a.5.5 0 0 0 1 0v-2.793l1.146 1.147a.5.5 0 0 0 .708-.708l-2-2a.5.5 0 0 0-.351-.146h-.006a.5.5 0 0 0-.348.144z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="docker" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="docker" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="docker" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="docker" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M11.3 2.48a3.5 3.5 0 0 0-2.6 0L2.943 4.785A1.5 1.5 0 0 0 2 6.176v7.646a1.5 1.5 0 0 0 .943 1.393L8.7 17.518a3.5 3.5 0 0 0 2.6 0l5.757-2.303A1.5 1.5 0 0 0 18 13.822V6.176a1.5 1.5 0 0 0-.943-1.392zm-2.228.93a2.5 2.5 0 0 1 1.857 0l5.225 2.09l-2.279.91l-6.154-2.46zM6.375 4.487l6.154 2.461L10 7.961L3.846 5.499zm4.125 4.35l6.5-2.6v7.584a.5.5 0 0 1-.314.465l-5.757 2.303q-.21.083-.429.128zm-1 0v7.88a2.5 2.5 0 0 1-.428-.128l-5.758-2.303A.5.5 0 0 1 3 13.822V6.238z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="docker" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="docker" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='m10 7.96l3.029-1.21l-7.5-3l-2.586 1.034a1.5 1.5 0 0 0-.364.208zM2.035 5.853A1.5 1.5 0 0 0 2 6.176v7.646a1.5 1.5 0 0 0 .943 1.393L8.7 17.518q.391.156.8.214V8.838zm8.465 11.88a3.5 3.5 0 0 0 .8-.214l5.757-2.303A1.5 1.5 0 0 0 18 13.822V6.176q0-.166-.035-.324L10.5 8.838zm6.921-12.74l-3.046 1.219l-7.5-3L8.7 2.48a3.5 3.5 0 0 1 2.6 0l5.757 2.303a1.5 1.5 0 0 1 .364.208'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="file" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="file" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="file" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="file" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M3 5.5v6.604l1.5-2.6a3 3 0 0 1 2.599-1.5H15V7.5A1.5 1.5 0 0 0 13.5 6h-4a.5.5 0 0 1-.353-.146L7.44 4.146A.5.5 0 0 0 7.086 4H4.5A1.5 1.5 0 0 0 3 5.5m1.284 10.485q.106.015.22.015H13.9a2 2 0 0 0 1.732-1l2.163-3.745a1.5 1.5 0 0 0-1.3-2.25H7.1a2 2 0 0 0-1.732 1L3.205 13.75a1.5 1.5 0 0 0 1.079 2.235M2 14.46V5.5A2.5 2.5 0 0 1 4.5 3h2.586a1.5 1.5 0 0 1 1.06.44L9.708 5H13.5A2.5 2.5 0 0 1 16 7.5v.505h.496c1.925 0 3.128 2.083 2.166 3.75L16.499 15.5a3 3 0 0 1-2.598 1.5h-9.4q-.095 0-.186-.007a2.46 2.46 0 0 1-1.438-.592A2.5 2.5 0 0 1 2 14.461'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="file" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="file" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M4.5 3A2.5 2.5 0 0 0 2 5.5v6.971l1.568-2.716A3.5 3.5 0 0 1 6.6 8.005H16V7.5A2.5 2.5 0 0 0 13.5 5H9.707l-1.56-1.56A1.5 1.5 0 0 0 7.085 3zm-.066 7.255A2.5 2.5 0 0 1 6.6 9.005h10.396c1.54 0 2.502 1.666 1.732 3l-2.162 3.745A2.5 2.5 0 0 1 14.4 17H4.004c-1.54 0-2.502-1.667-1.732-3z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="theme" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="theme" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="theme" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="theme" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M5.5 1.999a.5.5 0 0 0-.5.5v8.504a2 2 0 0 0 2 2h1.004v2.998a2 2 0 1 0 4 0v-2.998H13a2 2 0 0 0 2-2V2.5a.5.5 0 0 0-.5-.5zm.5 8.004h8v1a1 1 0 0 1-1 1h-1.496a.5.5 0 0 0-.5.5v3.498a1 1 0 1 1-2 0v-3.498a.5.5 0 0 0-.5-.5H7a1 1 0 0 1-1-1zm8-1H6V3h4v1.5a.5.5 0 0 0 1 0V3h1v2.502a.5.5 0 0 0 1 0V3h1z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="theme" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="theme" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10 4.499v-2.5H5.5a.5.5 0 0 0-.5.5v6.5h10V2.5a.5.5 0 0 0-.5-.5H13v3.502a.5.5 0 0 1-1 0V2h-1v2.5a.5.5 0 0 1-1 0m5 5.5H5v1.004a2 2 0 0 0 2 2h1.5v3.498a1.5 1.5 0 1 0 3 0v-3.498H13a2 2 0 0 0 2-2z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="config" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="config" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="config" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="config" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M1.911 7.383a8.5 8.5 0 0 1 1.78-3.08a.5.5 0 0 1 .54-.135l1.918.686a1 1 0 0 0 1.32-.762l.366-2.006a.5.5 0 0 1 .388-.4a8.5 8.5 0 0 1 3.554 0a.5.5 0 0 1 .388.4l.366 2.006a1 1 0 0 0 1.32.762l1.919-.686a.5.5 0 0 1 .54.136a8.5 8.5 0 0 1 1.78 3.079a.5.5 0 0 1-.153.535l-1.555 1.32a1 1 0 0 0 0 1.524l1.555 1.32a.5.5 0 0 1 .152.535a8.5 8.5 0 0 1-1.78 3.08a.5.5 0 0 1-.54.135l-1.918-.686a1 1 0 0 0-1.32.762l-.366 2.007a.5.5 0 0 1-.388.399a8.5 8.5 0 0 1-3.554 0a.5.5 0 0 1-.388-.4l-.366-2.006a1 1 0 0 0-1.32-.762l-1.918.686a.5.5 0 0 1-.54-.136a8.5 8.5 0 0 1-1.78-3.079a.5.5 0 0 1 .152-.535l1.555-1.32a1 1 0 0 0 0-1.524l-1.555-1.32a.5.5 0 0 1-.152-.535m1.06-.006l1.294 1.098a2 2 0 0 1 0 3.05l-1.293 1.098c.292.782.713 1.51 1.244 2.152l1.596-.57q.155-.055.315-.085a2 2 0 0 1 2.326 1.609l.304 1.669a7.6 7.6 0 0 0 2.486 0l.304-1.67a1.998 1.998 0 0 1 2.641-1.524l1.596.571a7.5 7.5 0 0 0 1.245-2.152l-1.294-1.098a1.998 1.998 0 0 1 0-3.05l1.294-1.098a7.5 7.5 0 0 0-1.245-2.152l-1.596.57a2 2 0 0 1-2.64-1.524l-.305-1.669a7.6 7.6 0 0 0-2.486 0l-.304 1.669a2 2 0 0 1-2.64 1.525l-1.597-.571a7.5 7.5 0 0 0-1.244 2.152M7.502 10a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0m1 0a1.5 1.5 0 1 0 3 0a1.5 1.5 0 0 0-3 0'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="config" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="config" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M1.911 7.383a8.5 8.5 0 0 1 1.78-3.08a.5.5 0 0 1 .54-.135l1.918.686a1 1 0 0 0 1.32-.762l.366-2.006a.5.5 0 0 1 .388-.4a8.5 8.5 0 0 1 3.554 0a.5.5 0 0 1 .388.4l.366 2.006a1 1 0 0 0 1.32.762l1.919-.686a.5.5 0 0 1 .54.136a8.5 8.5 0 0 1 1.78 3.079a.5.5 0 0 1-.153.535l-1.555 1.32a1 1 0 0 0 0 1.524l1.555 1.32a.5.5 0 0 1 .152.535a8.5 8.5 0 0 1-1.78 3.08a.5.5 0 0 1-.54.135l-1.918-.686a1 1 0 0 0-1.32.762l-.366 2.007a.5.5 0 0 1-.388.399a8.5 8.5 0 0 1-3.554 0a.5.5 0 0 1-.388-.4l-.366-2.006a1 1 0 0 0-1.32-.762l-1.918.686a.5.5 0 0 1-.54-.136a8.5 8.5 0 0 1-1.78-3.079a.5.5 0 0 1 .152-.535l1.555-1.32a1 1 0 0 0 0-1.524l-1.555-1.32a.5.5 0 0 1-.152-.535M8.001 10a2 2 0 1 0 4 0a2 2 0 0 0-4 0'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="reboot" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="reboot" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="reboot" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="reboot" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10.5 2.5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0zM13.743 4a.5.5 0 1 0-.499.867a6.5 6.5 0 1 1-6.494.004a.5.5 0 1 0-.5-.866A7.5 7.5 0 1 0 13.743 4'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="reboot" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="reboot" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10.75 2.5a.75.75 0 0 0-1.5 0v6a.75.75 0 0 0 1.5 0zM13.743 4a.75.75 0 1 0-.748 1.3A6 6 0 1 1 7 5.305a.75.75 0 1 0-.75-1.3a7.5 7.5 0 1 0 7.493-.003'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="log" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="log" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="log" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="log" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M6 2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4.257a5.5 5.5 0 0 1-.657-1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4v3.5A1.5 1.5 0 0 0 11.5 8H15v1.022q.516.047 1 .185V7.414a1.5 1.5 0 0 0-.44-1.06l-3.914-3.915A1.5 1.5 0 0 0 10.586 2zm8.793 5H11.5a.5.5 0 0 1-.5-.5V3.207zM9 14.5q0-.252.022-.5H8.5a.5.5 0 0 0 0 1h.522A6 6 0 0 1 9 14.5m.207-1.5q.149-.524.393-1H8.5a.5.5 0 0 0 0 1zm1.05-2c.313-.38.677-.716 1.08-1H8.5a.5.5 0 0 0 0 1zM6.5 10a.5.5 0 1 0 0 1a.5.5 0 0 0 0-1M6 12.5a.5.5 0 1 1 1 0a.5.5 0 0 1-1 0m0 2a.5.5 0 1 1 1 0a.5.5 0 0 1-1 0m13 0a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0m-4-3a.5.5 0 0 0-1 0v3a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 0-1H15z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="log" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="log" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cg fill='currentColor'%3E%3Cpath d='M10 6.5V2H5.5A1.5 1.5 0 0 0 4 3.5v13A1.5 1.5 0 0 0 5.5 18h4.757a5.5 5.5 0 0 1-1.235-3H8.5a.5.5 0 0 1 0-1h.522a5.5 5.5 0 0 1 .185-1H8.5a.5.5 0 0 1 0-1h1.1q.276-.538.657-1H8.5a.5.5 0 0 1 0-1h2.837c.895-.63 1.986-1 3.163-1a5.5 5.5 0 0 1 1.5.207V8h-4.5A1.5 1.5 0 0 1 10 6.5m-4 4a.5.5 0 1 1 1 0a.5.5 0 0 1-1 0m0 2a.5.5 0 1 1 1 0a.5.5 0 0 1-1 0m.5 1.5a.5.5 0 1 1 0 1a.5.5 0 0 1 0-1'/%3E%3Cpath d='M11 6.5V2.25L15.75 7H11.5a.5.5 0 0 1-.5-.5m8 8a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0m-4-3a.5.5 0 0 0-1 0v3a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 0-1H15z'/%3E%3C/g%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="monitor" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="statistics" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="bandix" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="Graphs" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="monitor" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="statistics" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="bandix" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="Graphs" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="monitor" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="statistics" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="bandix" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="Graphs" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="monitor" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="statistics" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="bandix" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="Graphs" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10 10a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 1 0v-3a.5.5 0 0 0-.5-.5M6 8.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0zM13.5 6a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 1 0v-7a.5.5 0 0 0-.5-.5M3 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm1 0v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="monitor" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="statistics" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="bandix" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="Graphs" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="monitor" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="statistics" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="bandix" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="Graphs" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M5 3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm5 7a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5M6 8.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0zM13.5 6a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="S.M.A.R.T." i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="info" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="S.M.A.R.T." i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="info" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="S.M.A.R.T." i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="info" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="S.M.A.R.T." i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="info" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10.492 8.91A.5.5 0 0 0 9.5 9v4.502l.008.09a.5.5 0 0 0 .992-.09V9zm.307-2.16a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0M18 10a8 8 0 1 0-16 0a8 8 0 0 0 16 0M3 10a7 7 0 1 1 14 0a7 7 0 0 1-14 0'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="S.M.A.R.T." i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="info" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="S.M.A.R.T." i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="info" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M18 10a8 8 0 1 0-16 0a8 8 0 0 0 16 0M9.508 8.91a.5.5 0 0 1 .984 0L10.5 9v4.502l-.008.09a.5.5 0 0 1-.984 0l-.008-.09V9zM9.25 6.75a.75.75 0 1 1 1.5 0a.75.75 0 0 1-1.5 0'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="setting" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="setting" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="setting" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="setting" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M1.911 7.383a8.5 8.5 0 0 1 1.78-3.08a.5.5 0 0 1 .54-.135l1.918.686a1 1 0 0 0 1.32-.762l.366-2.006a.5.5 0 0 1 .388-.4a8.5 8.5 0 0 1 3.554 0a.5.5 0 0 1 .388.4l.366 2.006a1 1 0 0 0 1.32.762l1.919-.686a.5.5 0 0 1 .54.136a8.5 8.5 0 0 1 1.78 3.079a.5.5 0 0 1-.153.535l-1.555 1.32a1 1 0 0 0 0 1.524l1.555 1.32a.5.5 0 0 1 .152.535a8.5 8.5 0 0 1-1.78 3.08a.5.5 0 0 1-.54.135l-1.918-.686a1 1 0 0 0-1.32.762l-.366 2.007a.5.5 0 0 1-.388.399a8.5 8.5 0 0 1-3.554 0a.5.5 0 0 1-.388-.4l-.366-2.006a1 1 0 0 0-1.32-.762l-1.918.686a.5.5 0 0 1-.54-.136a8.5 8.5 0 0 1-1.78-3.079a.5.5 0 0 1 .152-.535l1.555-1.32a1 1 0 0 0 0-1.524l-1.555-1.32a.5.5 0 0 1-.152-.535m1.06-.006l1.294 1.098a2 2 0 0 1 0 3.05l-1.293 1.098c.292.782.713 1.51 1.244 2.152l1.596-.57q.155-.055.315-.085a2 2 0 0 1 2.326 1.609l.304 1.669a7.6 7.6 0 0 0 2.486 0l.304-1.67a1.998 1.998 0 0 1 2.641-1.524l1.596.571a7.5 7.5 0 0 0 1.245-2.152l-1.294-1.098a1.998 1.998 0 0 1 0-3.05l1.294-1.098a7.5 7.5 0 0 0-1.245-2.152l-1.596.57a2 2 0 0 1-2.64-1.524l-.305-1.669a7.6 7.6 0 0 0-2.486 0l-.304 1.669a2 2 0 0 1-2.64 1.525l-1.597-.571a7.5 7.5 0 0 0-1.244 2.152M7.502 10a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0m1 0a1.5 1.5 0 1 0 3 0a1.5 1.5 0 0 0-3 0'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="setting" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="setting" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M1.911 7.383a8.5 8.5 0 0 1 1.78-3.08a.5.5 0 0 1 .54-.135l1.918.686a1 1 0 0 0 1.32-.762l.366-2.006a.5.5 0 0 1 .388-.4a8.5 8.5 0 0 1 3.554 0a.5.5 0 0 1 .388.4l.366 2.006a1 1 0 0 0 1.32.762l1.919-.686a.5.5 0 0 1 .54.136a8.5 8.5 0 0 1 1.78 3.079a.5.5 0 0 1-.153.535l-1.555 1.32a1 1 0 0 0 0 1.524l1.555 1.32a.5.5 0 0 1 .152.535a8.5 8.5 0 0 1-1.78 3.08a.5.5 0 0 1-.54.135l-1.918-.686a1 1 0 0 0-1.32.762l-.366 2.007a.5.5 0 0 1-.388.399a8.5 8.5 0 0 1-3.554 0a.5.5 0 0 1-.388-.4l-.366-2.006a1 1 0 0 0-1.32-.762l-1.918.686a.5.5 0 0 1-.54-.136a8.5 8.5 0 0 1-1.78-3.079a.5.5 0 0 1 .152-.535l1.555-1.32a1 1 0 0 0 0-1.524l-1.555-1.32a.5.5 0 0 1-.152-.535M8.001 10a2 2 0 1 0 4 0a2 2 0 0 0-4 0'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="Setup" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="Setup" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="Setup" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="Setup" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M15 11q.221 0 .435.023c.2.022.355.178.397.373l.222 1.036a.5.5 0 0 0 .642.37l1.006-.325a.46.46 0 0 1 .52.156q.26.352.439.758a.465.465 0 0 1-.125.529l-.785.709a.5.5 0 0 0 0 .742l.785.708a.465.465 0 0 1 .125.53q-.178.405-.439.757a.465.465 0 0 1-.52.157l-1.006-.326a.5.5 0 0 0-.642.371l-.222 1.034a.47.47 0 0 1-.397.374a4 4 0 0 1-.873 0a.465.465 0 0 1-.396-.373l-.22-1.035a.5.5 0 0 0-.643-.37l-1.006.325a.46.46 0 0 1-.52-.157a4 4 0 0 1-.44-.758a.46.46 0 0 1 .126-.529l.785-.708a.5.5 0 0 0 0-.742l-.785-.71a.46.46 0 0 1-.125-.528q.179-.406.438-.758a.46.46 0 0 1 .52-.156l1.007.326a.5.5 0 0 0 .642-.371l.22-1.036a.465.465 0 0 1 .397-.373Q14.778 11 15 11m0 3a1 1 0 1 0 0 2a1 1 0 0 0 0-2M7.499 1q.455 0 .892.063l.288.045l.073.02a.5.5 0 0 1 .326.368l.395 1.844a.5.5 0 0 0 .642.37l1.792-.58l.073-.018a.5.5 0 0 1 .461.168c.51.598.915 1.29 1.184 2.046a.5.5 0 0 1-.137.538l-1.4 1.265a.5.5 0 0 0 0 .742l1.4 1.264a.5.5 0 0 1 .137.538a6.5 6.5 0 0 1-1.184 2.046a.5.5 0 0 1-.534.15l-1.792-.58a.5.5 0 0 0-.642.371l-.395 1.843a.5.5 0 0 1-.4.388q-.57.107-1.18.109c-.404 0-.8-.04-1.18-.11a.5.5 0 0 1-.4-.387l-.393-1.843a.5.5 0 0 0-.642-.37l-1.793.58a.5.5 0 0 1-.534-.151a6.5 6.5 0 0 1-1.184-2.046a.5.5 0 0 1 .137-.538l1.4-1.264a.5.5 0 0 0 .072-.661l-.072-.081l-1.4-1.265a.5.5 0 0 1-.137-.538A6.5 6.5 0 0 1 2.556 3.28l.052-.052a.5.5 0 0 1 .482-.098l1.793.58a.5.5 0 0 0 .642-.37l.394-1.844l.021-.072a.5.5 0 0 1 .377-.316Q6.891 1.001 7.5 1m0 1q-.342 0-.674.043l-.321 1.506a1.5 1.5 0 0 1-1.93 1.113L3.11 4.188q-.407.537-.676 1.166L3.58 6.387l.116.116a1.5 1.5 0 0 1-.116 2.11L2.434 9.645c.178.417.406.808.676 1.165l1.464-.472a1.5 1.5 0 0 1 1.93 1.113l.321 1.504q.333.043.674.045q.34-.002.673-.045l.322-1.504a1.5 1.5 0 0 1 1.93-1.113l1.462.473c.27-.358.498-.749.675-1.166L11.42 8.613a1.5 1.5 0 0 1 0-2.226l1.142-1.033a5.5 5.5 0 0 0-.675-1.166l-1.462.474a1.5 1.5 0 0 1-1.93-1.113l-.322-1.506A6 6 0 0 0 7.499 2m0 3.25a2.25 2.25 0 1 1 0 4.5a2.25 2.25 0 0 1 0-4.5m0 1a1.25 1.25 0 1 0 .002 2.501A1.25 1.25 0 0 0 7.5 6.25'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="Setup" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="Setup" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M15.003 11q.221 0 .436.023c.2.022.355.178.397.373l.222 1.036a.5.5 0 0 0 .642.37l1.005-.325a.47.47 0 0 1 .522.156q.26.352.438.757a.465.465 0 0 1-.125.529l-.786.71a.5.5 0 0 0 0 .742l.786.71a.465.465 0 0 1 .125.528q-.18.405-.438.757a.47.47 0 0 1-.522.157l-1.005-.326a.5.5 0 0 0-.642.371l-.222 1.034a.47.47 0 0 1-.396.374a4 4 0 0 1-.874 0a.465.465 0 0 1-.396-.373l-.22-1.035a.5.5 0 0 0-.644-.37l-1.006.325a.46.46 0 0 1-.52-.157a4 4 0 0 1-.438-.758a.465.465 0 0 1 .125-.529l.785-.708a.5.5 0 0 0 0-.742l-.785-.71a.465.465 0 0 1-.125-.528q.178-.406.437-.758a.46.46 0 0 1 .52-.156l1.007.326a.5.5 0 0 0 .643-.371l.22-1.036a.465.465 0 0 1 .397-.373q.216-.023.437-.023m0 3a1 1 0 1 0 0 2a1 1 0 0 0 0-2M7.5 1q.455 0 .892.063l.288.045l.073.02a.5.5 0 0 1 .326.368l.395 1.844a.5.5 0 0 0 .642.37l1.792-.58l.073-.018a.5.5 0 0 1 .461.168a6.5 6.5 0 0 1 1.184 2.046a.5.5 0 0 1-.137.538l-1.4 1.265a.5.5 0 0 0 0 .742l1.4 1.264a.5.5 0 0 1 .137.538a6.5 6.5 0 0 1-1.184 2.046a.5.5 0 0 1-.534.15l-1.792-.58a.5.5 0 0 0-.642.371l-.395 1.843a.5.5 0 0 1-.4.388q-.57.107-1.179.109c-.405 0-.8-.04-1.182-.11a.5.5 0 0 1-.398-.387l-.394-1.843a.5.5 0 0 0-.642-.37l-1.793.58a.5.5 0 0 1-.534-.151a6.5 6.5 0 0 1-1.184-2.046a.5.5 0 0 1 .137-.538l1.4-1.264a.5.5 0 0 0 .072-.661l-.072-.081l-1.4-1.265a.5.5 0 0 1-.137-.538A6.5 6.5 0 0 1 2.556 3.28l.052-.052a.5.5 0 0 1 .482-.098l1.793.58a.5.5 0 0 0 .642-.37l.394-1.844l.021-.072a.5.5 0 0 1 .377-.316Q6.891 1.001 7.5 1m0 4.75a1.75 1.75 0 1 0 0 3.5a1.75 1.75 0 0 0 0-3.5'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="cpu" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="cpu" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="cpu" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="cpu" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10 7a3 3 0 1 0 0 6a3 3 0 0 0 0-6m-2 3a2 2 0 1 1 4 0a2 2 0 0 1-4 0m-.5-8a.5.5 0 0 1 .5.5V4h1.5V2.5a.5.5 0 0 1 1 0V4H12V2.5a.5.5 0 0 1 1 0V4h.5A2.5 2.5 0 0 1 16 6.5V7h1.5a.5.5 0 0 1 0 1H16v1.5h1.5a.5.5 0 0 1 0 1H16V12h1.5a.5.5 0 0 1 0 1H16v.5a2.5 2.5 0 0 1-2.5 2.5H13v1.5a.5.5 0 0 1-1 0V16h-1.5v1.5a.5.5 0 0 1-1 0V16H8v1.5a.5.5 0 0 1-1 0V16h-.5A2.5 2.5 0 0 1 4 13.5V13H2.5a.5.5 0 0 1 0-1H4v-1.5H2.5a.5.5 0 0 1 0-1H4V8H2.5a.5.5 0 0 1 0-1H4v-.5A2.5 2.5 0 0 1 6.5 4H7V2.5a.5.5 0 0 1 .5-.5M15 6.5A1.5 1.5 0 0 0 13.5 5h-7A1.5 1.5 0 0 0 5 6.5v7A1.5 1.5 0 0 0 6.5 15h7a1.5 1.5 0 0 0 1.5-1.5z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="cpu" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="cpu" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10 12a2 2 0 1 0 0-4a2 2 0 0 0 0 4M8 2.5a.5.5 0 0 0-1 0V4h-.5A2.5 2.5 0 0 0 4 6.5V7H2.5a.5.5 0 0 0 0 1H4v1.5H2.5a.5.5 0 0 0 0 1H4V12H2.5a.5.5 0 0 0 0 1H4v.5A2.5 2.5 0 0 0 6.5 16H7v1.5a.5.5 0 0 0 1 0V16h1.5v1.5a.5.5 0 0 0 1 0V16H12v1.5a.5.5 0 0 0 1 0V16h.5a2.5 2.5 0 0 0 2.5-2.5V13h1.5a.5.5 0 0 0 0-1H16v-1.5h1.5a.5.5 0 0 0 0-1H16V8h1.5a.5.5 0 0 0 0-1H16v-.5A2.5 2.5 0 0 0 13.5 4H13V2.5a.5.5 0 0 0-1 0V4h-1.5V2.5a.5.5 0 0 0-1 0V4H8zm5 7.5a3 3 0 1 1-6 0a3 3 0 0 1 6 0'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="led" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="led" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="led" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="led" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10 2c3.314 0 6 2.597 6 5.8c0 1.677-.745 3.216-2.204 4.594a.6.6 0 0 0-.145.213l-.026.081l-.936 3.917c-.184.771-.865 1.33-1.67 1.39l-.144.005h-1.75c-.818 0-1.535-.516-1.776-1.262l-.038-.133l-.935-3.916a.6.6 0 0 0-.17-.295c-1.39-1.312-2.133-2.77-2.2-4.355L4 7.8l.003-.191C4.108 4.494 6.753 2 10 2m2.045 13h-4.09l.319 1.334l.026.096c.097.3.376.522.712.563l.113.007h1.713l.106-.003a.86.86 0 0 0 .741-.525l.031-.1zM10 3C7.368 3 5.212 4.953 5.015 7.414l-.012.212L5 7.779l.004.217c.056 1.304.674 2.525 1.888 3.671c.188.178.33.398.414.64l.043.15L7.716 14h4.569l.387-1.615l.051-.15c.086-.215.218-.409.386-.568C14.383 10.465 15 9.181 15 7.8C15 5.157 12.769 3 10 3'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="led" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="led" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='m13.073 15l-.384 1.605c-.184.771-.865 1.33-1.67 1.39l-.144.005h-1.75c-.818 0-1.535-.516-1.776-1.262l-.038-.133L6.928 15zM10 2c3.314 0 6 2.597 6 5.8c0 1.677-.745 3.216-2.204 4.594a.6.6 0 0 0-.145.213l-.026.081L13.311 14H6.689l-.313-1.311a.6.6 0 0 0-.17-.295c-1.39-1.312-2.133-2.77-2.2-4.355L4 7.8l.003-.191C4.108 4.494 6.753 2 10 2'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="kms" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="kms" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="kms" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="kms" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M15 6a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-2.5-4C9.424 2 7 4.424 7 7.5c0 .397.04.796.122 1.175c.058.27-.008.504-.142.638l-4.54 4.54A1.5 1.5 0 0 0 2 14.915V16.5A1.5 1.5 0 0 0 3.5 18h2A1.5 1.5 0 0 0 7 16.5V16h1a1 1 0 0 0 1-1v-1h1a1 1 0 0 0 1-1v-.18c.493.134 1.007.18 1.5.18c3.076 0 5.5-2.424 5.5-5.5S15.576 2 12.5 2M8 7.5C8 4.976 9.976 3 12.5 3S17 4.976 17 7.5S15.024 12 12.5 12c-.66 0-1.273-.095-1.776-.347A.5.5 0 0 0 10 12.1v.9H9a1 1 0 0 0-1 1v1H7a1 1 0 0 0-1 1v.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.586a.5.5 0 0 1 .146-.353l4.541-4.541c.432-.432.522-1.044.412-1.556A4.6 4.6 0 0 1 8 7.5'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="kms" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="kms" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M7 7.5C7 4.424 9.424 2 12.5 2S18 4.424 18 7.5S15.576 13 12.5 13a5.8 5.8 0 0 1-1.5-.18V13a1 1 0 0 1-1 1H9v1a1 1 0 0 1-1 1H7v.5A1.5 1.5 0 0 1 5.5 18h-2A1.5 1.5 0 0 1 2 16.5v-1.586c0-.398.158-.78.44-1.06l4.54-4.541c.134-.134.2-.368.142-.638A5.6 5.6 0 0 1 7 7.5M15 6a1 1 0 1 0-2 0a1 1 0 0 0 2 0'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="upnp" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="upnp" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="upnp" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="upnp" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M7.5 5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM7 12.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m.5 1.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 4.5A2.5 2.5 0 0 1 7.5 2h5A2.5 2.5 0 0 1 15 4.5v11a2.5 2.5 0 0 1-2.5 2.5h-5A2.5 2.5 0 0 1 5 15.5zM7.5 3A1.5 1.5 0 0 0 6 4.5v11A1.5 1.5 0 0 0 7.5 17h5a1.5 1.5 0 0 0 1.5-1.5v-11A1.5 1.5 0 0 0 12.5 3z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="upnp" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="upnp" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M7.5 2A2.5 2.5 0 0 0 5 4.5v11A2.5 2.5 0 0 0 7.5 18h5a2.5 2.5 0 0 0 2.5-2.5v-11A2.5 2.5 0 0 0 12.5 2zM7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 7a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="network" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="network" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="network" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="network" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath fill='currentColor' d='M4 6.5v3a.5.5 0 1 1-1 0v-3a.5.5 0 1 1 1 0M6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 1 0 1 0v-3a.5.5 0 0 0-.5-.5m3 0a.5.5 0 0 0-.5.5v3a.5.5 0 1 0 1 0v-3a.5.5 0 0 0-.5-.5m3 0a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 1 0v-3a.5.5 0 0 0-.5-.5m2.5-.5v5a1.5 1.5 0 0 1-1.5 1.5H13v1.5a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5V12H2v1.5a.5.5 0 0 1-1 0V3H.5a.5.5 0 0 1 0-1H1a1 1 0 0 1 1 1v1h11.5A1.5 1.5 0 0 1 15 5.5M7 13h2v-1H7zm5-1h-2v1h2zm2-6.5a.5.5 0 0 0-.5-.5H2v6h11.5a.5.5 0 0 0 .5-.5z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="network" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="network" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath fill='currentColor' d='M14.561 4.439A1.5 1.5 0 0 0 13.5 4H2V3a.997.997 0 0 0-1-1H.5a.5.5 0 1 0 0 1H1v10.5a.5.5 0 1 0 1 0V12h4v1.5a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 .5-.5V12h.5a1.503 1.503 0 0 0 1.5-1.5v-5c0-.398-.158-.779-.439-1.061M4 9.5a.5.5 0 0 1-.5.5a.5.5 0 0 1-.5-.5v-3a.5.5 0 1 1 1 0zm2.5.5a.5.5 0 0 1-.5-.5v-3a.5.5 0 1 1 1 0v3a.5.5 0 0 1-.5.5M9 13H7v-1h2zm.5-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 1 1 1 0v3a.5.5 0 0 1-.5.5m2.5 3h-2v-1h2zm1-3.5a.5.5 0 1 1-1 0v-3a.5.5 0 0 1 .5-.5a.5.5 0 0 1 .5.5z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="wireless" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="wireless" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="wireless" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="wireless" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M16.832 7.384c.41.409.796.877 1.133 1.365a.5.5 0 0 1-.823.568A8.612 8.612 0 0 0 3.946 8.091c-.348.348-.693.77-1.007 1.222a.5.5 0 0 1-.821-.57a10 10 0 0 1 1.121-1.36a9.61 9.61 0 0 1 13.593 0m-2.236 1.973a6.6 6.6 0 0 1 1.194 1.656a.5.5 0 0 1-.89.455a5.6 5.6 0 0 0-1.01-1.404a5.45 5.45 0 0 0-8.716 1.39a.5.5 0 1 1-.892-.452a6.45 6.45 0 0 1 10.315-1.645m-1.709 2.497c.355.354.647.79.85 1.254a.5.5 0 0 1-.916.401a3.1 3.1 0 0 0-.64-.948a3.033 3.033 0 0 0-4.29 0a3 3 0 0 0-.631.938a.5.5 0 1 1-.916-.401a4 4 0 0 1 .84-1.244a4.033 4.033 0 0 1 5.703 0m-1.924 1.933a1.298 1.298 0 1 1-1.836 1.836a1.298 1.298 0 0 1 1.836-1.836'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="wireless" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="wireless" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M16.73 7.563c.403.404.783.864 1.115 1.344a.75.75 0 0 1-1.235.852A7.968 7.968 0 0 0 4.4 8.623c-.32.322-.64.712-.932 1.133a.75.75 0 1 1-1.233-.855c.34-.49.716-.95 1.105-1.338a9.47 9.47 0 0 1 13.39 0m-2.14 1.888c.473.473.88 1.045 1.192 1.653a.75.75 0 1 1-1.335.683a5.1 5.1 0 0 0-.918-1.275a4.943 4.943 0 0 0-7.904 1.26a.75.75 0 0 1-1.338-.677A6.443 6.443 0 0 1 14.59 9.451m-1.635 2.39c.363.363.662.808.87 1.282a.75.75 0 0 1-1.375.602a2.7 2.7 0 0 0-.556-.824a2.63 2.63 0 0 0-3.72 0a2.7 2.7 0 0 0-.547.814a.75.75 0 1 1-1.374-.601a4.2 4.2 0 0 1 .86-1.274a4.13 4.13 0 0 1 5.842 0m-2.034 2.04a1.242 1.242 0 1 1-1.757 1.758a1.242 1.242 0 0 1 1.757-1.757'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="address" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="address" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="address" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="address" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M4.5 4A2.5 2.5 0 0 0 2 6.5v7A2.5 2.5 0 0 0 4.5 16h11a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 15.5 4zM3 6.5A1.5 1.5 0 0 1 4.5 5h11A1.5 1.5 0 0 1 17 6.5v7a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 3 13.5zM4.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h8a.5.5 0 0 0 0-1zm.5 3a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="address" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="address" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M2 6.5A2.5 2.5 0 0 1 4.5 4h11A2.5 2.5 0 0 1 18 6.5v7a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 13.5zM9.5 6h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1m3 2h-8a.5.5 0 0 0 0 1h8a.5.5 0 0 0 0-1M5 11a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="qos" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="qos" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="qos" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="qos" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M2 4a2 2 0 0 1 2-2h12a2 2 0 1 1 0 4H4a2 2 0 0 1-2-2m2-1a1 1 0 0 0 0 2h12a1 1 0 1 0 0-2zm0 7a2 2 0 0 1 2-2h8a2 2 0 1 1 0 4H6a2 2 0 0 1-2-2m2-1a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2zm2 5a2 2 0 1 0 0 4h4a2 2 0 1 0 0-4zm-1 2a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="qos" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="qos" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M2 4a2 2 0 0 1 2-2h12a2 2 0 1 1 0 4H4a2 2 0 0 1-2-2m2 6a2 2 0 0 1 2-2h8a2 2 0 1 1 0 4H6a2 2 0 0 1-2-2m4 4a2 2 0 1 0 0 4h4a2 2 0 1 0 0-4z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="PortWeaver" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="socat" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="PortWeaver" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="socat" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="PortWeaver" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="socat" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="PortWeaver" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="socat" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M12.146 3.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L14.293 7H4.5a.5.5 0 0 1 0-1h9.793l-2.147-2.146a.5.5 0 0 1 0-.708m-4.292 7a.5.5 0 0 1 0 .708L5.707 13H15.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="PortWeaver" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="socat" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="PortWeaver" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="socat" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M12.78 3.22a.75.75 0 1 0-1.06 1.06L13.44 6H4.75a.75.75 0 0 0 0 1.5h8.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3a.75.75 0 0 0 0-1.06zm-4.5 7.56a.75.75 0 1 0-1.06-1.06l-3 3a.75.75 0 0 0 0 1.06l3 3a.75.75 0 0 0 1.06-1.06L6.56 14h8.69a.75.75 0 0 0 0-1.5H6.56z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="usteer" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="roam" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="mesh" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="usteer" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="roam" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="mesh" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="usteer" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="roam" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="mesh" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="usteer" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="roam" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="mesh" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M5.879 6.586a2.5 2.5 0 1 1 .707-.707L8.62 7.914A2.5 2.5 0 0 1 9.999 7.5c.51 0 .983.152 1.379.414l2.035-2.035a2.5 2.5 0 1 1 .707.707L12.086 8.62c.262.396.414.87.414 1.379c0 .51-.152.983-.414 1.379l2.035 2.035a2.5 2.5 0 1 1-.707.707l-2.035-2.035a2.5 2.5 0 0 1-1.379.414c-.51 0-.983-.152-1.379-.414L6.586 14.12a2.5 2.5 0 1 1-.707-.707l2.035-2.035A2.5 2.5 0 0 1 7.5 10c0-.51.152-.983.414-1.379zM6 4.5a1.5 1.5 0 1 0-3 0a1.5 1.5 0 0 0 3 0m11 0a1.5 1.5 0 1 0-3 0a1.5 1.5 0 0 0 3 0M4.5 17a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3M17 15.5a1.5 1.5 0 1 0-3 0a1.5 1.5 0 0 0 3 0M11.5 10a1.5 1.5 0 1 0-3 0a1.5 1.5 0 0 0 3 0'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="usteer" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="roam" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="mesh" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="usteer" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="roam" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="mesh" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M7 4.5c0 .51-.152.983-.414 1.379L8.62 7.914A2.5 2.5 0 0 1 9.999 7.5c.51 0 .983.152 1.379.414l2.035-2.035a2.5 2.5 0 1 1 .707.707L12.086 8.62c.262.396.414.87.414 1.379c0 .51-.152.983-.414 1.379l2.035 2.035a2.5 2.5 0 1 1-.707.707l-2.035-2.035a2.5 2.5 0 0 1-1.379.414c-.51 0-.983-.152-1.379-.414L6.586 14.12a2.5 2.5 0 1 1-.707-.707l2.035-2.035A2.5 2.5 0 0 1 7.5 10c0-.51.152-.983.414-1.379L5.88 6.586A2.5 2.5 0 1 1 7 4.5'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="share" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="share" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="share" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="share" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M12 5.502a2.502 2.502 0 1 1 .531 1.541L7.915 9.351a2.5 2.5 0 0 1 0 1.297l4.618 2.31a2.5 2.5 0 1 1-.448.894l-4.618-2.31a2.5 2.5 0 1 1 0-3.086l4.618-2.307A2.5 2.5 0 0 1 12 5.502M14.502 4a1.501 1.501 0 1 0 0 3.003a1.501 1.501 0 0 0 0-3.003m-.002 9a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3M4 10a1.5 1.5 0 1 0 3 0a1.5 1.5 0 0 0-3 0'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="share" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="share" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M17 5.5a2.5 2.5 0 0 1-4.467 1.543L7.915 9.352a2.5 2.5 0 0 1 0 1.297l4.618 2.308a2.5 2.5 0 1 1-.448.894l-4.618-2.308a2.5 2.5 0 1 1 0-3.085l4.618-2.31A2.504 2.504 0 0 1 14.5 3A2.5 2.5 0 0 1 17 5.5'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="usb" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="usb" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="usb" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="usb" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M7.5 2h5a.5.5 0 0 1 .5.5V6h.079C14.137 6 15 6.853 15 7.912v5.176A1.916 1.916 0 0 1 13.079 15H12v2.5a.5.5 0 0 1-1 0V15H9v2.5a.5.5 0 0 1-1 0V15H6.921A1.916 1.916 0 0 1 5 13.088V7.912C5 6.852 5.863 6 6.921 6H7V2.5a.5.5 0 0 1 .5-.5m5.579 12a.916.916 0 0 0 .921-.912V7.912c0-.5-.41-.912-.921-.912H6.92a.916.916 0 0 0-.92.912v5.176c0 .5.41.912.921.912zM12 6V3H8v3z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="usb" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="usb" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M7 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5V6h.079C14.137 6 15 6.853 15 7.912v5.176A1.916 1.916 0 0 1 13.079 15H12v2.5a.5.5 0 0 1-1 0V15H9v2.5a.5.5 0 0 1-1 0V15H6.921A1.916 1.916 0 0 1 5 13.088V7.912C5 6.852 5.863 6 6.921 6H7zM8 6h4V3H8z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="raid" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="raid" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="raid" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="raid" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M4 5c0-1.007.875-1.755 1.904-2.223C6.978 2.289 8.427 2 10 2s3.022.289 4.096.777C15.125 3.245 16 3.993 16 5v6h-1V6.698a5 5 0 0 1-.904.525C13.022 7.711 11.573 8 10 8s-3.022-.289-4.096-.777A5 5 0 0 1 5 6.698V15c0 .374.356.875 1.318 1.313c.916.416 2.218.687 3.682.687h.05c.434.425.978.738 1.585.892c-.521.07-1.07.108-1.635.108c-1.573 0-3.022-.289-4.096-.777C4.875 16.755 4 16.007 4 15zm1 0c0 .374.356.875 1.318 1.313C7.234 6.729 8.536 7 10 7s2.766-.27 3.682-.687C14.644 5.875 15 5.373 15 5c0-.374-.356-.875-1.318-1.313C12.766 3.271 11.464 3 10 3s-2.766.27-3.682.687C5.356 4.125 5 4.627 5 5m7.5 7a2.5 2.5 0 0 0 0 5h.5a.5.5 0 0 0 0-1h-.5a1.5 1.5 0 0 1 0-3h.5a.5.5 0 0 0 0-1zm3.5 0a.5.5 0 0 0 0 1h.5a1.5 1.5 0 0 1 0 3H16a.5.5 0 0 0 0 1h.5a2.5 2.5 0 0 0 0-5zm-4 2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="raid" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="raid" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10 8c3.314 0 6-1.343 6-3s-2.686-3-6-3s-6 1.343-6 3s2.686 3 6 3m4.69.016c.47-.235.927-.534 1.31-.896V11h-3.5a3.5 3.5 0 0 0-.878 6.889c-.516.072-1.06.111-1.622.111c-3.314 0-6-1.343-6-3V7.12c.383.362.84.661 1.31.896C6.562 8.642 8.222 9 10 9s3.438-.358 4.69-.984M12.5 12a2.5 2.5 0 0 0 0 5h.5a.5.5 0 0 0 0-1h-.5a1.5 1.5 0 0 1 0-3h.5a.5.5 0 0 0 0-1zm3.5 0a.5.5 0 0 0 0 1h.5a1.5 1.5 0 0 1 0 3H16a.5.5 0 0 0 0 1h.5a2.5 2.5 0 0 0 0-5zm-4 2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="filter" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="filter" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="filter" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="filter" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M7.5 13h5a.5.5 0 0 1 .09.992L12.5 14h-5a.5.5 0 0 1-.09-.992zh5zm-2-4h9a.5.5 0 0 1 .09.992L14.5 10h-9a.5.5 0 0 1-.09-.992zh9zm-2-4h13a.5.5 0 0 1 .09.992L16.5 6h-13a.5.5 0 0 1-.09-.992zh13z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="filter" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="filter" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M12.25 13.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5zm2-4.25a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5zm2-4.25a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1 0-1.5z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="speed" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="homebox" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon {
+.main-left .nav li.slide .slide-menu li a[data-title*="speed" i] .menu-icon, .main-left .nav li.slide .slide-menu li a[data-title*="homebox" i] .menu-icon {
   display: inline-flex;
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="speed" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="homebox" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:before {
+.main-left .nav li.slide .slide-menu li a[data-title*="speed" i] .menu-icon:before, .main-left .nav li.slide .slide-menu li a[data-title*="homebox" i] .menu-icon:before {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10 2a8 8 0 0 1 5.44 13.866l-.082.062a.5.5 0 0 1-.6-.794l.254-.246A6.97 6.97 0 0 0 16.98 10.5h-1.503A.49.49 0 0 1 15 10c0-.268.208-.5.477-.5h1.503a7 7 0 0 0-6.479-6.48v1.502A.49.49 0 0 1 10 5a.49.49 0 0 1-.499-.476V3.02a6.97 6.97 0 0 0-4.083 1.69l1.063 1.063a.49.49 0 0 1-.016.69a.49.49 0 0 1-.69.017L4.71 5.417A6.97 6.97 0 0 0 3.02 9.5h1.503A.49.49 0 0 1 5 10a.49.49 0 0 1-.477.5H3.02a6.97 6.97 0 0 0 1.968 4.388l.253.246l.067.075a.5.5 0 0 1-.747.657A8 8 0 0 1 10 2m3.196 4.102a.502.502 0 0 1 .74.64v.002l-.001.002l-.005.009l-.02.037l-.078.138a195 195 0 0 1-1.15 2.026a80 80 0 0 1-.947 1.61c-.141.232-.271.44-.38.603a3 3 0 0 1-.295.391a1.5 1.5 0 0 1-2.12-2.12c.123-.124.464-.4.865-.718c.415-.33.93-.73 1.432-1.118a347 347 0 0 1 1.795-1.376l.121-.093l.032-.025l.01-.006z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
 }
 
-.main-left .nav li.slide .slide-menu li a[data-title*="speed" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="homebox" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title^="" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title$="" i] .menu-icon:after {
+.main-left .nav li.slide .slide-menu li a[data-title*="speed" i] .menu-icon:after, .main-left .nav li.slide .slide-menu li a[data-title*="homebox" i] .menu-icon:after {
   --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M10 2a8 8 0 0 1 5.518 13.793a.75.75 0 0 1-1.036-1.086A6.5 6.5 0 0 0 16.422 11h-1.174a.75.75 0 0 1 0-1.5h1.232a6.5 6.5 0 0 0-5.729-5.956v1.265c0 .394-.356.691-.751.691c-.394 0-.749-.297-.749-.69V3.544a6.47 6.47 0 0 0-3.285 1.36l.811.812a.75.75 0 0 1-1.06 1.06l-.812-.811A6.47 6.47 0 0 0 3.521 9.5h1.227l.076.004a.75.75 0 0 1 0 1.492L4.748 11h-1.17a6.5 6.5 0 0 0 1.712 3.48l.228.227l.052.056a.75.75 0 0 1-1.088 1.03A8 8 0 0 1 10 2m3.196 4.102a.502.502 0 0 1 .74.64v.002l-.001.002l-.005.009l-.02.037l-.078.138a195 195 0 0 1-1.15 2.026a80 80 0 0 1-.947 1.61c-.141.232-.271.44-.38.603a3 3 0 0 1-.295.391a1.5 1.5 0 0 1-2.12-2.12c.123-.124.464-.4.865-.718c.415-.33.93-.73 1.432-1.118a347 347 0 0 1 1.795-1.376l.121-.093l.032-.025l.01-.006z'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--icon-data);
   mask-image: var(--icon-data);
@@ -11215,11 +11186,6 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
   opacity: 1;
 }
 
-.main-left .nav li.slide .slide-menu li:hover:after {
-  width: 0;
-  display: none;
-}
-
 .main-left .nav li.slide .slide-menu li.active {
   background: var(--fluent-sidebar-item-active);
   color: var(--fluent-text);
@@ -11246,59 +11212,20 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
   opacity: 1;
 }
 
-.main-left .nav li.slide .slide-menu li.active:after {
-  content: none;
-  display: none;
-}
-
 .main-left .nav li.slide .slide-menu li.active:hover {
-  background: #0078d414;
+  background: var(--fluent-sidebar-item-active);
 }
 
 .main-left .nav li.slide .slide-menu li.active:hover:before {
   background-color: var(--fluent-primary);
 }
 
-.main-left .nav li.slide .slide-menu li.active:hover:after {
-  width: 0;
-  display: none;
-}
-
-.main-left .nav li .menu {
-  padding: 0 var(--fluent-space-sm);
-  border-radius: var(--fluent-radius-md);
-  cursor: pointer;
-  height: 36px;
-  font-size: var(--fluent-font-size-base);
-  font-weight: var(--fluent-font-weight-regular);
-  color: var(--fluent-text);
-  box-shadow: none;
-  transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),color var(--fluent-duration-fast) var(--fluent-easing-standard);
-  background: none;
-  align-items: center;
-  margin: 2px 0;
-  text-decoration: none;
-  display: flex;
-  position: relative;
-}
-
-.main-left .nav li .menu:before {
-  margin-right: var(--fluent-space-sm);
-  width: 20px;
-  height: 20px;
-  color: var(--fluent-text-secondary);
-  transition: color var(--fluent-duration-fast) var(--fluent-easing-standard);
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  display: flex;
-  position: relative;
-  left: 0;
-}
-
 .main-left .nav li .menu:after {
+  content: "";
   right: var(--fluent-space-sm);
-  transition: transform var(--fluent-duration-fast) var(--fluent-easing-standard),background-image var(--fluent-duration-fast) var(--fluent-easing-standard);
+  width: 14px;
+  height: 14px;
+  transition: transform var(--fluent-duration-fast) var(--fluent-easing-standard),background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
   content: "";
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23605e5c' d=%22M15.854 7.646a.5.5 0 0 1 .001.707l-5.465 5.484a.55.55 0 0 1-.78 0L4.147 8.353a.5.5 0 1 1 .708-.706L10 12.812l5.147-5.165a.5.5 0 0 1 .707-.001%22/></svg>");
   background-position: center;
@@ -11320,31 +11247,6 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
   background-size: 14px 14px;
 }
 
-.main-left .nav li .menu:hover {
-  cursor: pointer;
-  color: var(--fluent-text);
-  background: var(--fluent-sidebar-item-hover);
-}
-
-.main-left .nav li .menu:hover:before {
-  color: var(--fluent-text);
-}
-
-.main-left .nav li .menu:focus-visible {
-  outline: 2px solid var(--fluent-focus-color);
-  outline-offset: -2px;
-}
-
-.main-left .nav li .menu.active {
-  color: var(--fluent-text);
-  background: var(--fluent-sidebar-item-active);
-  font-weight: var(--fluent-font-weight-semibold);
-}
-
-.main-left .nav li .menu.active:before {
-  color: var(--fluent-primary);
-}
-
 .main-left .nav li .menu.active:after {
   background-color: var(--fluent-primary);
   --icon-data: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M15.854 7.646a.5.5 0 0 1 .001.707l-5.465 5.484a.55.55 0 0 1-.78 0L4.147 8.353a.5.5 0 1 1 .708-.706L10 12.812l5.147-5.165a.5.5 0 0 1 .707-.001%22/></svg>");
@@ -11358,8 +11260,141 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
   background-image: none !important;
 }
 
-#mainmenu > ul > li.slide.active > ul.slide-menu {
-  margin-left: 20px;
+body[data-sidebar-state="collapsed"] .main-left {
+  width: var(--fluent-sidebar-collapsed-width, 48px);
+  scrollbar-width: none;
+  overflow-x: visible;
+}
+
+body[data-sidebar-state="collapsed"] .main-left::-webkit-scrollbar {
+  display: none;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .sidenav-header {
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .sidenav-header .brand {
+  display: none;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .sidenav-header .sidebar-collapse-toggle {
+  border-radius: 0;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  margin-left: 0;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .sidenav-header .sidebar-collapse-toggle:before {
+  content: "";
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23605e5c' d=%22M2 4.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m.5 4.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1z%22/></svg>");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+[data-theme="dark"] body[data-sidebar-state="collapsed"] .main-left .sidenav-header .sidebar-collapse-toggle:before {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23a0a0a0' d=%22M2 4.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5m.5 4.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1z%22/></svg>");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+
+body[data-sidebar-state="collapsed"] .main-right {
+  margin-left: var(--fluent-sidebar-collapsed-width, 48px);
+  z-index: 1;
+  position: relative;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav > li > .slide-menu.active {
+  display: none;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav > li {
+  position: relative;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav > li > a:first-child {
+  justify-content: flex-start;
+  padding: 0 0 0 14px;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav > li > a:first-child .menu-icon {
+  margin: 0;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav > li > a:first-child .menu-label {
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav > li > .slide-menu {
+  top: auto;
+  left: calc(var(--fluent-sidebar-collapsed-width, 48px) + var(--fluent-space-sm));
+  min-width: 220px;
+  max-height: calc(100vh - 16px);
+  padding: var(--fluent-space-xs);
+  background: var(--fluent-bg-card, var(--fluent-sidebar-bg));
+  border: 1px solid var(--fluent-border);
+  border-radius: var(--fluent-radius-lg);
+  box-shadow: var(--fluent-shadow-lg);
+  z-index: calc(var(--fluent-zindex-menu) + 20);
+  margin: 0;
+  position: fixed;
+  overflow: hidden auto;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav > li > .slide-menu li a {
+  padding: 0 var(--fluent-space-sm);
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav > li > .slide-menu.popup-open {
+  display: block;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav .menu:after {
+  display: none;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav > li > a.menu.popup-open {
+  background: var(--fluent-sidebar-item-active);
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav > li > a.menu.popup-open:before {
+  content: "";
+  background: var(--fluent-primary);
+  border-radius: 999px;
+  width: 3px;
+  height: 60%;
+  position: absolute;
+  left: 3px;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav > li > a.menu.popup-open .menu-icon {
+  color: var(--fluent-primary);
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav > li > a.menu.popup-open .menu-icon:before {
+  opacity: 0;
+}
+
+body[data-sidebar-state="collapsed"] .main-left .nav > li > a.menu.popup-open .menu-icon:after {
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
@@ -11372,7 +11407,7 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
     transform: translateX(0);
   }
 
-  .main-right {
+  .main-right, body[data-sidebar-state="collapsed"] .main-right {
     margin-left: 0;
   }
 
@@ -11398,15 +11433,14 @@ body[data-tab-animation="0"] .main-left .nav li.slide .slide-menu .fluent-sideba
 }
 
 body > div.main > div.main-right > header {
+  align-items: center;
+  gap: var(--fluent-space-md);
   padding: 0 var(--fluent-space-lg);
   background: var(--fluent-bg);
   border-bottom: 1px solid var(--fluent-border);
   height: var(--fluent-header-height, 48px);
   z-index: var(--fluent-zindex-actions, 1000);
   transition: background var(--fluent-duration-normal) var(--fluent-easing-standard);
-  flex-shrink: 0;
-  justify-content: space-between;
-  align-items: center;
   display: flex;
   position: sticky;
   top: 0;
@@ -11415,25 +11449,41 @@ body > div.main > div.main-right > header {
 body > div.main > div.main-right > header .header__brand {
   align-items: center;
   gap: var(--fluent-space-sm);
+  flex: none;
+  min-width: 0;
   display: flex;
-}
-
-body > div.main > div.main-right > header .header__logo {
-  width: auto;
-  height: 28px;
 }
 
 body > div.main > div.main-right > header .header__title {
-  font-size: var(--fluent-font-size-md);
-  font-weight: var(--fluent-font-weight-bold, 700);
+  min-width: 0;
   color: var(--fluent-text);
+  font-size: var(--fluent-font-size-md);
+  font-weight: var(--fluent-font-weight-semibold);
   line-height: var(--fluent-line-height-tight);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  overflow: hidden;
 }
 
-body > div.main > div.main-right > header .header__actions {
+body > div.main > div.main-right > header .header__search-slot {
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  flex: auto;
+  justify-content: center;
   align-items: center;
-  gap: var(--fluent-space-sm);
+  min-width: 0;
   display: flex;
+}
+
+body > div.main > div.main-right > header .header__search-placeholder {
+  border-radius: var(--fluent-radius-md);
+  border: 1px solid var(--fluent-border);
+  background: var(--fluent-bg-hover);
+  width: min(420px, 100%);
+  height: 32px;
+  box-shadow: inset 0 1px #ffffff14;
 }
 
 body > div.main > div.main-right > header .header__toggle {
@@ -11557,6 +11607,7 @@ body > div.main > div.main-right > header .theme-toggle[data-mode="auto"]:after 
 body > div.main > div.main-right > header .header-actions {
   align-items: center;
   gap: var(--fluent-space-sm, 8px);
+  flex: none;
   display: flex;
 }
 
@@ -11632,6 +11683,15 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
 @media (max-width: 768px) {
   body > div.main > div.main-right > header {
     padding: 0 var(--fluent-space-sm);
+    gap: var(--fluent-space-sm);
+  }
+
+  body > div.main > div.main-right > header .header__brand {
+    flex: auto;
+  }
+
+  body > div.main > div.main-right > header .header__search-slot {
+    display: none;
   }
 
   body > div.main > div.main-right > header .theme-toggle {
@@ -11641,9 +11701,10 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
 }
 
 .main > .main-right > #maincontent {
-  flex-grow: 1;
+  box-sizing: border-box;
   width: 100%;
-  padding: 10px;
+  padding: var(--fluent-space-xl);
+  flex-grow: 1;
   overflow: auto;
 }
 
@@ -11665,6 +11726,12 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   top: 4px;
   bottom: 4px;
   left: 0;
+}
+
+@media (max-width: 768px) {
+  .main > .main-right > #maincontent {
+    padding: var(--fluent-space-md);
+  }
 }
 
 :root, [data-theme="light"] {
@@ -11707,7 +11774,7 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   --fluent-shadow-md: 0 4px 8px #0000000f, 0 4px 18px #00000014;
   --fluent-shadow-lg: 0 8px 16px #00000014, 0 8px 32px #0000001a;
   --fluent-shadow-xl: 0 20px 40px #0000001f, 0 10px 20px #00000014;
-  --fluent-sidebar-bg: #fff;
+  --fluent-sidebar-bg: #f3f3f3;
   --fluent-sidebar-item-hover: #0000000a;
   --fluent-sidebar-item-active: color-mix(in srgb, var(--fluent-primary) 6%, transparent);
   --fluent-header-bg: var(--fluent-primary);

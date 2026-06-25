@@ -80,40 +80,101 @@ const transparencySteps = [
     0.9,
     1
 ];
-const configureHexColorValue = function(t, l) {
-    let o = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
-    t.rmempty = !1, t.validate = (e, t)=>!e || /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(String(t)) || _("Expecting: %s").format(_("valid HEX color value")), t.render = (a, r, n)=>{
-        let c = shared_e.Value.prototype.render.call(t, a, r, n), i = ()=>{
-            let e = document.querySelector('[id^="widget.cbid.fluent."][id$=".'.concat(l, '"]'));
-            e && ((e)=>{
+let shared_t = "fluent-live-preview", shared_a = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i, shared_r = {
+    primary: {
+        cssVar: "--fluent-primary",
+        isDark: !1
+    },
+    dark_primary: {
+        cssVar: "--fluent-primary",
+        isDark: !0
+    },
+    page_bg: {
+        cssVar: "--fluent-bg",
+        isDark: !1
+    },
+    dark_page_bg: {
+        cssVar: "--fluent-bg",
+        isDark: !0
+    },
+    card_bg: {
+        cssVar: "--fluent-bg-card",
+        isDark: !1
+    },
+    dark_card_bg: {
+        cssVar: "--fluent-bg-card",
+        isDark: !0
+    },
+    sidebar_bg: {
+        cssVar: "--fluent-sidebar-bg",
+        isDark: !1
+    },
+    dark_sidebar_bg: {
+        cssVar: "--fluent-sidebar-bg",
+        isDark: !0
+    },
+    progressbar_font: {
+        cssVar: "--fluent-progressbar-font-color",
+        isDark: !1
+    },
+    dark_progressbar_font: {
+        cssVar: "--fluent-progressbar-font-color",
+        isDark: !0
+    }
+}, shared_l = new globalThis.Map();
+const configureHexColorValue = function(o, s) {
+    let n = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
+    o.rmempty = !1, o.validate = (e, t)=>!e || shared_a.test(String(t)) || _("Expecting: %s").format(_("valid HEX color value")), o.render = (c, i, u)=>{
+        let d = shared_e.Value.prototype.render.call(o, c, i, u), p = ()=>{
+            let e = document.querySelector('[id^="widget.cbid.fluent."][id$=".'.concat(s, '"]'));
+            e && ((e, t)=>{
                 if ("true" === e.dataset.fluentColorPicker) return;
-                let t = e.parentElement;
-                if (!t) return;
+                let r = e.parentElement;
+                if (!r) return;
                 e.dataset.fluentColorPicker = "true", e.classList.add("fluent-color-field__text");
                 let l = document.createElement("div");
                 l.className = "fluent-color-field";
                 let o = document.createElement("label");
                 o.className = "fluent-color-swatch", o.title = _("Choose color");
-                let a = document.createElement("input");
-                a.type = "color", a.className = "fluent-color-swatch__input", a.setAttribute("aria-label", _("Choose color"));
-                let r = document.createElement("span");
-                r.className = "fluent-color-swatch__preview";
-                let n = (e)=>{
-                    /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(e) && (a.value = e, r.style.backgroundColor = e);
+                let s = document.createElement("input");
+                s.type = "color", s.className = "fluent-color-swatch__input", s.setAttribute("aria-label", _("Choose color"));
+                let n = document.createElement("span");
+                n.className = "fluent-color-swatch__preview";
+                let c = (e)=>{
+                    shared_a.test(e) && (s.value = e, n.style.backgroundColor = e);
                 };
-                n(e.value), a.addEventListener("input", ()=>{
-                    e.value = a.value, r.style.backgroundColor = a.value;
+                c(e.value), s.addEventListener("input", ()=>{
+                    e.value = s.value, n.style.backgroundColor = s.value, shared_a.test(s.value) && t(s.value);
                 }), e.addEventListener("input", ()=>{
-                    n(e.value);
-                }), o.appendChild(a), o.appendChild(r), t.insertBefore(l, e), l.appendChild(e), l.appendChild(o);
-            })(e);
+                    c(e.value), shared_a.test(e.value) && t(e.value);
+                }), o.appendChild(s), o.appendChild(n), r.insertBefore(l, e), l.appendChild(e), l.appendChild(o);
+            })(e, (e)=>((e, a)=>{
+                    let o = shared_r[e];
+                    if (!o) return;
+                    let s = "".concat(o.isDark ? "dark" : "light", "|").concat(o.cssVar);
+                    shared_l.set(s, {
+                        selector: o.isDark ? ':root[data-theme="dark"]' : ":root",
+                        cssVar: o.cssVar,
+                        value: a
+                    }), (()=>{
+                        let e, a = ((e = document.getElementById(shared_t)) || ((e = document.createElement("style")).id = shared_t, document.head.appendChild(e)), e), r = new globalThis.Map();
+                        for (let e of shared_l.values()){
+                            var o;
+                            let t = null != (o = r.get(e.selector)) ? o : [];
+                            t.push("".concat(e.cssVar, ": ").concat(e.value, ";")), r.set(e.selector, t);
+                        }
+                        let s = "";
+                        for (let [e, t] of r)s += "".concat(e, " { ").concat(t.join(" "), " }\n");
+                        a.textContent = s;
+                    })();
+                })(s, e));
         };
-        return o ? requestAnimationFrame(i) : setTimeout(i, 0), c;
+        return n ? requestAnimationFrame(p) : setTimeout(p, 0), d;
     };
 };
-const createModeSubtabs = (t, l, o)=>{
-    let a = t.taboption(l, shared_e.SectionValue, o, shared_e.TypedSection, "global").subsection;
-    return a.anonymous = !0, a.addremove = !1, a.tab("light", _("Light mode")), a.tab("dark", _("Dark mode")), a;
+const createModeSubtabs = (t, a, r)=>{
+    let l = t.taboption(a, shared_e.SectionValue, r, shared_e.TypedSection, "global").subsection;
+    return l.anonymous = !0, l.addremove = !1, l.tab("light", _("Light mode")), l.tab("dark", _("Dark mode")), l;
 };
 
 ;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/colors.ts
@@ -140,7 +201,7 @@ const registerColorsTab = (o)=>{
     }
     {
         let a = t.taboption("light", colors_e.Value, "sidebar_bg", _("Sidebar background"), _("HEX color used for the navigation sidebar in light mode."));
-        a.default = "#ffffff", configureHexColorValue(a, "sidebar_bg");
+        a.default = "#f3f3f3", configureHexColorValue(a, "sidebar_bg");
     }
     {
         let a = t.taboption("dark", colors_e.Value, "dark_primary", _("Accent color"), _("HEX color used as the primary Fluent accent when the interface is rendered in dark mode."));
@@ -348,7 +409,7 @@ function jsxDEV(e, t) {
 
 ;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/login.tsx
 
-let login_a = L.form, login_n = L.rpc, login_l = L.dom, login_o = L.fs, login_r = L.ui, login_i = login_n.declare({
+let login_a = L.form, login_n = L.rpc, login_l = L.dom, login_o = L.fs, login_i = L.ui, login_r = login_n.declare({
     object: "luci.fluent",
     method: "avail",
     expect: {
@@ -420,29 +481,27 @@ let login_g = new Set([
                 });
                 n.length ? h(y, n.map((a)=>{
                     var n, l;
-                    let o, i, d, u = String(null != (n = a.name) ? n : ""), s = jsx("button", {
+                    let o, r, d, u = String(null != (n = a.name) ? n : ""), s = jsx("button", {
                         class: "btn cbi-button cbi-button-remove",
                         type: "button",
                         children: "Delete"
-                    }), g = login_r.createHandlerFn(this, function() {
-                        return k("Deleting ".concat(u, "...")), login_c(u).then((e)=>(login_f(e, "Deleting ".concat(u)), w().then(()=>{
+                    }), g = login_i.createHandlerFn(this, ()=>(k("Deleting ".concat(u, "...")), login_c(u).then((e)=>(login_f(e, "Deleting ".concat(u)), w().then(()=>{
                                 k("Deleted ".concat(u, "."));
                             }))).catch((e)=>{
                             k("Failed to delete ".concat(u, ": ").concat(e instanceof Error ? e.message : String(e)));
-                        });
-                    });
+                        })));
                     return g && s.addEventListener("click", g), jsxs("div", {
                         class: "fluent-bg-item",
                         children: [
-                            (o = login_p(u), i = "".concat("/luci-static/fluent/background/").concat(encodeURIComponent(u)), "mp4" === o || "webm" === o ? jsx("video", {
+                            (o = login_p(u), r = "".concat("/luci-static/fluent/background/").concat(encodeURIComponent(u)), "mp4" === o || "webm" === o ? jsx("video", {
                                 class: "fluent-bg-preview fluent-bg-preview-video",
                                 muted: !0,
                                 playsInline: !0,
                                 preload: "metadata",
-                                src: i
+                                src: r
                             }) : jsx("div", {
                                 class: "fluent-bg-preview",
-                                style: "background-image:url('".concat(i.replace(/'/g, "%27"), "')")
+                                style: "background-image:url('".concat(r.replace(/'/g, "%27"), "')")
                             })),
                             jsxs("div", {
                                 class: "fluent-bg-meta",
@@ -477,7 +536,7 @@ let login_g = new Set([
                 }));
             });
         return g.addEventListener("click", ()=>{
-            k("Selecting background file..."), login_r.uploadFile("/tmp/fluent_background.tmp").then((e)=>{
+            k("Selecting background file..."), login_i.uploadFile("/tmp/fluent_background.tmp").then((e)=>{
                 let t;
                 if (!(null == e ? void 0 : e.name)) throw Error("Upload did not return a filename.");
                 let a = "" !== (t = e.name.replace(/^.*[\\/]/, "").replace(/[^A-Za-z0-9._-]+/g, "-").replace(/^-+|-+$/g, "")) && "." !== t && ".." !== t && m(t) ? t : "background-".concat(Date.now(), ".jpg");
@@ -490,7 +549,7 @@ let login_g = new Set([
                 let t = e instanceof Error ? e.message : String(e);
                 t && "false" !== t ? k("Upload failed: ".concat(t)) : k("Upload canceled.");
             });
-        }), login_i().then((e)=>{
+        }), login_r().then((e)=>{
             k("Ready to upload or remove custom backgrounds. Available space: ".concat(b(e), "."));
         }).catch(()=>{
             k("Ready to upload or remove custom backgrounds.");
@@ -516,20 +575,20 @@ const registerLoginTab = (e)=>{
     {
         let e = t.taboption("light", login_a.ListValue, "transparency", _("Login card opacity"), _("Opacity of the login card in light mode. 0 is fully transparent and 1 is fully opaque."));
         for (let t of transparencySteps)e.value(String(t));
-        e.default = "0.5", e.rmempty = !1;
+        e.default = "0.8", e.rmempty = !1;
     }
     {
         let e = t.taboption("light", login_a.Value, "blur", _("Backdrop blur radius"), _("Blur radius in pixels behind the login card in light mode. Use 0 to disable blur."));
-        e.datatype = "ufloat", e.default = "0", e.rmempty = !1;
+        e.datatype = "ufloat", e.default = "20", e.rmempty = !1;
     }
     {
         let e = t.taboption("dark", login_a.ListValue, "transparency_dark", _("Login card opacity"), _("Opacity of the login card in dark mode. 0 is fully transparent and 1 is fully opaque."));
         for (let t of transparencySteps)e.value(String(t));
-        e.default = "0.5", e.rmempty = !1;
+        e.default = "0.8", e.rmempty = !1;
     }
     {
         let e = t.taboption("dark", login_a.Value, "blur_dark", _("Backdrop blur radius"), _("Blur radius in pixels behind the login card in dark mode. Use 0 to disable blur."));
-        e.datatype = "ufloat", e.default = "0", e.rmempty = !1;
+        e.datatype = "ufloat", e.default = "20", e.rmempty = !1;
     }
 };
 

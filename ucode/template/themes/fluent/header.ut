@@ -50,7 +50,7 @@
   let loading_bar = '1';
   let page_bg = '#fafafa';
   let card_bg = '#ffffff';
-  let sidebar_bg = '#ffffff';
+  let sidebar_bg = '#f3f3f3';
   let dark_page_bg = '#1b1b1b';
   let dark_card_bg = '#2d2d2d';
   let dark_sidebar_bg = '#1f1f1f';
@@ -92,7 +92,7 @@
     custom_css = cfg.get_first('fluent', 'global', 'custom_css') || '';
     page_bg = cfg.get_first('fluent', 'global', 'page_bg') || '#fafafa';
     card_bg = cfg.get_first('fluent', 'global', 'card_bg') || '#ffffff';
-    sidebar_bg = cfg.get_first('fluent', 'global', 'sidebar_bg') || '#ffffff';
+    sidebar_bg = cfg.get_first('fluent', 'global', 'sidebar_bg') || '#f3f3f3';
     dark_page_bg = cfg.get_first('fluent', 'global', 'dark_page_bg') || '#1b1b1b';
     dark_card_bg = cfg.get_first('fluent', 'global', 'dark_card_bg') || '#2d2d2d';
     dark_sidebar_bg = cfg.get_first('fluent', 'global', 'dark_sidebar_bg') || '#1f1f1f';
@@ -307,7 +307,21 @@
   data-view-transition="{{ view_transition }}"
   data-tab-animation="{{ tab_animation }}"
   data-prefers-reduced-motion="{{ prefers_reduced_motion }}"
-  data-loading-bar="{{ loading_bar }}">
+  data-loading-bar="{{ loading_bar }}"
+  data-sidebar-state="expanded">
+  {% if (ctx.authsession) { %}
+  <script>
+    (function() {
+      if (window.innerWidth <= 768) return;
+      try {
+        var sidebarState = localStorage.getItem('fluent-sidebar-state');
+        if (sidebarState === 'collapsed' || sidebarState === 'expanded') {
+          document.body.setAttribute('data-sidebar-state', sidebarState);
+        }
+      } catch (_) {}
+    })();
+  </script>
+  {% } %}
 
   {% if (loading_bar == '1') { %}
   <div id="fluent-top-loading" class="fluent-loading-bar" aria-hidden="true">
@@ -323,16 +337,7 @@
           <img src="{{ media }}/img/fluent.svg" class="icon">
           <span class="brand-text">{{ brand_name }}</span>
         </a>
-        <div class="ml-auto">
-          <div class="sidenav-toggler d-none d-xl-block active" data-action="sidenav-unpin"
-            data-target="#sidenav-main">
-            <div class="sidenav-toggler-inner">
-              <i class="sidenav-toggler-line"></i>
-              <i class="sidenav-toggler-line"></i>
-              <i class="sidenav-toggler-line"></i>
-            </div>
-          </div>
-        </div>
+        <button type="button" class="sidebar-collapse-toggle"></button>
       </div>
     </div>
     {% } %}
@@ -343,6 +348,7 @@
           <a class="header__title brand" href="/">{{ brand_name }}</a>
         </div>
         {% if (ctx.authsession) { %}
+        <div class="header__search-slot" aria-hidden="true"><div class="header__search-placeholder"></div></div>
         <div class="header-actions">
           <button class="theme-toggle" id="theme-toggle" title="{{ _('Switch theme mode') }}" aria-label="{{ _('Switch theme mode') }}"></button>
           <div class="status" id="indicators"></div>

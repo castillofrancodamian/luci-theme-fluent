@@ -14,9 +14,33 @@ interface Module {
   renderTabMenu: (tree: MenuNode, url: string, level?: number) => HTMLElement;
   adjustBrandTextSize: () => void;
   handleSidebarToggle: (ev: Event) => void;
+  handleDesktopSidebarToggle: (ev: Event) => void;
 }
 
 type MenuNode = LuCI.ui.menu.MenuNode;
+
+function applyDesktopSidebarState(state: "expanded" | "collapsed") {
+  document.body.setAttribute("data-sidebar-state", state);
+  document.dispatchEvent(new CustomEvent("fluent-sidebar-state-change"));
+}
+
+function getDesktopSidebarState(): "expanded" | "collapsed" {
+  const storedState = localStorage.getItem("fluent-sidebar-state");
+
+  return storedState === "collapsed" || storedState === "expanded" ? storedState : "expanded";
+}
+function closeCollapsedPopups() {
+  document.querySelectorAll("#mainmenu ul.nav > li > a.menu.popup-open").forEach((node) => {
+    node.classList.remove("popup-open");
+  });
+
+  document.querySelectorAll("#mainmenu ul.nav > li > ul.slide-menu.popup-open").forEach((node) => {
+    const menu = node as HTMLElement;
+    menu.classList.remove("popup-open");
+    menu.style.display = "none";
+    menu.style.top = "";
+  });
+}
 
 /**
  * Fluent Theme Menu Module
@@ -69,28 +93,58 @@ const module: Module = {
     }
 
     // Attach event listeners for sidebar toggle functionality
-    const sidebarToggle = document.querySelector("a.showSide");
+    const sidebarToggles = document.querySelectorAll("a.showSide");
     const darkMask = document.querySelector(".darkMask");
+    const desktopSidebarToggle = document.querySelector(".sidebar-collapse-toggle");
+    const mobileToggleHandler =
+      ui.createHandlerFn(this, "handleSidebarToggle") ??
+      (() => {
+        console.warn("Fluent menu: missing sidebar toggle handler");
+      });
+    const desktopToggleHandler =
+      ui.createHandlerFn(this, "handleDesktopSidebarToggle") ??
+      (() => {
+        console.warn("Fluent menu: missing desktop sidebar toggle handler");
+      });
 
-    if (sidebarToggle) {
-      sidebarToggle.addEventListener(
-        "click",
-        ui.createHandlerFn(this, "handleSidebarToggle") ??
-          (() => {
-            console.warn("Fluent menu: missing sidebar toggle handler");
-          }),
-      );
-    }
+    sidebarToggles.forEach((toggle) => {
+      toggle.addEventListener("click", mobileToggleHandler);
+    });
     if (darkMask) {
-      darkMask.addEventListener(
-        "click",
-        ui.createHandlerFn(this, "handleSidebarToggle") ??
-          (() => {
-            console.warn("Fluent menu: missing sidebar toggle handler");
-          }),
-      );
+      darkMask.addEventListener("click", mobileToggleHandler);
     }
-    window.addEventListener("resize", L.bind(this.adjustBrandTextSize, this));
+    if (desktopSidebarToggle) {
+      desktopSidebarToggle.addEventListener("click", desktopToggleHandler);
+    }
+
+    if (window.innerWidth > 768) {
+      applyDesktopSidebarState(getDesktopSidebarState());
+    } else {
+      document.body.setAttribute("data-sidebar-state", "expanded");
+    }
+
+    window.addEventListener("resize", () => {
+      this.adjustBrandTextSize();
+
+      if (window.innerWidth > 768) {
+        applyDesktopSidebarState(getDesktopSidebarState());
+      } else {
+        document.body.setAttribute("data-sidebar-state", "expanded");
+      }
+    });
+    document.addEventListener("click", (event) => {
+      if (window.innerWidth <= 768 || document.body.getAttribute("data-sidebar-state") !== "collapsed") {
+        return;
+      }
+
+      const target = event.target as Node | null;
+      const sidebar = document.querySelector("#mainmenu");
+      if (target && sidebar?.contains(target)) {
+        return;
+      }
+
+      closeCollapsedPopups();
+    });
   },
 
   /**
@@ -99,51 +153,82 @@ const module: Module = {
    * @param {Event} ev - Click event from menu item
    */
   handleMenuExpand(ev: Event) {
-    const target = ev.target as HTMLElement;
+    const target = ev.currentTarget as HTMLElement | null;
     if (!target) return;
+
     const slide = target.parentNode as HTMLElement;
     const slideMenu = target.nextElementSibling as HTMLElement | null;
+    const isCollapsedDesktop = window.innerWidth > 768 && document.body.getAttribute("data-sidebar-state") === "collapsed";
     let shouldCollapse = false;
 
-    // Close all currently active submenus
-    const activeMenus = document.querySelectorAll(".main .main-left .nav > li > ul.active");
-    activeMenus.forEach((ulNode) => {
+    const openMenus = document.querySelectorAll(
+      isCollapsedDesktop
+        ? ".main .main-left .nav > li > ul.slide-menu.popup-open"
+        : ".main .main-left .nav > li > ul.slide-menu.active"
+    );
+    openMenus.forEach((ulNode) => {
       const ul = ulNode as HTMLElement;
-      // Stop any running animations and slide up
-      SlideAnimations.stop(ul);
-      // Remove active classes immediately when starting slideUp animation
-      ul.classList.remove("active");
-      ul.previousElementSibling?.classList.remove("active");
-      SlideAnimations.slideUp(ul, "fast");
 
-      // Check if we're clicking on an already open menu (should collapse it)
       if (!shouldCollapse && ul === slideMenu) {
         shouldCollapse = true;
       }
+
+      ul.classList.remove("popup-open", "active");
+      ul.previousElementSibling?.classList.remove("popup-open", "active");
+
+      SlideAnimations.stop(ul);
+
+      if (isCollapsedDesktop) {
+        ul.style.display = "none";
+        ul.style.top = "";
+      } else {
+        SlideAnimations.slideUp(ul, "fast");
+      }
     });
 
-    // Exit if there's no submenu to show
     if (!slideMenu) {
       return;
     }
 
-    // Open the submenu if it's not already open
     if (!shouldCollapse) {
-      // Find the slide menu within the slide element
       const slideMenuElement = slide?.querySelector(".slide-menu") as HTMLElement | null;
       if (slideMenuElement) {
-        // Add active classes immediately when starting slideDown animation
-        slideMenu.classList.add("active");
-        target.classList.add("active");
-        SlideAnimations.slideDown(slideMenuElement, "fast");
+        slideMenu.classList.add(isCollapsedDesktop ? "popup-open" : "active");
+        target.classList.add(isCollapsedDesktop ? "popup-open" : "active");
+
+        if (isCollapsedDesktop) {
+          SlideAnimations.stop(slideMenuElement);
+          slideMenuElement.style.display = "block";
+
+          const targetRect = target.getBoundingClientRect();
+          const popupHeight = slideMenuElement.offsetHeight;
+          const viewportPadding = 8;
+          const maxTop = Math.max(viewportPadding, window.innerHeight - popupHeight - viewportPadding);
+          const alignedTop = targetRect.top - 8;
+
+          slideMenuElement.style.top = `${Math.min(maxTop, Math.max(viewportPadding, alignedTop))}px`;
+        } else {
+          slideMenuElement.style.top = "";
+          SlideAnimations.slideDown(slideMenuElement, "fast");
+        }
+
+        slideMenuElement.querySelectorAll("li > a").forEach((node) => {
+          const link = node as HTMLAnchorElement;
+          link.addEventListener(
+            "click",
+            () => {
+              closeCollapsedPopups();
+            },
+            { once: true },
+          );
+        });
       }
-      target.blur(); // Remove focus from the clicked element
+
+      target.blur();
     }
 
-    // Dispatch custom event to notify theme-features to update the sidebar slider position
     document.dispatchEvent(new CustomEvent("fluent-menu-expand"));
 
-    // Prevent default link behavior and event bubbling
     ev.preventDefault();
     ev.stopPropagation();
   },
@@ -192,7 +277,7 @@ const module: Module = {
         <li class={slideClass ?? undefined}>
           <a href={L.url(url, child.name)} onclick={currentLevel === 1 ? ui.createHandlerFn(this, "handleMenuExpand") : null} class={menuClassCombined} data-title={(child.title || "").replace(/ /g, "_")}>
             {currentLevel === 1 || currentLevel === 2 ? <span class="menu-icon"></span> : null}
-            {_(child.title || "")}
+            <span class="menu-label">{_(child.title || "")}</span>
           </a>
           {submenu}
         </li>
@@ -300,30 +385,54 @@ const module: Module = {
    * @param {Event} _ev - Click event from sidebar toggle button or dark mask
    */
   handleSidebarToggle(this: Module, _ev: Event) {
-    const showSideButton = document.querySelector("a.showSide") as HTMLElement | null;
+    const showSideButtons = document.querySelectorAll("a.showSide");
     const sidebar = document.querySelector("#mainmenu") as HTMLElement | null;
     const darkMask = document.querySelector(".darkMask") as HTMLElement | null;
     const scrollbarArea = document.querySelector(".main-right") as HTMLElement | null;
 
     // Check if any required elements are missing
-    if (!showSideButton || !sidebar || !darkMask || !scrollbarArea) {
+    if (showSideButtons.length === 0 || !sidebar || !darkMask || !scrollbarArea) {
       console.warn("Fluent menu: sidebar toggle elements are unavailable");
       return;
     }
 
-    // Toggle sidebar visibility and related states
-    if (showSideButton.classList.contains("active")) {
-      // Close sidebar
-      showSideButton.classList.remove("active");
+    const isActive = Array.from(showSideButtons).some((button) => button.classList.contains("active"));
+
+    if (isActive) {
+      showSideButtons.forEach((button) => {
+        button.classList.remove("active");
+      });
       sidebar.classList.remove("active");
       scrollbarArea.classList.remove("active");
       darkMask.classList.remove("active");
     } else {
-      // Open sidebar
-      showSideButton.classList.add("active");
+      showSideButtons.forEach((button) => {
+        button.classList.add("active");
+      });
       sidebar.classList.add("active");
       scrollbarArea.classList.add("active");
       darkMask.classList.add("active");
+      this.adjustBrandTextSize();
+    }
+  },
+
+  handleDesktopSidebarToggle(this: Module, ev: Event) {
+    ev.preventDefault();
+    ev.stopPropagation();
+
+    if (window.innerWidth <= 768) {
+      return;
+    }
+
+    const currentState = document.body.getAttribute("data-sidebar-state") === "collapsed" ? "collapsed" : "expanded";
+    const nextState = currentState === "collapsed" ? "expanded" : "collapsed";
+
+    closeCollapsedPopups();
+
+    localStorage.setItem("fluent-sidebar-state", nextState);
+    applyDesktopSidebarState(nextState);
+
+    if (nextState === "expanded") {
       this.adjustBrandTextSize();
     }
   },

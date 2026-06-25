@@ -4,8 +4,8 @@
       flex-grow: 1;
       overflow: auto;
       width: 100%;
-      padding: 10px;
-      // Title styling for content pages
+      box-sizing: border-box;
+      padding: var(--fluent-space-xl);
       > .container {
         > h2[name="content"] {
           margin-bottom: 15px;
@@ -28,6 +28,9 @@
             }
           }
         }
+      }
+      @media (max-width: 768px) {
+        padding: var(--fluent-space-md);
       }
     }
   }

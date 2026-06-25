@@ -21,6 +21,7 @@ config global
 	option sidebar_width '260'
 	option sidebar_style 'default'
 	option sidebar_icons '1'
+	option sidebar_bg '#f3f3f3'
 	
 	# Header Settings
 	option header_height '48'
@@ -29,9 +30,9 @@ config global
 	# Login Page Settings
 	option login_bg 'microsoft'
 	option blur '40'
-	option transparency '0.92'
-	option blur_dark '0'
-	option transparency_dark '0.92'
+	option transparency '0.8'
+	option blur_dark '20'
+	option transparency_dark '0.8'
 	option login_animation '1'
 	
 	# Card Settings

@@ -14,7 +14,8 @@ class mainImpl extends L.view {
   render(data: unknown) {
     void data;
 
-    const map = new form.Map(
+    const MapCtor = (form as unknown as { Map: new (config: string, title?: string, description?: string) => LuCI.form.MapElement }).Map;
+    const map = new MapCtor(
       "fluent",
       _("Fluent theme settings"),
       _("Configure color mode, accent colors, animation behavior, and login-page appearance for luci-theme-fluent."),
@@ -29,7 +30,7 @@ class mainImpl extends L.view {
     registerAnimationTab(section);
     registerLoginTab(section);
 
-    return map.render();
+    return (map as unknown as { render: () => Promise<Node> }).render();
   }
 }
 

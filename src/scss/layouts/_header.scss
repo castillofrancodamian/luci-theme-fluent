@@ -1,60 +1,61 @@
 // Layouts - Header
-// FluentUI 2 Toolbar pattern with brand, actions, mobile toggle
+// FluentUI 2 Toolbar pattern with reserved desktop search slot
 @use "../mixins" as *;
 @use "../icons" as *;
+
 body > div.main > div.main-right > header {
-  // ============================================================
-  // HEADER CONTAINER
-  // FluentUI Toolbar: 48px height, flex layout, bottom border
-  // ============================================================
-  & {
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 var(--fluent-space-lg);
-    background: var(--fluent-bg);
-    border-bottom: 1px solid var(--fluent-border);
-    height: var(--fluent-header-height, 48px);
-    position: sticky;
-    top: 0;
-    z-index: var(--fluent-zindex-actions, 1000);
-    transition: background var(--fluent-duration-normal) var(--fluent-easing-standard);
-  }
+  display: flex;
+  align-items: center;
+  gap: var(--fluent-space-md);
+  padding: 0 var(--fluent-space-lg);
+  background: var(--fluent-bg);
+  border-bottom: 1px solid var(--fluent-border);
+  height: var(--fluent-header-height, 48px);
+  position: sticky;
+  top: 0;
+  z-index: var(--fluent-zindex-actions, 1000);
+  transition: background var(--fluent-duration-normal) var(--fluent-easing-standard);
+
   .header {
-    // ============================================================
-    // BRAND AREA (logo + title)
-    // ============================================================
     &__brand {
       display: flex;
       align-items: center;
       gap: var(--fluent-space-sm);
-    }
-
-    &__logo {
-      height: 28px;
-      width: auto;
+      min-width: 0;
+      flex: 0 0 auto;
     }
 
     &__title {
-      font-size: var(--fluent-font-size-md);
-      font-weight: var(--fluent-font-weight-bold, 700);
+      min-width: 0;
       color: var(--fluent-text);
+      font-size: var(--fluent-font-size-md);
+      font-weight: var(--fluent-font-weight-semibold);
       line-height: var(--fluent-line-height-tight);
+      text-decoration: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    // ============================================================
-    // ACTIONS AREA (right side)
-    // ============================================================
-    &__actions {
+    &__search-slot {
+      flex: 1 1 auto;
+      min-width: 0;
       display: flex;
       align-items: center;
-      gap: var(--fluent-space-sm);
+      justify-content: center;
+      pointer-events: none;
+      user-select: none;
     }
 
-    // ============================================================
-    // MOBILE TOGGLE BUTTON
-    // ============================================================
+    &__search-placeholder {
+      width: min(420px, 100%);
+      height: 32px;
+      border-radius: var(--fluent-radius-md);
+      border: 1px solid var(--fluent-border);
+      background: var(--fluent-bg-hover);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
     &__toggle {
       display: none;
       align-items: center;
@@ -76,7 +77,6 @@ body > div.main > div.main-right > header {
         background: var(--fluent-bg-hover);
       }
 
-      // In dark mode or on bg-primary (blue header), icon should be white
       @include theme-dark-context {
         &::before {
           @include fluent-icon-by-name("line-horizontal-3-20-regular", 20px, #ffffff);
@@ -89,14 +89,6 @@ body > div.main > div.main-right > header {
     }
   }
 
-  // ============================================================
-  // HEADER RESPONSIVE
-  // ============================================================
-
-  // ============================================================
-  // THEME TOGGLE BUTTON
-  // Sun/moon icon toggle for dark mode
-  // ============================================================
   .theme-toggle {
     display: inline-flex;
     align-items: center;
@@ -169,18 +161,16 @@ body > div.main > div.main-right > header {
     }
   }
 
-  // Header actions container
   .header-actions {
     display: flex;
     align-items: center;
     gap: var(--fluent-space-sm, 8px);
+    flex: 0 0 auto;
   }
 
-  // Polling status indicators
   .status {
     display: flex;
     align-items: center;
-    // gap: var(--fluent-space-sm);
 
     #xhr_poll_status {
       display: inline-flex;
@@ -195,7 +185,6 @@ body > div.main > div.main-right > header {
       user-select: none;
       transition: all var(--fluent-duration-fast) var(--fluent-easing-standard);
 
-      // Active state (polling running)
       &[data-style="active"] {
         background-color: var(--fluent-bg-hover, #f3f2f1);
         color: var(--fluent-primary);
@@ -206,7 +195,6 @@ body > div.main > div.main-right > header {
         }
       }
 
-      // Inactive state (polling paused)
       &[data-style="inactive"] {
         background-color: var(--fluent-warning-light, #fff4ce);
         color: var(--fluent-warning, #795707);
@@ -219,7 +207,6 @@ body > div.main > div.main-right > header {
     }
   }
 
-  // Dark mode overrides for status indicators
   @include theme-dark {
     .status #xhr_poll_status {
       &[data-style="active"] {
@@ -244,7 +231,6 @@ body > div.main > div.main-right > header {
     }
   }
 
-  // Dark mode overrides for theme toggle
   [data-theme="dark"] .theme-toggle,
   .theme-toggle[data-active-theme="dark"] {
     color: var(--fluent-text-secondary, #a0a0a0);
@@ -255,13 +241,20 @@ body > div.main > div.main-right > header {
     }
   }
 
-  // ============================================================
-  // RESPONSIVE
-  // ============================================================
   @media (max-width: 768px) {
-    & {
-      padding: 0 var(--fluent-space-sm);
+    padding: 0 var(--fluent-space-sm);
+    gap: var(--fluent-space-sm);
+
+    .header {
+      &__brand {
+        flex: 1 1 auto;
+      }
+
+      &__search-slot {
+        display: none;
+      }
     }
+
     .theme-toggle {
       width: 28px;
       height: 28px;

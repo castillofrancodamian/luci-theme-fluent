@@ -68,7 +68,7 @@ export const registerColorsTab = (section: LuCI.form.TypedSection): void => {
       _("Sidebar background"),
       _("HEX color used for the navigation sidebar in light mode."),
     );
-    option.default = "#ffffff";
+    option.default = "#f3f3f3";
     configureHexColorValue(option, "sidebar_bg");
   }
 

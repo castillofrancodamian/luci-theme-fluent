@@ -98,7 +98,7 @@ export function setupThemeFeatures() {
       try {
         const response = await callFluentSetMode(nextMode);
 
-        if (!response || response.result !== 0) {
+        if (response?.result !== 0) {
           throw new Error(`RPC returned ${response?.result ?? 'no response'} - permission denied or script error`);
         }
 
@@ -142,6 +142,11 @@ export function setupThemeFeatures() {
   }
 
   function updateSlider(ul: HTMLElement) {
+    const rectUl = ul.getBoundingClientRect();
+    if (rectUl.width === 0 && rectUl.height === 0) {
+      return;
+    }
+
     let slider = ul.querySelector('.fluent-tab-slider') as HTMLElement | null;
     if (!slider) {
       slider = document.createElement('div');
@@ -159,7 +164,6 @@ export function setupThemeFeatures() {
     if (!activeA) return;
     
     const rectA = activeA.getBoundingClientRect();
-    const rectUl = ul.getBoundingClientRect();
     
     const style = window.getComputedStyle(activeA);
     const paddingLeft = parseFloat(style.paddingLeft) || 16;
@@ -271,6 +275,19 @@ export function setupThemeFeatures() {
         updateSlider(ul);
       });
       observer.observe(ul, { attributes: true, subtree: true, attributeFilter: ['class'] });
+
+      try {
+        const visibilityObserver = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              updateSlider(ul);
+            }
+          }
+        }, { threshold: 0 });
+        visibilityObserver.observe(ul);
+      } catch (e) {
+        console.warn('Fluent theme: IntersectionObserver not supported', e);
+      }
     });
   }
 
@@ -385,8 +402,8 @@ export function setupThemeFeatures() {
     let height: number;
 
     if (isParent) {
-      top = rectTarget.top - rectUl.top + ul.scrollTop;
-      height = rectTarget.height;
+      top = rectTarget.top - rectUl.top + ul.scrollTop + rectTarget.height * 0.2;
+      height = rectTarget.height * 0.6;
     } else {
       top = rectTarget.top - rectUl.top + ul.scrollTop + rectTarget.height * 0.15;
       height = rectTarget.height * 0.7;
@@ -530,6 +547,17 @@ export function setupThemeFeatures() {
           updateSidebarSlider(navUl, true);
         }, 250);
       }
+    }
+  });
+  document.addEventListener('fluent-sidebar-state-change', () => {
+    const sidebar = document.querySelector('#mainmenu') as HTMLElement | null;
+
+    if (sidebar) {
+      const navUl = sidebar.querySelector('ul.nav') as HTMLElement | null;
+      if (navUl) updateSidebarSlider(navUl, true);
+      sidebar.querySelectorAll('ul.slide-menu').forEach((node) => {
+        updateSidebarSlider(node as HTMLElement, false);
+      });
     }
   });
 

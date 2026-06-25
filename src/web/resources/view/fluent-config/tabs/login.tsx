@@ -123,7 +123,7 @@ const CBIWallpaperManager = ((form.DummyValue as unknown as typeof LuCI.baseclas
             files.map((entry) => {
               const filename = String(entry.name ?? "");
               const deleteButton = <button class="btn cbi-button cbi-button-remove" type="button">Delete</button> as HTMLButtonElement;
-              const handleDelete = ui.createHandlerFn(this, function () {
+              const handleDelete = ui.createHandlerFn(this, () => {
                 setStatus(`Deleting ${filename}...`);
 
                 return callFluentRemove(filename)
@@ -249,7 +249,7 @@ export const registerLoginTab = (section: LuCI.form.TypedSection): void => {
       _("Opacity of the login card in light mode. 0 is fully transparent and 1 is fully opaque."),
     );
     for (const step of transparencySteps) option.value(String(step));
-    option.default = "0.5";
+    option.default = "0.8";
     option.rmempty = false;
   }
 
@@ -262,7 +262,7 @@ export const registerLoginTab = (section: LuCI.form.TypedSection): void => {
       _("Blur radius in pixels behind the login card in light mode. Use 0 to disable blur."),
     );
     option.datatype = "ufloat";
-    option.default = "0";
+    option.default = "20";
     option.rmempty = false;
   }
 
@@ -275,7 +275,7 @@ export const registerLoginTab = (section: LuCI.form.TypedSection): void => {
       _("Opacity of the login card in dark mode. 0 is fully transparent and 1 is fully opaque."),
     );
     for (const step of transparencySteps) option.value(String(step));
-    option.default = "0.5";
+    option.default = "0.8";
     option.rmempty = false;
   }
 
@@ -288,7 +288,7 @@ export const registerLoginTab = (section: LuCI.form.TypedSection): void => {
       _("Blur radius in pixels behind the login card in dark mode. Use 0 to disable blur."),
     );
     option.datatype = "ufloat";
-    option.default = "0";
+    option.default = "20";
     option.rmempty = false;
   }
 };
