@@ -1,6 +1,6 @@
 config global
-	# Theme Mode: normal (follow system), light, dark
-	option mode 'normal'
+	# Theme Mode: auto (follow system), light, dark
+	option mode 'auto'
 	
 	# Accent and progress-bar label colors
 	option primary '#0078D4'

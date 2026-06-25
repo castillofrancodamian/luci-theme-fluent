@@ -9,10 +9,10 @@ export const registerGeneralTab = (section: LuCI.form.TypedSection): void => {
 
   {
     const option = section.taboption("general", form.ListValue, "mode", _("Color mode"));
-    option.value("normal", _("Follow system"));
+    option.value("auto", _("Follow system"));
     option.value("light", _("Force light mode"));
     option.value("dark", _("Force dark mode"));
-    option.default = "normal";
+    option.default = "auto";
     option.rmempty = false;
     option.description = _("Use the system/browser preference, or always render the Fluent theme in a fixed light or dark palette.");
   }

@@ -589,10 +589,7 @@ function setupThemeFeatures() {
         method: 'set_mode',
         params: [
             'mode'
-        ],
-        expect: {
-            result: 0
-        }
+        ]
     }), r = e.getAttribute('data-prefers-reduced-motion') || '1';
     if ('1' === r) {
         let t = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -601,29 +598,37 @@ function setupThemeFeatures() {
     '1' === r && window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (t)=>{
         e.setAttribute('data-reduce-motion', t.matches ? 'true' : 'false');
     });
-    let l = e.getAttribute('data-theme-mode') || 'normal', a = document.getElementById('theme-toggle');
-    if (a) {
-        let r = 'dark' === document.documentElement.getAttribute('data-theme');
-        a.setAttribute('data-active-theme', r ? 'dark' : 'light'), a.hidden = !1, requestAnimationFrame(()=>{
-            a.classList.add('visible');
-        }), a.addEventListener('click', async ()=>{
-            if (a.disabled) return;
-            let r = e.getAttribute('data-theme-mode') || l, n = 'dark' === document.documentElement.getAttribute('data-theme') ? 'dark' : 'light', s = 'normal' === r ? 'dark' === n ? 'light' : 'dark' : 'dark' === r ? 'light' : 'dark', d = 'dark' === s ? 'dark' : 'light';
-            a.disabled = !0, document.documentElement.setAttribute('data-theme', d), a.setAttribute('data-active-theme', d);
-            try {
-                await i(s), e.setAttribute('data-theme-mode', s);
-            } catch (i) {
-                let e = 'dark' === r ? 'dark' : 'light';
-                document.documentElement.setAttribute('data-theme', e), a.setAttribute('data-active-theme', e), a.disabled = !1, t.addNotification(null, "Failed to save theme mode: ".concat(i instanceof Error ? i.message : String(i)), 'error');
-            }
-        }), 'normal' === l && window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (t)=>{
-            if ('normal' !== (e.getAttribute('data-theme-mode') || 'normal')) return;
-            let i = t.matches ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', i), a.setAttribute('data-active-theme', i);
-        });
+    let s = e.getAttribute('data-theme-mode') || 'auto', n = document.getElementById('theme-toggle');
+    function l(e) {
+        return 'dark' === e ? 'dark' : 'light' === e ? 'light' : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
-    let n = '1' === e.getAttribute('data-tab-animation');
-    function s(e) {
+    function a(e, t) {
+        n && (document.documentElement.setAttribute('data-theme', e), n.setAttribute('data-active-theme', e), n.setAttribute('data-mode', t));
+    }
+    n && (a(l(e.getAttribute('data-theme-mode') || 'auto'), s), n.hidden = !1, requestAnimationFrame(()=>{
+        n.classList.add('visible');
+    }), n.addEventListener('click', async ()=>{
+        var r, o;
+        if (n.disabled) return;
+        let d = 'dark' === (r = e.getAttribute('data-theme-mode') || s) ? 'light' : 'light' === r ? 'auto' : 'dark', u = l(d);
+        n.disabled = !0, a(u, d);
+        try {
+            let t = await i(d);
+            if (!t || 0 !== t.result) throw Error("RPC returned ".concat(null != (o = null == t ? void 0 : t.result) ? o : 'no response', " - permission denied or script error"));
+            e.setAttribute('data-theme-mode', d);
+        } catch (r) {
+            let i = e.getAttribute('data-theme-mode') || s;
+            a(l(i), i), t.addNotification(null, "Failed to save theme mode: ".concat(r instanceof Error ? r.message : String(r)), 'error');
+        } finally{
+            n.disabled = !1;
+        }
+    }), window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (t)=>{
+        if ('auto' !== (e.getAttribute('data-theme-mode') || s)) return;
+        let i = t.matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', i), n.setAttribute('data-active-theme', i);
+    }));
+    let o = '1' === e.getAttribute('data-tab-animation');
+    function d(e) {
         var t;
         let i = e.querySelector('.fluent-tab-slider');
         i || ((i = document.createElement('div')).className = 'fluent-tab-slider', e.appendChild(i));
@@ -632,9 +637,9 @@ function setupThemeFeatures() {
             i.style.width = '0px';
             return;
         }
-        let l = r.querySelector('a');
-        if (!l) return;
-        let a = l.getBoundingClientRect(), n = e.getBoundingClientRect(), s = window.getComputedStyle(l), d = parseFloat(s.paddingLeft) || 16, o = parseFloat(s.paddingRight) || 16, u = a.left - n.left + e.scrollLeft + d, c = a.width - d - o, m = "".concat(u, "px"), f = "".concat(c, "px");
+        let s = r.querySelector('a');
+        if (!s) return;
+        let n = s.getBoundingClientRect(), l = e.getBoundingClientRect(), a = window.getComputedStyle(s), o = parseFloat(a.paddingLeft) || 16, d = parseFloat(a.paddingRight) || 16, u = n.left - l.left + e.scrollLeft + o, c = n.width - o - d, m = "".concat(u, "px"), f = "".concat(c, "px");
         if (i.style.left === m && i.style.width === f) return;
         let h = function(e) {
             if (e.classList.contains('tabs')) return 'header-tabs';
@@ -647,23 +652,23 @@ function setupThemeFeatures() {
             time: Date.now()
         });
     }
-    function d() {
+    function u() {
         document.querySelectorAll('ul.cbi-tabmenu, ul.tabs').forEach((e)=>{
-            if (e.dataset.sliderInit) return void s(e);
+            if (e.dataset.sliderInit) return void d(e);
             e.dataset.sliderInit = 'true';
             let t = e.querySelector('.fluent-tab-slider');
-            if (t || ((t = document.createElement('div')).className = 'fluent-tab-slider', e.appendChild(t)), n && e.classList.contains('tabs')) {
+            if (t || ((t = document.createElement('div')).className = 'fluent-tab-slider', e.appendChild(t)), o && e.classList.contains('tabs')) {
                 let i = null;
                 try {
                     i = sessionStorage.getItem('fluent-tab-slider-pos');
                 } catch (e) {}
                 if (i) try {
                     let r = JSON.parse(i);
-                    sessionStorage.removeItem('fluent-tab-slider-pos'), t.style.transition = 'none', t.style.left = r.left, t.style.width = r.width, t.offsetHeight, t.style.transition = '', s(e);
+                    sessionStorage.removeItem('fluent-tab-slider-pos'), t.style.transition = 'none', t.style.left = r.left, t.style.width = r.width, t.offsetHeight, t.style.transition = '', d(e);
                 } catch (t) {
-                    s(e);
+                    d(e);
                 }
-                else s(e), t.style.transition = 'none', t.style.transform = 'scaleX(0)', t.offsetHeight, t.style.transition = '', t.style.transform = 'scaleX(1)';
+                else d(e), t.style.transition = 'none', t.style.transform = 'scaleX(0)', t.offsetHeight, t.style.transition = '', t.style.transform = 'scaleX(1)';
                 e.querySelectorAll('li > a').forEach((e)=>{
                     let i = e.getAttribute('href');
                     i && '#' !== i && e.addEventListener('click', ()=>{
@@ -675,9 +680,9 @@ function setupThemeFeatures() {
                         } catch (e) {}
                     });
                 });
-            } else s(e);
+            } else d(e);
             new MutationObserver(()=>{
-                s(e);
+                d(e);
             }).observe(e, {
                 attributes: !0,
                 subtree: !0,
@@ -687,12 +692,12 @@ function setupThemeFeatures() {
             });
         });
     }
-    if (window._fluent_last_tab_pos = window._fluent_last_tab_pos || {}, d(), new MutationObserver(()=>d()).observe(e, {
+    if (window._fluent_last_tab_pos = window._fluent_last_tab_pos || {}, u(), new MutationObserver(()=>u()).observe(e, {
         childList: !0,
         subtree: !0
     }), window.addEventListener('resize', ()=>{
         document.querySelectorAll('ul.cbi-tabmenu, ul.tabs').forEach((e)=>{
-            s(e);
+            d(e);
         });
     }), '1' === e.getAttribute('data-loading-bar')) {
         let e = !1, t = document.getElementById('fluent-top-loading'), i = ()=>{
@@ -723,27 +728,27 @@ function setupThemeFeatures() {
             subtree: !0
         });
     }
-    function o(e, t) {
-        let i, r, l = t ? 'fluent-sidebar-parent-slider' : 'fluent-sidebar-slider', a = e.querySelector(".".concat(l));
-        a || ((a = document.createElement('div')).className = l, e.appendChild(a));
-        let n = e.querySelector('li.active');
-        if (!n || t && (n.classList.contains('slide') || n.querySelector('.slide-menu'))) {
-            a.style.height = '0px', a.style.opacity = '0';
+    function c(e, t) {
+        let i, r, s = t ? 'fluent-sidebar-parent-slider' : 'fluent-sidebar-slider', n = e.querySelector(".".concat(s));
+        n || ((n = document.createElement('div')).className = s, e.appendChild(n));
+        let l = e.querySelector('li.active');
+        if (!l || t && (l.classList.contains('slide') || l.querySelector('.slide-menu'))) {
+            n.style.height = '0px', n.style.opacity = '0';
             return;
         }
-        a.style.opacity = '1';
-        let s = t ? n.querySelector('a.menu, a.food') : n;
-        if (!s) return;
-        let d = s.getBoundingClientRect(), o = e.getBoundingClientRect();
-        t ? (i = d.top - o.top + e.scrollTop, r = d.height) : (i = d.top - o.top + e.scrollTop + 0.15 * d.height, r = 0.7 * d.height), a.style.top = "".concat(i, "px"), a.style.height = "".concat(r, "px");
+        n.style.opacity = '1';
+        let a = t ? l.querySelector('a.menu, a.food') : l;
+        if (!a) return;
+        let o = a.getBoundingClientRect(), d = e.getBoundingClientRect();
+        t ? (i = o.top - d.top + e.scrollTop, r = o.height) : (i = o.top - d.top + e.scrollTop + 0.15 * o.height, r = 0.7 * o.height), n.style.top = "".concat(i, "px"), n.style.height = "".concat(r, "px");
     }
-    function u() {
+    function m() {
         let e = document.querySelector('#mainmenu');
         if (!e) return;
         let t = e.querySelector('ul.nav');
         if (t) {
             let e = t.querySelector('.fluent-sidebar-parent-slider');
-            if (e || ((e = document.createElement('div')).className = 'fluent-sidebar-parent-slider', t.appendChild(e)), t.classList.add('has-slider'), !t.dataset.sliderInit && (t.dataset.sliderInit = 'true', n && t.querySelectorAll('li > a.menu, li > a.food').forEach((e)=>{
+            if (e || ((e = document.createElement('div')).className = 'fluent-sidebar-parent-slider', t.appendChild(e)), t.classList.add('has-slider'), !t.dataset.sliderInit && (t.dataset.sliderInit = 'true', o && t.querySelectorAll('li > a.menu, li > a.food').forEach((e)=>{
                 let i = e.getAttribute('href');
                 i && '#' !== i && e.addEventListener('click', ()=>{
                     try {
@@ -754,7 +759,7 @@ function setupThemeFeatures() {
                         }));
                     } catch (e) {}
                 });
-            })), n) {
+            })), o) {
                 let t = null;
                 try {
                     t = sessionStorage.getItem('fluent-sidebar-parent-pos');
@@ -764,11 +769,11 @@ function setupThemeFeatures() {
                     sessionStorage.removeItem('fluent-sidebar-parent-pos'), e.style.transition = 'none', e.style.top = i.top, e.style.height = i.height, e.offsetHeight, e.style.transition = '';
                 } catch (e) {}
             }
-            o(t, !0);
+            c(t, !0);
         }
         e.querySelectorAll('ul.slide-menu').forEach((e)=>{
             let t = e.classList.contains('active'), i = e.querySelector('.fluent-sidebar-slider');
-            if (i || ((i = document.createElement('div')).className = 'fluent-sidebar-slider', e.appendChild(i)), e.classList.add('has-slider'), !e.dataset.sliderInit && (e.dataset.sliderInit = 'true', n && e.querySelectorAll('li > a').forEach((t)=>{
+            if (i || ((i = document.createElement('div')).className = 'fluent-sidebar-slider', e.appendChild(i)), e.classList.add('has-slider'), !e.dataset.sliderInit && (e.dataset.sliderInit = 'true', o && e.querySelectorAll('li > a').forEach((t)=>{
                 let i = t.getAttribute('href');
                 i && '#' !== i && t.addEventListener('click', ()=>{
                     try {
@@ -779,7 +784,7 @@ function setupThemeFeatures() {
                         }));
                     } catch (e) {}
                 });
-            })), n && t) {
+            })), o && t) {
                 let e = null;
                 try {
                     e = sessionStorage.getItem('fluent-sidebar-submenu-pos');
@@ -789,26 +794,26 @@ function setupThemeFeatures() {
                     sessionStorage.removeItem('fluent-sidebar-submenu-pos'), i.style.transition = 'none', i.style.top = t.top, i.style.height = t.height, i.offsetHeight, i.style.transition = '';
                 } catch (e) {}
             }
-            o(e, !1);
+            c(e, !1);
         });
     }
-    u(), new MutationObserver(()=>u()).observe(e, {
+    m(), new MutationObserver(()=>m()).observe(e, {
         childList: !0,
         subtree: !0
     }), document.addEventListener('fluent-menu-expand', ()=>{
         let e = document.querySelector('#mainmenu');
         if (e) {
             let t = e.querySelector('ul.nav');
-            t && (o(t, !0), setTimeout(()=>{
-                o(t, !0);
+            t && (c(t, !0), setTimeout(()=>{
+                c(t, !0);
             }, 250));
         }
     }), window.addEventListener('resize', ()=>{
         let e = document.querySelector('#mainmenu');
         if (e) {
             let t = e.querySelector('ul.nav');
-            t && o(t, !0), e.querySelectorAll('ul.slide-menu').forEach((e)=>{
-                o(e, !1);
+            t && c(t, !0), e.querySelectorAll('ul.slide-menu').forEach((e)=>{
+                c(e, !1);
             });
         }
     });

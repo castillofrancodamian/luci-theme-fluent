@@ -72,7 +72,7 @@ case "$1" in
 		json_cleanup
 
 		case "$mode" in
-			light|dark|normal) ;;
+			light|dark|auto) ;;
 			*)
 				echo '{ "result": 255 }'
 				exit 255

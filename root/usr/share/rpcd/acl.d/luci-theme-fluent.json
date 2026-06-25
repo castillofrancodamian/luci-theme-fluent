@@ -6,7 +6,7 @@
 				"/www/luci-static/fluent/background/*": [ "list" ]
 			},
 			"ubus": {
-				"luci.fluent": [ "avail", "remove", "rename" ]
+				"luci.fluent": [ "avail", "remove", "rename", "set_mode" ]
 			},
 			"uci": [ "fluent" ]
 		},

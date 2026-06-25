@@ -14,7 +14,7 @@
 
   // UCI config
   let cfg = cursor();
-  let mode = 'normal';
+  let mode = 'auto';
   let primary = '#0078d4';
   let dark_primary = '#1a1a2e';
   let blur_radius = '0';
@@ -24,7 +24,7 @@
   let bar_color = primary;
 
   if (access('/etc/config/fluent')) {
-    mode = cfg.get_first('fluent', 'global', 'mode') || 'normal';
+    mode = cfg.get_first('fluent', 'global', 'mode') || 'auto';
     primary = cfg.get_first('fluent', 'global', 'primary') || '#0078d4';
     dark_primary = cfg.get_first('fluent', 'global', 'dark_primary') || '#1a1a2e';
     blur_radius = cfg.get_first('fluent', 'global', 'blur') || '0';

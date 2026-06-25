@@ -13,8 +13,7 @@ export function setupThemeFeatures() {
   const body = document.body;
   if (!body) return;
   const ui = L.ui;
-  const callFluentSetMode = L.rpc.declare<number, [string]>({ object: 'luci.fluent', method: 'set_mode', params: ['mode'], expect: { result: 0 } });
-
+  const callFluentSetMode = L.rpc.declare<{ result: number }, [string]>({ object: 'luci.fluent', method: 'set_mode', params: ['mode'] });
   // ============================================================
   // 1. ACCESSIBILITY: PREFERS REDUCED MOTION SETTINGS
   // ============================================================
@@ -40,12 +39,45 @@ export function setupThemeFeatures() {
   // ============================================================
   // 2. DARK MODE TOGGLE BEHAVIOR
   // ============================================================
-  const mode = body.getAttribute('data-theme-mode') || 'normal';
+  const mode = body.getAttribute('data-theme-mode') || 'auto';
   const toggle = document.getElementById('theme-toggle') as HTMLButtonElement | null;
 
+  /** Returns the effective visual theme for a given mode string */
+  function getThemeForMode(modeType: string): string {
+    if (modeType === 'dark') return 'dark';
+    if (modeType === 'light') return 'light';
+    // auto — follow system
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  /** Get current effective theme (what data-theme should be) */
+  function getEffectiveTheme(): string {
+    const currentMode = body.getAttribute('data-theme-mode') || 'auto';
+    return getThemeForMode(currentMode);
+  }
+
+  /** Cycle: dark → light → auto → dark */
+  function cycleMode(current: string): string {
+    if (current === 'dark') return 'light';
+    if (current === 'light') return 'auto';
+    return 'dark';
+  }
+
+  /**
+   * Visually indicates the effective theme based on current mode.
+   * data-active-theme controls which icon is shown (sun/moon).
+   * data-mode shows the mode type for styling.
+   */
+  function updateToggleState(activeTheme: string, modeType: string): void {
+    if (!toggle) return;
+    document.documentElement.setAttribute('data-theme', activeTheme);
+    toggle.setAttribute('data-active-theme', activeTheme);
+    toggle.setAttribute('data-mode', modeType);
+  }
+
   if (toggle) {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    toggle.setAttribute('data-active-theme', isDark ? 'dark' : 'light');
+    const effectiveTheme = getEffectiveTheme();
+    updateToggleState(effectiveTheme, mode);
     toggle.hidden = false;
 
     // Smoothly fade-in theme toggle icon once DOM is fully interactive
@@ -57,34 +89,39 @@ export function setupThemeFeatures() {
       if (toggle.disabled) return;
 
       const currentMode = body.getAttribute('data-theme-mode') || mode;
-      const effectiveTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-      const nextMode = currentMode === 'normal' ? (effectiveTheme === 'dark' ? 'light' : 'dark') : (currentMode === 'dark' ? 'light' : 'dark');
-      const nextTheme = nextMode === 'dark' ? 'dark' : 'light';
+      const nextMode = cycleMode(currentMode);
+      const themeForMode = getThemeForMode(nextMode);
 
       toggle.disabled = true;
-      document.documentElement.setAttribute('data-theme', nextTheme);
-      toggle.setAttribute('data-active-theme', nextTheme);
+      updateToggleState(themeForMode, nextMode);
 
       try {
-        await callFluentSetMode(nextMode);
+        const response = await callFluentSetMode(nextMode);
+
+        if (!response || response.result !== 0) {
+          throw new Error(`RPC returned ${response?.result ?? 'no response'} - permission denied or script error`);
+        }
+
         body.setAttribute('data-theme-mode', nextMode);
       } catch (error) {
-        const rollbackTheme = currentMode === 'dark' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', rollbackTheme);
-        toggle.setAttribute('data-active-theme', rollbackTheme);
-        toggle.disabled = false;
+        // Rollback
+        const rollbackMode = body.getAttribute('data-theme-mode') || mode;
+        const rollbackTheme = getThemeForMode(rollbackMode);
+        updateToggleState(rollbackTheme, rollbackMode);
         ui.addNotification(null, `Failed to save theme mode: ${error instanceof Error ? error.message : String(error)}`, 'error');
+      } finally {
+        toggle.disabled = false;
       }
     });
 
-    if (mode === 'normal') {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if ((body.getAttribute('data-theme-mode') || 'normal') !== 'normal') return;
-        const targetTheme = e.matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', targetTheme);
-        toggle.setAttribute('data-active-theme', targetTheme);
-      });
-    }
+    // Listen for system preference changes (only relevant in 'auto' mode)
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      const currentMode = body.getAttribute('data-theme-mode') || mode;
+      if (currentMode !== 'auto') return;
+      const targetTheme = e.matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', targetTheme);
+      toggle.setAttribute('data-active-theme', targetTheme);
+    });
   }
 
   // ============================================================

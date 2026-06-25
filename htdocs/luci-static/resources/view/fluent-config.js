@@ -170,7 +170,7 @@ const registerGeneralTab = (t)=>{
     t.tab("general", _("General"), _("Choose how the theme selects its mode and how large core controls should render."));
     {
         let o = t.taboption("general", general_e.ListValue, "mode", _("Color mode"));
-        o.value("normal", _("Follow system")), o.value("light", _("Force light mode")), o.value("dark", _("Force dark mode")), o.default = "normal", o.rmempty = !1, o.description = _("Use the system/browser preference, or always render the Fluent theme in a fixed light or dark palette.");
+        o.value("auto", _("Follow system")), o.value("light", _("Force light mode")), o.value("dark", _("Force dark mode")), o.default = "auto", o.rmempty = !1, o.description = _("Use the system/browser preference, or always render the Fluent theme in a fixed light or dark palette.");
     }
     {
         let o = t.taboption("general", general_e.ListValue, "font_weight", _("Navigation font weight"));

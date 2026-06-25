@@ -10,7 +10,7 @@ EOF
 if ! uci -q get fluent.@global[0] > /dev/null 2>&1; then
 	uci batch << 'EOF'
 	set fluent.global=global
-	set fluent.global.mode='normal'
+	set fluent.global.mode='auto'
 	set fluent.global.primary='#0078D4'
 	set fluent.global.dark_primary='#4da6ff'
 	set fluent.global.page_bg='#fafafa'

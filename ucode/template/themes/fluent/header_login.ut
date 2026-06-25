@@ -20,7 +20,7 @@
   srand(+substr(reverse(time() + ""), 0, 8));
 
   // Custom settings
-  let mode = 'normal';
+  let mode = 'auto';
   let primary = '#0078d4';
   let dark_primary = '#1a1a2e';
   let blur_radius = '0';
@@ -32,7 +32,7 @@
   if (access('/etc/config/fluent')) {
     primary = cfg.get_first('fluent', 'global', 'primary') || '#0078d4';
     dark_primary = cfg.get_first('fluent', 'global', 'dark_primary') || '#1a1a2e';
-    mode = cfg.get_first('fluent', 'global', 'mode') || 'normal';
+    mode = cfg.get_first('fluent', 'global', 'mode') || 'auto';
     blur_radius = cfg.get_first('fluent', 'global', 'blur') || '0';
     blur_radius_dark = cfg.get_first('fluent', 'global', 'blur_dark') || '0';
     blur_opacity = cfg.get_first('fluent', 'global', 'transparency') || '1';
@@ -74,7 +74,7 @@
 	<meta name="msapplication-TileColor" content="{{ bar_color }}">
 	<meta name="msapplication-TileImage" content="{{ media }}/icon/icon-192.png">
 
-	{% if (mode === 'normal') { %}
+  {% if (mode === 'auto') { %}
 	<meta name="theme-color" content="{{ bar_color }}">
 	<script type="text/javascript">
 		(function() {
@@ -104,7 +104,7 @@
 		}
 
 		{# Dark mode overrides - must come AFTER default values #}
-		{% if (mode === 'normal') { %}
+    {% if (mode === 'auto') { %}
 			@media (prefers-color-scheme: dark) {
 				:root:not([data-theme="light"]) {
 					--fluent-primary: {{ dark_primary }};

@@ -128,37 +128,44 @@ body > div.main > div.main-right > header {
       transform: scale(0.95);
     }
 
-    .theme-toggle-icon {
-      width: 18px;
-      height: 18px;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      pointer-events: none;
       transition:
         opacity var(--fluent-transition-fast, 150ms ease),
         transform var(--fluent-transition-fast, 150ms ease);
     }
 
-    // Default: show sun, hide moon
-    .theme-toggle-icon.sun {
+    &::before {
+      inset: 7px;
       opacity: 1;
       transform: rotate(0deg);
-    }
-    .theme-toggle-icon.moon {
-      opacity: 0;
-      transform: rotate(-90deg);
-      position: absolute;
+      background-image: url("../assets/theme-sun.svg");
     }
 
-    // When dark theme is active: hide sun, show moon
-    &[data-active-theme="dark"] {
-      .theme-toggle-icon.sun {
-        opacity: 0;
-        transform: rotate(90deg);
-        position: absolute;
-      }
-      .theme-toggle-icon.moon {
-        opacity: 1;
-        transform: rotate(0deg);
-        position: relative;
-      }
+    &::after {
+      right: 2px;
+      bottom: 2px;
+      width: 10px;
+      height: 10px;
+      opacity: 0;
+      font-size: 0;
+      line-height: 0;
+      @include fluent-icon-content-by-name("fluent:arrow-sync-12-filled", 10px, #605e5c);
+    }
+
+    &[data-active-theme="dark"]::before {
+      background-image: url("../assets/theme-moon.svg");
+    }
+
+    &[data-mode="auto"]::after {
+      opacity: 1;
     }
   }
 
