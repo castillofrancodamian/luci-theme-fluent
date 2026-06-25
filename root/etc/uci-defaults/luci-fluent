@@ -2,7 +2,7 @@
 # Register luci-theme-fluent in LuCI and set up theme config defaults
 
 uci batch <<EOF
-set luci.themes.fluent=/luci-static/fluent
+set luci.themes.Fluent=/luci-static/fluent
 commit luci
 EOF
 
