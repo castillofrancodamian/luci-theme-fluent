@@ -51,7 +51,6 @@
 
   <!-- Security -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
   <meta http-equiv="X-XSS-Protection" content="1; mode=block">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
@@ -117,7 +116,7 @@
 	</style>
 
 	<link rel="shortcut icon" type="image/ico" href="{{ media }}/favicon.ico">
-	<script src="{{ resource }}/cbi.js?v={{ version.luciversion }}"></script>
 	<script src="{{ resource }}/luci.js?v={{ version.luciversion }}"></script>
+	<script src="{{ resource }}/cbi.js?v={{ version.luciversion }}"></script>
 </head>
 <body class="lang_{{ dispatcher.lang }} login-page" data-theme-mode="{{ mode }}">

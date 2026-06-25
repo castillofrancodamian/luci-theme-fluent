@@ -109,6 +109,8 @@ body.login-page {
 
   // LOGIN CONTAINER - Centers the login box within the remaining viewport
   .login-container {
+    backdrop-filter: blur(var(--fluent-blur-radius)) !important;
+    -webkit-backdrop-filter: blur(var(--fluent-blur-radius)) !important;
     position: relative !important;
     top: auto !important;
     left: auto !important;
@@ -141,7 +143,7 @@ body.login-page {
       position: relative !important;
 
       // Microsoft sign-in card token alignment
-      background: var(--fluent-bg-card) !important;
+      background: rgba(var(--fluent-bg-card-rgb, 255, 255, 255), var(--fluent-blur-opacity)) !important;
       border: 1px solid var(--fluent-border) !important;
       border-radius: 12px !important;
       box-shadow:
@@ -640,54 +642,59 @@ body.login-page {
 @mixin login-page-dark-styles {
   background: radial-gradient(circle at 50% 50%, #171c26 0%, #0b0e14 100%) !important;
 
-  .login-container .login-form {
-    background: #292929 !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-    box-shadow:
-      0 0 2px rgba(0, 0, 0, 0.24),
-      0 8px 16px rgba(0, 0, 0, 0.28) !important;
+  .login-container {
+    backdrop-filter: blur(var(--fluent-blur-radius-dark)) !important;
+    -webkit-backdrop-filter: blur(var(--fluent-blur-radius-dark)) !important;
 
-    .brand .brand-text {
-      color: #a3a3a3 !important;
-    }
+    .login-form {
+      background: rgba(var(--fluent-bg-card-dark-rgb, 41, 41, 41), var(--fluent-blur-opacity-dark)) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      box-shadow:
+        0 0 2px rgba(0, 0, 0, 0.24),
+        0 8px 16px rgba(0, 0, 0, 0.28) !important;
 
-    .form-login {
-      .errorbox {
-        color: #e37d80 !important;
-
-        &::after {
-          background-image: url("../assets/login-error-dark.svg") !important;
-        }
+      .brand .brand-text {
+        color: #a3a3a3 !important;
       }
 
-      .ms-input-wrapper {
-        .ms-input {
-          &.cbi-input-invalid {
-            border-color: #e37d80 !important;
-            border-bottom-color: #e37d80 !important;
-            background-image: linear-gradient(0deg, #e37d80 0%, #e37d80 100%) !important;
-            background-size: 0 2px !important;
+      .form-login {
+        .errorbox {
+          color: #e37d80 !important;
 
-            &:hover:not(:focus):not(:disabled) {
+          &::after {
+            background-image: url("../assets/login-error-dark.svg") !important;
+          }
+        }
+
+        .ms-input-wrapper {
+          .ms-input {
+            &.cbi-input-invalid {
               border-color: #e37d80 !important;
               border-bottom-color: #e37d80 !important;
-            }
+              background-image: linear-gradient(0deg, #e37d80 0%, #e37d80 100%) !important;
+              background-size: 0 2px !important;
 
-            &:focus {
-              border-color: #e37d80 !important;
-              border-bottom-color: #e37d80 !important;
-              background-size: 100% 2px !important;
-              box-shadow: 0 0 0 1px #e37d80 inset !important;
+              &:hover:not(:focus):not(:disabled) {
+                border-color: #e37d80 !important;
+                border-bottom-color: #e37d80 !important;
+              }
+
+              &:focus {
+                border-color: #e37d80 !important;
+                border-bottom-color: #e37d80 !important;
+                background-size: 100% 2px !important;
+                box-shadow: 0 0 0 1px #e37d80 inset !important;
+              }
             }
           }
         }
-      }
 
-      .login-account-pill {
-        border-color: rgba(255, 255, 255, 0.25) !important;
+        .login-account-pill {
+          border-color: rgba(255, 255, 255, 0.25) !important;
 
-        &:hover {
-          background-color: rgba(255, 255, 255, 0.1) !important;
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+          }
         }
       }
     }

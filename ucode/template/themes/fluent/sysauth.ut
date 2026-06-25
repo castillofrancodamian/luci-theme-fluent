@@ -68,20 +68,20 @@
   }
 
   function selectBackground(themeDir) {
-    let bgUrl = media + '/img/bg1.jpg';
-    let backgroundType = 'Image';
+    let bgUrl = '';
+    let backgroundType = 'None';
     let mimeType = '';
-    let login_bg = 'builtin';
+    let login_bg = 'microsoft';
 
     if (access('/etc/config/fluent')) {
-      login_bg = cfg.get_first('fluent', 'global', 'login_bg') || 'builtin';
+      login_bg = cfg.get_first('fluent', 'global', 'login_bg') || 'microsoft';
     }
 
     if (login_bg === 'microsoft') {
       return ['', 'MicrosoftDynamic', ''];
     }
 
-    if (login_bg === 'bing' || login_bg === 'unsplash') {
+    if (login_bg === 'bing') {
       try {
         let proc = popen('/usr/libexec/fluent/online_wallpaper');
         let picurl = proc ? trim(proc.read('all')) : '';
@@ -93,7 +93,11 @@
       } catch (e) {}
     }
 
-    // Custom or Built-in modes (fallback/scan directory)
+    if (login_bg !== 'custom') {
+      return ['', 'None', ''];
+    }
+
+    // Custom mode: rotate uploaded media from the background directory
     let mediaFiles = fetchMedia('/www' + themeDir + '*', themeDir);
     let backgroundTable = mediaFiles[0];
     let backgroundCount = mediaFiles[1];
@@ -324,7 +328,7 @@
       requestAnimationFrame(animate);
     })();
   //]]></script>
-  {% } else { %}
+  {% } else if (bgUrl) { %}
   <!-- Image Background Start -->
   <div class="main-bg" id="main-bg" style="background-image:url({{ bgUrl }})"></div>
   <!-- Image Background End -->

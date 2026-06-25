@@ -27,9 +27,11 @@ config global
 	option header_style 'default'
 	
 	# Login Page Settings
-	option login_bg 'builtin'
-	option login_blur '40'
-	option login_transparency '0.92'
+	option login_bg 'microsoft'
+	option blur '40'
+	option transparency '0.92'
+	option blur_dark '0'
+	option transparency_dark '0.92'
 	option login_animation '1'
 	
 	# Card Settings

@@ -3914,6 +3914,122 @@ select.cbi-input-invalid {
   display: flex;
 }
 
+.fluent-bg-manager {
+  gap: var(--fluent-space-md);
+  padding: var(--fluent-space-lg);
+  background: var(--fluent-bg-card);
+  border: 1px solid var(--fluent-border);
+  border-radius: var(--fluent-radius-lg);
+  box-shadow: var(--fluent-shadow-md);
+  flex-direction: column;
+  display: flex;
+}
+
+.fluent-bg-status, .fluent-bg-hint {
+  margin: 0;
+}
+
+.fluent-bg-hint {
+  color: var(--fluent-text-secondary);
+  font-size: var(--fluent-font-size-sm);
+  line-height: var(--fluent-line-height-normal);
+}
+
+.fluent-bg-actions {
+  gap: var(--fluent-space-sm);
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.fluent-bg-list {
+  gap: var(--fluent-space-md);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: grid;
+}
+
+.fluent-bg-item {
+  gap: var(--fluent-space-sm);
+  min-width: 0;
+  padding: var(--fluent-space-sm);
+  background: var(--fluent-bg-page);
+  border: 1px solid var(--fluent-border);
+  border-radius: var(--fluent-radius-lg);
+  flex-direction: column;
+  display: flex;
+}
+
+.fluent-bg-preview {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--fluent-radius-md);
+  background-color: var(--fluent-bg-hover);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  overflow: hidden;
+}
+
+.fluent-bg-preview-video {
+  object-fit: cover;
+  display: block;
+}
+
+.fluent-bg-meta {
+  gap: var(--fluent-space-xxs);
+  flex-direction: column;
+  min-width: 0;
+  display: flex;
+}
+
+.fluent-bg-name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.fluent-bg-size {
+  color: var(--fluent-text-secondary);
+  font-size: var(--fluent-font-size-sm);
+}
+
+.fluent-bg-item-actions {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.fluent-bg-empty {
+  gap: var(--fluent-space-xxs);
+  padding: var(--fluent-space-xl);
+  color: var(--fluent-text-secondary);
+  background: var(--fluent-bg-page);
+  border: 1px dashed var(--fluent-border);
+  border-radius: var(--fluent-radius-lg);
+  text-align: center;
+  flex-direction: column;
+  display: flex;
+}
+
+#cbi-upload.cbi-fileupload {
+  padding: var(--fluent-space-lg);
+  border-radius: var(--fluent-radius-lg);
+  align-items: stretch;
+}
+
+#cbi-upload.cbi-fileupload > p {
+  width: 100%;
+  color: var(--fluent-text-secondary);
+  margin: 0;
+}
+
+#cbi-upload.cbi-fileupload > .cbi-input-file {
+  flex: 240px;
+  min-width: 0;
+}
+
+#cbi-upload.cbi-fileupload > .btn, #cbi-upload.cbi-fileupload > .cbi-button {
+  min-width: 120px;
+}
+
 .cbi-checkbox {
   align-items: center;
   gap: var(--fluent-space-sm);
@@ -9030,6 +9146,7 @@ body.login-page {
 }
 
 .login-page .login-container {
+  -webkit-backdrop-filter: blur(var(--fluent-blur-radius)) !important;
   width: 100% !important;
   max-width: 488px !important;
   height: auto !important;
@@ -9054,7 +9171,7 @@ body.login-page {
   will-change: transform,opacity;
   animation: fluent-login-fade-in var(--fluent-duration-slow) var(--fluent-easing-easy-ease);
   box-sizing: border-box !important;
-  background: var(--fluent-bg-card) !important;
+  background: rgba(var(--fluent-bg-card-rgb, 255, 255, 255), var(--fluent-blur-opacity)) !important;
   border: 1px solid var(--fluent-border) !important;
   border-radius: 12px !important;
   flex-direction: column !important;
@@ -9490,8 +9607,12 @@ body.login-page {
     background: radial-gradient(circle, #171c26 0%, #0b0e14 100%) !important;
   }
 
+  :root:not([data-theme="light"]) .login-page .login-container {
+    -webkit-backdrop-filter: blur(var(--fluent-blur-radius-dark)) !important;
+  }
+
   :root:not([data-theme="light"]) .login-page .login-container .login-form {
-    background: #292929 !important;
+    background: rgba(var(--fluent-bg-card-dark-rgb, 41, 41, 41), var(--fluent-blur-opacity-dark)) !important;
     border-color: #ffffff1a !important;
     box-shadow: 0 0 2px #0000003d, 0 8px 16px #00000047 !important;
   }
@@ -9537,8 +9658,12 @@ body.login-page {
   background: radial-gradient(circle, #171c26 0%, #0b0e14 100%) !important;
 }
 
+[data-theme="dark"] .login-page .login-container {
+  -webkit-backdrop-filter: blur(var(--fluent-blur-radius-dark)) !important;
+}
+
 [data-theme="dark"] .login-page .login-container .login-form {
-  background: #292929 !important;
+  background: rgba(var(--fluent-bg-card-dark-rgb, 41, 41, 41), var(--fluent-blur-opacity-dark)) !important;
   border-color: #ffffff1a !important;
   box-shadow: 0 0 2px #0000003d, 0 8px 16px #00000047 !important;
 }

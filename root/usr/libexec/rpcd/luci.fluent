@@ -53,6 +53,8 @@ case "$1" in
 			exit 255
 		fi
 
+		mkdir -p "$bg_path"
+
 		if mv "$tmp_path" "$bg_path/$newname" 2>"/dev/null"; then
 			chmod 0644 "$bg_path/$newname"
 			echo '{ "result": 0 }'

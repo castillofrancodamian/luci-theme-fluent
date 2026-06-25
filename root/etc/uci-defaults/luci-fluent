@@ -27,9 +27,11 @@ if ! uci -q get fluent.@global[0] > /dev/null 2>&1; then
 	set fluent.global.sidebar_width='260'
 	set fluent.global.sidebar_style='default'
 	set fluent.global.header_height='48'
-	set fluent.global.login_bg='builtin'
-	set fluent.global.login_blur='40'
-	set fluent.global.login_transparency='0.92'
+	set fluent.global.login_bg='microsoft'
+	set fluent.global.blur='40'
+	set fluent.global.transparency='0.92'
+	set fluent.global.blur_dark='0'
+	set fluent.global.transparency_dark='0.92'
 	set fluent.global.login_animation='1'
 	set fluent.global.card_shadow='small'
 	set fluent.global.card_border='1'
@@ -43,4 +45,8 @@ EOF
 	uci commit fluent
 fi
 
+
+# Ensure custom login background storage exists for uploads on fresh installs
+mkdir -p /www/luci-static/fluent/background
+chmod 0755 /www/luci-static/fluent/background
 exit 0

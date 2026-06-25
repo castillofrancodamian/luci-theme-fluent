@@ -186,29 +186,350 @@ const registerGeneralTab = (t)=>{
     }
 };
 
-;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/login.ts
-let login_a = L.form;
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_define_property.js
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+    } else obj[key] = value;
 
-const registerLoginTab = (l)=>{
-    l.tab("login", _("Login page"), _("Adjust login card opacity and blur separately for light and dark mode."));
-    let r = createModeSubtabs(l, "login", "login_mode_tabs");
+    return obj;
+}
+
+
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_spread.js
+
+
+function _object_spread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(
+                Object.getOwnPropertySymbols(source).filter(function(sym) {
+                    return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+                })
+            );
+        }
+
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+
+    return target;
+}
+
+
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_spread_props.js
+function _object_spread_props_ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+
+    if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        if (enumerableOnly) {
+            symbols = symbols.filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+            });
+        }
+        keys.push.apply(keys, symbols);
+    }
+
+    return keys;
+}
+function _object_spread_props(target, source) {
+    source = source != null ? source : {};
+
+    if (Object.getOwnPropertyDescriptors) Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    else {
+        _object_spread_props_ownKeys(Object(source)).forEach(function(key) {
+            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+    }
+
+    return target;
+}
+
+
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_without_properties_loose.js
+function _object_without_properties_loose(source, excluded) {
+    if (source == null) return {};
+
+    var target = {}, sourceKeys = Object.getOwnPropertyNames(source), key, i;
+    for (i = 0; i < sourceKeys.length; i++) {
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+        target[key] = source[key];
+    }
+
+    return target;
+}
+
+
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_without_properties.js
+
+
+function _object_without_properties(source, excluded) {
+    if (source == null) return {};
+
+    var target = {}, sourceKeys, key, i;
+    if (typeof Reflect !== "undefined" && Reflect.ownKeys) {
+        sourceKeys = Reflect.ownKeys(Object(source));
+        for (i = 0; i < sourceKeys.length; i++) {
+            key = sourceKeys[i];
+            if (excluded.indexOf(key) >= 0) continue;
+            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+            target[key] = source[key];
+        }
+
+        return target;
+    }
+
+    target = _object_without_properties_loose(source, excluded);
+    if (Object.getOwnPropertySymbols) {
+        sourceKeys = Object.getOwnPropertySymbols(source);
+        for (i = 0; i < sourceKeys.length; i++) {
+            key = sourceKeys[i];
+            if (excluded.indexOf(key) >= 0) continue;
+            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+            target[key] = source[key];
+        }
+    }
+
+    return target;
+}
+
+
+
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_6ea2f62e13eaf926b7023436bab80f34/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
+
+
+
+const Fragment = Symbol.for("jsx.fragment");
+function jsx_factory_o(o, n) {
+    let s = n || {}, { children: l } = s, f = _object_without_properties(s, [
+        "children"
+    ]), i = function e(t) {
+        let r = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : [];
+        for (let o of t)null != o && "boolean" != typeof o && (Array.isArray(o) ? e(o, r) : r.push(o));
+        return r;
+    }(null == l ? [] : Array.isArray(l) ? l : [
+        l
+    ]);
+    if (o === Fragment) {
+        let e = document.createDocumentFragment();
+        return e.append(...i), e;
+    }
+    if ("function" == typeof o) return o(_object_spread_props(_object_spread({}, f), {
+        children: i
+    }));
+    let c = {}, p = _object_spread({}, f);
+    for (let [e, t] of Object.entries(p))e.startsWith("on") && "function" == typeof t ? (c[e] = t, delete p[e]) : "boolean" == typeof t && (t ? p[e] = e : delete p[e]);
+    let a = Object.keys(p).length > 0 ? i.length > 1 ? E(o, p, i) : E(o, p, i[0]) : i.length > 1 ? E(o, {}, i) : E(o, {}, i[0]);
+    for (let [e, t] of Object.entries(c)){
+        let r = e.slice(2).toLowerCase();
+        a.addEventListener(r, t);
+    }
+    return a;
+}
+function jsx(e, t) {
+    return jsx_factory_o(e, t);
+}
+function jsxs(e, t) {
+    return jsx_factory_o(e, t);
+}
+function jsxDEV(e, t) {
+    return jsx_factory_o(e, t);
+}
+
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_6ea2f62e13eaf926b7023436bab80f34/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
+
+
+;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/login.tsx
+
+let login_a = L.form, login_n = L.rpc, login_l = L.dom, login_o = L.fs, login_r = L.ui, login_i = login_n.declare({
+    object: "luci.fluent",
+    method: "avail",
+    expect: {
+        avail: 0
+    }
+}), login_c = login_n.declare({
+    object: "luci.fluent",
+    method: "remove",
+    params: [
+        "filename"
+    ],
+    expect: {
+        result: 0
+    }
+}), login_d = login_n.declare({
+    object: "luci.fluent",
+    method: "rename",
+    params: [
+        "newname"
+    ],
+    expect: {
+        result: 0
+    }
+});
+
+let login_g = new Set([
+    "jpg",
+    "jpeg",
+    "png",
+    "gif",
+    "webp",
+    "mp4",
+    "webm"
+]), login_p = (e)=>{
+    var t, a;
+    return null != (t = null == (a = e.split(".").pop()) ? void 0 : a.toLowerCase()) ? t : "";
+}, m = (e)=>login_g.has(login_p(e)), b = (e)=>e >= 1048576 ? "".concat((e / 1024 / 1024).toFixed(1), " GiB") : e >= 1024 ? "".concat((e / 1024).toFixed(1), " MiB") : "".concat(e, " KiB"), login_f = (e, t)=>{
+    if (0 !== e) throw Error("".concat(t, " failed with code ").concat(e, "."));
+}, h = (e, t)=>{
+    login_l.content(e, t);
+}, login_v = login_a.DummyValue.extend({
+    renderWidget: function(a, n, l) {
+        let u = jsx("div", {
+            class: "cbi-value-description fluent-bg-status",
+            children: "Ready to upload or remove custom backgrounds."
+        }), s = jsx("div", {
+            class: "fluent-bg-hint",
+            children: "Supported formats: JPG, PNG, GIF, WEBP, MP4, WEBM."
+        }), g = jsx("button", {
+            class: "btn cbi-button cbi-button-action",
+            type: "button",
+            children: "Upload background"
+        }), v = jsx("div", {
+            class: "fluent-bg-actions",
+            children: g
+        }), y = jsx("div", {
+            class: "fluent-bg-list"
+        }), k = (e)=>{
+            h(u, [
+                document.createTextNode(e)
+            ]);
+        }, w = ()=>login_o.list("/www/luci-static/fluent/background").catch(()=>[]).then((a)=>{
+                let n = a.filter((e)=>{
+                    var t;
+                    return "file" === e.type && m(String(null != (t = e.name) ? t : ""));
+                }).sort((e, t)=>{
+                    var a, n;
+                    return String(null != (a = e.name) ? a : "").localeCompare(String(null != (n = t.name) ? n : ""));
+                });
+                n.length ? h(y, n.map((a)=>{
+                    var n, l;
+                    let o, i, d, u = String(null != (n = a.name) ? n : ""), s = jsx("button", {
+                        class: "btn cbi-button cbi-button-remove",
+                        type: "button",
+                        children: "Delete"
+                    }), g = login_r.createHandlerFn(this, function() {
+                        return k("Deleting ".concat(u, "...")), login_c(u).then((e)=>(login_f(e, "Deleting ".concat(u)), w().then(()=>{
+                                k("Deleted ".concat(u, "."));
+                            }))).catch((e)=>{
+                            k("Failed to delete ".concat(u, ": ").concat(e instanceof Error ? e.message : String(e)));
+                        });
+                    });
+                    return g && s.addEventListener("click", g), jsxs("div", {
+                        class: "fluent-bg-item",
+                        children: [
+                            (o = login_p(u), i = "".concat("/luci-static/fluent/background/").concat(encodeURIComponent(u)), "mp4" === o || "webm" === o ? jsx("video", {
+                                class: "fluent-bg-preview fluent-bg-preview-video",
+                                muted: !0,
+                                playsInline: !0,
+                                preload: "metadata",
+                                src: i
+                            }) : jsx("div", {
+                                class: "fluent-bg-preview",
+                                style: "background-image:url('".concat(i.replace(/'/g, "%27"), "')")
+                            })),
+                            jsxs("div", {
+                                class: "fluent-bg-meta",
+                                children: [
+                                    jsx("strong", {
+                                        class: "fluent-bg-name",
+                                        title: u,
+                                        children: u
+                                    }),
+                                    jsx("span", {
+                                        class: "fluent-bg-size",
+                                        children: (d = Number(null != (l = a.size) ? l : 0)) > 0 ? b(Math.max(1, Math.ceil(d / 1024))) : "Unknown size"
+                                    })
+                                ]
+                            }),
+                            jsx("div", {
+                                class: "fluent-bg-item-actions",
+                                children: s
+                            })
+                        ]
+                    });
+                })) : h(y, jsxs("div", {
+                    class: "fluent-bg-empty",
+                    children: [
+                        jsx("strong", {
+                            children: "No custom backgrounds yet"
+                        }),
+                        jsx("span", {
+                            children: "Upload an image or video to use it on the login page."
+                        })
+                    ]
+                }));
+            });
+        return g.addEventListener("click", ()=>{
+            k("Selecting background file..."), login_r.uploadFile("/tmp/fluent_background.tmp").then((e)=>{
+                let t;
+                if (!(null == e ? void 0 : e.name)) throw Error("Upload did not return a filename.");
+                let a = "" !== (t = e.name.replace(/^.*[\\/]/, "").replace(/[^A-Za-z0-9._-]+/g, "-").replace(/^-+|-+$/g, "")) && "." !== t && ".." !== t && m(t) ? t : "background-".concat(Date.now(), ".jpg");
+                return k("Saving ".concat(a, "...")), login_d(a).then((e)=>(login_f(e, "Saving ".concat(a)), w().then(()=>{
+                        k("Saved ".concat(a, "."));
+                    }))).catch((e)=>{
+                    k("Failed to save ".concat(a, ": ").concat(e instanceof Error ? e.message : String(e)));
+                });
+            }).catch((e)=>{
+                let t = e instanceof Error ? e.message : String(e);
+                t && "false" !== t ? k("Upload failed: ".concat(t)) : k("Upload canceled.");
+            });
+        }), login_i().then((e)=>{
+            k("Ready to upload or remove custom backgrounds. Available space: ".concat(b(e), "."));
+        }).catch(()=>{
+            k("Ready to upload or remove custom backgrounds.");
+        }), w(), jsx("div", {
+            class: "fluent-bg-manager",
+            children: [
+                u,
+                s,
+                v,
+                y
+            ]
+        });
+    }
+});
+const registerLoginTab = (e)=>{
+    e.tab("login", _("Login page"), _("Adjust login card opacity and blur separately for light and dark mode."));
     {
-        let t = r.taboption("light", login_a.ListValue, "transparency", _("Login card opacity"), _("Opacity of the login card in light mode. 0 is fully transparent and 1 is fully opaque."));
-        for (let a of transparencySteps)t.value(String(a));
-        t.default = "0.5", t.rmempty = !1;
+        let t = e.taboption("login", login_a.ListValue, "login_bg", "Background source", "Select the background image source for the login page.");
+        t.value("microsoft", "Microsoft dynamic canvas"), t.value("custom", "Custom background"), t.value("bing", "Bing daily wallpaper"), t.default = "microsoft", t.rmempty = !1;
+    }
+    e.taboption("login", login_v, "_bg_mgr", "Custom backgrounds", "Upload and manage custom background images for the login page.").depends("login_bg", "custom");
+    let t = createModeSubtabs(e, "login", "login_mode_tabs");
+    {
+        let e = t.taboption("light", login_a.ListValue, "transparency", _("Login card opacity"), _("Opacity of the login card in light mode. 0 is fully transparent and 1 is fully opaque."));
+        for (let t of transparencySteps)e.value(String(t));
+        e.default = "0.5", e.rmempty = !1;
     }
     {
-        let t = r.taboption("light", login_a.Value, "blur", _("Backdrop blur radius"), _("Blur radius in pixels behind the login card in light mode. Use 0 to disable blur."));
-        t.datatype = "ufloat", t.default = "0", t.rmempty = !1;
+        let e = t.taboption("light", login_a.Value, "blur", _("Backdrop blur radius"), _("Blur radius in pixels behind the login card in light mode. Use 0 to disable blur."));
+        e.datatype = "ufloat", e.default = "0", e.rmempty = !1;
     }
     {
-        let t = r.taboption("dark", login_a.ListValue, "transparency_dark", _("Login card opacity"), _("Opacity of the login card in dark mode. 0 is fully transparent and 1 is fully opaque."));
-        for (let a of transparencySteps)t.value(String(a));
-        t.default = "0.5", t.rmempty = !1;
+        let e = t.taboption("dark", login_a.ListValue, "transparency_dark", _("Login card opacity"), _("Opacity of the login card in dark mode. 0 is fully transparent and 1 is fully opaque."));
+        for (let t of transparencySteps)e.value(String(t));
+        e.default = "0.5", e.rmempty = !1;
     }
     {
-        let t = r.taboption("dark", login_a.Value, "blur_dark", _("Backdrop blur radius"), _("Blur radius in pixels behind the login card in dark mode. Use 0 to disable blur."));
-        t.datatype = "ufloat", t.default = "0", t.rmempty = !1;
+        let e = t.taboption("dark", login_a.Value, "blur_dark", _("Backdrop blur radius"), _("Blur radius in pixels behind the login card in dark mode. Use 0 to disable blur."));
+        e.datatype = "ufloat", e.default = "0", e.rmempty = !1;
     }
 };
 
