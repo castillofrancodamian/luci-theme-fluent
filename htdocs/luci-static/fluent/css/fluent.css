@@ -11736,42 +11736,67 @@ body > div.main > div.main-right > header .theme-toggle:active {
 }
 
 body > div.main > div.main-right > header .theme-toggle:before, body > div.main > div.main-right > header .theme-toggle:after {
-  content: "";
   pointer-events: none;
-  transition: opacity var(--fluent-transition-fast),transform var(--fluent-transition-fast);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  display: block;
+  transition: opacity var(--fluent-transition-fast),transform var(--fluent-transition-fast),background-color var(--fluent-transition-fast);
   position: absolute;
 }
 
 body > div.main > div.main-right > header .theme-toggle:before {
+  --fluent-mask-weather-sunny-20-regular: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M10 2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 10 2m0 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8m0-1a3 3 0 1 1 0-6a3 3 0 0 1 0 6m7.5-2.5a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1zM10 16a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5m-6.5-5.5a.5.5 0 0 0 0-1H2.463a.5.5 0 0 0 0 1zm.646-6.354a.5.5 0 0 1 .708 0l1 1a.5.5 0 1 1-.708.708l-1-1a.5.5 0 0 1 0-.708m.708 11.708a.5.5 0 0 1-.708-.708l1-1a.5.5 0 0 1 .708.708zm11-11.708a.5.5 0 0 0-.708 0l-1 1a.5.5 0 0 0 .708.708l1-1a.5.5 0 0 0 0-.708m-.708 11.708a.5.5 0 0 0 .708-.708l-1-1a.5.5 0 0 0-.708.708z%22/></svg>");
+  width: 18px;
+  height: 18px;
+  -webkit-mask-image: var(--fluent-mask-weather-sunny-20-regular);
+  mask-image: var(--fluent-mask-weather-sunny-20-regular);
   opacity: 1;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA1ZTVjIiBzdHJva2Utd2lkdGg9IjIiPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjUiLz4KICA8bGluZSB4MT0iMTIiIHkxPSIxIiB4Mj0iMTIiIHkyPSIzIi8+CiAgPGxpbmUgeDE9IjEyIiB5MT0iMjEiIHgyPSIxMiIgeTI9IjIzIi8+CiAgPGxpbmUgeDE9IjQuMjIiIHkxPSI0LjIyIiB4Mj0iNS42NCIgeTI9IjUuNjQiLz4KICA8bGluZSB4MT0iMTguMzYiIHkxPSIxOC4zNiIgeDI9IjE5Ljc4IiB5Mj0iMTkuNzgiLz4KICA8bGluZSB4MT0iMSIgeTE9IjEyIiB4Mj0iMyIgeTI9IjEyIi8+CiAgPGxpbmUgeDE9IjIxIiB5MT0iMTIiIHgyPSIyMyIgeTI9IjEyIi8+CiAgPGxpbmUgeDE9IjQuMjIiIHkxPSIxOS43OCIgeDI9IjUuNjQiIHkyPSIxOC4zNiIvPgogIDxsaW5lIHgxPSIxOC4zNiIgeTE9IjUuNjQiIHgyPSIxOS43OCIgeTI9IjQuMjIiLz4KPC9zdmc+Cg==);
-  inset: 7px;
-  transform: rotate(0);
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") !important;
+  background: currentColor !important;
 }
 
 body > div.main > div.main-right > header .theme-toggle:after {
-  opacity: 0;
-  content: "";
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path fill='%23605e5c' d=%22M9.75 4h.516A3.74 3.74 0 0 1 14 7.75c0 2.003-1.565 3.641-3.53 3.745l-.197.005l-.516.005a.75.75 0 0 1-.115-1.493l.101-.007l.523-.005A2.24 2.24 0 0 0 12.5 7.75c0-1.192-.92-2.166-2.081-2.245l-.153-.005H9.75a.75.75 0 0 1-.102-1.493zh.516zM5.752 4h.498a.75.75 0 0 1 .102 1.493L6.25 5.5h-.498a2.252 2.252 0 0 0-.154 4.5l.154.005h.498a.75.75 0 0 1 .102 1.493l-.102.007h-.498a3.752 3.752 0 0 1-.199-7.5zh.497zM5.75 7h4.5a.75.75 0 0 1 .102 1.493l-.102.007h-4.5a.75.75 0 0 1-.102-1.493zh4.5z%22/></svg>");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 12px 12px;
-  flex-shrink: 0;
+  --fluent-mask-link-16-filled: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path fill='currentColor' d=%22M9.75 4h.516A3.74 3.74 0 0 1 14 7.75c0 2.003-1.565 3.641-3.53 3.745l-.197.005l-.516.005a.75.75 0 0 1-.115-1.493l.101-.007l.523-.005A2.24 2.24 0 0 0 12.5 7.75c0-1.192-.92-2.166-2.081-2.245l-.153-.005H9.75a.75.75 0 0 1-.102-1.493zh.516zM5.752 4h.498a.75.75 0 0 1 .102 1.493L6.25 5.5h-.498a2.252 2.252 0 0 0-.154 4.5l.154.005h.498a.75.75 0 0 1 .102 1.493l-.102.007h-.498a3.752 3.752 0 0 1-.199-7.5zh.497zM5.75 7h4.5a.75.75 0 0 1 .102 1.493l-.102.007h-4.5a.75.75 0 0 1-.102-1.493zh4.5z%22/></svg>");
   width: 12px;
   height: 12px;
-  font-size: 0;
-  line-height: 0;
+  -webkit-mask-image: var(--fluent-mask-link-16-filled);
+  mask-image: var(--fluent-mask-link-16-filled);
+  opacity: 0;
   display: inline-block;
   bottom: 2px;
   left: 2px;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") !important;
+  background: currentColor !important;
 }
 
 body > div.main > div.main-right > header .theme-toggle[data-active-theme="dark"]:before {
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA1ZTVjIiBzdHJva2Utd2lkdGg9IjIiPgogIDxwYXRoIGQ9Ik0yMSAxMi43OUE5IDkgMCAxIDEgMTEuMjEgMyA3IDcgMCAwIDAgMjEgMTIuNzl6Ii8+Cjwvc3ZnPgo=);
+  --fluent-mask-weather-moon-20-regular: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M15.493 13.497a6.98 6.98 0 0 1-11.483.892c2.831-1.087 4.558-2.42 5.593-4.397c1.048-2 1.337-4.16.76-6.909a6.98 6.98 0 0 1 5.13 10.414M5.457 16.918A7.981 7.981 0 1 0 9.88 2.035a.6.6 0 0 0-.614.74c.688 2.819.434 4.876-.55 6.753c-.934 1.784-2.544 3.031-5.55 4.107a.6.6 0 0 0-.292.903a7.95 7.95 0 0 0 2.582 2.38%22/></svg>");
+  width: 18px;
+  height: 18px;
+  -webkit-mask-image: var(--fluent-mask-weather-moon-20-regular);
+  mask-image: var(--fluent-mask-weather-moon-20-regular);
+  display: inline-block;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") !important;
+  background: currentColor !important;
 }
 
 body > div.main > div.main-right > header .theme-toggle[data-mode="auto"]:after {

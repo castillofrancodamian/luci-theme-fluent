@@ -149,38 +149,31 @@ body > div.main > div.main-right > header {
 
     &::before,
     &::after {
-      content: "";
       position: absolute;
-      display: block;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
       pointer-events: none;
       transition:
         opacity var(--fluent-transition-fast),
-        transform var(--fluent-transition-fast);
+        transform var(--fluent-transition-fast),
+        background-color var(--fluent-transition-fast);
     }
 
     &::before {
-      inset: 7px;
+      @include fluent-mask-icon-by-name("weather-sunny-20-regular", 18px, currentColor);
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(0deg);
       opacity: 1;
-      transform: rotate(0deg);
-      background-image: url("../assets/theme-sun.svg");
     }
 
     &::after {
+      @include fluent-mask-icon-by-name("link-16-filled", 12px, currentColor);
       left: 2px;
       bottom: 2px;
-      width: 12px;
-      height: 12px;
       opacity: 0;
-      font-size: 0;
-      line-height: 0;
-      @include fluent-icon-content-by-name("link-16-filled", 12px, #605e5c);
     }
 
     &[data-active-theme="dark"]::before {
-      background-image: url("../assets/theme-moon.svg");
+      @include fluent-mask-icon-by-name("weather-moon-20-regular", 18px, currentColor);
     }
 
     &[data-mode="auto"]::after {
