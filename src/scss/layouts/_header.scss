@@ -88,17 +88,11 @@ body > div.main > div.main-right > header {
     transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
 
     &::before {
-      @include fluent-icon-content-by-name("line-horizontal-3-20-regular", 20px, #323130);
+      @include fluent-mask-icon-by-name("line-horizontal-3-20-regular", 20px, currentColor);
     }
 
     &:hover {
       background: var(--fluent-bg-hover);
-    }
-
-    @include theme-dark-context {
-      &::before {
-        @include fluent-icon-by-name("line-horizontal-3-20-regular", 20px, #ffffff);
-      }
     }
   }
 

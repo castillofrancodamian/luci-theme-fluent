@@ -152,7 +152,7 @@ body.modal-overlay-active {
     z-index: 11;
 
     &::before {
-      @include fluent-icon-content-by-name("dismiss-20-regular", 20px);
+      @include fluent-mask-icon-by-name("dismiss-20-regular", 20px, currentColor);
     }
 
     &:hover {

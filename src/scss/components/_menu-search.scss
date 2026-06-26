@@ -1,4 +1,4 @@
-﻿@use "../mixins" as *;
+@use "../mixins" as *;
 @use "../icons" as *;
 
 .fluent-menu-search {
@@ -69,19 +69,13 @@
   }
 
   &::before {
-    @include fluent-icon-content-by-name("search-20-regular", 16px, #605e5c);
+    @include fluent-mask-icon-by-name("search-20-regular", 16px, var(--fluent-text-secondary));
     position: absolute;
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
     pointer-events: none;
     z-index: 1;
-  }
-
-  @include theme-dark-context {
-    &::before {
-      @include fluent-icon-content-by-name("search-20-regular", 16px, #a0a0a0);
-    }
   }
 
   .fluent-menu-search-overlay {

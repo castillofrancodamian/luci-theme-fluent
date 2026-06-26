@@ -88,7 +88,7 @@
     @include button-secondary;
 
     &::before {
-      @include fluent-icon-content-by-name("arrow-right-20-regular", 16px);
+      @include fluent-mask-icon-by-name("arrow-right-20-regular", 16px, currentColor);
     }
   }
 }

@@ -25,7 +25,7 @@
     position: absolute;
     left: var(--fluent-space-lg);
     top: var(--fluent-space-md);
-    @include fluent-icon-content-by-name("info-20-regular", 18px, #616161);
+    @include fluent-mask-icon-by-name("info-20-regular", 18px, var(--fluent-text-secondary));
     margin-top: 2px;
   }
 
@@ -147,7 +147,7 @@
     border-color: color-mix(in srgb, var(--fluent-success) 35%, transparent);
 
     &::before {
-      @include fluent-icon-content-by-name("checkmark-circle-20-regular", 18px, #107c10);
+      @include fluent-mask-icon-by-name("checkmark-circle-20-regular", 18px, var(--fluent-success));
     }
   }
 
@@ -158,7 +158,7 @@
     border-color: color-mix(in srgb, var(--fluent-warning) 45%, transparent);
 
     &::before {
-      @include fluent-icon-content-by-name("warning-20-regular", 18px, #d83b01);
+      @include fluent-mask-icon-by-name("warning-20-regular", 18px, var(--fluent-warning));
     }
   }
 
@@ -170,7 +170,7 @@
     border-color: color-mix(in srgb, var(--fluent-error) 35%, transparent);
 
     &::before {
-      @include fluent-icon-content-by-name("dismiss-circle-20-regular", 18px, #d13438);
+      @include fluent-mask-icon-by-name("dismiss-circle-20-regular", 18px, var(--fluent-error));
     }
   }
 
@@ -181,19 +181,7 @@
     border-color: color-mix(in srgb, var(--fluent-info) 35%, transparent);
 
     &::before {
-      content: "";
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      background-color: var(--fluent-primary);
-      $info-svg: map.get($fluent-icons, "info-20-regular");
-      -webkit-mask-image: url("data:image/svg+xml,#{$info-svg}");
-      mask-image: url("data:image/svg+xml,#{$info-svg}");
-      -webkit-mask-size: contain;
-      mask-size: contain;
-      -webkit-mask-repeat: no-repeat;
-      mask-repeat: no-repeat;
+      @include fluent-mask-icon-by-name("info-20-regular", 18px, var(--fluent-info));
     }
   }
 }

@@ -969,13 +969,7 @@ body[data-sidebar-state="collapsed"] {
         justify-content: center;
 
         &::before {
-          @include fluent-icon-content-by-name("line-horizontal-3-20-regular", 20px, #605e5c);
-        }
-
-        @include theme-dark-context {
-          &::before {
-            @include fluent-icon-by-name("line-horizontal-3-20-regular", 20px, #a0a0a0);
-          }
+          @include fluent-mask-icon-by-name("line-horizontal-3-20-regular", 20px, var(--fluent-text-secondary));
         }
       }
     }
