@@ -7,12 +7,14 @@ body > div.main > div.main-right > header {
   display: flex;
   align-items: center;
   gap: var(--fluent-space-md);
-  padding: 0 var(--fluent-space-lg);
+  padding: 0 var(--fluent-space-sm);
   background: var(--fluent-bg);
   border-bottom: 1px solid var(--fluent-border);
   height: var(--fluent-header-height, 48px);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: var(--fluent-zindex-actions, 1000);
   transition: background var(--fluent-duration-normal) var(--fluent-easing-standard);
 
@@ -35,6 +37,15 @@ body > div.main > div.main-right > header {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+
+      .icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
     }
 
     &__search-slot {
@@ -54,36 +65,48 @@ body > div.main > div.main-right > header {
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
     }
 
-    &__toggle {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border: none;
-      background: transparent;
-      color: var(--fluent-text);
-      cursor: pointer;
-      border-radius: var(--fluent-radius-md);
-      transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
+  }
 
+  .header__toggle, .desktop-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--fluent-text);
+    cursor: pointer;
+    border-radius: var(--fluent-radius-md);
+    transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
+
+    &::before {
+      @include fluent-icon-content-by-name("line-horizontal-3-20-regular", 20px, #323130);
+    }
+
+    &:hover {
+      background: var(--fluent-bg-hover);
+    }
+
+    @include theme-dark-context {
       &::before {
-        @include fluent-icon-content-by-name("line-horizontal-3-20-regular", 20px, #323130);
+        @include fluent-icon-by-name("line-horizontal-3-20-regular", 20px, #ffffff);
       }
+    }
+  }
 
-      &:hover {
-        background: var(--fluent-bg-hover);
-      }
+  .mobile-toggle {
+    display: none !important;
+    @media (max-width: 768px) {
+      display: flex !important;
+    }
+  }
 
-      @include theme-dark-context {
-        &::before {
-          @include fluent-icon-by-name("line-horizontal-3-20-regular", 20px, #ffffff);
-        }
-      }
-
-      @media (max-width: 768px) {
-        display: flex;
-      }
+  .desktop-toggle {
+    display: flex !important;
+    @media (max-width: 768px) {
+      display: none !important;
     }
   }
 

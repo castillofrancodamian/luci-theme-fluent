@@ -70,10 +70,15 @@ function createSearchInput(root: LuCI.ui.menu.MenuNode): { input: HTMLInputEleme
   const input = document.createElement("input");
   input.type = "search";
   input.className = "fluent-menu-search-input";
-  input.placeholder = _("Search menu…") + "  Ctrl+K";
+  input.placeholder = _("Search menu…");
   input.autocomplete = "off";
   input.spellcheck = false;
   input.setAttribute("aria-label", _("Search menu items"));
+
+  // Hotkey hint
+  const hotkey = document.createElement("span");
+  hotkey.className = "fluent-menu-search-hotkey";
+  hotkey.textContent = "Ctrl+K";
 
   // Results overlay
   const overlay = document.createElement("div");
@@ -81,6 +86,7 @@ function createSearchInput(root: LuCI.ui.menu.MenuNode): { input: HTMLInputEleme
   overlay.style.display = "none";
 
   container.appendChild(input);
+  container.appendChild(hotkey);
   container.appendChild(overlay);
 
   // ── State ──

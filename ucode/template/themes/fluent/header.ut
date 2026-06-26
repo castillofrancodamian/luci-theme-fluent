@@ -332,20 +332,17 @@
   <div class="main">
     {% if (ctx.authsession) { %}
     <div class="main-left" id="mainmenu" style="display:none">
-      <div class="sidenav-header d-flex align-items-center">
-        <a class="brand" href="/">
-          <img src="{{ media }}/img/fluent.svg" class="icon">
-          <span class="brand-text">{{ brand_name }}</span>
-        </a>
-        <button type="button" class="sidebar-collapse-toggle"></button>
-      </div>
     </div>
     {% } %}
     <div class="main-right">
       <header class="header">
         <div class="header__brand">
-          <a class="header__toggle showSide"></a>
-          <a class="header__title brand" href="/">{{ brand_name }}</a>
+          <button type="button" class="sidebar-collapse-toggle desktop-toggle"></button>
+          <a class="header__toggle showSide mobile-toggle"></a>
+          <a class="header__title brand" href="/">
+            <img src="{{ media }}/img/fluent.svg" class="icon" alt="">
+            <span>{{ brand_name }}</span>
+          </a>
         </div>
         {% if (ctx.authsession) { %}
         <div class="header__search-slot" aria-hidden="true"><div class="header__search-placeholder"></div></div>

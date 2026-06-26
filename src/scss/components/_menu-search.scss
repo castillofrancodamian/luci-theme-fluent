@@ -9,7 +9,7 @@
   .fluent-menu-search-input {
     width: 100%;
     height: 32px;
-    padding: 0 var(--fluent-space-sm) 0 32px;
+    padding: 0 52px 0 32px;
     border-radius: var(--fluent-radius-md);
     border: 1px solid var(--fluent-border);
     background: var(--fluent-bg-hover);
@@ -40,6 +40,24 @@
       appearance: none;
       display: none;
     }
+  }
+
+  .fluent-menu-search-hotkey {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 4px 6px;
+    background: var(--fluent-bg);
+    border: 1px solid var(--fluent-border);
+    border-radius: var(--fluent-radius-sm);
+    color: var(--fluent-text-secondary);
+    font-size: 11px;
+    line-height: 1;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &::before {

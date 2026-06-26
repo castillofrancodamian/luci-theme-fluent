@@ -847,65 +847,67 @@ function setupMenuSearch(n) {
     let l = document.querySelector(".header__search-slot");
     if (!l) return;
     l.innerHTML = "";
-    let { input: r, overlay: a } = function(n) {
+    let { input: a, overlay: r } = function(n) {
         let l = document.createElement("div");
         l.className = menu_search_t;
-        let r = document.createElement("input");
-        r.type = "search", r.className = "fluent-menu-search-input", r.placeholder = _("Search menu\u2026") + "  Ctrl+K", r.autocomplete = "off", r.spellcheck = !1, r.setAttribute("aria-label", _("Search menu items"));
-        let a = document.createElement("div");
-        a.className = "fluent-menu-search-overlay", a.style.display = "none", l.appendChild(r), l.appendChild(a);
-        let u = -1, c = [];
-        function i() {
-            a.style.display = "none", a.innerHTML = "", u = -1, c = [];
-        }
-        function o(e) {
-            i(), r.blur(), window.location.href = L.url(e.url);
+        let a = document.createElement("input");
+        a.type = "search", a.className = "fluent-menu-search-input", a.placeholder = _("Search menu\u2026"), a.autocomplete = "off", a.spellcheck = !1, a.setAttribute("aria-label", _("Search menu items"));
+        let r = document.createElement("span");
+        r.className = "fluent-menu-search-hotkey", r.textContent = "Ctrl+K";
+        let u = document.createElement("div");
+        u.className = "fluent-menu-search-overlay", u.style.display = "none", l.appendChild(a), l.appendChild(r), l.appendChild(u);
+        let c = -1, i = [];
+        function o() {
+            u.style.display = "none", u.innerHTML = "", c = -1, i = [];
         }
         function s(e) {
-            let t = a.querySelectorAll(".fluent-menu-search-item");
-            0 !== t.length && (u >= 0 && t[u] && (t[u].classList.remove("selected"), t[u].removeAttribute("aria-selected")), (u += e) < 0 && (u = t.length - 1), u >= t.length && (u = 0), t[u].classList.add("selected"), t[u].setAttribute("aria-selected", "true"), t[u].scrollIntoView({
+            o(), a.blur(), window.location.href = L.url(e.url);
+        }
+        function d(e) {
+            let t = u.querySelectorAll(".fluent-menu-search-item");
+            0 !== t.length && (c >= 0 && t[c] && (t[c].classList.remove("selected"), t[c].removeAttribute("aria-selected")), (c += e) < 0 && (c = t.length - 1), c >= t.length && (c = 0), t[c].classList.add("selected"), t[c].setAttribute("aria-selected", "true"), t[c].scrollIntoView({
                 block: "nearest"
             }));
         }
-        return r.addEventListener("input", ()=>{
-            let t = r.value.trim();
+        return a.addEventListener("input", ()=>{
+            let t = a.value.trim();
             t ? function(e) {
-                if (c = e, a.innerHTML = "", u = -1, 0 === e.length) {
-                    a.style.display = "none";
+                if (i = e, u.innerHTML = "", c = -1, 0 === e.length) {
+                    u.style.display = "none";
                     return;
                 }
                 let t = document.createElement("ul");
                 t.className = "fluent-menu-search-list", t.setAttribute("role", "listbox");
                 let n = Math.min(e.length, 20);
                 for(let l = 0; l < n; l++){
-                    let n = e[l], r = document.createElement("li");
-                    r.className = "fluent-menu-search-item", r.setAttribute("role", "option"), r.setAttribute("data-index", String(l));
-                    let a = document.createElement("span");
-                    if (a.className = "fluent-menu-search-label", a.textContent = _(n.node.title || n.node.name || ""), n.breadcrumb.length > 1) {
+                    let n = e[l], a = document.createElement("li");
+                    a.className = "fluent-menu-search-item", a.setAttribute("role", "option"), a.setAttribute("data-index", String(l));
+                    let r = document.createElement("span");
+                    if (r.className = "fluent-menu-search-label", r.textContent = _(n.node.title || n.node.name || ""), n.breadcrumb.length > 1) {
                         let e = document.createElement("span");
-                        e.className = "fluent-menu-search-path", e.textContent = n.breadcrumb.slice(0, -1).join(" \u2192 "), r.appendChild(e);
+                        e.className = "fluent-menu-search-path", e.textContent = n.breadcrumb.slice(0, -1).join(" \u2192 "), a.appendChild(e);
                     }
-                    r.appendChild(a), r.addEventListener("mousedown", (e)=>{
-                        e.preventDefault(), o(n);
-                    }), r.addEventListener("click", ()=>o(n)), t.appendChild(r);
+                    a.appendChild(r), a.addEventListener("mousedown", (e)=>{
+                        e.preventDefault(), s(n);
+                    }), a.addEventListener("click", ()=>s(n)), t.appendChild(a);
                 }
                 if (e.length > 20) {
                     let n = document.createElement("li");
                     n.className = "fluent-menu-search-more", n.textContent = _("and {count} more\u2026").replace("{count}", String(e.length - 20)), t.appendChild(n);
                 }
-                a.appendChild(t), a.style.display = "";
-                let l = r.getBoundingClientRect();
-                a.style.left = "0", a.style.top = l.height + "px";
+                u.appendChild(t), u.style.display = "";
+                let l = a.getBoundingClientRect();
+                u.style.left = "0", u.style.top = l.height + "px";
             }(function(t, n) {
                 let l = menu_search_e(n);
                 if (!l) return [];
-                let r = [];
-                return !function t(n, a, u) {
+                let a = [];
+                return !function t(n, r, u) {
                     for (let c of ui.menu.getChildren(n)){
-                        let n = a ? "".concat(a, "/").concat(c.name) : c.name, i = [
+                        let n = r ? "".concat(r, "/").concat(c.name) : c.name, i = [
                             ...u
                         ], o = c.title || c.name || "", s = o ? _(o) : "";
-                        o && i.push(s), (s && menu_search_e(s).includes(l) || o && menu_search_e(o).includes(l)) && r.push({
+                        o && i.push(s), (s && menu_search_e(s).includes(l) || o && menu_search_e(o).includes(l)) && a.push({
                             node: c,
                             url: n,
                             breadcrumb: [
@@ -913,43 +915,43 @@ function setupMenuSearch(n) {
                             ]
                         }), t(c, n, i);
                     }
-                }(t, "", []), r;
-            }(n, t)) : i();
-        }), r.addEventListener("keydown", (e)=>{
+                }(t, "", []), a;
+            }(n, t)) : o();
+        }), a.addEventListener("keydown", (e)=>{
             if ("Escape" === e.key) {
-                i(), r.blur();
+                o(), a.blur();
                 return;
             }
             if ("ArrowDown" === e.key) {
-                e.preventDefault(), s(1);
+                e.preventDefault(), d(1);
                 return;
             }
             if ("ArrowUp" === e.key) {
-                e.preventDefault(), s(-1);
+                e.preventDefault(), d(-1);
                 return;
             }
             if ("Enter" === e.key) {
                 e.preventDefault();
-                let t = a.querySelectorAll(".fluent-menu-search-item");
-                u >= 0 && t[u] ? t[u].click() : c.length > 0 && o(c[0]);
+                let t = u.querySelectorAll(".fluent-menu-search-item");
+                c >= 0 && t[c] ? t[c].click() : i.length > 0 && s(i[0]);
                 return;
             }
-        }), r.addEventListener("blur", ()=>{
+        }), a.addEventListener("blur", ()=>{
             setTimeout(()=>{
-                a.contains(document.activeElement) || i();
+                u.contains(document.activeElement) || o();
             }, 150);
-        }), a.addEventListener("mousedown", (e)=>e.preventDefault()), {
-            input: r,
-            overlay: a
+        }), u.addEventListener("mousedown", (e)=>e.preventDefault()), {
+            input: a,
+            overlay: u
         };
     }(n);
-    l.appendChild(r.closest(".".concat(menu_search_t))), document.addEventListener("keydown", (e)=>{
+    l.appendChild(a.closest(".".concat(menu_search_t))), document.addEventListener("keydown", (e)=>{
         var t, n, l;
         if ((e.ctrlKey || e.metaKey) && "k" === e.key || "/" === e.key && !e.ctrlKey && !e.metaKey && !e.altKey && (null == (t = document.activeElement) ? void 0 : t.tagName) !== "INPUT" && (null == (n = document.activeElement) ? void 0 : n.tagName) !== "TEXTAREA" && !(null == (l = document.activeElement) ? void 0 : l.getAttribute("contenteditable"))) {
-            e.preventDefault(), r.focus(), r.select();
+            e.preventDefault(), a.focus(), a.select();
             return;
         }
-        "Escape" === e.key && document.activeElement === r && r.blur();
+        "Escape" === e.key && document.activeElement === a && a.blur();
     });
 }
 

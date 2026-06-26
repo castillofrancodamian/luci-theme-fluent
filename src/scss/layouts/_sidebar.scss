@@ -7,10 +7,10 @@
 
 .main-left {
   position: fixed;
-  top: 0;
+  top: var(--fluent-header-height, 48px);
   left: 0;
   width: var(--fluent-sidebar-width, 260px);
-  height: 100vh;
+  height: calc(100vh - var(--fluent-header-height, 48px));
   background: var(--fluent-sidebar-bg);
   border-right: 1px solid var(--fluent-border);
   z-index: var(--fluent-zindex-menu);
@@ -22,94 +22,12 @@
 
   @include custom-scrollbar;
 
-  .sidenav-header {
-    display: flex;
-    align-items: center;
-    gap: var(--fluent-space-sm);
-    height: var(--fluent-header-height, 48px);
-    padding: 0 var(--fluent-space-md) 0 var(--fluent-space-sm);
-    border-bottom: none;
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: var(--fluent-space-sm);
-      min-width: 0;
-      flex: 1 1 auto;
-      height: 36px;
-      color: var(--fluent-text);
-      text-decoration: none;
-
-      .icon {
-        width: 24px;
-        height: 24px;
-        flex-shrink: 0;
-      }
-
-      .brand-text {
-        display: inline-block;
-        min-width: 0;
-        max-width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        color: var(--fluent-text);
-        font-size: 14px;
-        font-weight: var(--fluent-font-weight-semibold);
-        line-height: 1.2;
-        transition:
-          font-size var(--fluent-duration-fast) var(--fluent-easing-standard),
-          opacity var(--fluent-duration-fast) var(--fluent-easing-standard);
-      }
-    }
-
-    .sidebar-collapse-toggle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      padding: 0;
-      border: none;
-      background: transparent;
-      color: var(--fluent-text-secondary);
-      border-radius: var(--fluent-radius-md);
-      cursor: pointer;
-      flex-shrink: 0;
-      transition:
-        background var(--fluent-duration-fast) var(--fluent-easing-standard),
-        color var(--fluent-duration-fast) var(--fluent-easing-standard);
-
-      &::before {
-        @include fluent-icon-content-by-name("line-horizontal-3-20-regular", 20px, #605e5c);
-      }
-
-      &:hover {
-        background: var(--fluent-sidebar-item-hover);
-        color: var(--fluent-text);
-      }
-
-      &:focus-visible {
-        outline: 2px solid var(--fluent-focus-color);
-        outline-offset: -2px;
-      }
-
-      @include theme-dark-context {
-        &::before {
-          @include fluent-icon-by-name("line-horizontal-3-20-regular", 20px, #a0a0a0);
-        }
-
-        &:hover::before {
-          @include fluent-icon-by-name("line-horizontal-3-20-regular", 20px, #f3f2f1);
-        }
-      }
-    }
-  }
 }
 
 .main-right {
   margin-left: var(--fluent-sidebar-width, 260px);
   height: 100vh;
+  padding-top: var(--fluent-header-height, 48px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -1167,6 +1085,8 @@ body[data-sidebar-state="collapsed"] {
   .main-left {
     transform: translateX(-100%);
     z-index: calc(var(--fluent-zindex-modal) + 150);
+    top: 0;
+    height: 100vh;
 
     &.active {
       transform: translateX(0);
