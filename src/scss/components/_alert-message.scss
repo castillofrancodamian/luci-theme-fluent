@@ -8,11 +8,9 @@
 
 .alert,
 .alert-message {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--fluent-space-md);
+  position: relative;
   margin: 0 0 var(--fluent-space-lg);
-  padding: var(--fluent-space-md) var(--fluent-space-lg);
+  padding: var(--fluent-space-md) var(--fluent-space-lg) var(--fluent-space-md) calc(var(--fluent-space-lg) + 18px + var(--fluent-space-md));
   border: 1px solid;
   border-radius: var(--fluent-radius-md);
   background: var(--fluent-bg-hover);
@@ -24,21 +22,21 @@
 
   // Fallback / default icon (informative info)
   &::before {
+    position: absolute;
+    left: var(--fluent-space-lg);
+    top: var(--fluent-space-md);
     @include fluent-icon-content-by-name("info-20-regular", 18px, #616161);
     margin-top: 2px;
   }
 
   // Content area container alignment
   > div:first-of-type {
-    display: flex;
-    flex: unset !important; // Don't let this container grow with flex like the content container
-    flex-direction: column;
     width: 100%;
-    flex: 10;
+    display: flow-root;
 
     // Action buttons inside content container (align to the bottom right of the text area)
     .cbi-button,
-    .btn.cbi-button {
+    .btn {
       @include button-secondary;
       height: 28px;
       line-height: 1;
@@ -46,10 +44,9 @@
       padding: 0 var(--fluent-space-sm);
       border-radius: var(--fluent-radius-md);
       margin-top: var(--fluent-space-sm);
-      align-self: flex-end; // Pushes the action button to the bottom right
+      float: right; // Pushes the action button to the bottom right
     }
   }
-  position: relative;
   // Dismiss / close button container (aligns button to top right)
   // Use :last-of-type > :only-child to avoid matching containers with multiple buttons
   > div:last-of-type:not(:first-of-type) {

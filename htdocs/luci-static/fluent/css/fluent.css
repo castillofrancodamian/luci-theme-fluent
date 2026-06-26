@@ -263,12 +263,24 @@ body::-webkit-resizer {
   overflow: hidden;
 }
 
+.text-left, .left {
+  text-align: left;
+}
+
 .text-center {
   text-align: center;
 }
 
-.text-right {
+.text-right, .right {
   text-align: right;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
 }
 
 .hidden {
@@ -2822,10 +2834,8 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
 }
 
 .alert, .alert-message {
-  align-items: flex-start;
-  gap: var(--fluent-space-md);
   margin: 0 0 var(--fluent-space-lg);
-  padding: var(--fluent-space-md) var(--fluent-space-lg);
+  padding: var(--fluent-space-md) var(--fluent-space-lg) var(--fluent-space-md) calc(var(--fluent-space-lg) + 18px + var(--fluent-space-md));
   border-radius: var(--fluent-radius-md);
   background: var(--fluent-bg-hover);
   border: 1px solid;
@@ -2834,10 +2844,12 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   font-family: var(--fluent-font-family);
   font-size: var(--fluent-font-size-base);
   line-height: var(--fluent-line-height-normal);
-  display: flex;
+  position: relative;
 }
 
 .alert:before, .alert-message:before {
+  left: var(--fluent-space-lg);
+  top: var(--fluent-space-md);
   content: "";
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='%23616161' d=%22M10.492 8.91A.5.5 0 0 0 9.5 9v4.502l.008.09a.5.5 0 0 0 .992-.09V9zm.307-2.16a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0M18 10a8 8 0 1 0-16 0a8 8 0 0 0 16 0M3 10a7 7 0 1 1 14 0a7 7 0 0 1-14 0%22/></svg>");
   background-position: center;
@@ -2848,17 +2860,15 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   height: 18px;
   margin-top: 2px;
   display: inline-block;
+  position: absolute;
 }
 
 .alert > div:first-of-type, .alert-message > div:first-of-type {
-  flex-direction: column;
-  flex: 10;
   width: 100%;
-  display: flex;
-  flex: unset !important;
+  display: flow-root;
 }
 
-.alert > div:first-of-type .cbi-button, .alert > div:first-of-type .btn.cbi-button, .alert-message > div:first-of-type .cbi-button, .alert-message > div:first-of-type .btn.cbi-button {
+.alert > div:first-of-type .cbi-button, .alert > div:first-of-type .btn, .alert-message > div:first-of-type .cbi-button, .alert-message > div:first-of-type .btn {
   height: var(--fluent-btn-height);
   font-family: var(--fluent-font-family);
   font-size: var(--fluent-font-size-base);
@@ -2877,7 +2887,7 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   display: inline-flex;
 }
 
-.alert > div:first-of-type .cbi-button:disabled, .alert > div:first-of-type .btn.cbi-button:disabled, .alert-message > div:first-of-type .cbi-button:disabled, .alert-message > div:first-of-type .btn.cbi-button:disabled {
+.alert > div:first-of-type .cbi-button:disabled, .alert > div:first-of-type .btn:disabled, .alert-message > div:first-of-type .cbi-button:disabled, .alert-message > div:first-of-type .btn:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
@@ -2885,39 +2895,35 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   pointer-events: none;
 }
 
-.alert > div:first-of-type .cbi-button:focus-visible, .alert > div:first-of-type .btn.cbi-button:focus-visible, .alert-message > div:first-of-type .cbi-button:focus-visible, .alert-message > div:first-of-type .btn.cbi-button:focus-visible {
+.alert > div:first-of-type .cbi-button:focus-visible, .alert > div:first-of-type .btn:focus-visible, .alert-message > div:first-of-type .cbi-button:focus-visible, .alert-message > div:first-of-type .btn:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 
-.alert > div:first-of-type .cbi-button, .alert > div:first-of-type .btn.cbi-button, .alert-message > div:first-of-type .cbi-button, .alert-message > div:first-of-type .btn.cbi-button {
+.alert > div:first-of-type .cbi-button, .alert > div:first-of-type .btn, .alert-message > div:first-of-type .cbi-button, .alert-message > div:first-of-type .btn {
   background: var(--fluent-btn-secondary-bg);
   color: var(--fluent-text);
   border-color: var(--fluent-btn-secondary-border);
 }
 
-.alert > div:first-of-type .cbi-button:hover, .alert > div:first-of-type .btn.cbi-button:hover, .alert-message > div:first-of-type .cbi-button:hover, .alert-message > div:first-of-type .btn.cbi-button:hover {
+.alert > div:first-of-type .cbi-button:hover, .alert > div:first-of-type .btn:hover, .alert-message > div:first-of-type .cbi-button:hover, .alert-message > div:first-of-type .btn:hover {
   background: var(--fluent-btn-secondary-bg-hover);
   border-color: var(--fluent-btn-secondary-border-hover);
 }
 
-.alert > div:first-of-type .cbi-button:active, .alert > div:first-of-type .btn.cbi-button:active, .alert-message > div:first-of-type .cbi-button:active, .alert-message > div:first-of-type .btn.cbi-button:active {
+.alert > div:first-of-type .cbi-button:active, .alert > div:first-of-type .btn:active, .alert-message > div:first-of-type .cbi-button:active, .alert-message > div:first-of-type .btn:active {
   background: var(--fluent-btn-secondary-bg-active);
   border-color: var(--fluent-btn-secondary-border-active);
 }
 
-.alert > div:first-of-type .cbi-button, .alert > div:first-of-type .btn.cbi-button, .alert-message > div:first-of-type .cbi-button, .alert-message > div:first-of-type .btn.cbi-button {
+.alert > div:first-of-type .cbi-button, .alert > div:first-of-type .btn, .alert-message > div:first-of-type .cbi-button, .alert-message > div:first-of-type .btn {
   height: 28px;
   line-height: 1;
   font-size: var(--fluent-font-size-sm);
   padding: 0 var(--fluent-space-sm);
   border-radius: var(--fluent-radius-md);
   margin-top: var(--fluent-space-sm);
-  align-self: flex-end;
-}
-
-.alert, .alert-message {
-  position: relative;
+  float: right;
 }
 
 .alert > div:last-of-type:not(:first-of-type), .alert-message > div:last-of-type:not(:first-of-type) {
