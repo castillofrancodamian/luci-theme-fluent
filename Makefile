@@ -10,6 +10,13 @@ LUCI_MINIFY_CSS:=0
 
 include $(TOPDIR)/feeds/luci/luci.mk
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(SED) 's/@VERSION@/$(PKG_VERSION)/g' $(PKG_BUILD_DIR)/ucode/template/themes/fluent/header.ut
+	$(SED) 's/@VERSION@/$(PKG_VERSION)/g' $(PKG_BUILD_DIR)/ucode/template/themes/fluent/header_login.ut
+endef
+
+
 # Build call
 define Package/$(PKG_NAME)/postinst
 #!/bin/sh

@@ -91,7 +91,7 @@
 	<script type="text/javascript">document.documentElement.setAttribute('data-theme', 'light');</script>
 	{% } %}
 
-	<link rel="stylesheet" href="{{ media }}/css/fluent.css">
+	<link rel="stylesheet" href="{{ media }}/css/fluent.css?v=@VERSION@">
 
 	<style title="text/css">
 		{# Default light values - must come FIRST so dark overrides can take precedence #}
