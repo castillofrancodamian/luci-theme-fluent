@@ -6,11 +6,12 @@
 @use "../icons" as *;
 @use "sass:map";
 
-.alert,
-.alert-message {
+:not(#modal_overlay) > .alert,
+:not(#modal_overlay) > .alert-message {
   position: relative;
   margin: 0 0 var(--fluent-space-lg);
-  padding: var(--fluent-space-md) var(--fluent-space-lg) var(--fluent-space-md) calc(var(--fluent-space-lg) + 18px + var(--fluent-space-md));
+  padding: var(--fluent-space-md) var(--fluent-space-lg) var(--fluent-space-md)
+    calc(var(--fluent-space-lg) + 18px + var(--fluent-space-md));
   border: 1px solid;
   border-radius: var(--fluent-radius-md);
   background: var(--fluent-bg-hover);

@@ -53,7 +53,7 @@
   --fluent-card-radius: var(--fluent-radius-lg);
   --fluent-card-padding: var(--fluent-space-lg);
   --fluent-modal-radius: var(--fluent-radius-lg);
-  --fluent-modal-padding: var(--fluent-space-xl);
+  --fluent-modal-padding: var(--fluent-space-lg);
   --fluent-tab-height: 44px;
   --fluent-tab-indicator-height: 3px;
   --fluent-checkbox-size: 20px;
@@ -1792,16 +1792,6 @@ div.td, div.th {
   overflow-y: auto;
 }
 
-body.modal-overlay-active {
-  height: 100vh;
-  overflow: hidden;
-}
-
-body.modal-overlay-active #modal_overlay {
-  animation: fadeIn var(--fluent-duration-normal) var(--fluent-easing-decelerate);
-  display: flex;
-}
-
 .modal {
   background: var(--fluent-modal-bg);
   border-radius: var(--fluent-modal-radius);
@@ -2034,6 +2024,16 @@ body.modal-overlay-active #modal_overlay {
   margin: 0 !important;
   padding: 0 !important;
   overflow: visible !important;
+}
+
+body.modal-overlay-active {
+  height: 100vh;
+  overflow: hidden;
+}
+
+body.modal-overlay-active #modal_overlay {
+  animation: fadeIn var(--fluent-duration-normal) var(--fluent-easing-decelerate);
+  display: flex;
 }
 
 :is(body.modal-overlay-active:has(#modal_overlay .modal.notice), body.modal-overlay-active:has(#modal_overlay .modal.spinning)) {
@@ -2854,7 +2854,7 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   inset: auto 0 100% auto !important;
 }
 
-.alert, .alert-message {
+:not(#modal_overlay) > .alert, :not(#modal_overlay) > .alert-message {
   margin: 0 0 var(--fluent-space-lg);
   padding: var(--fluent-space-md) var(--fluent-space-lg) var(--fluent-space-md) calc(var(--fluent-space-lg) + 18px + var(--fluent-space-md));
   border-radius: var(--fluent-radius-md);
@@ -2868,7 +2868,7 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   position: relative;
 }
 
-.alert:before, .alert-message:before {
+:not(#modal_overlay) > .alert:before, :not(#modal_overlay) > .alert-message:before {
   left: var(--fluent-space-lg);
   top: var(--fluent-space-md);
   --fluent-mask-info-20-regular: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M10.492 8.91A.5.5 0 0 0 9.5 9v4.502l.008.09a.5.5 0 0 0 .992-.09V9zm.307-2.16a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0M18 10a8 8 0 1 0-16 0a8 8 0 0 0 16 0M3 10a7 7 0 1 1 14 0a7 7 0 0 1-14 0%22/></svg>");
@@ -2889,12 +2889,12 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   background: var(--fluent-text-secondary) !important;
 }
 
-.alert > div:first-of-type, .alert-message > div:first-of-type {
+:not(#modal_overlay) > .alert > div:first-of-type, :not(#modal_overlay) > .alert-message > div:first-of-type {
   width: 100%;
   display: flow-root;
 }
 
-.alert > div:first-of-type .cbi-button, .alert > div:first-of-type .btn, .alert-message > div:first-of-type .cbi-button, .alert-message > div:first-of-type .btn {
+:not(#modal_overlay) > .alert > div:first-of-type .cbi-button, :not(#modal_overlay) > .alert > div:first-of-type .btn, :not(#modal_overlay) > .alert-message > div:first-of-type .cbi-button, :not(#modal_overlay) > .alert-message > div:first-of-type .btn {
   height: var(--fluent-btn-height);
   font-family: var(--fluent-font-family);
   font-size: var(--fluent-font-size-base);
@@ -2913,7 +2913,7 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   display: inline-flex;
 }
 
-.alert > div:first-of-type .cbi-button:disabled, .alert > div:first-of-type .btn:disabled, .alert-message > div:first-of-type .cbi-button:disabled, .alert-message > div:first-of-type .btn:disabled {
+:not(#modal_overlay) > .alert > div:first-of-type .cbi-button:disabled, :not(#modal_overlay) > .alert > div:first-of-type .btn:disabled, :not(#modal_overlay) > .alert-message > div:first-of-type .cbi-button:disabled, :not(#modal_overlay) > .alert-message > div:first-of-type .btn:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
@@ -2921,28 +2921,28 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   pointer-events: none;
 }
 
-.alert > div:first-of-type .cbi-button:focus-visible, .alert > div:first-of-type .btn:focus-visible, .alert-message > div:first-of-type .cbi-button:focus-visible, .alert-message > div:first-of-type .btn:focus-visible {
+:not(#modal_overlay) > .alert > div:first-of-type .cbi-button:focus-visible, :not(#modal_overlay) > .alert > div:first-of-type .btn:focus-visible, :not(#modal_overlay) > .alert-message > div:first-of-type .cbi-button:focus-visible, :not(#modal_overlay) > .alert-message > div:first-of-type .btn:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 
-.alert > div:first-of-type .cbi-button, .alert > div:first-of-type .btn, .alert-message > div:first-of-type .cbi-button, .alert-message > div:first-of-type .btn {
+:not(#modal_overlay) > .alert > div:first-of-type .cbi-button, :not(#modal_overlay) > .alert > div:first-of-type .btn, :not(#modal_overlay) > .alert-message > div:first-of-type .cbi-button, :not(#modal_overlay) > .alert-message > div:first-of-type .btn {
   background: var(--fluent-btn-secondary-bg);
   color: var(--fluent-text);
   border-color: var(--fluent-btn-secondary-border);
 }
 
-.alert > div:first-of-type .cbi-button:hover, .alert > div:first-of-type .btn:hover, .alert-message > div:first-of-type .cbi-button:hover, .alert-message > div:first-of-type .btn:hover {
+:not(#modal_overlay) > .alert > div:first-of-type .cbi-button:hover, :not(#modal_overlay) > .alert > div:first-of-type .btn:hover, :not(#modal_overlay) > .alert-message > div:first-of-type .cbi-button:hover, :not(#modal_overlay) > .alert-message > div:first-of-type .btn:hover {
   background: var(--fluent-btn-secondary-bg-hover);
   border-color: var(--fluent-btn-secondary-border-hover);
 }
 
-.alert > div:first-of-type .cbi-button:active, .alert > div:first-of-type .btn:active, .alert-message > div:first-of-type .cbi-button:active, .alert-message > div:first-of-type .btn:active {
+:not(#modal_overlay) > .alert > div:first-of-type .cbi-button:active, :not(#modal_overlay) > .alert > div:first-of-type .btn:active, :not(#modal_overlay) > .alert-message > div:first-of-type .cbi-button:active, :not(#modal_overlay) > .alert-message > div:first-of-type .btn:active {
   background: var(--fluent-btn-secondary-bg-active);
   border-color: var(--fluent-btn-secondary-border-active);
 }
 
-.alert > div:first-of-type .cbi-button, .alert > div:first-of-type .btn, .alert-message > div:first-of-type .cbi-button, .alert-message > div:first-of-type .btn {
+:not(#modal_overlay) > .alert > div:first-of-type .cbi-button, :not(#modal_overlay) > .alert > div:first-of-type .btn, :not(#modal_overlay) > .alert-message > div:first-of-type .cbi-button, :not(#modal_overlay) > .alert-message > div:first-of-type .btn {
   height: 28px;
   line-height: 1;
   font-size: var(--fluent-font-size-sm);
@@ -2952,14 +2952,14 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   float: right;
 }
 
-.alert > div:last-of-type:not(:first-of-type), .alert-message > div:last-of-type:not(:first-of-type) {
+:not(#modal_overlay) > .alert > div:last-of-type:not(:first-of-type), :not(#modal_overlay) > .alert-message > div:last-of-type:not(:first-of-type) {
   display: flex;
   position: absolute;
   top: 8px;
   right: 8px;
 }
 
-.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:after, .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:after {
+:not(#modal_overlay) > .alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:after, :not(#modal_overlay) > .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:after {
   content: "";
   background: linear-gradient(45deg, transparent calc(50% - .75px), var(--fluent-text-secondary) calc(50% - .75px), var(--fluent-text-secondary) calc(50% + .75px), transparent calc(50% + .75px)),linear-gradient(-45deg, transparent calc(50% - .75px), var(--fluent-text-secondary) calc(50% - .75px), var(--fluent-text-secondary) calc(50% + .75px), transparent calc(50% + .75px));
   background-position: center;
@@ -2971,7 +2971,7 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   display: inline-block;
 }
 
-.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child, .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child {
+:not(#modal_overlay) > .alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child, :not(#modal_overlay) > .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child {
   height: var(--fluent-btn-height);
   font-family: var(--fluent-font-family);
   font-size: var(--fluent-font-size-base);
@@ -2990,7 +2990,7 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   display: inline-flex;
 }
 
-.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:disabled, .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:disabled {
+:not(#modal_overlay) > .alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:disabled, :not(#modal_overlay) > .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
@@ -2998,22 +2998,22 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   pointer-events: none;
 }
 
-.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:focus-visible, .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:focus-visible {
+:not(#modal_overlay) > .alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:focus-visible, :not(#modal_overlay) > .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 
-.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child, .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child {
+:not(#modal_overlay) > .alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child, :not(#modal_overlay) > .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child {
   color: var(--fluent-text);
   background: none;
   border-color: #0000;
 }
 
-.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:hover, .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:hover {
+:not(#modal_overlay) > .alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:hover, :not(#modal_overlay) > .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:hover {
   background: var(--fluent-bg-hover);
 }
 
-.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child, .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child {
+:not(#modal_overlay) > .alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child, :not(#modal_overlay) > .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child {
   width: 28px;
   height: 28px;
   color: var(--fluent-text-secondary);
@@ -3031,16 +3031,16 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   font-size: 0 !important;
 }
 
-.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:hover, .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:hover {
+:not(#modal_overlay) > .alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:hover, :not(#modal_overlay) > .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:hover {
   background: var(--fluent-bg-hover);
   color: var(--fluent-text);
 }
 
-.alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:active, .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:active {
+:not(#modal_overlay) > .alert > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:active, :not(#modal_overlay) > .alert-message > div:last-of-type:not(:first-of-type) > .btn:not(.cbi-button):only-child:active {
   background: var(--fluent-bg-active);
 }
 
-.alert h4, .alert-message h4 {
+:not(#modal_overlay) > .alert h4, :not(#modal_overlay) > .alert-message h4 {
   margin: 0 0 var(--fluent-space-xs) 0;
   color: var(--fluent-text);
   font-size: var(--fluent-font-size-base);
@@ -3049,23 +3049,23 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   padding: 0;
 }
 
-.alert p, .alert-message p {
+:not(#modal_overlay) > .alert p, :not(#modal_overlay) > .alert-message p {
   margin: 0 0 var(--fluent-space-sm) 0;
   color: var(--fluent-text-secondary);
   font-size: var(--fluent-font-size-base);
   line-height: var(--fluent-line-height-relaxed);
 }
 
-.alert p:last-child, .alert-message p:last-child {
+:not(#modal_overlay) > .alert p:last-child, :not(#modal_overlay) > .alert-message p:last-child {
   margin-bottom: 0;
 }
 
-.alert.success, .alert.alert-success, .alert.notice, .alert-message.success, .alert-message.alert-success, .alert-message.notice {
+:not(#modal_overlay) > .alert.success, :not(#modal_overlay) > .alert.alert-success, :not(#modal_overlay) > .alert.notice, :not(#modal_overlay) > .alert-message.success, :not(#modal_overlay) > .alert-message.alert-success, :not(#modal_overlay) > .alert-message.notice {
   background: var(--fluent-success-light);
   border-color: color-mix(in srgb, var(--fluent-success) 35%, transparent);
 }
 
-.alert.success:before, .alert.alert-success:before, .alert.notice:before, .alert-message.success:before, .alert-message.alert-success:before, .alert-message.notice:before {
+:not(#modal_overlay) > .alert.success:before, :not(#modal_overlay) > .alert.alert-success:before, :not(#modal_overlay) > .alert.notice:before, :not(#modal_overlay) > .alert-message.success:before, :not(#modal_overlay) > .alert-message.alert-success:before, :not(#modal_overlay) > .alert-message.notice:before {
   --fluent-mask-checkmark-circle-20-regular: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M10 2a8 8 0 1 1 0 16a8 8 0 0 1 0-16m0 1a7 7 0 1 0 0 14a7 7 0 0 0 0-14m3.358 4.646a.5.5 0 0 1 .058.638l-.058.07l-4.004 4.004a.5.5 0 0 1-.638.058l-.07-.058l-2-2a.5.5 0 0 1 .638-.765l.07.058L9 11.298l3.651-3.652a.5.5 0 0 1 .707 0%22/></svg>");
   width: 18px;
   height: 18px;
@@ -3082,12 +3082,12 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   background: var(--fluent-success) !important;
 }
 
-.alert.warning, .alert.alert-warning, .alert-message.warning, .alert-message.alert-warning {
+:not(#modal_overlay) > .alert.warning, :not(#modal_overlay) > .alert.alert-warning, :not(#modal_overlay) > .alert-message.warning, :not(#modal_overlay) > .alert-message.alert-warning {
   background: var(--fluent-warning-light);
   border-color: color-mix(in srgb, var(--fluent-warning) 45%, transparent);
 }
 
-.alert.warning:before, .alert.alert-warning:before, .alert-message.warning:before, .alert-message.alert-warning:before {
+:not(#modal_overlay) > .alert.warning:before, :not(#modal_overlay) > .alert.alert-warning:before, :not(#modal_overlay) > .alert-message.warning:before, :not(#modal_overlay) > .alert-message.alert-warning:before {
   --fluent-mask-warning-20-regular: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M7.37 3.556c1.14-2.074 4.12-2.074 5.259 0l5.496 10.005c1.098 1.999-.35 4.444-2.63 4.444H4.504c-2.281 0-3.727-2.445-2.629-4.444zm4.383.481c-.76-1.383-2.746-1.382-3.506 0L2.751 14.042c-.732 1.333.232 2.963 1.753 2.963h10.991c1.52 0 2.485-1.63 1.753-2.963zM10 12.75a.75.75 0 1 1 0 1.5a.75.75 0 0 1 0-1.5m0-6.25a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5%22/></svg>");
   width: 18px;
   height: 18px;
@@ -3104,12 +3104,12 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   background: var(--fluent-warning) !important;
 }
 
-.alert.error, .alert.alert-danger, .alert.danger, .alert-message.error, .alert-message.alert-danger, .alert-message.danger {
+:not(#modal_overlay) > .alert.error, :not(#modal_overlay) > .alert.alert-danger, :not(#modal_overlay) > .alert.danger, :not(#modal_overlay) > .alert-message.error, :not(#modal_overlay) > .alert-message.alert-danger, :not(#modal_overlay) > .alert-message.danger {
   background: var(--fluent-error-light);
   border-color: color-mix(in srgb, var(--fluent-error) 35%, transparent);
 }
 
-.alert.error:before, .alert.alert-danger:before, .alert.danger:before, .alert-message.error:before, .alert-message.alert-danger:before, .alert-message.danger:before {
+:not(#modal_overlay) > .alert.error:before, :not(#modal_overlay) > .alert.alert-danger:before, :not(#modal_overlay) > .alert.danger:before, :not(#modal_overlay) > .alert-message.error:before, :not(#modal_overlay) > .alert-message.alert-danger:before, :not(#modal_overlay) > .alert-message.danger:before {
   --fluent-mask-dismiss-circle-20-regular: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M10 2a8 8 0 1 1 0 16a8 8 0 0 1 0-16m0 1a7 7 0 1 0 0 14a7 7 0 0 0 0-14M7.81 7.114l.069.058L10 9.292l2.121-2.12a.5.5 0 0 1 .638-.058l.07.058a.5.5 0 0 1 .057.637l-.058.07L10.708 10l2.12 2.121a.5.5 0 0 1 .058.638l-.058.07a.5.5 0 0 1-.637.057l-.07-.058L10 10.708l-2.121 2.12a.5.5 0 0 1-.638.058l-.07-.058a.5.5 0 0 1-.057-.637l.058-.07L9.292 10l-2.12-2.121a.5.5 0 0 1-.058-.638l.058-.07a.5.5 0 0 1 .637-.057%22/></svg>");
   width: 18px;
   height: 18px;
@@ -3126,12 +3126,12 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
   background: var(--fluent-error) !important;
 }
 
-.alert.info, .alert.alert-info, .alert-message.info, .alert-message.alert-info {
+:not(#modal_overlay) > .alert.info, :not(#modal_overlay) > .alert.alert-info, :not(#modal_overlay) > .alert-message.info, :not(#modal_overlay) > .alert-message.alert-info {
   background: var(--fluent-info-light);
   border-color: color-mix(in srgb, var(--fluent-info) 35%, transparent);
 }
 
-.alert.info:before, .alert.alert-info:before, .alert-message.info:before, .alert-message.alert-info:before {
+:not(#modal_overlay) > .alert.info:before, :not(#modal_overlay) > .alert.alert-info:before, :not(#modal_overlay) > .alert-message.info:before, :not(#modal_overlay) > .alert-message.alert-info:before {
   --fluent-mask-info-20-regular: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M10.492 8.91A.5.5 0 0 0 9.5 9v4.502l.008.09a.5.5 0 0 0 .992-.09V9zm.307-2.16a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0M18 10a8 8 0 1 0-16 0a8 8 0 0 0 16 0M3 10a7 7 0 1 1 14 0a7 7 0 0 1-14 0%22/></svg>");
   width: 18px;
   height: 18px;

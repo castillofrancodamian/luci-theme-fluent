@@ -23,16 +23,6 @@
   box-sizing: border-box;
 }
 
-body.modal-overlay-active {
-  overflow: hidden;
-  height: 100vh;
-
-  #modal_overlay {
-    display: flex;
-    @include fade-in;
-  }
-}
-
 // Modal container
 .modal {
   display: flex;
@@ -50,8 +40,8 @@ body.modal-overlay-active {
   @include slide-in-up;
 
   // Simple dialogs / alert dialogs should be narrower
-  &:has(>.alert-message),
-  &:has(>.alert) {
+  &:has(> .alert-message),
+  &:has(> .alert) {
     max-width: 600px;
   }
 
@@ -204,50 +194,60 @@ body.modal-overlay-active {
   }
 }
 
-// ============================================================
-// TOAST / ALERT MODAL OVERRIDES
-// Transform notice/apply modals into top Toasts,
-// remove the dark overlay, and allow page scroll.
-// If the modal is active and spinning (saving), disable page inputs.
-// ============================================================
-
-// 1. Override body restriction to allow page scrolling for all notice/spinning modals
-body.modal-overlay-active:has(#modal_overlay .modal.notice),
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) {
-  overflow: auto !important;
-  height: auto !important;
-}
-
-// 2. Temporarily disable all form interaction on the page content during save flow
-//    Covers both: .notice ("没有待应用的更改") and .spinning ("开始应用配置…")
-//    We scope this to #maincontent so sidebar navigation and header utilities remain interactive
-body.modal-overlay-active:has(#modal_overlay .modal.notice) #maincontent,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent {
-  button,
-  input,
-  select,
-  textarea,
-  label,
-  .cbi-button,
-  .cbi-dropdown,
-  .cbi-checkbox,
-  .drag-handle,
-  a.btn {
-    pointer-events: none !important;
-    cursor: not-allowed !important;
-    filter: grayscale(0.5) opacity(0.6) !important;
-  }
-}
-
-// 3. Transform modal overlay to a transparent top-aligned container for all notice/spinning modals
 body.modal-overlay-active {
-  #modal_overlay:has(.modal.notice),
-  #modal_overlay:has(.modal.spinning) {
-    background: transparent !important;
-    pointer-events: none !important;
-    align-items: flex-start !important;
-    padding-top: var(--fluent-space-xl) !important;
-    display: flex !important;
+  overflow: hidden;
+  height: 100vh;
+
+  #modal_overlay {
+    display: flex;
+    @include fade-in;
+  }
+
+  // ============================================================
+  // TOAST / ALERT MODAL OVERRIDES
+  // Transform notice/apply modals into top Toasts,
+  // remove the dark overlay, and allow page scroll.
+  // If the modal is active and spinning (saving), disable page inputs.
+  // ============================================================
+
+  // 1. Override body restriction to allow page scrolling for all notice/spinning modals
+  &:has(#modal_overlay .modal.notice),
+  &:has(#modal_overlay .modal.spinning) {
+    overflow: auto !important;
+    height: auto !important;
+  }
+
+  // 2. Temporarily disable all form interaction on the page content during save flow
+  //    Covers both: .notice ("没有待应用的更改") and .spinning ("开始应用配置…")
+  //    We scope this to #maincontent so sidebar navigation and header utilities remain interactive
+  &:has(#modal_overlay .modal.notice) #maincontent,
+  &:has(#modal_overlay .modal.spinning) #maincontent {
+    button,
+    input,
+    select,
+    textarea,
+    label,
+    .cbi-button,
+    .cbi-dropdown,
+    .cbi-checkbox,
+    .drag-handle,
+    a.btn {
+      pointer-events: none !important;
+      cursor: not-allowed !important;
+      filter: grayscale(0.5) opacity(0.6) !important;
+    }
+  }
+
+  // 3. Transform modal overlay to a transparent top-aligned container for all notice/spinning modals
+  & {
+    #modal_overlay:has(.modal.notice),
+    #modal_overlay:has(.modal.spinning) {
+      background: transparent !important;
+      pointer-events: none !important;
+      align-items: flex-start !important;
+      padding-top: var(--fluent-space-xl) !important;
+      display: flex !important;
+    }
   }
 }
 
