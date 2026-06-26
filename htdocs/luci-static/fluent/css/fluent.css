@@ -9158,7 +9158,7 @@ body.login-page {
   will-change: transform,opacity;
   animation: fluent-login-fade-in var(--fluent-duration-slow) var(--fluent-easing-easy-ease);
   box-sizing: border-box !important;
-  background: rgba(var(--fluent-bg-card-rgb), var(--fluent-blur-opacity)) !important;
+  background: color-mix(in srgb, var(--fluent-bg-card) calc(var(--fluent-blur-opacity) * 100%), transparent) !important;
   border: 1px solid var(--fluent-border) !important;
   border-radius: 12px !important;
   flex-direction: column !important;
@@ -9598,7 +9598,7 @@ body.login-page {
 }
 
 [data-theme="dark"] .login-page .login-container .login-form {
-  background: rgba(var(--fluent-bg-card-dark-rgb), var(--fluent-blur-opacity-dark)) !important;
+  background: color-mix(in srgb, var(--fluent-bg-card) calc(var(--fluent-blur-opacity-dark) * 100%), transparent) !important;
   border-color: #ffffff1a !important;
   box-shadow: 0 0 2px #0000003d, 0 8px 16px #00000047 !important;
 }
@@ -11963,7 +11963,6 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   --fluent-bg-hover: #f5f5f5;
   --fluent-bg-active: #ebebeb;
   --fluent-bg-card: #fff;
-  --fluent-bg-card-rgb: 255, 255, 255;
   --fluent-bg-page: #fafafa;
   --fluent-text: #242424;
   --fluent-text-secondary: #616161;
@@ -12056,7 +12055,6 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   color-scheme: dark;
   --fluent-bg: #1f1f1f;
   --fluent-bg-card: #292929;
-  --fluent-bg-card-dark-rgb: 41, 41, 41;
   --fluent-bg-hover: #383838;
   --fluent-bg-active: #424242;
   --fluent-bg-page: #1a1a1a;
