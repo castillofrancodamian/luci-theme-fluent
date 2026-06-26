@@ -11963,6 +11963,7 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   --fluent-bg-hover: #f5f5f5;
   --fluent-bg-active: #ebebeb;
   --fluent-bg-card: #fff;
+  --fluent-bg-card-rgb: 255, 255, 255;
   --fluent-bg-page: #fafafa;
   --fluent-text: #242424;
   --fluent-text-secondary: #616161;
@@ -12055,6 +12056,7 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   color-scheme: dark;
   --fluent-bg: #1f1f1f;
   --fluent-bg-card: #292929;
+  --fluent-bg-card-dark-rgb: 41, 41, 41;
   --fluent-bg-hover: #383838;
   --fluent-bg-active: #424242;
   --fluent-bg-page: #1a1a1a;
