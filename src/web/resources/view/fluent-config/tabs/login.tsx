@@ -209,7 +209,7 @@ export const registerLoginTab = (section: LuCI.form.TypedSection): void => {
   section.tab(
     "login",
     _("Login page"),
-    _("Adjust login card opacity and blur separately for light and dark mode."),
+    _("Customize the login page background, card opacity, and blur radius for light and dark modes."),
   );
 
   {

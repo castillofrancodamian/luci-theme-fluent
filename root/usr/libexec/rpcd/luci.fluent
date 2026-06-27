@@ -3,8 +3,16 @@
 . /lib/functions.sh
 . /usr/share/libubox/jshn.sh
 
+if command -v apk >/dev/null 2>&1; then
+	PKG_EXT=".apk"
+else
+	PKG_EXT=".ipk"
+fi
+
 readonly bg_path="/www/luci-static/fluent/background"
 readonly tmp_path="/tmp/fluent_background.tmp"
+readonly update_pkg="/tmp/fluent-update${PKG_EXT}"
+readonly i18n_pkg="/tmp/fluent-i18n-update${PKG_EXT}"
 
 case "$1" in
 "list")
@@ -19,6 +27,20 @@ case "$1" in
 	json_close_object
 	json_add_object "set_mode"
 		json_add_string "mode" "mode"
+	json_close_object
+	json_add_object "get_version"
+	json_close_object
+	json_add_object "start_download"
+		json_add_string "url" "url"
+		json_add_string "i18n_url" "i18n_url"
+	json_close_object
+	json_add_object "check_download"
+	json_close_object
+	json_add_object "do_install"
+		json_add_string "hash" "hash"
+		json_add_string "i18n_hash" "i18n_hash"
+	json_close_object
+	json_add_object "get_install_log"
 	json_close_object
 	json_dump
 	json_cleanup
@@ -36,12 +58,10 @@ case "$1" in
 		json_load "$input"
 		json_get_var filename "filename"
 		json_cleanup
-
 		if dirname "$filename" | grep -q ".."; then
 			echo '{ "result": 255 }'
 			exit 255
 		fi
-
 		rm -f "$bg_path/$filename"
 		echo '{ "result": 0 }'
 		;;
@@ -50,14 +70,11 @@ case "$1" in
 		json_load "$input"
 		json_get_var newname "newname"
 		json_cleanup
-
 		if dirname "$newname" | grep -q ".."; then
 			echo '{ "result": 255 }'
 			exit 255
 		fi
-
 		mkdir -p "$bg_path"
-
 		if mv "$tmp_path" "$bg_path/$newname" 2>"/dev/null"; then
 			chmod 0644 "$bg_path/$newname"
 			echo '{ "result": 0 }'
@@ -70,7 +87,6 @@ case "$1" in
 		json_load "$input"
 		json_get_var mode "mode"
 		json_cleanup
-
 		case "$mode" in
 			light|dark|auto) ;;
 			*)
@@ -78,13 +94,149 @@ case "$1" in
 				exit 255
 				;;
 		esac
-
 		if uci -q set fluent.@global[0].mode="$mode" && uci -q commit fluent; then
 			echo '{ "result": 0 }'
 		else
 			echo '{ "result": 1 }'
 		fi
 		;;
+	"get_version")
+		version=""
+		pkg_type="ipk"
+		if command -v apk >/dev/null 2>&1; then
+			pkg_type="apk"
+			version=$(apk info -v luci-theme-fluent 2>/dev/null | sed 's/luci-theme-fluent-//')
+		else
+			version=$(opkg status luci-theme-fluent 2>/dev/null | grep -m1 'Version:' | awk '{print $2}')
+		fi
+		if [ -z "$version" ]; then
+			version="1.0.1-dev"
+		fi
+		json_init
+		json_add_string "version" "$version"
+		json_add_string "pkg_type" "$pkg_type"
+		json_dump
+		json_cleanup
+		;;
+	"start_download")
+		read -r input
+		json_load "$input"
+		json_get_var url "url"
+		json_get_var i18n_url "i18n_url"
+		json_cleanup
+
+		rm -f "$update_pkg"
+		rm -f "$i18n_pkg"
+		rm -f /tmp/fluent-update.log
+		
+		if [ -n "$url" ]; then
+			download_cmd=""
+			if command -v uclient-fetch >/dev/null 2>&1; then
+				download_cmd="uclient-fetch -O $update_pkg \"$url\""
+				if [ -n "$i18n_url" ]; then
+					download_cmd="$download_cmd && uclient-fetch -O $i18n_pkg \"$i18n_url\""
+				fi
+			else
+				download_cmd="wget -O $update_pkg \"$url\""
+				if [ -n "$i18n_url" ]; then
+					download_cmd="$download_cmd && wget -O $i18n_pkg \"$i18n_url\""
+				fi
+			fi
+			nohup sh -c "$download_cmd >/tmp/fluent-update.log 2>&1" >/dev/null 2>&1 &
+			echo '{ "result": 0 }'
+		else
+			echo '{ "result": 255, "message": "Missing URL" }'
+		fi
+		;;
+	"check_download")
+		json_init
+		size1=$(ls -l $update_pkg 2>/dev/null | awk '{print $5}')
+		size2=$(ls -l $i18n_pkg 2>/dev/null | awk '{print $5}')
+		size=$(( ${size1:-0} + ${size2:-0} ))
+		json_add_int "size" "$size"
+		
+		if pgrep -f "fluent-update" >/dev/null; then
+			json_add_boolean "running" 1
+		else
+			json_add_boolean "running" 0
+			if [ "$size" -eq 0 ]; then
+				# If process exited and size is 0, download failed
+				json_add_int "code" 255
+			else
+				json_add_int "code" 0
+			fi
+		fi
+		json_dump
+		json_cleanup
+		;;
+	"do_install")
+		read -r input
+		json_load "$input"
+		json_get_var hash "hash"
+		json_get_var i18n_hash "i18n_hash"
+		json_cleanup
+
+		if [ -z "$hash" ]; then
+			echo '{ "result": 255, "message": "Missing hash parameter" }'
+			exit 255
+		fi
+
+		if [ ! -f "$update_pkg" ]; then
+			echo '{ "result": 255, "message": "Package file not found" }'
+			exit 255
+		fi
+
+		if [ "$hash" != "skip" ]; then
+			if ! echo "$hash" | grep -qE '^[0-9a-fA-F]{64}$'; then
+				echo '{ "result": 255, "message": "Invalid hash parameter" }'
+				exit 255
+			fi
+			actual_hash=$(sha256sum "$update_pkg" | awk '{print $1}')
+			if [ "$actual_hash" != "$hash" ]; then
+				echo '{ "result": 255, "message": "Hash verification failed" }'
+				exit 255
+			fi
+		fi
+
+		if [ -n "$i18n_hash" ] && [ -f "$i18n_pkg" ] && [ "$i18n_hash" != "skip" ]; then
+			if ! echo "$i18n_hash" | grep -qE '^[0-9a-fA-F]{64}$'; then
+				echo '{ "result": 255, "message": "Invalid i18n_hash parameter" }'
+				exit 255
+			fi
+			actual_i18n_hash=$(sha256sum "$i18n_pkg" | awk '{print $1}')
+			if [ "$actual_i18n_hash" != "$i18n_hash" ]; then
+				echo '{ "result": 255, "message": "i18n Hash verification failed" }'
+				exit 255
+			fi
+		fi
+
+		install_cmd=""
+		pkgs="$update_pkg"
+		if [ -f "$i18n_pkg" ]; then
+			pkgs="$i18n_pkg $update_pkg"
+		fi
+
+		if command -v apk >/dev/null 2>&1; then
+			install_cmd="apk add --allow-untrusted $pkgs"
+		else
+			install_cmd="opkg install $pkgs"
+		fi
+
+		nohup sh -c "sleep 1 && $install_cmd > /tmp/fluent-install.log 2>&1 ; rm -f $pkgs ; /etc/init.d/rpcd restart" >/dev/null 2>&1 &
+
+		echo '{ "result": 0 }'
+		;;
+	"get_install_log")
+		json_init
+		if [ -f "/tmp/fluent-install.log" ]; then
+			json_add_string "log" "$(cat /tmp/fluent-install.log)"
+		else
+			json_add_string "log" ""
+		fi
+		json_dump
+		json_cleanup
+		;;
 	esac
 	;;
 esac
+

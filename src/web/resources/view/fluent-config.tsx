@@ -5,6 +5,7 @@ import { registerAnimationTab } from "./fluent-config/tabs/animation";
 import { registerColorsTab } from "./fluent-config/tabs/colors";
 import { registerGeneralTab } from "./fluent-config/tabs/general";
 import { registerLoginTab } from "./fluent-config/tabs/login";
+import { registerAboutTab } from "./fluent-config/tabs/about";
 
 class mainImpl extends L.view {
   load() {
@@ -29,6 +30,7 @@ class mainImpl extends L.view {
     registerColorsTab(section);
     registerAnimationTab(section);
     registerLoginTab(section);
+    registerAboutTab(section);
 
     return (map as unknown as { render: () => Promise<Node> }).render();
   }

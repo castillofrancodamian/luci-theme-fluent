@@ -8472,6 +8472,248 @@ label[data-tooltip] {
   font-style: italic;
 }
 
+.fluent-about-manager {
+  max-width: 600px;
+  padding: var(--fluent-card-padding);
+  background-color: var(--fluent-bg-card);
+  border-radius: var(--fluent-radius-md);
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.fluent-about-manager h3 {
+  color: var(--fluent-text);
+  margin: 8px 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.fluent-about-logo {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0;
+  display: flex;
+}
+
+.fluent-about-logo img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 12px;
+}
+
+.fluent-about-logo h2 {
+  color: var(--fluent-text);
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.fluent-about-logo .fluent-about-subtitle {
+  color: var(--fluent-text-secondary);
+  margin: 4px 0 0;
+  font-size: 13px;
+}
+
+.fluent-about-details {
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+  display: flex;
+}
+
+.fluent-about-details .fluent-about-detail-row {
+  color: var(--fluent-text);
+  justify-content: space-between;
+  font-size: 13px;
+  display: flex;
+}
+
+.fluent-about-details .fluent-about-detail-row strong {
+  color: var(--fluent-text-secondary);
+  font-weight: 500;
+}
+
+.fluent-about-details .fluent-about-detail-row a {
+  color: var(--fluent-primary);
+  text-decoration: none;
+}
+
+.fluent-about-details .fluent-about-detail-row a:hover {
+  text-decoration: underline;
+}
+
+.fluent-about-divider {
+  border: none;
+  border-top: 1px solid var(--fluent-border);
+  margin: 8px 0;
+}
+
+.fluent-update-controls {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  display: flex;
+}
+
+.fluent-update-controls .fluent-update-channel-selector {
+  color: var(--fluent-text);
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  display: flex;
+}
+
+.fluent-update-controls .fluent-update-channel-selector label {
+  color: var(--fluent-text-secondary);
+}
+
+.fluent-update-controls .fluent-update-channel-selector select {
+  min-width: 140px;
+  padding: 4px 8px;
+}
+
+.fluent-update-status {
+  border-radius: var(--fluent-radius-sm);
+  background-color: var(--fluent-bg);
+  color: var(--fluent-text);
+  border-left: 3px solid #0000;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.fluent-update-status.status-info {
+  border-left-color: var(--fluent-primary);
+}
+
+.fluent-update-status.status-success {
+  background-color: #107c410d;
+  border-left-color: #107c41;
+}
+
+.fluent-update-status.status-warn {
+  background-color: #ffb9000d;
+  border-left-color: #ffb900;
+}
+
+.fluent-update-status.status-error {
+  color: #a80000;
+  background-color: #a800000d;
+  border-left-color: #a80000;
+}
+
+.fluent-update-card {
+  border: 1px solid var(--fluent-border);
+  border-radius: var(--fluent-radius-sm);
+  background-color: var(--fluent-bg);
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  display: flex;
+}
+
+.fluent-update-card .fluent-update-header {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.fluent-update-card .fluent-update-header .fluent-update-badge {
+  background-color: var(--fluent-primary);
+  color: #fff;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.fluent-update-card .fluent-update-header .fluent-update-date {
+  color: var(--fluent-text-secondary);
+  font-size: 12px;
+}
+
+.fluent-update-card .fluent-update-changelog {
+  color: var(--fluent-text);
+  background-color: var(--fluent-bg-card);
+  border: 1px solid var(--fluent-border);
+  border-radius: var(--fluent-radius-sm);
+  white-space: pre-wrap;
+  max-height: 120px;
+  margin: 0;
+  padding: 8px;
+  font-family: inherit;
+  font-size: 12px;
+  overflow-y: auto;
+}
+
+.fluent-update-card .fluent-update-footer {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.fluent-update-card .fluent-update-success {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.fluent-update-card .fluent-update-success h4 {
+  color: #107c41;
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+.fluent-update-card .fluent-update-success p {
+  color: var(--fluent-text-secondary);
+  margin: 0;
+  font-size: 13px;
+}
+
+.fluent-progress-bar {
+  background-color: var(--fluent-border);
+  border-radius: 2px;
+  width: 100%;
+  height: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.fluent-progress-bar__fill {
+  background-color: var(--fluent-primary);
+  border-radius: 2px;
+  height: 100%;
+  transition: width .2s ease-in-out;
+}
+
+.fluent-progress-bar__fill.fill-verify, .fluent-progress-bar__fill.fill-install {
+  transform-origin: 0;
+  animation: 1.5s linear infinite fluent-indeterminate-progress;
+  width: 100% !important;
+}
+
+.fluent-progress-text {
+  color: var(--fluent-text-secondary);
+  text-align: center;
+  margin-top: -8px;
+  font-size: 12px;
+}
+
+@keyframes fluent-indeterminate-progress {
+  0% {
+    transform: translateX(-100%) scaleX(.2);
+  }
+
+  50% {
+    transform: translateX(-20%) scaleX(.5);
+  }
+
+  100% {
+    transform: translateX(100%) scaleX(.2);
+  }
+}
+
 img[src="/luci-static/resources/icons/port_down.svg"] {
   --icon-data: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iNzUgNzUgMzYyIDM2MiIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsbGVkYnk9InRpdGxlIGRlc2MiPgogIDx0aXRsZSBpZD0idGl0bGUiPkV0aGVybmV0IHBvcnQgd2l0aCBkaXNjb25uZWN0ZWQgcGx1ZzwvdGl0bGU+CiAgPGRlc2MgaWQ9ImRlc2MiPkEgRmx1ZW50IFVJIHN0eWxlIGV0aGVybmV0IHBvcnQgaWNvbiB3aXRoIGVpZ2h0IFJKNDUgY29udGFjdHMgYW5kIGEgcGx1ZyBkaXNjb25uZWN0ZWQgc3ltYm9sLjwvZGVzYz4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiM0MjQyNDIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzMzIDEzNUgxMzljLTguOCAwLTE2IDcuMi0xNiAxNnYyMjFjMCA4LjggNy4yIDE2IDE2IDE2aDIzOWM4LjggMCAxNi03LjIgMTYtMTZWMjA2IiBzdHJva2Utd2lkdGg9IjEwIi8+CiAgICA8cGF0aCBkPSJNMTcxIDIwOWgxNzN2MTAxaC0zM3YyN2gtMjd2MjNoLTU1di0yM2gtMjd2LTI3aC0zMXoiIHN0cm9rZS13aWR0aD0iMTAiLz4KICAgIDxwYXRoIGQ9Ik0xOTUgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICAgIDxwYXRoIGQ9Ik0yMTMgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICAgIDxwYXRoIGQ9Ik0yMzEgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICAgIDxwYXRoIGQ9Ik0yNDkgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICAgIDxwYXRoIGQ9Ik0yNjcgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICAgIDxwYXRoIGQ9Ik0yODUgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICAgIDxwYXRoIGQ9Ik0zMDMgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICAgIDxwYXRoIGQ9Ik0zMjEgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICA8L2c+CiAgPHBhdGggZmlsbD0iIzQyNDI0MiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzEyIDg2KSBzY2FsZSg2LjYpIiBkPSJNMTcuODU0IDIuMTQ2YS41LjUgMCAwIDEgMCAuNzA4bC0xLjY2OCAxLjY2OGE0LjA0IDQuMDQgMCAwIDEtLjMzMiA1LjMzMWwtLjMuM2wtLjAwMy4wMDNsLS4zMDkuMzA5YTEuMDUgMS4wNSAwIDAgMS0xLjQ4NCAwTDkuNTM1IDYuMjQyYTEuMDUgMS4wNSAwIDAgMSAwLTEuNDg1bC42MTEtLjYxYTQuMDM2IDQuMDM2IDAgMCAxIDUuMzMyLS4zMzJsMS42NjgtMS42NjlhLjUuNSAwIDAgMSAuNzA4IDBNMTUuMTQgNC44NDdhMy4wMzcgMy4wMzcgMCAwIDAtNC4yODYuMDA2bC0uMy4zYS40OS40OSAwIDAgMCAwIC42OTNsMy42IDMuNmMuMTkuMTkxLjUuMTkyLjY5MS4wMDJsLjAwMi0uMDAybC4zLS4zYTMuMDM2IDMuMDM2IDAgMCAwIC4wMDYtNC4yODZsLS4wMDctLjAwNnptLTUuNzg2IDMuOGEuNS41IDAgMCAxIDAgLjcwN0w3LjcwNyAxMUw5IDEyLjI5M2wxLjY0Ni0xLjY0N2EuNS41IDAgMCAxIC43MDguNzA4TDkuNzA3IDEzbC40NDcuNDQ3YTEuNDkgMS40OSAwIDAgMSAwIDIuMTA3bC0uMy4zYTQuMDM2IDQuMDM2IDAgMCAxLTUuMzMyLjMzMmwtMS42NjggMS42NjhhLjUuNSAwIDAgMS0uNzA4LS43MDhsMS42NjktMS42NjhhNC4wMzYgNC4wMzYgMCAwIDEgLjMzMS01LjMzMWwuMy0uM2ExLjQ5IDEuNDkgMCAwIDEgMi4xMDggMGwuNDQ2LjQ0NmwxLjY0Ni0xLjY0N2EuNS41IDAgMCAxIC43MDggMG0tNC40OTUgNi41MDVhMy4wMzYgMy4wMzYgMCAwIDAgNC4yODctLjAwNWwuMy0uM2EuNDkuNDkgMCAwIDAgMC0uNjkzbC0zLjYtMy42YS40OS40OSAwIDAgMC0uNjkyIDBsLS4zLjNhMy4wMzYgMy4wMzYgMCAwIDAgMCA0LjI5MnoiLz4KPC9zdmc+Cg==);
   width: 24px;

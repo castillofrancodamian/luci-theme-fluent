@@ -309,8 +309,9 @@ export function setupMenuSearch(root: LuCI.ui.menu.MenuNode): void {
     }
 
     // Escape to close
-    if (e.key === "Escape" && document.activeElement === input) {
-      input.blur();
+    const activeInput = inputs.find((inp) => document.activeElement === inp);
+    if (e.key === "Escape" && activeInput) {
+      activeInput.blur();
     }
   });
 }

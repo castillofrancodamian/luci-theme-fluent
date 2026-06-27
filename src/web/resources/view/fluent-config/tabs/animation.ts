@@ -1,11 +1,7 @@
 const form = L.form;
 
 export const registerAnimationTab = (section: LuCI.form.TypedSection): void => {
-  section.tab(
-    "animation",
-    _("Animation"),
-    _("Control page transitions, tab underline animation, and the top loading indicator."),
-  );
+  section.tab("animation", _("Animation"));
 
   {
     const option = section.taboption(
@@ -45,13 +41,7 @@ export const registerAnimationTab = (section: LuCI.form.TypedSection): void => {
   }
 
   {
-    const option = section.taboption(
-      "animation",
-      form.Flag,
-      "loading_bar",
-      _("Show top loading bar"),
-      _("Display the themed loading indicator at the top edge during page loads and transitions."),
-    );
+    const option = section.taboption("animation", form.Flag, "loading_bar", _("Show top loading bar"), _("Display the themed loading indicator at the top edge during page loads and transitions."));
     option.default = option.enabled;
     option.rmempty = false;
   }

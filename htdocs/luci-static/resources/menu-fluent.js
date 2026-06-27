@@ -959,7 +959,8 @@ function setupMenuSearch(n) {
             })();
             return;
         }
-        "Escape" === e.key && document.activeElement === input && input.blur();
+        let a = l.find((e)=>document.activeElement === e);
+        "Escape" === e.key && a && a.blur();
     });
 }
 

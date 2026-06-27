@@ -45,23 +45,23 @@ __webpack_require__.d(__webpack_exports__, {
 
 ;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/animation.ts
 let animation_e = L.form;
-const registerAnimationTab = (n)=>{
-    n.tab("animation", _("Animation"), _("Control page transitions, tab underline animation, and the top loading indicator."));
+const registerAnimationTab = (t)=>{
+    t.tab("animation", _("Animation"));
     {
-        let t = n.taboption("animation", animation_e.Flag, "view_transition", _("Enable page transition animation"), _("Use the browser View Transition API to animate navigation between LuCI pages when supported."));
-        t.default = t.enabled, t.rmempty = !1;
+        let n = t.taboption("animation", animation_e.Flag, "view_transition", _("Enable page transition animation"), _("Use the browser View Transition API to animate navigation between LuCI pages when supported."));
+        n.default = n.enabled, n.rmempty = !1;
     }
     {
-        let t = n.taboption("animation", animation_e.Flag, "tab_animation", _("Enable tab underline animation"), _("Animate the active underline when switching between native LuCI tabs and themed tab menus."));
-        t.default = t.enabled, t.rmempty = !1;
+        let n = t.taboption("animation", animation_e.Flag, "tab_animation", _("Enable tab underline animation"), _("Animate the active underline when switching between native LuCI tabs and themed tab menus."));
+        n.default = n.enabled, n.rmempty = !1;
     }
     {
-        let t = n.taboption("animation", animation_e.Flag, "prefers_reduced_motion", _("Respect reduced-motion preference"), _("When enabled, Fluent animations follow the browser or operating system reduced-motion preference."));
-        t.default = t.enabled, t.rmempty = !1, t.depends("tab_animation", "1");
+        let n = t.taboption("animation", animation_e.Flag, "prefers_reduced_motion", _("Respect reduced-motion preference"), _("When enabled, Fluent animations follow the browser or operating system reduced-motion preference."));
+        n.default = n.enabled, n.rmempty = !1, n.depends("tab_animation", "1");
     }
     {
-        let t = n.taboption("animation", animation_e.Flag, "loading_bar", _("Show top loading bar"), _("Display the themed loading indicator at the top edge during page loads and transitions."));
-        t.default = t.enabled, t.rmempty = !1;
+        let n = t.taboption("animation", animation_e.Flag, "loading_bar", _("Show top loading bar"), _("Display the themed loading indicator at the top edge during page loads and transitions."));
+        n.default = n.enabled, n.rmempty = !1;
     }
 };
 
@@ -181,7 +181,7 @@ const createModeSubtabs = (t, a, r)=>{
 let colors_e = L.form;
 
 const registerColorsTab = (o)=>{
-    o.tab("colors", _("Colors"), _("Set separate accent, progress-bar text, and background colors for light and dark mode."));
+    o.tab("colors", _("Colors"));
     let t = createModeSubtabs(o, "colors", "colors_mode_tabs");
     {
         let a = t.taboption("light", colors_e.Value, "primary", _("Accent color"), _("HEX color used as the primary Fluent accent when the interface is rendered in light mode."));
@@ -228,7 +228,7 @@ const registerColorsTab = (o)=>{
 ;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/general.ts
 let general_e = L.form;
 const registerGeneralTab = (t)=>{
-    t.tab("general", _("General"), _("Choose how the theme selects its mode and how large core controls should render."));
+    t.tab("general", _("General"));
     {
         let o = t.taboption("general", general_e.ListValue, "mode", _("Color mode"));
         o.value("auto", _("Follow system")), o.value("light", _("Force light mode")), o.value("dark", _("Force dark mode")), o.default = "auto", o.rmempty = !1, o.description = _("Use the system/browser preference, or always render the Fluent theme in a fixed light or dark palette.");
@@ -446,9 +446,9 @@ let login_g = new Set([
 ]), login_p = (e)=>{
     var t, a;
     return null != (t = null == (a = e.split(".").pop()) ? void 0 : a.toLowerCase()) ? t : "";
-}, m = (e)=>login_g.has(login_p(e)), b = (e)=>e >= 1048576 ? "".concat((e / 1024 / 1024).toFixed(1), " GiB") : e >= 1024 ? "".concat((e / 1024).toFixed(1), " MiB") : "".concat(e, " KiB"), login_f = (e, t)=>{
+}, login_m = (e)=>login_g.has(login_p(e)), login_b = (e)=>e >= 1048576 ? "".concat((e / 1024 / 1024).toFixed(1), " GiB") : e >= 1024 ? "".concat((e / 1024).toFixed(1), " MiB") : "".concat(e, " KiB"), login_f = (e, t)=>{
     if (0 !== e) throw Error("".concat(t, " failed with code ").concat(e, "."));
-}, h = (e, t)=>{
+}, login_h = (e, t)=>{
     login_l.content(e, t);
 }, login_v = login_a.DummyValue.extend({
     renderWidget: function(a, n, l) {
@@ -468,18 +468,18 @@ let login_g = new Set([
         }), y = jsx("div", {
             class: "fluent-bg-list"
         }), k = (e)=>{
-            h(u, [
+            login_h(u, [
                 document.createTextNode(e)
             ]);
         }, w = ()=>login_o.list("/www/luci-static/fluent/background").catch(()=>[]).then((a)=>{
                 let n = a.filter((e)=>{
                     var t;
-                    return "file" === e.type && m(String(null != (t = e.name) ? t : ""));
+                    return "file" === e.type && login_m(String(null != (t = e.name) ? t : ""));
                 }).sort((e, t)=>{
                     var a, n;
                     return String(null != (a = e.name) ? a : "").localeCompare(String(null != (n = t.name) ? n : ""));
                 });
-                n.length ? h(y, n.map((a)=>{
+                n.length ? login_h(y, n.map((a)=>{
                     var n, l;
                     let o, r, d, u = String(null != (n = a.name) ? n : ""), s = jsx("button", {
                         class: "btn cbi-button cbi-button-remove",
@@ -513,7 +513,7 @@ let login_g = new Set([
                                     }),
                                     jsx("span", {
                                         class: "fluent-bg-size",
-                                        children: (d = Number(null != (l = a.size) ? l : 0)) > 0 ? b(Math.max(1, Math.ceil(d / 1024))) : "Unknown size"
+                                        children: (d = Number(null != (l = a.size) ? l : 0)) > 0 ? login_b(Math.max(1, Math.ceil(d / 1024))) : "Unknown size"
                                     })
                                 ]
                             }),
@@ -523,7 +523,7 @@ let login_g = new Set([
                             })
                         ]
                     });
-                })) : h(y, jsxs("div", {
+                })) : login_h(y, jsxs("div", {
                     class: "fluent-bg-empty",
                     children: [
                         jsx("strong", {
@@ -539,7 +539,7 @@ let login_g = new Set([
             k("Selecting background file..."), login_i.uploadFile("/tmp/fluent_background.tmp").then((e)=>{
                 let t;
                 if (!(null == e ? void 0 : e.name)) throw Error("Upload did not return a filename.");
-                let a = "" !== (t = e.name.replace(/^.*[\\/]/, "").replace(/[^A-Za-z0-9._-]+/g, "-").replace(/^-+|-+$/g, "")) && "." !== t && ".." !== t && m(t) ? t : "background-".concat(Date.now(), ".jpg");
+                let a = "" !== (t = e.name.replace(/^.*[\\/]/, "").replace(/[^A-Za-z0-9._-]+/g, "-").replace(/^-+|-+$/g, "")) && "." !== t && ".." !== t && login_m(t) ? t : "background-".concat(Date.now(), ".jpg");
                 return k("Saving ".concat(a, "...")), login_d(a).then((e)=>(login_f(e, "Saving ".concat(a)), w().then(()=>{
                         k("Saved ".concat(a, "."));
                     }))).catch((e)=>{
@@ -550,7 +550,7 @@ let login_g = new Set([
                 t && "false" !== t ? k("Upload failed: ".concat(t)) : k("Upload canceled.");
             });
         }), login_r().then((e)=>{
-            k("Ready to upload or remove custom backgrounds. Available space: ".concat(b(e), "."));
+            k("Ready to upload or remove custom backgrounds. Available space: ".concat(login_b(e), "."));
         }).catch(()=>{
             k("Ready to upload or remove custom backgrounds.");
         }), w(), jsx("div", {
@@ -565,7 +565,7 @@ let login_g = new Set([
     }
 });
 const registerLoginTab = (e)=>{
-    e.tab("login", _("Login page"), _("Adjust login card opacity and blur separately for light and dark mode."));
+    e.tab("login", _("Login page"), _("Customize the login page background, card opacity, and blur radius for light and dark modes."));
     {
         let t = e.taboption("login", login_a.ListValue, "login_bg", "Background source", "Select the background image source for the login page.");
         t.value("microsoft", "Microsoft dynamic canvas"), t.value("custom", "Custom background"), t.value("bing", "Bing daily wallpaper"), t.default = "microsoft", t.rmempty = !1;
@@ -592,22 +592,494 @@ const registerLoginTab = (e)=>{
     }
 };
 
-;// CONCATENATED MODULE: ./web/resources/view/fluent-config.tsx
-let fluent_config_e = L.form, fluent_config_n = L.uci;
+;// CONCATENATED MODULE: ./web/resources/utils/update.ts
 
-
-
-
-class fluent_config_i extends L.view {
-    load() {
-        return fluent_config_n.load("fluent");
-    }
-    render(n) {
-        let i = new fluent_config_e.Map("fluent", _("Fluent theme settings"), _("Configure color mode, accent colors, animation behavior, and login-page appearance for luci-theme-fluent.")), l = i.section(fluent_config_e.TypedSection, "global", _("Theme settings"));
-        return l.addremove = !1, l.anonymous = !0, registerGeneralTab(l), registerColorsTab(l), registerAnimationTab(l), registerLoginTab(l), i.render();
+let update_e = L.rpc;
+const callGetVersion = update_e.declare({
+    object: "luci.fluent",
+    method: "get_version"
+});
+const callStartDownload = update_e.declare({
+    object: "luci.fluent",
+    method: "start_download",
+    params: [
+        "url",
+        "i18n_url"
+    ]
+});
+const callCheckDownload = update_e.declare({
+    object: "luci.fluent",
+    method: "check_download"
+});
+const callDoInstall = update_e.declare({
+    object: "luci.fluent",
+    method: "do_install",
+    params: [
+        "hash",
+        "i18n_hash"
+    ]
+});
+class GitHubAPIError extends Error {
+    constructor(e, l){
+        super(e), _define_property(this, "status", void 0), this.name = "GitHubAPIError", this.status = l;
     }
 }
-const main = fluent_config_i;
+async function fetchLatestRelease(t, e, l) {
+    let a = {};
+    l && (a.Authorization = "token ".concat(l));
+    let s = await fetch("nightly" === t ? "https://api.github.com/repos/LazuliKao/luci-theme-fluent/releases/tags/nightly" : "https://api.github.com/repos/LazuliKao/luci-theme-fluent/releases/latest", {
+        headers: a
+    }), o = await s.json();
+    if (!s.ok) {
+        let t = (null == o ? void 0 : o.message) ? ": ".concat(o.message) : "";
+        throw new GitHubAPIError("GitHub API returned status ".concat(s.status).concat(t), s.status);
+    }
+    let i = o.assets || [], r = null, n = null;
+    for (let t of i){
+        let l = String(t.name || "");
+        "apk" === e && l.startsWith("luci-theme-fluent") && l.endsWith(".apk") || "ipk" === e && l.startsWith("luci-theme-fluent") && l.endsWith("_all.ipk") ? r = t : "apk" === e && l.startsWith("luci-i18n-fluent") && l.endsWith(".apk") ? n = t : "ipk" === e && l.startsWith("luci-i18n-fluent") && l.endsWith("_all.ipk") && (n = t);
+    }
+    return {
+        tag_name: String(o.tag_name || ""),
+        published_at: String(o.published_at || ""),
+        body: String(o.body || ""),
+        html_url: String(o.html_url || ""),
+        package_asset: r,
+        i18n_asset: n
+    };
+}
+
+;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/about.tsx
+
+let about_n = L.form, about_l = L.dom, about_i = "https://ghfast.top/";
+
+let about_p = about_n.DummyValue.extend({
+    renderWidget: (n, p, h)=>{
+        let b = "1.0.1", f = "ipk", g = jsxs("div", {
+            class: "fluent-about-logo",
+            children: [
+                jsx("img", {
+                    src: "".concat(L.media(), "/img/fluent.svg"),
+                    alt: "Fluent Theme Logo"
+                }),
+                jsx("h2", {
+                    children: "Fluent Theme"
+                }),
+                jsx("p", {
+                    class: "fluent-about-subtitle",
+                    children: _("Fluent Design 2 theme for LuCI")
+                })
+            ]
+        }), y = jsxs("div", {
+            class: "fluent-about-details",
+            children: [
+                jsxs("div", {
+                    class: "fluent-about-detail-row",
+                    children: [
+                        jsxs("strong", {
+                            children: [
+                                _("Author"),
+                                ":"
+                            ]
+                        }),
+                        jsx("span", {
+                            children: "LazuliKao"
+                        })
+                    ]
+                }),
+                jsxs("div", {
+                    class: "fluent-about-detail-row",
+                    children: [
+                        jsxs("strong", {
+                            children: [
+                                _("Installed version"),
+                                ":"
+                            ]
+                        }),
+                        jsx("span", {
+                            class: "fluent-about-current-version",
+                            children: "v..."
+                        })
+                    ]
+                }),
+                jsxs("div", {
+                    class: "fluent-about-detail-row",
+                    children: [
+                        jsxs("strong", {
+                            children: [
+                                _("Package format"),
+                                ":"
+                            ]
+                        }),
+                        jsx("span", {
+                            class: "fluent-about-pkg-type",
+                            children: "..."
+                        })
+                    ]
+                }),
+                jsxs("div", {
+                    class: "fluent-about-detail-row",
+                    children: [
+                        jsxs("strong", {
+                            children: [
+                                _("Source code"),
+                                ":"
+                            ]
+                        }),
+                        jsx("span", {
+                            children: jsx("a", {
+                                href: "https://github.com/LazuliKao/luci-theme-fluent",
+                                target: "_blank",
+                                rel: "noreferrer",
+                                children: "GitHub Repository"
+                            })
+                        })
+                    ]
+                })
+            ]
+        }), m = jsxs("select", {
+            class: "cbi-input-select",
+            id: "update-channel-select",
+            children: [
+                jsx("option", {
+                    value: "stable",
+                    children: _("Stable Channel")
+                }),
+                jsx("option", {
+                    value: "nightly",
+                    children: _("Nightly Channel (Prerelease)")
+                })
+            ]
+        }), v = jsxs("select", {
+            class: "cbi-input-select",
+            id: "update-method-select",
+            children: [
+                jsx("option", {
+                    value: "backend_official",
+                    children: _("Backend (Official GitHub)")
+                }),
+                jsx("option", {
+                    value: "backend_ghproxy",
+                    children: _("Backend (GHProxy Acceleration)")
+                })
+            ]
+        }), w = jsx("button", {
+            class: "btn cbi-button cbi-button-action",
+            type: "button",
+            children: _("Check for updates")
+        }), x = jsxs("div", {
+            class: "fluent-update-controls",
+            style: "display: flex; gap: 15px; align-items: center; flex-wrap: wrap;",
+            children: [
+                jsxs("div", {
+                    class: "fluent-update-channel-selector",
+                    children: [
+                        jsxs("label", {
+                            htmlFor: "update-channel-select",
+                            children: [
+                                _("Update channel"),
+                                ": "
+                            ]
+                        }),
+                        m
+                    ]
+                }),
+                w
+            ]
+        }), k = jsx("div", {
+            class: "fluent-update-status"
+        }), T = jsx("div", {
+            class: "fluent-progress-bar__fill",
+            style: "width: 0%"
+        }), C = jsx("div", {
+            class: "fluent-progress-bar",
+            style: "display: none",
+            children: T
+        }), S = jsx("div", {
+            class: "fluent-progress-text",
+            style: "display: none"
+        }), E = jsx("div", {
+            class: "fluent-update-card",
+            style: "display: none"
+        }), F = jsxs("div", {
+            class: "fluent-about-manager",
+            children: [
+                g,
+                y,
+                jsx("hr", {
+                    class: "fluent-about-divider"
+                }),
+                jsx("h3", {
+                    children: _("Software Update")
+                }),
+                x,
+                k,
+                E,
+                C,
+                S
+            ]
+        }), P = function(e) {
+            let t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "info";
+            about_l.content(k, [
+                document.createTextNode(e)
+            ]), k.className = "fluent-update-status status-".concat(t);
+        }, A = (e, t, a)=>{
+            C.style.display = "block", S.style.display = "block", T.style.width = "".concat(t, "%"), T.className = "fluent-progress-bar__fill fill-".concat(e), about_l.content(S, [
+                document.createTextNode("".concat(a, " (").concat(t, "%)"))
+            ]);
+        }, N = ()=>{
+            C.style.display = "none", S.style.display = "none";
+        };
+        (async ()=>{
+            try {
+                let e = await callGetVersion();
+                b = e.version, f = e.pkg_type;
+                let t = y.querySelector(".fluent-about-current-version");
+                t && (t.textContent = "v".concat(b));
+                let a = y.querySelector(".fluent-about-pkg-type");
+                a && (a.textContent = "apk" === f ? "APK (OpenWrt 25.12+)" : "IPK (OpenWrt 24.10)");
+            } catch (e) {
+                console.error("Failed to fetch version", e), P(_("Failed to fetch current theme version."), "error");
+            }
+        })();
+        let j = async (n)=>{
+            let r = m.value;
+            try {
+                let a = await fetchLatestRelease(r, f, n);
+                console.log(a), w.disabled = !1;
+                let u = b.replace(/^v/, "").trim(), p = a.tag_name.replace(/^v/, "").trim(), h = L.naturalCompare(p, u) > 0, g = !h && "nightly" !== r;
+                if (g ? P(_("Your theme is up to date!"), "success") : P(h ? _("A new version is available!") : _("Nightly build available (reinstallation check)."), h ? "warn" : "info"), !a.package_asset) return void P(_("No matching package asset found for your system architecture in this release."), "error");
+                let y = a.body ? a.body : "", x = jsx("button", {
+                    class: "btn cbi-button cbi-button-save",
+                    type: "button",
+                    style: "white-space: nowrap;",
+                    children: _("Download and Install")
+                }), k = [
+                    jsxs("div", {
+                        class: "fluent-update-header",
+                        children: [
+                            jsx("span", {
+                                class: "fluent-update-badge",
+                                children: "nightly" === p ? "Nightly" : "v".concat(p)
+                            }),
+                            jsx("span", {
+                                class: "fluent-update-date",
+                                children: a.published_at.split("T")[0]
+                            })
+                        ]
+                    })
+                ];
+                y && k.push(jsx("pre", {
+                    class: "fluent-update-changelog",
+                    children: y
+                })), g || k.push(jsxs("div", {
+                    class: "fluent-update-footer",
+                    style: "display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 15px; flex-wrap: wrap;",
+                    children: [
+                        v,
+                        x
+                    ]
+                })), about_l.content(E, k), E.style.display = "block", x.addEventListener("click", async ()=>{
+                    var n, r;
+                    let d = a.package_asset;
+                    if (!d) return void P(_("No matching package asset found for your system architecture in this release."), "error");
+                    x.disabled = !0, m.disabled = !0, v.disabled = !0, w.disabled = !0, P(_("Starting update process..."), "info");
+                    let u = a.i18n_asset, p = null, h = "";
+                    (null == (n = d.digest) ? void 0 : n.startsWith("sha256:")) ? p = d.digest.replace("sha256:", "") : (console.warn("Unable to determine expected package hash from digest. Skipping verification."), p = "skip"), (null == u || null == (r = u.digest) ? void 0 : r.startsWith("sha256:")) && (h = u.digest.replace("sha256:", ""));
+                    let b = async ()=>{
+                        let a = v.value.includes("ghproxy");
+                        P(_("Starting backend download..."), "info"), A("download", 0, _("Downloading on router"));
+                        let n = a ? about_i + d.browser_download_url : d.browser_download_url, r = u ? a ? about_i + u.browser_download_url : u.browser_download_url : "", b = await callStartDownload(n, r);
+                        if (0 !== b.result) throw Error(b.message || "Failed to start router download.");
+                        for(;;){
+                            let e = await callCheckDownload(), t = e.size || 0, a = d.size + (u ? u.size : 0), n = a > 0 ? Math.min(Math.round(t / a * 100), 100) : 0;
+                            if (A("download", n, "".concat(_("Downloading on router"), " (").concat((t / 1024).toFixed(0), " / ").concat((a / 1024).toFixed(0), " KB)")), !e.running) if (0 !== e.code) throw Error("Router background download failed or file is empty.");
+                            else break;
+                            await new Promise((e)=>setTimeout(e, 1000));
+                        }
+                        if (!await new Promise((a)=>{
+                            let n = jsx("button", {
+                                type: "button",
+                                class: "btn cbi-button cbi-button-action",
+                                children: _("Cancel")
+                            });
+                            n.addEventListener("click", ()=>{
+                                L.ui.hideModal(), a(!1);
+                            });
+                            let l = jsx("button", {
+                                type: "button",
+                                class: "btn cbi-button cbi-button-save",
+                                children: _("Continue")
+                            });
+                            l.addEventListener("click", ()=>{
+                                L.ui.hideModal(), a(!0);
+                            }), L.ui.showModal(_("Confirm Installation"), jsxs("div", {
+                                children: [
+                                    jsx("p", {
+                                        children: _("The theme package is ready. Are you sure you want to proceed with the installation?")
+                                    }),
+                                    jsxs("div", {
+                                        class: "right",
+                                        style: "margin-top: 15px; display: flex; gap: 10px; justify-content: flex-end;",
+                                        children: [
+                                            n,
+                                            l
+                                        ]
+                                    })
+                                ]
+                            }));
+                        })) throw Error(_("Installation cancelled by user."));
+                        P(_("Triggering installation on router..."), "info"), A("install", 100, _("Installing package"));
+                        let f = await callDoInstall(p, h);
+                        if (0 !== f.result) throw Error(f.message || "Router installation failed.");
+                        let g = jsx("pre", {
+                            style: "background: var(--fluent-code-bg, #1a1a1a); color: var(--fluent-text, #fff); padding: 10px; border-radius: 4px; font-family: monospace; font-size: 12px; white-space: pre-wrap; word-wrap: break-word; max-height: 200px; overflow-y: auto; margin-top: 15px;"
+                        });
+                        (async ()=>{
+                            let e = L.env.ubuspath || "/ubus", t = L.env.sessionid;
+                            for(;;)try {
+                                var a, n;
+                                let l = await fetch(e, {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    },
+                                    body: JSON.stringify({
+                                        jsonrpc: "2.0",
+                                        id: 1,
+                                        method: "call",
+                                        params: [
+                                            t,
+                                            "luci.fluent",
+                                            "get_install_log",
+                                            {}
+                                        ]
+                                    })
+                                }), i = await l.json();
+                                if (i.error) break;
+                                (null == (n = i.result) || null == (a = n[1]) ? void 0 : a.log) && (g.textContent = i.result[1].log, g.scrollTop = g.scrollHeight), await new Promise((e)=>setTimeout(e, 1000));
+                            } catch (e) {
+                                break;
+                            }
+                        })(), P(_("Theme successfully updated! Reloading RPC service, please refresh the page in 5 seconds."), "success"), A("done", 100, _("Finished"));
+                        let y = jsx("button", {
+                            class: "btn cbi-button cbi-button-action",
+                            type: "button",
+                            style: "margin-top: 15px",
+                            children: _("Reload Web Interface")
+                        });
+                        y.addEventListener("click", ()=>{
+                            window.location.reload();
+                        }), about_l.content(E, [
+                            jsxs("div", {
+                                class: "fluent-update-success",
+                                children: [
+                                    jsx("h3", {
+                                        style: "color: var(--fluent-success); text-align: center;",
+                                        children: _("Upgrade Successful!")
+                                    }),
+                                    jsx("p", {
+                                        style: "text-align: center; margin: 15px 0;",
+                                        children: _("The theme is being installed on your router. The logs are displayed below. Reloading the web interface will apply the changes once RPCD restarts.")
+                                    }),
+                                    g,
+                                    jsx("div", {
+                                        style: "display: flex; justify-content: center; margin-top: 20px;",
+                                        children: y
+                                    })
+                                ]
+                            })
+                        ]);
+                    };
+                    try {
+                        await b();
+                    } catch (e) {
+                        console.error("Update failed", e), P("".concat(_("Update failed"), ": ").concat(e instanceof Error ? e.message : String(e)), "error"), x.disabled = !1, x.removeAttribute("disabled"), m.disabled = !1, m.removeAttribute("disabled"), v.disabled = !1, v.removeAttribute("disabled"), w.disabled = !1, w.removeAttribute("disabled"), N();
+                    }
+                });
+            } catch (n) {
+                if (w.disabled = !1, console.error("Failed checking updates", n), n instanceof GitHubAPIError && 403 === n.status) {
+                    let l = jsx("input", {
+                        type: "text",
+                        class: "cbi-input-text",
+                        style: "width: 100%",
+                        placeholder: "ghp_..."
+                    }), i = jsx("p", {
+                        children: _("API rate limit exceeded. Please enter a GitHub Token to continue. This token is only used for frontend requests and will not be saved on the router backend.")
+                    }), r = jsxs("p", {
+                        style: "margin-top: 10px; font-size: 13px; color: var(--fluent-text-secondary);",
+                        children: [
+                            _("You can create a new token at "),
+                            jsx("a", {
+                                href: "https://github.com/settings/personal-access-tokens",
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                                children: "https://github.com/settings/personal-access-tokens/new"
+                            }),
+                            _(". The token does NOT require any permissions/scopes to be granted (read-only public access is sufficient).")
+                        ]
+                    }), o = jsx("pre", {
+                        style: "margin-top: 10px; margin-bottom: 15px; font-size: 12px; white-space: pre-wrap; word-break: break-word; color: var(--fluent-error-text); background: var(--fluent-card-bg); padding: 8px; border-radius: var(--fluent-border-radius);",
+                        children: n instanceof Error ? n.message : String(n)
+                    }), s = jsx("button", {
+                        type: "button",
+                        class: "btn cbi-button cbi-button-action",
+                        children: _("Cancel")
+                    });
+                    s.addEventListener("click", ()=>L.ui.hideModal());
+                    let c = jsx("button", {
+                        type: "button",
+                        class: "btn cbi-button cbi-button-save",
+                        children: _("Submit")
+                    });
+                    c.addEventListener("click", ()=>{
+                        let e = l.value.trim();
+                        L.ui.hideModal(), e && (P(_("Retrying with token..."), "info"), w.disabled = !0, j(e));
+                    }), L.ui.showModal(_("GitHub Token Required"), jsxs(Fragment, {
+                        children: [
+                            i,
+                            r,
+                            o,
+                            l,
+                            jsxs("div", {
+                                class: "right",
+                                style: "margin-top: 15px; display: flex; gap: 10px; justify-content: flex-end;",
+                                children: [
+                                    s,
+                                    c
+                                ]
+                            })
+                        ]
+                    }));
+                } else P("".concat(_("Failed to check for updates"), ": ").concat(n instanceof Error ? n.message : String(n)), "error");
+            }
+        };
+        return w.addEventListener("click", ()=>{
+            P(_("Checking for updates..."), "info"), w.disabled = !0, E.style.display = "none", N(), j();
+        }), F;
+    }
+});
+const registerAboutTab = (e)=>{
+    e.tab("about", _("About")), e.taboption("about", about_p, "_about_mgr");
+};
+
+;// CONCATENATED MODULE: ./web/resources/view/fluent-config.tsx
+let fluent_config_e = L.form, fluent_config_o = L.uci;
+
+
+
+
+
+class fluent_config_l extends L.view {
+    load() {
+        return fluent_config_o.load("fluent");
+    }
+    render(o) {
+        let l = new fluent_config_e.Map("fluent", _("Fluent theme settings"), _("Configure color mode, accent colors, animation behavior, and login-page appearance for luci-theme-fluent.")), f = l.section(fluent_config_e.TypedSection, "global", _("Theme settings"));
+        return f.addremove = !1, f.anonymous = !0, registerGeneralTab(f), registerColorsTab(f), registerAnimationTab(f), registerLoginTab(f), registerAboutTab(f), l.render();
+    }
+}
+const main = fluent_config_l;
 
 
 return main;

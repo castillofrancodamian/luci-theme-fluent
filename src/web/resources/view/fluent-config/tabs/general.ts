@@ -1,11 +1,7 @@
 const form = L.form;
 
 export const registerGeneralTab = (section: LuCI.form.TypedSection): void => {
-  section.tab(
-    "general",
-    _("General"),
-    _("Choose how the theme selects its mode and how large core controls should render."),
-  );
+  section.tab("general", _("General"));
 
   {
     const option = section.taboption("general", form.ListValue, "mode", _("Color mode"));
@@ -36,13 +32,7 @@ export const registerGeneralTab = (section: LuCI.form.TypedSection): void => {
   }
 
   {
-    const option = section.taboption(
-      "general",
-      form.Flag,
-      "custom_select",
-      _("Use Fluent custom select dropdowns"),
-      _("Replace native select elements with the theme's custom dropdown widget."),
-    );
+    const option = section.taboption("general", form.Flag, "custom_select", _("Use Fluent custom select dropdowns"), _("Replace native select elements with the theme's custom dropdown widget."));
     option.default = option.enabled;
     option.rmempty = false;
   }
