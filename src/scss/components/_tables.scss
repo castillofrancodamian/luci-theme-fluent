@@ -146,6 +146,41 @@ div.th {
   background: var(--fluent-bg);
 }
 
+// Named row labels — inject data-title as first cell via ::before
+// Only for tables whose header row has class "named" (indicating rows have names)
+.cbi-section-table:has(.cbi-section-table-titles.named):not(:has(td.cbi-section-table-titles)) {
+  // Header row: create the column header from data-title (e.g. "名称")
+  .tr.cbi-section-table-titles.named::before {
+    content: attr(data-title);
+    display: table-cell;
+    padding: var(--fluent-space-xs) var(--fluent-space-sm);
+    font-size: var(--fluent-font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--fluent-text-secondary);
+    background: var(--fluent-table-header-bg);
+    border-bottom: 2px solid var(--fluent-table-border);
+    font-weight: var(--fluent-font-weight-semibold);
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  // Data rows: show row name (e.g. "docker_rule") as first cell
+  .tr.cbi-section-table-row[data-title]::before {
+    content: attr(data-title);
+    display: table-cell;
+    padding: var(--fluent-space-xs) var(--fluent-space-sm);
+    font-size: var(--fluent-font-size-sm);
+    color: var(--fluent-text);
+    font-weight: var(--fluent-font-weight-semibold);
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: start;
+    border-bottom: 1px solid var(--fluent-table-border);
+  }
+}
+
 .cbi-rowstyle-2 {
   background: var(--fluent-bg-page);
 }

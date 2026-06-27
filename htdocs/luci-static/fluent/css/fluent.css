@@ -1661,6 +1661,35 @@ div.td, div.th {
   padding: var(--fluent-space-xs) var(--fluent-space-sm);
 }
 
+.cbi-section-table:has(.cbi-section-table-titles.named):not(:has(td.cbi-section-table-titles)) .tr.cbi-section-table-titles.named:before {
+  content: attr(data-title);
+  padding: var(--fluent-space-xs) var(--fluent-space-sm);
+  font-size: var(--fluent-font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--fluent-text-secondary);
+  background: var(--fluent-table-header-bg);
+  border-bottom: 2px solid var(--fluent-table-border);
+  font-weight: var(--fluent-font-weight-semibold);
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+}
+
+.cbi-section-table:has(.cbi-section-table-titles.named):not(:has(td.cbi-section-table-titles)) .tr.cbi-section-table-row[data-title]:before {
+  content: attr(data-title);
+  padding: var(--fluent-space-xs) var(--fluent-space-sm);
+  font-size: var(--fluent-font-size-sm);
+  color: var(--fluent-text);
+  font-weight: var(--fluent-font-weight-semibold);
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: start;
+  border-bottom: 1px solid var(--fluent-table-border);
+  display: table-cell;
+}
+
 .tr.placeholder {
   padding: var(--fluent-space-lg);
   text-align: center;
