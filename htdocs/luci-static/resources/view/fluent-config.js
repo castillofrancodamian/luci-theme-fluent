@@ -767,7 +767,7 @@ let about_p = about_n.DummyValue.extend({
             class: "btn cbi-button cbi-button-action",
             type: "button",
             children: _("Check for updates")
-        }), x = jsxs("div", {
+        }), k = jsxs("div", {
             class: "fluent-update-controls",
             style: "display: flex; gap: 15px; align-items: center; flex-wrap: wrap;",
             children: [
@@ -786,8 +786,9 @@ let about_p = about_n.DummyValue.extend({
                 }),
                 w
             ]
-        }), k = jsx("div", {
-            class: "fluent-update-status"
+        }), x = jsx("div", {
+            class: "fluent-update-status",
+            style: "display: none"
         }), T = jsx("div", {
             class: "fluent-progress-bar__fill",
             style: "width: 0%"
@@ -812,17 +813,17 @@ let about_p = about_n.DummyValue.extend({
                 jsx("h3", {
                     children: _("Software Update")
                 }),
-                x,
                 k,
+                x,
                 E,
                 C,
                 S
             ]
         }), P = function(e) {
             let t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "info";
-            about_l.content(k, [
+            about_l.content(x, [
                 document.createTextNode(e)
-            ]), k.className = "fluent-update-status status-".concat(t);
+            ]), x.className = "fluent-update-status status-".concat(t), x.style.display = "block";
         }, A = (e, t, a)=>{
             C.style.display = "block", S.style.display = "block", T.style.width = "".concat(t, "%"), T.className = "fluent-progress-bar__fill fill-".concat(e), about_l.content(S, [
                 document.createTextNode("".concat(a, " (").concat(t, "%)"))
@@ -849,12 +850,12 @@ let about_p = about_n.DummyValue.extend({
                 console.log(a), w.disabled = !1;
                 let u = b.replace(/^v/, "").trim(), p = a.tag_name.replace(/^v/, "").trim(), h = L.naturalCompare(p, u) > 0, g = !h && "nightly" !== r;
                 if (g ? P(_("Your theme is up to date!"), "success") : P(h ? _("A new version is available!") : _("Nightly build available (reinstallation check)."), h ? "warn" : "info"), !a.package_asset) return void P(_("No matching package asset found for your system architecture in this release."), "error");
-                let y = a.body ? a.body : "", x = jsx("button", {
+                let y = a.body ? a.body : "", k = jsx("button", {
                     class: "btn cbi-button cbi-button-save",
                     type: "button",
                     style: "white-space: nowrap;",
                     children: _("Download and Install")
-                }), k = [
+                }), x = [
                     jsxs("div", {
                         class: "fluent-update-header",
                         children: [
@@ -869,21 +870,21 @@ let about_p = about_n.DummyValue.extend({
                         ]
                     })
                 ];
-                y && k.push(jsx("pre", {
+                y && x.push(jsx("pre", {
                     class: "fluent-update-changelog",
                     children: y
-                })), g || k.push(jsxs("div", {
+                })), g || x.push(jsxs("div", {
                     class: "fluent-update-footer",
                     style: "display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 15px; flex-wrap: wrap;",
                     children: [
                         v,
-                        x
+                        k
                     ]
-                })), about_l.content(E, k), E.style.display = "block", x.addEventListener("click", async ()=>{
+                })), about_l.content(E, x), E.style.display = "block", k.addEventListener("click", async ()=>{
                     var n, r;
                     let d = a.package_asset;
                     if (!d) return void P(_("No matching package asset found for your system architecture in this release."), "error");
-                    x.disabled = !0, m.disabled = !0, v.disabled = !0, w.disabled = !0, P(_("Starting update process..."), "info");
+                    k.disabled = !0, m.disabled = !0, v.disabled = !0, w.disabled = !0, P(_("Starting update process..."), "info");
                     let u = a.i18n_asset, p = null, h = "";
                     (null == (n = d.digest) ? void 0 : n.startsWith("sha256:")) ? p = d.digest.replace("sha256:", "") : (console.warn("Unable to determine expected package hash from digest. Skipping verification."), p = "skip"), (null == u || null == (r = u.digest) ? void 0 : r.startsWith("sha256:")) && (h = u.digest.replace("sha256:", ""));
                     let b = async ()=>{
@@ -994,7 +995,7 @@ let about_p = about_n.DummyValue.extend({
                     try {
                         await b();
                     } catch (e) {
-                        console.error("Update failed", e), P("".concat(_("Update failed"), ": ").concat(e instanceof Error ? e.message : String(e)), "error"), x.disabled = !1, x.removeAttribute("disabled"), m.disabled = !1, m.removeAttribute("disabled"), v.disabled = !1, v.removeAttribute("disabled"), w.disabled = !1, w.removeAttribute("disabled"), N();
+                        console.error("Update failed", e), P("".concat(_("Update failed"), ": ").concat(e instanceof Error ? e.message : String(e)), "error"), k.disabled = !1, k.removeAttribute("disabled"), m.disabled = !1, m.removeAttribute("disabled"), v.disabled = !1, v.removeAttribute("disabled"), w.disabled = !1, w.removeAttribute("disabled"), N();
                     }
                 });
             } catch (n) {

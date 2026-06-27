@@ -83,7 +83,7 @@ const CBIAboutManager = (form.DummyValue as unknown as typeof LuCI.baseclass).ex
       </div>
     );
 
-    const statusMsgEl = <div class="fluent-update-status" />;
+    const statusMsgEl = <div class="fluent-update-status" style="display: none" />;
 
     // Progress Bar element
     const progressBarFill = <div class="fluent-progress-bar__fill" style="width: 0%" />;
@@ -115,6 +115,7 @@ const CBIAboutManager = (form.DummyValue as unknown as typeof LuCI.baseclass).ex
     const setStatus = (msg: string, type: "info" | "success" | "error" | "warn" = "info") => {
       dom.content(statusMsgEl, [document.createTextNode(msg)]);
       statusMsgEl.className = `fluent-update-status status-${type}`;
+      statusMsgEl.style.display = "block";
     };
 
     const updateProgress = (stage: string, percent: number, detailMsg: string) => {
@@ -215,7 +216,7 @@ const CBIAboutManager = (form.DummyValue as unknown as typeof LuCI.baseclass).ex
         // Install package execution
         installBtn.addEventListener("click", async () => {
           const packageAsset = release.package_asset;
-          
+
           if (!packageAsset) {
             setStatus(_("No matching package asset found for your system architecture in this release."), "error");
             return;
@@ -417,7 +418,8 @@ const CBIAboutManager = (form.DummyValue as unknown as typeof LuCI.baseclass).ex
               {_("You can create a new token at")}{" "}
               <a href="https://github.com/settings/personal-access-tokens" target="_blank" rel="noopener noreferrer">
                 https://github.com/settings/personal-access-tokens/new
-              </a>{"."}
+              </a>
+              {"."}
               {_("The token does NOT require any permissions/scopes to be granted (read-only public access is sufficient).")}
             </p>
           );
