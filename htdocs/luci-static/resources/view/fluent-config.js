@@ -1009,14 +1009,16 @@ let about_p = about_n.DummyValue.extend({
                     }), r = jsxs("p", {
                         style: "margin-top: 10px; font-size: 13px; color: var(--fluent-text-secondary);",
                         children: [
-                            _("You can create a new token at "),
+                            _("You can create a new token at"),
+                            " ",
                             jsx("a", {
                                 href: "https://github.com/settings/personal-access-tokens",
                                 target: "_blank",
                                 rel: "noopener noreferrer",
                                 children: "https://github.com/settings/personal-access-tokens/new"
                             }),
-                            _(". The token does NOT require any permissions/scopes to be granted (read-only public access is sufficient).")
+                            ".",
+                            _("The token does NOT require any permissions/scopes to be granted (read-only public access is sufficient).")
                         ]
                     }), o = jsx("pre", {
                         style: "margin-top: 10px; margin-bottom: 15px; font-size: 12px; white-space: pre-wrap; word-break: break-word; color: var(--fluent-error-text); background: var(--fluent-card-bg); padding: 8px; border-radius: var(--fluent-border-radius);",

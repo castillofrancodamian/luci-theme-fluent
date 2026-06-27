@@ -414,11 +414,11 @@ const CBIAboutManager = (form.DummyValue as unknown as typeof LuCI.baseclass).ex
 
           const createTokenPromptEl = (
             <p style="margin-top: 10px; font-size: 13px; color: var(--fluent-text-secondary);">
-              {_("You can create a new token at ")}
+              {_("You can create a new token at")}{" "}
               <a href="https://github.com/settings/personal-access-tokens" target="_blank" rel="noopener noreferrer">
                 https://github.com/settings/personal-access-tokens/new
-              </a>
-              {_(". The token does NOT require any permissions/scopes to be granted (read-only public access is sufficient).")}
+              </a>{"."}
+              {_("The token does NOT require any permissions/scopes to be granted (read-only public access is sufficient).")}
             </p>
           );
 

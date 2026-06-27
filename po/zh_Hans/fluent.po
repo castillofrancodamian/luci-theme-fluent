@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: luci-theme-fluent\n"
-"POT-Creation-Date: 2026-06-26 12:15+0800\n"
+"POT-Creation-Date: 2026-06-27 19:40+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,11 +11,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+msgid "A new version is available!"
+msgstr "发现有新版本！"
+
+msgid "About"
+msgstr "关于"
+
 msgid "Accent color"
 msgstr "强调色"
-
-msgid "Adjust login card opacity and blur separately for light and dark mode."
-msgstr "分别为亮色模式和深色模式调整登录卡片的不透明度和模糊效果。"
 
 msgid "and {count} more…"
 msgstr "和 {count} 个更多..."
@@ -29,12 +32,26 @@ msgid "Animation"
 msgstr "动画"
 
 msgid ""
+"API rate limit exceeded. Please enter a GitHub Token to continue. This token is "
+"only used for frontend requests and will not be saved on the router backend."
+msgstr "API 调用频率已达上限。请输入 GitHub Token 以继续。此 token 只用于前端请求，不会保存在路由器后端。"
+
+msgid ""
 "Applies to standard buttons, inputs, selects, and similar form controls across t"
 "he theme."
 msgstr "适用于整个主题中的标准按钮、输入框、选择框及类似表单控件。"
 
+msgid "Author"
+msgstr "作者"
+
 msgid "Backdrop blur radius"
 msgstr "背景模糊半径"
+
+msgid "Backend (GHProxy Acceleration)"
+msgstr "后端 (GHProxy 加速)"
+
+msgid "Backend (Official GitHub)"
+msgstr "后端 (官方 GitHub)"
 
 msgid "Blur radius in pixels behind the login card in dark mode. Use 0 to disable blur."
 msgstr "深色模式下，登录卡片背后的模糊半径（单位：像素）。使用 0 可禁用模糊效果。"
@@ -44,14 +61,20 @@ msgid ""
 "."
 msgstr "亮色模式下，登录卡片背后的模糊半径（单位：像素）。使用 0 可禁用模糊效果。"
 
+msgid "Cancel"
+msgstr "取消"
+
 msgid "Card background"
 msgstr "卡片背景"
 
+msgid "Check for updates"
+msgstr "检查更新"
+
+msgid "Checking for updates..."
+msgstr "正在检查更新..."
+
 msgid "Choose color"
 msgstr "选择颜色"
-
-msgid "Choose how the theme selects its mode and how large core controls should render."
-msgstr "配置主题如何选择其显示模式，以及核心控件的显示尺寸。"
 
 msgid "Color mode"
 msgstr "色彩模式"
@@ -70,18 +93,24 @@ msgid ""
 "ce for luci-theme-fluent."
 msgstr "配置 Fluent 主题的色彩模式、强调色、动画行为和登录页外观。"
 
+msgid "Confirm Installation"
+msgstr "确认安装"
+
+msgid "Continue"
+msgstr "继续"
+
 msgid "Control height"
 msgstr "控件高度"
-
-msgid ""
-"Control page transitions, tab underline animation, and the top loading indicator"
-"."
-msgstr "控制页面过渡、标签下划线动画以及顶部的加载指示器。"
 
 msgid ""
 "Controls the font weight used by main navigation labels and related theme text a"
 "ccents."
 msgstr "控制主导航标签及相关主题强调文本的字体粗细。"
+
+msgid ""
+"Customize the login page background, card opacity, and blur radius for light and"
+" dark modes."
+msgstr "自定义亮色模式和深色模式下登录页面的背景、卡片不透明度和模糊半径。"
 
 msgid "Dark mode"
 msgstr "深色模式"
@@ -91,6 +120,12 @@ msgid ""
 "itions."
 msgstr "在页面加载和过渡期间，在顶部边缘显示主题化的加载指示器。"
 
+msgid "Download and Install"
+msgstr "下载并安装"
+
+msgid "Downloading on router"
+msgstr "正在路由器上下载..."
+
 msgid "Enable page transition animation"
 msgstr "启用页面过渡动画"
 
@@ -99,6 +134,18 @@ msgstr "启用标签页下划线动画"
 
 msgid "Expecting: %s"
 msgstr "预期：%s"
+
+msgid "Failed to check for updates"
+msgstr "检查更新失败"
+
+msgid "Failed to fetch current theme version."
+msgstr "未能获取当前主题版本。"
+
+msgid "Finished"
+msgstr "完成"
+
+msgid "Fluent Design 2 theme for LuCI"
+msgstr "适用于 LuCI 的 Fluent Design 2 主题"
 
 msgid "Fluent theme settings"
 msgstr "Fluent 主题设置"
@@ -114,6 +161,9 @@ msgstr "强制亮色模式"
 
 msgid "General"
 msgstr "常规"
+
+msgid "GitHub Token Required"
+msgstr "需要 GitHub Token"
 
 msgid ""
 "HEX color used as the primary Fluent accent when the interface is rendered in da"
@@ -153,6 +203,15 @@ msgstr "深色模式下导航侧边栏使用的十六进制颜色。"
 msgid "HEX color used for the navigation sidebar in light mode."
 msgstr "亮色模式下导航侧边栏使用的十六进制颜色。"
 
+msgid "Installation cancelled by user."
+msgstr "用户已取消安装。"
+
+msgid "Installed version"
+msgstr "Installed version"
+
+msgid "Installing package"
+msgstr "Installing package"
+
 msgid "Light mode"
 msgstr "亮色模式"
 
@@ -171,6 +230,15 @@ msgstr "导航字体粗细"
 msgid "Next"
 msgstr "下一步"
 
+msgid "Nightly build available (reinstallation check)."
+msgstr "Nightly build available (reinstallation check)."
+
+msgid "Nightly Channel (Prerelease)"
+msgstr "Nightly Channel (Prerelease)"
+
+msgid "No matching package asset found for your system architecture in this release."
+msgstr "No matching package asset found for your system architecture in this release."
+
 msgid "Normal"
 msgstr "常规"
 
@@ -184,6 +252,9 @@ msgid ""
 "paque."
 msgstr "亮色模式下登录卡片的不透明度。0 表示完全透明，1 表示完全不透明。"
 
+msgid "Package format"
+msgstr "Package format"
+
 msgid "Page background"
 msgstr "页面背景"
 
@@ -196,11 +267,17 @@ msgstr "请输入您的用户名。"
 msgid "Progress bar text color"
 msgstr "进度条文本颜色"
 
+msgid "Reload Web Interface"
+msgstr "Reload Web Interface"
+
 msgid "Replace native select elements with the theme's custom dropdown widget."
 msgstr "使用主题的自定义下拉组件替换原生的选择元素。"
 
 msgid "Respect reduced-motion preference"
 msgstr "遵循减少动态效果偏好设置"
+
+msgid "Retrying with token..."
+msgstr "Retrying with token..."
 
 msgid "Search menu items"
 msgstr "搜索菜单项"
@@ -211,22 +288,75 @@ msgstr "搜索菜单…"
 msgid "Semibold"
 msgstr "半粗体"
 
-msgid ""
-"Set separate accent, progress-bar text, and background colors for light and dark"
-" mode."
-msgstr "分别为亮色模式和深色模式设置不同的强调色、进度条文本颜色和背景颜色。"
-
 msgid "Show top loading bar"
 msgstr "显示顶部加载条"
 
 msgid "Sidebar background"
 msgstr "侧边栏背景"
 
+msgid "Software Update"
+msgstr "Software Update"
+
+msgid "Source code"
+msgstr "Source code"
+
+msgid "Stable Channel"
+msgstr "Stable Channel"
+
+msgid "Starting backend download..."
+msgstr "Starting backend download..."
+
+msgid "Starting update process..."
+msgstr "Starting update process..."
+
+msgid "Submit"
+msgstr "Submit"
+
 msgid "Switch theme mode"
 msgstr "切换主题模式"
 
+msgid ""
+"The theme is being installed on your router. The logs are displayed below. Reloa"
+"ding the web interface will apply the changes once RPCD restarts."
+msgstr ""
+"The theme is being installed on your router. The logs are displayed below. Reloa"
+"ding the web interface will apply the changes once RPCD restarts."
+
+msgid ""
+"The theme package is ready. Are you sure you want to proceed with the installati"
+"on?"
+msgstr ""
+"The theme package is ready. Are you sure you want to proceed with the installati"
+"on?"
+
+msgid ""
+"The token does NOT require any permissions/scopes to be granted (read-only publi"
+"c access is sufficient)."
+msgstr ""
+"The token does NOT require any permissions/scopes to be granted (read-only publi"
+"c access is sufficient)."
+
 msgid "Theme settings"
 msgstr "主题设置"
+
+msgid ""
+"Theme successfully updated! Reloading RPC service, please refresh the page in 5 "
+"seconds."
+msgstr ""
+"Theme successfully updated! Reloading RPC service, please refresh the page in 5 "
+"seconds."
+
+msgid "Triggering installation on router..."
+msgstr "Triggering installation on router..."
+
+msgid "Update channel"
+msgstr "Update channel"
+
+msgid "Update failed"
+msgstr "更新失败"
+
+msgid "Upgrade Successful!"
+msgstr "升级成功！"
 
 msgid "Use Fluent custom select dropdowns"
 msgstr "使用 Fluent 自定义下拉选择框"
@@ -251,3 +381,9 @@ msgid ""
 "When enabled, Fluent animations follow the browser or operating system reduced-m"
 "otion preference."
 msgstr "启用后，Fluent 动画将遵循浏览器或操作系统的减少动态效果偏好设置。"
+
+msgid "You can create a new token at"
+msgstr "您可以在这里创建新的令牌："
+
+msgid "Your theme is up to date!"
+msgstr "您的主题已是最新版本！"

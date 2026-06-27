@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: luci-theme-fluent\n"
-"POT-Creation-Date: 2026-06-26 12:14+0800\n"
+"POT-Creation-Date: 2026-06-27 19:40+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,10 +11,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "Accent color"
+msgid "A new version is available!"
 msgstr ""
 
-msgid "Adjust login card opacity and blur separately for light and dark mode."
+msgid "About"
+msgstr ""
+
+msgid "Accent color"
 msgstr ""
 
 msgid "and {count} more…"
@@ -29,11 +32,25 @@ msgid "Animation"
 msgstr ""
 
 msgid ""
+"API rate limit exceeded. Please enter a GitHub Token to continue. This token is "
+"only used for frontend requests and will not be saved on the router backend."
+msgstr ""
+
+msgid ""
 "Applies to standard buttons, inputs, selects, and similar form controls across t"
 "he theme."
 msgstr ""
 
+msgid "Author"
+msgstr ""
+
 msgid "Backdrop blur radius"
+msgstr ""
+
+msgid "Backend (GHProxy Acceleration)"
+msgstr ""
+
+msgid "Backend (Official GitHub)"
 msgstr ""
 
 msgid "Blur radius in pixels behind the login card in dark mode. Use 0 to disable blur."
@@ -44,13 +61,19 @@ msgid ""
 "."
 msgstr ""
 
+msgid "Cancel"
+msgstr ""
+
 msgid "Card background"
 msgstr ""
 
-msgid "Choose color"
+msgid "Check for updates"
 msgstr ""
 
-msgid "Choose how the theme selects its mode and how large core controls should render."
+msgid "Checking for updates..."
+msgstr ""
+
+msgid "Choose color"
 msgstr ""
 
 msgid "Color mode"
@@ -70,17 +93,23 @@ msgid ""
 "ce for luci-theme-fluent."
 msgstr ""
 
-msgid "Control height"
+msgid "Confirm Installation"
 msgstr ""
 
-msgid ""
-"Control page transitions, tab underline animation, and the top loading indicator"
-"."
+msgid "Continue"
+msgstr ""
+
+msgid "Control height"
 msgstr ""
 
 msgid ""
 "Controls the font weight used by main navigation labels and related theme text a"
 "ccents."
+msgstr ""
+
+msgid ""
+"Customize the login page background, card opacity, and blur radius for light and"
+" dark modes."
 msgstr ""
 
 msgid "Dark mode"
@@ -91,6 +120,12 @@ msgid ""
 "itions."
 msgstr ""
 
+msgid "Download and Install"
+msgstr ""
+
+msgid "Downloading on router"
+msgstr ""
+
 msgid "Enable page transition animation"
 msgstr ""
 
@@ -98,6 +133,18 @@ msgid "Enable tab underline animation"
 msgstr ""
 
 msgid "Expecting: %s"
+msgstr ""
+
+msgid "Failed to check for updates"
+msgstr ""
+
+msgid "Failed to fetch current theme version."
+msgstr ""
+
+msgid "Finished"
+msgstr ""
+
+msgid "Fluent Design 2 theme for LuCI"
 msgstr ""
 
 msgid "Fluent theme settings"
@@ -113,6 +160,9 @@ msgid "Force light mode"
 msgstr ""
 
 msgid "General"
+msgstr ""
+
+msgid "GitHub Token Required"
 msgstr ""
 
 msgid ""
@@ -153,6 +203,15 @@ msgstr ""
 msgid "HEX color used for the navigation sidebar in light mode."
 msgstr ""
 
+msgid "Installation cancelled by user."
+msgstr ""
+
+msgid "Installed version"
+msgstr ""
+
+msgid "Installing package"
+msgstr ""
+
 msgid "Light mode"
 msgstr ""
 
@@ -171,6 +230,15 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
+msgid "Nightly build available (reinstallation check)."
+msgstr ""
+
+msgid "Nightly Channel (Prerelease)"
+msgstr ""
+
+msgid "No matching package asset found for your system architecture in this release."
+msgstr ""
+
 msgid "Normal"
 msgstr ""
 
@@ -182,6 +250,9 @@ msgstr ""
 msgid ""
 "Opacity of the login card in light mode. 0 is fully transparent and 1 is fully o"
 "paque."
+msgstr ""
+
+msgid "Package format"
 msgstr ""
 
 msgid "Page background"
@@ -196,10 +267,16 @@ msgstr ""
 msgid "Progress bar text color"
 msgstr ""
 
+msgid "Reload Web Interface"
+msgstr ""
+
 msgid "Replace native select elements with the theme's custom dropdown widget."
 msgstr ""
 
 msgid "Respect reduced-motion preference"
+msgstr ""
+
+msgid "Retrying with token..."
 msgstr ""
 
 msgid "Search menu items"
@@ -211,21 +288,66 @@ msgstr ""
 msgid "Semibold"
 msgstr ""
 
-msgid ""
-"Set separate accent, progress-bar text, and background colors for light and dark"
-" mode."
-msgstr ""
-
 msgid "Show top loading bar"
 msgstr ""
 
 msgid "Sidebar background"
 msgstr ""
 
+msgid "Software Update"
+msgstr ""
+
+msgid "Source code"
+msgstr ""
+
+msgid "Stable Channel"
+msgstr ""
+
+msgid "Starting backend download..."
+msgstr ""
+
+msgid "Starting update process..."
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
 msgid "Switch theme mode"
 msgstr ""
 
+msgid ""
+"The theme is being installed on your router. The logs are displayed below. Reloa"
+"ding the web interface will apply the changes once RPCD restarts."
+msgstr ""
+
+msgid ""
+"The theme package is ready. Are you sure you want to proceed with the installati"
+"on?"
+msgstr ""
+
+msgid ""
+"The token does NOT require any permissions/scopes to be granted (read-only publi"
+"c access is sufficient)."
+msgstr ""
+
 msgid "Theme settings"
+msgstr ""
+
+msgid ""
+"Theme successfully updated! Reloading RPC service, please refresh the page in 5 "
+"seconds."
+msgstr ""
+
+msgid "Triggering installation on router..."
+msgstr ""
+
+msgid "Update channel"
+msgstr ""
+
+msgid "Update failed"
+msgstr ""
+
+msgid "Upgrade Successful!"
 msgstr ""
 
 msgid "Use Fluent custom select dropdowns"
@@ -250,4 +372,10 @@ msgstr ""
 msgid ""
 "When enabled, Fluent animations follow the browser or operating system reduced-m"
 "otion preference."
+msgstr ""
+
+msgid "You can create a new token at"
+msgstr ""
+
+msgid "Your theme is up to date!"
 msgstr ""
