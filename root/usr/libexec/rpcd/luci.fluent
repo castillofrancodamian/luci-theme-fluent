@@ -103,11 +103,18 @@ case "$1" in
 	"get_version")
 		version=""
 		pkg_type="ipk"
+		i18n_installed=0
 		if command -v apk >/dev/null 2>&1; then
 			pkg_type="apk"
 			version=$(apk info -v luci-theme-fluent 2>/dev/null | sed 's/luci-theme-fluent-//')
+			if apk info -e luci-i18n-fluent-zh-cn >/dev/null 2>&1; then
+				i18n_installed=1
+			fi
 		else
 			version=$(opkg status luci-theme-fluent 2>/dev/null | grep -m1 'Version:' | awk '{print $2}')
+			if opkg status luci-i18n-fluent-zh-cn 2>/dev/null | grep -q "Status: install ok installed"; then
+				i18n_installed=1
+			fi
 		fi
 		if [ -z "$version" ]; then
 			version="1.0.1-dev"
@@ -115,6 +122,7 @@ case "$1" in
 		json_init
 		json_add_string "version" "$version"
 		json_add_string "pkg_type" "$pkg_type"
+		json_add_boolean "i18n_zh_cn_installed" "$i18n_installed"
 		json_dump
 		json_cleanup
 		;;

@@ -363,7 +363,7 @@ function _object_without_properties(source, excluded) {
 
 
 
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_6ea2f62e13eaf926b7023436bab80f34/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_fa7db5d1266078230463ede1708aac21/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
 
 
 
@@ -404,7 +404,7 @@ function jsxDEV(e, t) {
     return jsx_factory_o(e, t);
 }
 
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_6ea2f62e13eaf926b7023436bab80f34/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_fa7db5d1266078230463ede1708aac21/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
 
 
 ;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/login.tsx
@@ -651,11 +651,11 @@ async function fetchLatestRelease(t, e, l) {
 
 ;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/about.tsx
 
-let about_n = L.form, about_l = L.dom, about_i = "https://ghfast.top/";
+let about_a = L.form, about_l = L.dom, about_i = "https://ghfast.top/";
 
-let about_p = about_n.DummyValue.extend({
-    renderWidget: (n, p, h)=>{
-        let b = "1.0.1", f = "ipk", g = jsxs("div", {
+let about_p = about_a.DummyValue.extend({
+    renderWidget: (a, p, h)=>{
+        let b = "1.0.1", f = "ipk", g = !1, y = jsxs("div", {
             class: "fluent-about-logo",
             children: [
                 jsx("img", {
@@ -670,7 +670,7 @@ let about_p = about_n.DummyValue.extend({
                     children: _("Fluent Design 2 theme for LuCI")
                 })
             ]
-        }), y = jsxs("div", {
+        }), m = jsxs("div", {
             class: "fluent-about-details",
             children: [
                 jsxs("div", {
@@ -737,7 +737,7 @@ let about_p = about_n.DummyValue.extend({
                     ]
                 })
             ]
-        }), m = jsxs("select", {
+        }), v = jsxs("select", {
             class: "cbi-input-select",
             id: "update-channel-select",
             children: [
@@ -750,7 +750,7 @@ let about_p = about_n.DummyValue.extend({
                     children: _("Nightly Channel (Prerelease)")
                 })
             ]
-        }), v = jsxs("select", {
+        }), w = jsxs("select", {
             class: "cbi-input-select",
             id: "update-method-select",
             children: [
@@ -763,11 +763,11 @@ let about_p = about_n.DummyValue.extend({
                     children: _("Backend (GHProxy Acceleration)")
                 })
             ]
-        }), w = jsx("button", {
+        }), k = jsx("button", {
             class: "btn cbi-button cbi-button-action",
             type: "button",
             children: _("Check for updates")
-        }), k = jsxs("div", {
+        }), x = jsxs("div", {
             class: "fluent-update-controls",
             style: "display: flex; gap: 15px; align-items: center; flex-wrap: wrap;",
             children: [
@@ -781,81 +781,81 @@ let about_p = about_n.DummyValue.extend({
                                 ": "
                             ]
                         }),
-                        m
+                        v
                     ]
                 }),
-                w
+                k
             ]
-        }), x = jsx("div", {
+        }), T = jsx("div", {
             class: "fluent-update-status",
             style: "display: none"
-        }), T = jsx("div", {
+        }), C = jsx("div", {
             class: "fluent-progress-bar__fill",
             style: "width: 0%"
-        }), C = jsx("div", {
+        }), S = jsx("div", {
             class: "fluent-progress-bar",
             style: "display: none",
-            children: T
-        }), S = jsx("div", {
+            children: C
+        }), E = jsx("div", {
             class: "fluent-progress-text",
             style: "display: none"
-        }), E = jsx("div", {
+        }), F = jsx("div", {
             class: "fluent-update-card",
             style: "display: none"
-        }), F = jsxs("div", {
+        }), P = jsxs("div", {
             class: "fluent-about-manager",
             children: [
-                g,
                 y,
+                m,
                 jsx("hr", {
                     class: "fluent-about-divider"
                 }),
                 jsx("h3", {
                     children: _("Software Update")
                 }),
-                k,
                 x,
-                E,
-                C,
-                S
+                T,
+                F,
+                S,
+                E
             ]
-        }), P = function(e) {
+        }), A = function(e) {
             let t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "info";
-            about_l.content(x, [
+            about_l.content(T, [
                 document.createTextNode(e)
-            ]), x.className = "fluent-update-status status-".concat(t), x.style.display = "block";
-        }, A = (e, t, a)=>{
-            C.style.display = "block", S.style.display = "block", T.style.width = "".concat(t, "%"), T.className = "fluent-progress-bar__fill fill-".concat(e), about_l.content(S, [
-                document.createTextNode("".concat(a, " (").concat(t, "%)"))
+            ]), T.className = "fluent-update-status status-".concat(t), T.style.display = "block";
+        }, N = (e, t, n)=>{
+            S.style.display = "block", E.style.display = "block", C.style.width = "".concat(t, "%"), C.className = "fluent-progress-bar__fill fill-".concat(e), about_l.content(E, [
+                document.createTextNode("".concat(n, " (").concat(t, "%)"))
             ]);
-        }, N = ()=>{
-            C.style.display = "none", S.style.display = "none";
+        }, j = ()=>{
+            S.style.display = "none", E.style.display = "none";
         };
         (async ()=>{
             try {
                 let e = await callGetVersion();
-                b = e.version, f = e.pkg_type;
-                let t = y.querySelector(".fluent-about-current-version");
+                b = e.version, f = e.pkg_type, g = !!e.i18n_zh_cn_installed;
+                let t = m.querySelector(".fluent-about-current-version");
                 t && (t.textContent = "v".concat(b));
-                let a = y.querySelector(".fluent-about-pkg-type");
-                a && (a.textContent = "apk" === f ? "APK (OpenWrt 25.12+)" : "IPK (OpenWrt 24.10)");
+                let n = m.querySelector(".fluent-about-pkg-type");
+                n && (n.textContent = "apk" === f ? "APK (OpenWrt 25.12+)" : "IPK (OpenWrt 24.10)");
             } catch (e) {
-                console.error("Failed to fetch version", e), P(_("Failed to fetch current theme version."), "error");
+                console.error("Failed to fetch version", e), A(_("Failed to fetch current theme version."), "error");
             }
         })();
-        let j = async (n)=>{
-            let r = m.value;
+        let z = async (a)=>{
+            let r = v.value;
             try {
-                let a = await fetchLatestRelease(r, f, n);
-                console.log(a), w.disabled = !1;
-                let u = b.replace(/^v/, "").trim(), p = a.tag_name.replace(/^v/, "").trim(), h = L.naturalCompare(p, u) > 0, g = !h && "nightly" !== r;
-                if (g ? P(_("Your theme is up to date!"), "success") : P(h ? _("A new version is available!") : _("Nightly build available (reinstallation check)."), h ? "warn" : "info"), !a.package_asset) return void P(_("No matching package asset found for your system architecture in this release."), "error");
-                let y = a.body ? a.body : "", k = jsx("button", {
+                let n = await fetchLatestRelease(r, f, a);
+                console.log(n), k.disabled = !1;
+                let u = b.replace(/^v/, "").trim(), p = n.tag_name.replace(/^v/, "").trim(), h = L.naturalCompare(p, u) > 0, y = !h && "nightly" !== r;
+                if (y ? A(_("Your theme is up to date!"), "success") : A(h ? _("A new version is available!") : _("Nightly build available (reinstallation check)."), h ? "warn" : "info"), !n.package_asset) return void A(_("No matching package asset found for your system architecture in this release."), "error");
+                let m = n.body ? n.body : "", x = jsx("button", {
                     class: "btn cbi-button cbi-button-save",
                     type: "button",
                     style: "white-space: nowrap;",
                     children: _("Download and Install")
-                }), x = [
+                }), T = [
                     jsxs("div", {
                         class: "fluent-update-header",
                         children: [
@@ -865,47 +865,47 @@ let about_p = about_n.DummyValue.extend({
                             }),
                             jsx("span", {
                                 class: "fluent-update-date",
-                                children: a.published_at.split("T")[0]
+                                children: n.published_at.split("T")[0]
                             })
                         ]
                     })
                 ];
-                y && x.push(jsx("pre", {
+                m && T.push(jsx("pre", {
                     class: "fluent-update-changelog",
-                    children: y
-                })), g || x.push(jsxs("div", {
+                    children: m
+                })), y || T.push(jsxs("div", {
                     class: "fluent-update-footer",
                     style: "display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 15px; flex-wrap: wrap;",
                     children: [
-                        v,
-                        k
+                        w,
+                        x
                     ]
-                })), about_l.content(E, x), E.style.display = "block", k.addEventListener("click", async ()=>{
-                    var n, r;
-                    let d = a.package_asset;
-                    if (!d) return void P(_("No matching package asset found for your system architecture in this release."), "error");
-                    k.disabled = !0, m.disabled = !0, v.disabled = !0, w.disabled = !0, P(_("Starting update process..."), "info");
-                    let u = a.i18n_asset, p = null, h = "";
-                    (null == (n = d.digest) ? void 0 : n.startsWith("sha256:")) ? p = d.digest.replace("sha256:", "") : (console.warn("Unable to determine expected package hash from digest. Skipping verification."), p = "skip"), (null == u || null == (r = u.digest) ? void 0 : r.startsWith("sha256:")) && (h = u.digest.replace("sha256:", ""));
+                })), about_l.content(F, T), F.style.display = "block", x.addEventListener("click", async ()=>{
+                    var a, r;
+                    let d = n.package_asset;
+                    if (!d) return void A(_("No matching package asset found for your system architecture in this release."), "error");
+                    x.disabled = !0, v.disabled = !0, w.disabled = !0, k.disabled = !0, A(_("Starting update process..."), "info");
+                    let u = g ? n.i18n_asset : null, p = null, h = "";
+                    (null == (a = d.digest) ? void 0 : a.startsWith("sha256:")) ? p = d.digest.replace("sha256:", "") : (console.warn("Unable to determine expected package hash from digest. Skipping verification."), p = "skip"), (null == u || null == (r = u.digest) ? void 0 : r.startsWith("sha256:")) && (h = u.digest.replace("sha256:", ""));
                     let b = async ()=>{
-                        let a = v.value.includes("ghproxy");
-                        P(_("Starting backend download..."), "info"), A("download", 0, _("Downloading on router"));
-                        let n = a ? about_i + d.browser_download_url : d.browser_download_url, r = u ? a ? about_i + u.browser_download_url : u.browser_download_url : "", b = await callStartDownload(n, r);
+                        let n = w.value.includes("ghproxy");
+                        A(_("Starting backend download..."), "info"), N("download", 0, _("Downloading on router"));
+                        let a = n ? about_i + d.browser_download_url : d.browser_download_url, r = u ? n ? about_i + u.browser_download_url : u.browser_download_url : "", b = await callStartDownload(a, r);
                         if (0 !== b.result) throw Error(b.message || "Failed to start router download.");
                         for(;;){
-                            let e = await callCheckDownload(), t = e.size || 0, a = d.size + (u ? u.size : 0), n = a > 0 ? Math.min(Math.round(t / a * 100), 100) : 0;
-                            if (A("download", n, "".concat(_("Downloading on router"), " (").concat((t / 1024).toFixed(0), " / ").concat((a / 1024).toFixed(0), " KB)")), !e.running) if (0 !== e.code) throw Error("Router background download failed or file is empty.");
+                            let e = await callCheckDownload(), t = e.size || 0, n = d.size + (u ? u.size : 0), a = n > 0 ? Math.min(Math.round(t / n * 100), 100) : 0;
+                            if (N("download", a, "".concat(_("Downloading on router"), " (").concat((t / 1024).toFixed(0), " / ").concat((n / 1024).toFixed(0), " KB)")), !e.running) if (0 !== e.code) throw Error("Router background download failed or file is empty.");
                             else break;
                             await new Promise((e)=>setTimeout(e, 1000));
                         }
-                        if (!await new Promise((a)=>{
-                            let n = jsx("button", {
+                        if (!await new Promise((n)=>{
+                            let a = jsx("button", {
                                 type: "button",
                                 class: "btn cbi-button cbi-button-action",
                                 children: _("Cancel")
                             });
-                            n.addEventListener("click", ()=>{
-                                L.ui.hideModal(), a(!1);
+                            a.addEventListener("click", ()=>{
+                                L.ui.hideModal(), n(!1);
                             });
                             let l = jsx("button", {
                                 type: "button",
@@ -913,7 +913,7 @@ let about_p = about_n.DummyValue.extend({
                                 children: _("Continue")
                             });
                             l.addEventListener("click", ()=>{
-                                L.ui.hideModal(), a(!0);
+                                L.ui.hideModal(), n(!0);
                             }), L.ui.showModal(_("Confirm Installation"), jsxs("div", {
                                 children: [
                                     jsx("p", {
@@ -923,14 +923,14 @@ let about_p = about_n.DummyValue.extend({
                                         class: "right",
                                         style: "margin-top: 15px; display: flex; gap: 10px; justify-content: flex-end;",
                                         children: [
-                                            n,
+                                            a,
                                             l
                                         ]
                                     })
                                 ]
                             }));
                         })) throw Error(_("Installation cancelled by user."));
-                        P(_("Triggering installation on router..."), "info"), A("install", 100, _("Installing package"));
+                        A(_("Triggering installation on router..."), "info"), N("install", 100, _("Installing package"));
                         let f = await callDoInstall(p, h);
                         if (0 !== f.result) throw Error(f.message || "Router installation failed.");
                         let g = jsx("pre", {
@@ -939,7 +939,7 @@ let about_p = about_n.DummyValue.extend({
                         (async ()=>{
                             let e = L.env.ubuspath || "/ubus", t = L.env.sessionid;
                             for(;;)try {
-                                var a, n;
+                                var n, a;
                                 let l = await fetch(e, {
                                     method: "POST",
                                     headers: {
@@ -958,11 +958,11 @@ let about_p = about_n.DummyValue.extend({
                                     })
                                 }), i = await l.json();
                                 if (i.error) break;
-                                (null == (n = i.result) || null == (a = n[1]) ? void 0 : a.log) && (g.textContent = i.result[1].log, g.scrollTop = g.scrollHeight), await new Promise((e)=>setTimeout(e, 1000));
+                                (null == (a = i.result) || null == (n = a[1]) ? void 0 : n.log) && (g.textContent = i.result[1].log, g.scrollTop = g.scrollHeight), await new Promise((e)=>setTimeout(e, 1000));
                             } catch (e) {
                                 break;
                             }
-                        })(), P(_("Theme successfully updated! Reloading RPC service, please refresh the page in 5 seconds."), "success"), A("done", 100, _("Finished"));
+                        })(), A(_("Theme successfully updated! Reloading RPC service, please refresh the page in 5 seconds."), "success"), N("done", 100, _("Finished"));
                         let y = jsx("button", {
                             class: "btn cbi-button cbi-button-action",
                             type: "button",
@@ -971,7 +971,7 @@ let about_p = about_n.DummyValue.extend({
                         });
                         y.addEventListener("click", ()=>{
                             window.location.reload();
-                        }), about_l.content(E, [
+                        }), about_l.content(F, [
                             jsxs("div", {
                                 class: "fluent-update-success",
                                 children: [
@@ -995,11 +995,11 @@ let about_p = about_n.DummyValue.extend({
                     try {
                         await b();
                     } catch (e) {
-                        console.error("Update failed", e), P("".concat(_("Update failed"), ": ").concat(e instanceof Error ? e.message : String(e)), "error"), k.disabled = !1, k.removeAttribute("disabled"), m.disabled = !1, m.removeAttribute("disabled"), v.disabled = !1, v.removeAttribute("disabled"), w.disabled = !1, w.removeAttribute("disabled"), N();
+                        console.error("Update failed", e), A("".concat(_("Update failed"), ": ").concat(e instanceof Error ? e.message : String(e)), "error"), x.disabled = !1, x.removeAttribute("disabled"), v.disabled = !1, v.removeAttribute("disabled"), w.disabled = !1, w.removeAttribute("disabled"), k.disabled = !1, k.removeAttribute("disabled"), j();
                     }
                 });
-            } catch (n) {
-                if (w.disabled = !1, console.error("Failed checking updates", n), n instanceof GitHubAPIError && 403 === n.status) {
+            } catch (a) {
+                if (k.disabled = !1, console.error("Failed checking updates", a), a instanceof GitHubAPIError && 403 === a.status) {
                     let l = jsx("input", {
                         type: "text",
                         class: "cbi-input-text",
@@ -1023,7 +1023,7 @@ let about_p = about_n.DummyValue.extend({
                         ]
                     }), o = jsx("pre", {
                         style: "margin-top: 10px; margin-bottom: 15px; font-size: 12px; white-space: pre-wrap; word-break: break-word; color: var(--fluent-error-text); background: var(--fluent-card-bg); padding: 8px; border-radius: var(--fluent-border-radius);",
-                        children: n instanceof Error ? n.message : String(n)
+                        children: a instanceof Error ? a.message : String(a)
                     }), s = jsx("button", {
                         type: "button",
                         class: "btn cbi-button cbi-button-action",
@@ -1037,7 +1037,7 @@ let about_p = about_n.DummyValue.extend({
                     });
                     c.addEventListener("click", ()=>{
                         let e = l.value.trim();
-                        L.ui.hideModal(), e && (P(_("Retrying with token..."), "info"), w.disabled = !0, j(e));
+                        L.ui.hideModal(), e && (A(_("Retrying with token..."), "info"), k.disabled = !0, z(e));
                     }), L.ui.showModal(_("GitHub Token Required"), jsxs(Fragment, {
                         children: [
                             i,
@@ -1054,12 +1054,12 @@ let about_p = about_n.DummyValue.extend({
                             })
                         ]
                     }));
-                } else P("".concat(_("Failed to check for updates"), ": ").concat(n instanceof Error ? n.message : String(n)), "error");
+                } else A("".concat(_("Failed to check for updates"), ": ").concat(a instanceof Error ? a.message : String(a)), "error");
             }
         };
-        return w.addEventListener("click", ()=>{
-            P(_("Checking for updates..."), "info"), w.disabled = !0, E.style.display = "none", N(), j();
-        }), F;
+        return k.addEventListener("click", ()=>{
+            A(_("Checking for updates..."), "info"), k.disabled = !0, F.style.display = "none", j(), z();
+        }), P;
     }
 });
 const registerAboutTab = (e)=>{

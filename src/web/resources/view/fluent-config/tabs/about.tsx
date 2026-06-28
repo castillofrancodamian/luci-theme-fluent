@@ -17,6 +17,7 @@ const CBIAboutManager = (form.DummyValue as unknown as typeof LuCI.baseclass).ex
     // Current details from RPCD
     let currentVersion = "1.0.1";
     let pkgType: "ipk" | "apk" = "ipk";
+    let i18nZhCnInstalled = false;
 
     // UI state elements
     const logoEl = (
@@ -137,6 +138,7 @@ const CBIAboutManager = (form.DummyValue as unknown as typeof LuCI.baseclass).ex
         const res = await callGetVersion();
         currentVersion = res.version;
         pkgType = res.pkg_type;
+        i18nZhCnInstalled = !!res.i18n_zh_cn_installed;
 
         const currentVerSpan = detailsEl.querySelector(".fluent-about-current-version");
         if (currentVerSpan) {
@@ -227,7 +229,7 @@ const CBIAboutManager = (form.DummyValue as unknown as typeof LuCI.baseclass).ex
           checkBtn.disabled = true;
           setStatus(_("Starting update process..."), "info");
 
-          const i18nAsset = release.i18n_asset;
+          const i18nAsset = i18nZhCnInstalled ? release.i18n_asset : null;
 
           let expectedHash: string | null = null;
           let expectedI18nHash: string = "";

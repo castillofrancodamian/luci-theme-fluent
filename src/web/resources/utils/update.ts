@@ -79,7 +79,7 @@ export interface ReleaseInfo {
 }
 
 // Declare RPC methods
-export const callGetVersion = rpc.declare<{ version: string; pkg_type: "ipk" | "apk" }>({
+export const callGetVersion = rpc.declare<{ version: string; pkg_type: "ipk" | "apk"; i18n_zh_cn_installed?: boolean }>({
   object: "luci.fluent",
   method: "get_version",
 });
