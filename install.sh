@@ -6,6 +6,7 @@ PKG_NAME="luci-theme-fluent"
 REPO="LazuliKao/luci-theme-fluent"
 RELEASE_TAG="${1:-latest}"
 PKG_FILE=""
+TMP_JSON=""
 
 log() {
    echo "[install.sh] $*"
@@ -33,14 +34,19 @@ detect_package_manager() {
 }
 
 setup_release_source() {
+   TMP_BASE="${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"
+   if [ ! -d "${TMP_BASE}" ] || [ ! -w "${TMP_BASE}" ]; then
+      TMP_BASE="."
+   fi
+
    case "${RELEASE_TAG}" in
       latest)
          API_URL="https://api.github.com/repos/${REPO}/releases/latest"
-         TMP_JSON="$(mktemp /tmp/${PKG_NAME}.latest.XXXXXX.json)"
+         TMP_JSON="$(mktemp -p "${TMP_BASE}" "${PKG_NAME}.latest.XXXXXX")"
          ;;
       *)
          API_URL="https://api.github.com/repos/${REPO}/releases/tags/${RELEASE_TAG}"
-         TMP_JSON="$(mktemp /tmp/${PKG_NAME}.tag.XXXXXX.json)"
+         TMP_JSON="$(mktemp -p "${TMP_BASE}" "${PKG_NAME}.tag.XXXXXX")"
          ;;
    esac
 }
