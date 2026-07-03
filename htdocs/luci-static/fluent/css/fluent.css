@@ -1937,6 +1937,10 @@ div.td, div.th {
   background: none;
 }
 
+:is(.modal:has(.cbi-dropdown[open]), .modal:has(cbi-dropdown[open])), :is(.modal:has(.cbi-dropdown[open]) > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script), .modal:has(cbi-dropdown[open]) > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)) {
+  overflow: visible;
+}
+
 .modal .cbi-map .cbi-section {
   padding: 0 !important;
 }
