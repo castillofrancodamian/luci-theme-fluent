@@ -5481,6 +5481,10 @@ code::-webkit-resizer {
   }
 }
 
+@position-try --fluent-cbi-flip {
+  top:auto !important;bottom:calc(anchor(--fluent-cbi-dropdown-active top) + var(--fluent-space-xxs)) !important
+}
+
 cbi-dropdown, .cbi-dropdown {
   height: var(--fluent-input-height);
   padding: 0 var(--fluent-space-sm);
@@ -6502,7 +6506,6 @@ cbi-dropdown.fluent-custom-select[data-fluent-floating="modal"][open] > ul.dropd
 
 cbi-dropdown.fluent-custom-select[data-fluent-floating="anchor"][open] > ul.dropdown, .cbi-dropdown.fluent-custom-select[data-fluent-floating="anchor"][open] > ul.dropdown {
   min-width: anchor-size(width);
-  position-try-fallbacks: flip-block;
   position-visibility: anchors-visible;
   width: max-content;
   max-height: min(350px, 50vh);
@@ -6516,9 +6519,14 @@ cbi-dropdown.fluent-custom-select[data-fluent-floating="anchor"][open] > ul.drop
   right: auto !important;
 }
 
+cbi-dropdown.fluent-custom-select[data-fluent-floating="anchor"][open][data-open-direction="up"] > ul.dropdown, .cbi-dropdown.fluent-custom-select[data-fluent-floating="anchor"][open][data-open-direction="up"] > ul.dropdown {
+  top: auto !important;
+  bottom: calc(anchor(top) + var(--fluent-space-xxs)) !important;
+}
+
 @supports (anchor-name: --a) {
   cbi-dropdown:not(.fluent-custom-select)[open] > ul.dropdown, .cbi-dropdown:not(.fluent-custom-select)[open] > ul.dropdown {
-    position-try-fallbacks: flip-block;
+    position-try-fallbacks: --fluent-cbi-flip;
     position-visibility: anchors-visible;
     position-anchor: --fluent-cbi-dropdown-active !important;
     top: calc(anchor(--fluent-cbi-dropdown-active bottom) + var(--fluent-space-xxs)) !important;
