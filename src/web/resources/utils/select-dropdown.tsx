@@ -2,9 +2,49 @@
  * Monitor native select elements and dynamically replace/transform them
  * into FluentUI-style custom dropdowns (using standard .cbi-dropdown classes).
  */
+let selectDropdownListenersRegistered = false;
+let nextSelectAnchorId = 0;
+let cssAnchorPositioningSupported: boolean | undefined;
+
+function supportsCssAnchorPositioning() {
+  if (cssAnchorPositioningSupported !== undefined) return cssAnchorPositioningSupported;
+
+  cssAnchorPositioningSupported =
+    typeof CSS !== "undefined" &&
+    typeof HTMLElement.prototype.showPopover === "function" &&
+    CSS.supports("anchor-name", "--fluent-select-anchor") &&
+    CSS.supports("position-anchor", "--fluent-select-anchor") &&
+    CSS.supports("top", "anchor(bottom)") &&
+    CSS.supports("width", "anchor-size(width)") &&
+    CSS.supports("position-try-fallbacks", "flip-block");
+
+  return cssAnchorPositioningSupported;
+}
+
+
+function updateOpenDropdownPositions() {
+  document.querySelectorAll(".fluent-custom-select[open]").forEach((dropdown) => {
+    if (!(dropdown instanceof HTMLElement) || dropdown.getAttribute("data-fluent-floating") === "anchor") return;
+
+    const selectEl = dropdown.previousElementSibling;
+    if (selectEl instanceof HTMLSelectElement) {
+      updateDropdownPosition(dropdown, selectEl);
+    }
+  });
+}
+
+function registerSelectDropdownListeners() {
+  if (selectDropdownListenersRegistered) return;
+
+  selectDropdownListenersRegistered = true;
+  window.addEventListener("scroll", updateOpenDropdownPositions, true);
+  window.addEventListener("resize", updateOpenDropdownPositions);
+}
+
 export function setupFluentSelects() {
   const isEnabled = document.body.getAttribute("data-theme-custom-select") !== "0";
   if (!isEnabled) return;
+  registerSelectDropdownListeners();
 
   // 1. Transform existing selects & upgrade native dropdown chevrons
   transformAllSelects();
@@ -151,6 +191,16 @@ function updateDropdownPosition(customDropdown: HTMLElement, selectEl: HTMLSelec
     return;
   }
 
+  if (supportsCssAnchorPositioning()) {
+    customDropdown.setAttribute("data-fluent-floating", "anchor");
+    customDropdown.style.removeProperty("--fluent-dropdown-left");
+    customDropdown.style.removeProperty("--fluent-dropdown-top");
+    customDropdown.style.removeProperty("--fluent-dropdown-width");
+    customDropdown.style.removeProperty("--fluent-dropdown-max-height");
+    return;
+  }
+ 
+
   const maxListHeight = Math.min(selectEl.options.length * 32 + 10, 350, viewportHeight * 0.5);
   const openUp = spaceBelow < maxListHeight && spaceAbove > spaceBelow;
   const availableHeight = Math.max(
@@ -185,6 +235,10 @@ function closeCustomDropdown(customDropdown: HTMLElement) {
   customDropdown.style.removeProperty("--fluent-dropdown-width");
   customDropdown.style.removeProperty("--fluent-dropdown-max-height");
   customDropdown.closest(".cbi-value-field, .cbi-value")?.classList.remove("cbi-dropdown-open");
+  const listbox = customDropdown.querySelector("ul.dropdown");
+  if (listbox instanceof HTMLElement && typeof listbox.hidePopover === "function" && listbox.matches(":popover-open")) {
+    listbox.hidePopover();
+  }
 }
 function transformSelect(selectEl: HTMLSelectElement) {
   // Safety checks
@@ -226,6 +280,9 @@ function transformSelect(selectEl: HTMLSelectElement) {
       customDropdown.setAttribute("style", cleanStyle);
     }
   }
+  const anchorName = `--fluent-select-anchor-${++nextSelectAnchorId}`;
+  customDropdown.style.setProperty("anchor-name", anchorName);
+  listbox.style.setProperty("position-anchor", anchorName);
 
   // Set initial disabled state
   if (selectEl.disabled) {
@@ -307,6 +364,10 @@ function transformSelect(selectEl: HTMLSelectElement) {
       updateDropdownPosition(customDropdown, selectEl);
       customDropdown.setAttribute("open", "");
       customDropdown.closest(".cbi-value-field, .cbi-value")?.classList.add("cbi-dropdown-open");
+      if (customDropdown.getAttribute("data-fluent-floating") === "anchor") {
+        listbox.setAttribute("popover", "manual");
+        listbox.showPopover({ source: customDropdown });
+      }
 
       // Scroll selected item into view
       const selectedItem = listbox.querySelector("li[selected]") as HTMLElement;

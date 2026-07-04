@@ -331,19 +331,28 @@ const SlideAnimations = {
 };
 
 ;// CONCATENATED MODULE: ./web/resources/utils/select-dropdown.tsx
+let select_dropdown_e;
 
+let select_dropdown_n = !1, select_dropdown_l = 0;
+function select_dropdown_r() {
+    document.querySelectorAll(".fluent-custom-select[open]").forEach((e)=>{
+        if (!(e instanceof HTMLElement) || "anchor" === e.getAttribute("data-fluent-floating")) return;
+        let t = e.previousElementSibling;
+        t instanceof HTMLSelectElement && select_dropdown_s(e, t);
+    });
+}
 function setupFluentSelects() {
-    "0" === document.body.getAttribute("data-theme-custom-select") || (document.querySelectorAll("select").forEach((e)=>{
-        select_dropdown_o(e);
+    "0" === document.body.getAttribute("data-theme-custom-select") || (select_dropdown_n || (select_dropdown_n = !0, window.addEventListener("scroll", select_dropdown_r, !0), window.addEventListener("resize", select_dropdown_r)), document.querySelectorAll("select").forEach((e)=>{
+        select_dropdown_c(e);
     }), document.querySelectorAll("cbi-dropdown").forEach((e)=>{
-        select_dropdown_l(e);
+        select_dropdown_i(e);
     }), new MutationObserver((e)=>{
         e.forEach((e)=>{
             e.addedNodes.forEach((e)=>{
-                e.nodeType === Node.ELEMENT_NODE && ("SELECT" === e.tagName ? select_dropdown_o(e) : "CBI-DROPDOWN" === e.tagName ? select_dropdown_l(e) : (e.querySelectorAll("select").forEach((e)=>{
-                    select_dropdown_o(e);
+                e.nodeType === Node.ELEMENT_NODE && ("SELECT" === e.tagName ? select_dropdown_c(e) : "CBI-DROPDOWN" === e.tagName ? select_dropdown_i(e) : (e.querySelectorAll("select").forEach((e)=>{
+                    select_dropdown_c(e);
                 }), e.querySelectorAll("cbi-dropdown").forEach((e)=>{
-                    select_dropdown_l(e);
+                    select_dropdown_i(e);
                 })));
             });
         });
@@ -352,206 +361,216 @@ function setupFluentSelects() {
         subtree: !0
     }));
 }
-function select_dropdown_l(e) {
+function select_dropdown_i(e) {
     let t = e.querySelector("span.open");
     t && "true" !== t.getAttribute("data-chevron-upgraded") && (t.setAttribute("data-chevron-upgraded", "true"), t.innerHTML = '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>');
 }
-function select_dropdown_n(e, t) {
-    let l = t.offsetTop, n = l + t.offsetHeight, r = e.scrollTop, o = r + e.clientHeight;
-    l < r ? e.scrollTop = l : n > o && (e.scrollTop = n - e.clientHeight);
+function select_dropdown_a(e, t) {
+    let o = t.offsetTop, n = o + t.offsetHeight, l = e.scrollTop, r = l + e.clientHeight;
+    o < l ? e.scrollTop = o : n > r && (e.scrollTop = n - e.clientHeight);
 }
-function select_dropdown_r(e) {
+function select_dropdown_s(t, o) {
+    let n = t.getBoundingClientRect(), l = window.innerHeight, r = l - n.bottom, i = n.top;
+    if (r < Math.min(32 * o.options.length + 10, 250) && i > r ? t.setAttribute("data-open-direction", "up") : t.setAttribute("data-open-direction", "down"), !t.closest("#modal_overlay .modal")) return void t.removeAttribute("data-fluent-floating");
+    if (void 0 !== select_dropdown_e ? select_dropdown_e : select_dropdown_e = "u" > typeof CSS && "function" == typeof HTMLElement.prototype.showPopover && CSS.supports("anchor-name", "--fluent-select-anchor") && CSS.supports("position-anchor", "--fluent-select-anchor") && CSS.supports("top", "anchor(bottom)") && CSS.supports("width", "anchor-size(width)") && CSS.supports("position-try-fallbacks", "flip-block")) {
+        t.setAttribute("data-fluent-floating", "anchor"), t.style.removeProperty("--fluent-dropdown-left"), t.style.removeProperty("--fluent-dropdown-top"), t.style.removeProperty("--fluent-dropdown-width"), t.style.removeProperty("--fluent-dropdown-max-height");
+        return;
+    }
+    let a = Math.min(32 * o.options.length + 10, 350, 0.5 * l), s = r < a && i > r, d = Math.min(a, Math.max(64, s ? n.top - 8 - 4 : l - n.bottom - 8 - 4)), c = Math.min(n.width, window.innerWidth - 16), u = Math.min(Math.max(8, n.left), window.innerWidth - c - 8), p = s ? Math.max(8, n.top - d - 4) : Math.min(l - 8 - d, n.bottom + 4);
+    t.setAttribute("data-open-direction", s ? "up" : "down"), t.setAttribute("data-fluent-floating", "modal"), t.style.setProperty("--fluent-dropdown-left", "".concat(u, "px")), t.style.setProperty("--fluent-dropdown-top", "".concat(p, "px")), t.style.setProperty("--fluent-dropdown-width", "".concat(c, "px")), t.style.setProperty("--fluent-dropdown-max-height", "".concat(d, "px"));
+}
+function select_dropdown_d(e) {
     var t;
     e.removeAttribute("open"), e.removeAttribute("data-fluent-floating"), e.style.removeProperty("--fluent-dropdown-left"), e.style.removeProperty("--fluent-dropdown-top"), e.style.removeProperty("--fluent-dropdown-width"), e.style.removeProperty("--fluent-dropdown-max-height"), null == (t = e.closest(".cbi-value-field, .cbi-value")) || t.classList.remove("cbi-dropdown-open");
+    let o = e.querySelector("ul.dropdown");
+    o instanceof HTMLElement && "function" == typeof o.hidePopover && o.matches(":popover-open") && o.hidePopover();
 }
-function select_dropdown_o(l) {
-    var o;
-    if ((null == l ? void 0 : l.tagName) !== "SELECT" || "true" === l.getAttribute("data-fluent-transformed") || l.closest(".cbi-dropdown") || l.multiple || function(e) {
+function select_dropdown_c(e) {
+    var n;
+    if ((null == e ? void 0 : e.tagName) !== "SELECT" || "true" === e.getAttribute("data-fluent-transformed") || e.closest(".cbi-dropdown") || e.multiple || function(e) {
         let t = e.getAttribute("style") || "";
         if (/\bdisplay\s*:\s*none/i.test(t) || "none" === e.style.display) return !0;
         if (!e.isConnected) return !1;
         try {
             let t = window.getComputedStyle(e);
             if ("none" === t.display) {
-                let t = e.parentElement, l = !1;
+                let t = e.parentElement, o = !1;
                 for(; t;){
                     let e = window.getComputedStyle(t);
                     if ("none" === e.display) {
-                        l = !0;
+                        o = !0;
                         break;
                     }
                     t = t.parentElement;
                 }
-                if (!l) return !0;
+                if (!o) return !0;
                 let n = e.cloneNode(!1);
                 n.style.display = "", document.body.appendChild(n);
-                let r = window.getComputedStyle(n), o = "none" === r.display;
-                return document.body.removeChild(n), o;
+                let l = window.getComputedStyle(n), r = "none" === l.display;
+                return document.body.removeChild(n), r;
             }
         } catch (e) {}
         return !1;
-    }(l)) return;
-    let i = l.getAttribute("style");
-    l.setAttribute("data-fluent-transformed", "true"), l.style.setProperty("display", "none", "important");
-    let a = jsx("li", {});
-    a.setAttribute("selected", "");
-    let d = jsx("ul", {
+    }(e)) return;
+    let r = e.getAttribute("style");
+    e.setAttribute("data-fluent-transformed", "true"), e.style.setProperty("display", "none", "important");
+    let i = jsx("li", {});
+    i.setAttribute("selected", "");
+    let c = jsx("ul", {
         class: "dropdown"
-    }), s = jsx("span", {
+    }), u = jsx("span", {
         class: "open"
     });
-    s.innerHTML = '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>';
-    let c = jsxs("div", {
+    u.innerHTML = '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>';
+    let p = jsxs("div", {
         class: "cbi-dropdown fluent-custom-select",
         children: [
             jsx("ul", {
-                children: a
+                children: i
             }),
-            s,
-            d
+            u,
+            c
         ]
     });
-    if (c.setAttribute("tabindex", "0"), i) {
-        let e = i.replace(/\bdisplay\s*:\s*[^;]+(;|$)/gi, "").trim();
-        e && c.setAttribute("style", e);
+    if (p.setAttribute("tabindex", "0"), r) {
+        let e = r.replace(/\bdisplay\s*:\s*[^;]+(;|$)/gi, "").trim();
+        e && p.setAttribute("style", e);
     }
-    l.disabled && (c.setAttribute("disabled", ""), c.removeAttribute("tabindex"));
-    let u = ()=>{
-        d.innerHTML = "";
-        let t = "", n = !1;
-        if (Array.from(l.options).forEach((l)=>{
-            let r = jsx("li", {
-                children: l.text
+    let b = "--fluent-select-anchor-".concat(++select_dropdown_l);
+    p.style.setProperty("anchor-name", b), c.style.setProperty("position-anchor", b), e.disabled && (p.setAttribute("disabled", ""), p.removeAttribute("tabindex"));
+    let f = ()=>{
+        c.innerHTML = "";
+        let o = "", n = !1;
+        if (Array.from(e.options).forEach((e)=>{
+            let l = jsx("li", {
+                children: e.text
             });
-            r.setAttribute("data-value", l.value), l.selected && (r.setAttribute("selected", ""), t = l.text, n = !0), l.disabled && r.setAttribute("disabled", ""), d.appendChild(r);
-        }), !n && l.options.length > 0) {
-            let e = l.options[l.selectedIndex >= 0 ? l.selectedIndex : 0];
-            t = e.text;
-            let n = d.querySelector('li[data-value="'.concat(e.value, '"]'));
+            l.setAttribute("data-value", e.value), e.selected && (l.setAttribute("selected", ""), o = e.text, n = !0), e.disabled && l.setAttribute("disabled", ""), c.appendChild(l);
+        }), !n && e.options.length > 0) {
+            let t = e.options[e.selectedIndex >= 0 ? e.selectedIndex : 0];
+            o = t.text;
+            let n = c.querySelector('li[data-value="'.concat(t.value, '"]'));
             null == n || n.setAttribute("selected", "");
         }
-        a.textContent = t;
+        i.textContent = o;
     };
-    u(), null == (o = l.parentNode) || o.insertBefore(c, l.nextSibling), c.addEventListener("click", (e)=>{
-        if (c.hasAttribute("disabled")) return;
-        let t = e.target.closest("ul.dropdown > li");
-        if (t) {
-            let n = t.getAttribute("data-value");
-            null === n || t.hasAttribute("disabled") || (l.value = n, l.dispatchEvent(new Event("change", {
+    f(), null == (n = e.parentNode) || n.insertBefore(p, e.nextSibling), p.addEventListener("click", (t)=>{
+        if (p.hasAttribute("disabled")) return;
+        let o = t.target.closest("ul.dropdown > li");
+        if (o) {
+            let n = o.getAttribute("data-value");
+            null === n || o.hasAttribute("disabled") || (e.value = n, e.dispatchEvent(new Event("change", {
                 bubbles: !0
-            })), l.dispatchEvent(new Event("input", {
+            })), e.dispatchEvent(new Event("input", {
                 bubbles: !0
-            }))), select_dropdown_r(c), e.stopPropagation();
+            }))), select_dropdown_d(p), t.stopPropagation();
             return;
         }
-        if (c.hasAttribute("open")) select_dropdown_r(c);
+        if (p.hasAttribute("open")) select_dropdown_d(p);
         else {
-            var o;
+            var n;
             document.querySelectorAll("cbi-dropdown[open], .cbi-dropdown[open]").forEach((e)=>{
-                if (e instanceof HTMLElement && e.classList.contains("fluent-custom-select")) select_dropdown_r(e);
+                if (e instanceof HTMLElement && e.classList.contains("fluent-custom-select")) select_dropdown_d(e);
                 else {
                     var t;
                     e.removeAttribute("open"), null == (t = e.closest(".cbi-value-field, .cbi-value")) || t.classList.remove("cbi-dropdown-open");
                 }
-            }), function(e, t) {
-                let l = e.getBoundingClientRect(), n = window.innerHeight, r = n - l.bottom, o = l.top;
-                if (r < Math.min(32 * t.options.length + 10, 250) && o > r ? e.setAttribute("data-open-direction", "up") : e.setAttribute("data-open-direction", "down"), !e.closest("#modal_overlay .modal")) return e.removeAttribute("data-fluent-floating");
-                let i = Math.min(32 * t.options.length + 10, 350, 0.5 * n), a = r < i && o > r, d = Math.min(i, Math.max(64, a ? l.top - 8 - 4 : n - l.bottom - 8 - 4)), s = Math.min(l.width, window.innerWidth - 16), c = Math.min(Math.max(8, l.left), window.innerWidth - s - 8), u = a ? Math.max(8, l.top - d - 4) : Math.min(n - 8 - d, l.bottom + 4);
-                e.setAttribute("data-open-direction", a ? "up" : "down"), e.setAttribute("data-fluent-floating", "modal"), e.style.setProperty("--fluent-dropdown-left", "".concat(c, "px")), e.style.setProperty("--fluent-dropdown-top", "".concat(u, "px")), e.style.setProperty("--fluent-dropdown-width", "".concat(s, "px")), e.style.setProperty("--fluent-dropdown-max-height", "".concat(d, "px"));
-            }(c, l), c.setAttribute("open", ""), null == (o = c.closest(".cbi-value-field, .cbi-value")) || o.classList.add("cbi-dropdown-open");
-            let e = d.querySelector("li[selected]");
-            e && select_dropdown_n(d, e);
+            }), select_dropdown_s(p, e), p.setAttribute("open", ""), null == (n = p.closest(".cbi-value-field, .cbi-value")) || n.classList.add("cbi-dropdown-open"), "anchor" === p.getAttribute("data-fluent-floating") && (c.setAttribute("popover", "manual"), c.showPopover({
+                source: p
+            }));
+            let t = c.querySelector("li[selected]");
+            t && select_dropdown_a(c, t);
         }
-        e.stopPropagation();
+        t.stopPropagation();
     });
-    let b = (e)=>{
-        !c.contains(e.target) && c.hasAttribute("open") && select_dropdown_r(c);
+    let h = (e)=>{
+        !p.contains(e.target) && p.hasAttribute("open") && select_dropdown_d(p);
     };
-    document.addEventListener("click", b, !0), c.addEventListener("keydown", (e)=>{
-        if (c.hasAttribute("disabled")) return;
-        let t = c.hasAttribute("open"), o = Array.from(d.querySelectorAll("li:not([disabled])")), i = o.findIndex((e)=>e.hasAttribute("selected"));
-        switch(e.key){
+    document.addEventListener("click", h, !0), p.addEventListener("keydown", (t)=>{
+        if (p.hasAttribute("disabled")) return;
+        let o = p.hasAttribute("open"), n = Array.from(c.querySelectorAll("li:not([disabled])")), l = n.findIndex((e)=>e.hasAttribute("selected"));
+        switch(t.key){
             case "Enter":
             case " ":
-                if (e.preventDefault(), t) {
-                    let e = o[i];
+                if (t.preventDefault(), o) {
+                    let e = n[l];
                     e && e.click();
-                } else c.click();
+                } else p.click();
                 break;
             case "Escape":
-                t && (e.preventDefault(), select_dropdown_r(c));
+                o && (t.preventDefault(), select_dropdown_d(p));
                 break;
             case "ArrowDown":
-                if (e.preventDefault(), t) {
-                    if (o.length > 0) {
-                        let e = (i + 1) % o.length;
-                        o.forEach((t, r)=>{
-                            if (r === e) {
-                                t.setAttribute("selected", ""), select_dropdown_n(d, t);
-                                let e = t.getAttribute("data-value");
-                                null !== e && (l.value = e, l.dispatchEvent(new Event("change", {
+                if (t.preventDefault(), o) {
+                    if (n.length > 0) {
+                        let t = (l + 1) % n.length;
+                        n.forEach((o, n)=>{
+                            if (n === t) {
+                                o.setAttribute("selected", ""), select_dropdown_a(c, o);
+                                let t = o.getAttribute("data-value");
+                                null !== t && (e.value = t, e.dispatchEvent(new Event("change", {
                                     bubbles: !0
-                                })), l.dispatchEvent(new Event("input", {
+                                })), e.dispatchEvent(new Event("input", {
                                     bubbles: !0
                                 })));
-                            } else t.removeAttribute("selected");
+                            } else o.removeAttribute("selected");
                         });
                     }
-                } else c.click();
+                } else p.click();
                 break;
             case "ArrowUp":
-                if (e.preventDefault(), t) {
-                    if (o.length > 0) {
-                        let e = (i - 1 + o.length) % o.length;
-                        o.forEach((t, r)=>{
-                            if (r === e) {
-                                t.setAttribute("selected", ""), select_dropdown_n(d, t);
-                                let e = t.getAttribute("data-value");
-                                null !== e && (l.value = e, l.dispatchEvent(new Event("change", {
+                if (t.preventDefault(), o) {
+                    if (n.length > 0) {
+                        let t = (l - 1 + n.length) % n.length;
+                        n.forEach((o, n)=>{
+                            if (n === t) {
+                                o.setAttribute("selected", ""), select_dropdown_a(c, o);
+                                let t = o.getAttribute("data-value");
+                                null !== t && (e.value = t, e.dispatchEvent(new Event("change", {
                                     bubbles: !0
-                                })), l.dispatchEvent(new Event("input", {
+                                })), e.dispatchEvent(new Event("input", {
                                     bubbles: !0
                                 })));
-                            } else t.removeAttribute("selected");
+                            } else o.removeAttribute("selected");
                         });
                     }
-                } else c.click();
+                } else p.click();
                 break;
             case "Tab":
-                t && select_dropdown_r(c);
+                o && select_dropdown_d(p);
         }
-    }), l.addEventListener("change", ()=>{
-        let e = l.value, t = Array.from(d.querySelectorAll("li")), n = "";
-        t.forEach((t)=>{
-            t.getAttribute("data-value") === e ? (t.setAttribute("selected", ""), n = t.textContent || "") : t.removeAttribute("selected");
-        }), a.textContent = n;
+    }), e.addEventListener("change", ()=>{
+        let t = e.value, o = Array.from(c.querySelectorAll("li")), n = "";
+        o.forEach((e)=>{
+            e.getAttribute("data-value") === t ? (e.setAttribute("selected", ""), n = e.textContent || "") : e.removeAttribute("selected");
+        }), i.textContent = n;
     });
-    let p = new MutationObserver(()=>{
-        u();
+    let v = new MutationObserver(()=>{
+        f();
     });
-    p.observe(l, {
+    v.observe(e, {
         childList: !0
     });
-    let f = new MutationObserver((e)=>{
-        e.forEach((e)=>{
-            "disabled" === e.attributeName && (l.disabled ? (c.setAttribute("disabled", ""), c.removeAttribute("tabindex"), select_dropdown_r(c)) : (c.removeAttribute("disabled"), c.setAttribute("tabindex", "0")));
+    let m = new MutationObserver((t)=>{
+        t.forEach((t)=>{
+            "disabled" === t.attributeName && (e.disabled ? (p.setAttribute("disabled", ""), p.removeAttribute("tabindex"), select_dropdown_d(p)) : (p.removeAttribute("disabled"), p.setAttribute("tabindex", "0")));
         });
     });
-    f.observe(l, {
+    m.observe(e, {
         attributes: !0,
         attributeFilter: [
             "disabled"
         ]
     });
-    let h = new MutationObserver((e)=>{
-        e.forEach((e)=>{
-            e.removedNodes.forEach((e)=>{
-                var t;
-                (e === l || (null == (t = e.contains) ? void 0 : t.call(e, l))) && (document.removeEventListener("click", b, !0), p.disconnect(), f.disconnect(), h.disconnect(), c.remove());
+    let w = new MutationObserver((t)=>{
+        t.forEach((t)=>{
+            t.removedNodes.forEach((t)=>{
+                var o;
+                (t === e || (null == (o = t.contains) ? void 0 : o.call(t, e))) && (document.removeEventListener("click", h, !0), v.disconnect(), m.disconnect(), w.disconnect(), p.remove());
             });
         });
     });
-    l.parentNode && h.observe(l.parentNode, {
+    e.parentNode && w.observe(e.parentNode, {
         childList: !0
     });
 }
