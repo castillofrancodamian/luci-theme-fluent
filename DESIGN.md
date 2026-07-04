@@ -4,6 +4,8 @@
 
 Luci-Theme-Fluent is a modern, FluentUI-inspired theme for OpenWrt's LuCI web interface. Built as a fully independent theme with zero dependencies on luci-theme-argon, it features a complete design system using CSS custom properties, SCSS preprocessing, and ucode templates.
 
+---
+
 ## Architecture
 
 ### Directory Structure
@@ -13,35 +15,30 @@ luci-theme-fluent/
 ├── htdocs/luci-static/
 │   ├── fluent/
 │   │   ├── background/          # User-uploaded background images
-│   │   ├── fonts/               # Self-contained font files
+│   │   ├── fonts/               # Self-contained font files (optional)
 │   │   ├── icon/                # Theme icons
 │   │   └── img/                 # Theme images (logo, placeholders)
 │   └── resources/
-│       ├── menu-fluent.js       # Sidebar navigation (LuCI module)
+│       ├── menu-fluent.js       # Compiled sidebar navigation (LuCI module)
 │       └── view/
-│           └── fluent-config.js # Configuration UI
-├── src/scss/
-│   ├── fluent.scss              # Main entry point
-│   ├── _variables.scss          # Design tokens
-│   ├── _mixins.scss             # Reusable patterns
-│   ├── _base.scss               # Reset & typography
-│   └── components/
-│       ├── _buttons.scss
-│       ├── _inputs.scss
-│       ├── _select.scss
-│       ├── _checkboxes.scss
-│       ├── _tables.scss
-│       ├── _cards.scss
-│       ├── _tabs.scss
-│       ├── _header.scss
-│       ├── _navigation.scss
-│       ├── _progress.scss
-│       ├── _modals.scss
-│       ├── _login.scss
-│       ├── _dropdown.scss
-│       ├── _scrollbar.scss
-│       ├── _sidebar.scss
-│       └── _responsive.scss
+│           └── fluent-config.js # Compiled configuration UI
+├── src/
+│   ├── scss/
+│   │   ├── fluent.scss          # Main entry point (imports partials)
+│   │   ├── _variables.scss      # Design tokens (Typography, Spacing, Radius, Brand ramps)
+│   │   ├── _mixins.scss         # Reusable patterns
+│   │   ├── _base.scss           # Reset & typography
+│   │   ├── components/          # Component SCSS partials
+│   │   ├── layouts/             # Layout SCSS partials
+│   │   ├── themes/              # Light/Dark variables
+│   │   └── overrides/           # Page-scoped overrides
+│   ├── web/
+│   │   └── resources/
+│   │       ├── menu-fluent.tsx  # Sidebar navigation TSX source
+│   │       └── view/
+│   │           └── fluent-config.tsx # Config UI TSX source
+│   ├── script/                  # Build scripts (extract-ucode, generate-icons, etc.)
+│   └── rsbuild.config.ts        # Rsbuild configuration
 ├── ucode/template/themes/fluent/
 │   ├── header.ut                # Main header template
 │   ├── header_login.ut          # Login page header
@@ -49,262 +46,135 @@ luci-theme-fluent/
 │   ├── footer_login.ut          # Login footer
 │   ├── out_header_login.ut      # Outer login header
 │   └── sysauth.ut               # Login/auth page
-├── root/etc/uci-defaults/
-│   └── luci-fluent              # Theme registration
+├── root/
+│   ├── etc/config/fluent        # Default UCI config
+│   ├── etc/uci-defaults/        # Theme registration and config setup
+│   └── usr/                     # Scripts, RPCD, ACL files
 ├── Makefile                     # OpenWrt package definition
-└── package.json                 # Build tooling
+└── package.json                 # Project build tooling (pnpm workspace)
 ```
 
-### CSS Architecture
+---
 
-#### Variable System
+## CSS Architecture
 
-All design tokens are CSS custom properties, defined in `:root` and overridden per component:
+### Design Tokens (Variables System)
 
-```css
-:root {
-  /* Primary colors */
-  --fluent-primary: #0078D4;
-  --fluent-primary-hover: #106EBE;
-  --fluent-primary-active: #005A9E;
-  
-  /* Neutral colors */
-  --fluent-bg: #ffffff;
-  --fluent-bg-card: #f9f9f9;
-  --fluent-text: #242424;
-  --fluent-text-secondary: #616161;
-  
-  /* Spacing */
-  --fluent-spacing-xs: 4px;
-  --fluent-spacing-sm: 8px;
-  --fluent-spacing-md: 16px;
-  --fluent-spacing-lg: 24px;
-  --fluent-spacing-xl: 32px;
-  
-  /* Border radius */
-  --fluent-radius-sm: 4px;
-  --fluent-radius-md: 8px;
-  --fluent-radius-lg: 12px;
-  
-  /* Shadows */
-  --fluent-shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-  --fluent-shadow-md: 0 4px 8px rgba(0,0,0,0.12);
-  --fluent-shadow-lg: 0 8px 16px rgba(0,0,0,0.14);
-  
-  /* Typography */
-  --fluent-font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  --fluent-font-size-xs: 10px;
-  --fluent-font-size-sm: 12px;
-  --fluent-font-size-md: 14px;
-  --fluent-font-size-lg: 16px;
-  --fluent-font-size-xl: 20px;
-  --fluent-font-weight: 400;
-  
-  /* Transitions */
-  --fluent-transition-fast: 150ms ease;
-  --fluent-transition-normal: 250ms ease;
-  --fluent-transition-slow: 350ms ease;
-}
-```
-
-#### Dark Mode Strategy
-
-Dark mode uses CSS custom properties with a single source of truth:
-
-```css
-/* Light mode (default) */
-:root {
-  --fluent-bg: #ffffff;
-  --fluent-text: #242424;
-}
-
-/* Dark mode via media query */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --fluent-bg: #1a1a1a;
-    --fluent-text: #ffffff;
-  }
-}
-
-/* Dark mode via class (manual toggle) */
-[data-theme="dark"] {
-  --fluent-bg: #1a1a1a;
-  --fluent-text: #ffffff;
-}
-```
-
-**No separate dark.css file** - all color values reference CSS variables, eliminating ~95% duplication.
-
-#### Component Structure
-
-Each component is a standalone SCSS partial:
+All design tokens are CSS custom properties, defined in `:root` and aligned with `@fluentui/tokens` v2. The authoritative source for these values is [src/scss/_variables.scss](file:///A:/Documents/GitHub/luci-theme-fluent/src/scss/_variables.scss):
 
 ```scss
-// components/_buttons.scss
-.fluent-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--fluent-spacing-sm) var(--fluent-spacing-md);
-  font-size: var(--fluent-font-size-md);
-  font-weight: var(--fluent-font-weight);
-  border-radius: var(--fluent-radius-md);
-  transition: all var(--fluent-transition-fast);
-  
-  &--primary {
-    background: var(--fluent-primary);
-    color: white;
-    
-    &:hover { background: var(--fluent-primary-hover); }
-    &:active { background: var(--fluent-primary-active); }
-  }
-  
-  &--secondary {
-    background: transparent;
-    border: 1px solid var(--fluent-primary);
-    color: var(--fluent-primary);
-  }
+:root {
+  // Typography
+  --fluent-font-family: "Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  --fluent-font-size-base: 14px;
+  --fluent-font-size-xs: 10px;
+  --fluent-font-size-sm: 12px;
+  --fluent-font-size-md: 16px;
+  --fluent-font-size-lg: 20px;
+  --fluent-font-size-xl: 24px;
+  --fluent-font-size-xxl: 28px;
+  --fluent-font-size-xxxl: 40px;
+
+  --fluent-font-weight-regular: 400;
+  --fluent-font-weight-semibold: 600;
+  --fluent-font-weight-bold: 700;
+
+  --fluent-line-height-tight: 1.2;
+  --fluent-line-height-normal: 1.43;
+  --fluent-line-height-relaxed: 1.57;
+
+  // Spacing (4px grid)
+  --fluent-space-unit: 4px;
+  --fluent-space-xxs: 2px;
+  --fluent-space-xs: 4px;
+  --fluent-space-sm: 8px;
+  --fluent-space-md: 12px;
+  --fluent-space-lg: 16px;
+  --fluent-space-xl: 24px;
+  --fluent-space-xxl: 32px;
+  --fluent-space-xxxl: 48px;
+
+  // Border Radius
+  --fluent-radius-sm: 2px;
+  --fluent-radius-md: 4px;
+  --fluent-radius-lg: 8px;
+  --fluent-radius-xl: 12px;
+  --fluent-radius-circular: 10000px;
+  --fluent-radius-round: 50%;
+
+  // Duration & Easing
+  --fluent-duration-fast: 150ms;
+  --fluent-duration-normal: 250ms;
+  --fluent-duration-slow: 400ms;
+  --fluent-duration-slower: 500ms;
+  --fluent-easing-standard: cubic-bezier(0.8, 0, 0.2, 1);
+  --fluent-easing-decelerate: cubic-bezier(0, 0, 0, 1);
+  --fluent-easing-accelerate: cubic-bezier(1, 0, 1, 1);
+  --fluent-easing-easy-ease: cubic-bezier(0.33, 0, 0.67, 1);
+
+  // Z-Index
+  --fluent-zindex-actions: 1000;
+  --fluent-zindex-modal: 1100;
+  --fluent-zindex-tooltip: 1200;
+  --fluent-zindex-toast: 1300;
+  --fluent-zindex-dropdown: 1500;
+  --fluent-zindex-menu: 1050;
 }
 ```
 
-### Template Architecture
+### Dark Mode Strategy
 
-#### ucode Template System
+Dark mode is entirely variable-driven. Instead of maintaining a duplicate stylesheet, light/dark themes are applied by redefining color variables on the `:root` element. The theme toggle is handled via the `data-theme` attribute on `<html>`:
 
-Templates use ucode syntax (not Lua):
+```css
+/* Light mode values (Default) */
+:root {
+  --fluent-primary: #0078d4;
+  --fluent-bg: #fafafa;
+  --fluent-bg-card: #ffffff;
+}
 
-| Feature    | Syntax        | Example                   |
-| ---------- | ------------- | ------------------------- |
-| Comment    | `{# ... #}`   | `{# This is a comment #}` |
-| Code block | `{% ... %}`   | `{% if (mode) { %}`       |
-| Output     | `{{ ... }}`   | `{{ media }}`             |
-| Raw output | `{{- ... -}}` | `{{- raw_html -}}`        |
-
-#### Auto-Available Globals
-
-These variables are automatically available in all ucode templates:
-
-- `theme` - Current theme name
-- `media` - Path to theme static files
-- `resource` - Path to LuCI resources
-- `node` - Current dispatch node
-- `dispatcher` - LuCI dispatcher
-- `version` - LuCI version info
-- `ctx` - Request context
-
-#### UCI Configuration Integration
-
-The template reads UCI configuration to inject CSS custom properties:
-
-```ucode
-{% 
-  import { cursor } from 'uci';
-  var cfg = cursor();
-  var primary = cfg.get_first('fluent', 'global', 'primary') || '#0078D4';
-%}
-<style>
-  :root {
-    --fluent-primary: {{ primary }};
-  }
-</style>
-```
-
-### Build Pipeline
-
-#### SCSS Compilation
-
-```json
-{
-  "scripts": {
-    "css:build": "sass --no-source-map src/scss/fluent.scss htdocs/luci-static/fluent/css/fluent.css",
-    "css:watch": "sass --no-source-map --watch src/scss/fluent.scss htdocs/luci-static/fluent/css/fluent.css",
-    "lint": "biome lint src/scss htdocs",
-    "format": "biome format --write src/scss htdocs"
-  }
+/* Dark mode variables applied to data-theme */
+:root[data-theme="dark"] {
+  --fluent-primary: #4da6ff;
+  --fluent-bg: #1b1b1b;
+  --fluent-bg-card: #2d2d2d;
+  --fluent-text: #f3f2f1;
+  --fluent-text-secondary: #a0a0a0;
+  --fluent-border: #404040;
 }
 ```
 
-#### OpenWrt Packaging
+---
 
-The Makefile uses OpenWrt's `luci.mk` build system:
+## Template Architecture
 
-```makefile
-include $(TOPDIR)/rules.mk
+### ucode Template System
 
-LUCI_TITLE:=Fluent Theme
-LUCI_DEPENDS:=
-PKG_VERSION:=1.0.0
-PKG_RELEASE:=1
+All server-side templates are written in ucode syntax:
 
-include $(TOPDIR)/feeds/luci/luci.mk
+* **Code Execution**: `{% if (mode === 'dark') { %} ... {% } %}`
+* **Expression Output**: `{{ media }}` or `{{ border_radius }}`
+* **Comments**: `{# Comments #}`
 
-# call BuildPackage - OpenWrt buildroot signature
-```
+### Global Variables
+Ucode templates have automatic access to LuCI global properties: `theme`, `media`, `resource`, `node`, `dispatcher`, `version`, `ctx`.
 
-### Component Map
+### UCI Configuration Integration
+`header.ut` reads settings directly from UCI config `/etc/config/fluent` using ucode's `uci` cursor and dynamically injects them as inline CSS custom properties, allowing user customization of colors, radii, sidebar widths, and layout spacing at runtime.
 
-| Component  | File               | Description                             |
-| ---------- | ------------------ | --------------------------------------- |
-| Buttons    | `_buttons.scss`    | Primary, secondary, ghost, icon buttons |
-| Inputs     | `_inputs.scss`     | Text, number, email, password fields    |
-| Select     | `_select.scss`     | Dropdown selects                        |
-| Checkboxes | `_checkboxes.scss` | Checkboxes and radio buttons            |
-| Tables     | `_tables.scss`     | Data tables with sorting                |
-| Cards      | `_cards.scss`      | Content cards                           |
-| Tabs       | `_tabs.scss`       | Tab navigation                          |
-| Header     | `_header.scss`     | Top header bar                          |
-| Navigation | `_navigation.scss` | Main navigation                         |
-| Progress   | `_progress.scss`   | Progress bars                           |
-| Modals     | `_modals.scss`     | Modal dialogs                           |
-| Login      | `_login.scss`      | Login page                              |
-| Dropdown   | `_dropdown.scss`   | Dropdown menus                          |
-| Scrollbar  | `_scrollbar.scss`  | Custom scrollbars                       |
-| Sidebar    | `_sidebar.scss`    | Sidebar navigation                      |
-| Responsive | `_responsive.scss` | Media queries                           |
+---
 
-## Migration Path
+## Build System & Tooling
 
-### Phase 1: Foundation (Current)
-- [x] Project structure
-- [x] CSS variable system
-- [x] ucode templates
-- [x] Build pipeline
+The project uses **Rsbuild** (configured in `src/rsbuild.config.ts`) instead of standard Sass compilers. It builds two environments:
+1. **CSS environment** (`src/scss/fluent.scss`): Preprocesses SCSS files, inlines inline SVGs, and outputs CSS to `htdocs/luci-static/fluent/css/fluent.css`.
+2. **JS environment** (`src/web/resources/`): Compiles React-like JSX/TSX views into OpenWrt-compatible LuCI modules using custom banner/footer plugins.
 
-### Phase 2: Components
-- [ ] All SCSS component partials
-- [ ] Component documentation
-- [ ] Visual regression tests
+### Package Scripts
 
-### Phase 3: Features
-- [ ] Background image management
-- [ ] Theme configuration UI
-- [ ] Dark mode toggle
-
-### Phase 4: Polish
-- [ ] Performance optimization
-- [ ] Accessibility audit
-- [ ] Cross-browser testing
-
-### Phase 5: Release
-- [ ] Package for OpenWrt
-- [ ] Documentation
-- [ ] Community feedback
-
-## Success Criteria
-
-- [ ] Zero dependency on luci-theme-argon
-- [ ] All CSS variables properly defined
-- [ ] Dark mode works via media query and class toggle
-- [ ] ucode templates render correctly
-- [ ] SCSS compiles without errors
-- [ ] OpenWrt package builds successfully
-- [ ] Configuration UI functional
-- [ ] Responsive on mobile devices
-- [ ] Accessible (WCAG 2.1 AA)
-
-## References
-
-- [Microsoft Fluent Design System](https://developer.microsoft.com/en-us/fluentui)
-- [LuCI Documentation](https://openwrt.org/docs/techref/luci)
-- [ucode Template Language](https://openwrt.org/docs/techref/utpl)
-- [Design System](https://fluent2.microsoft.design/design-principles)
+Authoritative scripts inside [package.json](file:///A:/Documents/GitHub/luci-theme-fluent/package.json):
+* `pnpm run build`: Compiles both SCSS styles and LuCI JS modules.
+* `pnpm run watch`: Watches files for dynamic hot-rebuilding.
+* `pnpm run lint`: Formats and checks codebase using Biome.
+* `pnpm run i18n:build`: Re-extracts and translates all ucode and Javascript strings.
