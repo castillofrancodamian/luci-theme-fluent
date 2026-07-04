@@ -78,6 +78,41 @@ const FLUENT_DEFAULTS = {
 };
 const fluentFlagDefault = (r)=>"1" === r;
 
+;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/advanced.ts
+let advanced_e = L.form;
+
+const registerAdvancedTab = (t)=>{
+    t.tab("advanced", _("Advanced"), _("Adjust layout, typography, transition timing, shadows, and inject custom CSS variables or rules when the built-in controls are not enough."));
+    {
+        let d = t.taboption("advanced", advanced_e.Value, "font_size", _("Base font size"), _("Sets the base interface font size in pixels. Most theme text scales from this value through the Fluent CSS variables. Recommended range: 12-18px."));
+        d.datatype = "range(12,18)", d.default = FLUENT_DEFAULTS.font_size, d.rmempty = !1, d.placeholder = FLUENT_DEFAULTS.font_size;
+    }
+    {
+        let d = t.taboption("advanced", advanced_e.Value, "sidebar_width", _("Sidebar width"), _("Width of the main navigation sidebar in pixels."));
+        d.datatype = "range(200,420)", d.default = FLUENT_DEFAULTS.sidebar_width, d.rmempty = !1, d.placeholder = FLUENT_DEFAULTS.sidebar_width;
+    }
+    {
+        let d = t.taboption("advanced", advanced_e.Value, "header_height", _("Header height"), _("Height of the top header bar in pixels."));
+        d.datatype = "range(40,96)", d.default = FLUENT_DEFAULTS.header_height, d.rmempty = !1, d.placeholder = FLUENT_DEFAULTS.header_height;
+    }
+    {
+        let d = t.taboption("advanced", advanced_e.ListValue, "border_radius", _("Corner radius"), _("Controls the shared Fluent corner radius tokens used by cards, buttons, inputs, and related UI surfaces."));
+        d.value("0", _("Square (0px)")), d.value("2", _("Small (2px)")), d.value("4", _("Medium (4px)")), d.value("6", _("Rounded (6px)")), d.value("8", _("Large (8px)")), d.value("12", _("Extra large (12px)")), d.default = FLUENT_DEFAULTS.border_radius, d.rmempty = !1;
+    }
+    {
+        let d = t.taboption("advanced", advanced_e.ListValue, "card_shadow", _("Card shadow"), _("Select the shadow depth applied to themed cards and panels."));
+        d.value("none", _("None")), d.value("small", _("Small")), d.value("medium", _("Medium")), d.value("large", _("Large")), d.default = FLUENT_DEFAULTS.card_shadow, d.rmempty = !1;
+    }
+    {
+        let d = t.taboption("advanced", advanced_e.ListValue, "transition_speed", _("Theme transition speed"), _("Controls the shared Fluent transition timing used by menu, header, and other theme animations."));
+        d.value("fast", _("Fast")), d.value("normal", _("Normal")), d.value("slow", _("Slow")), d.value("none", _("Disabled")), d.default = FLUENT_DEFAULTS.transition_speed, d.rmempty = !1;
+    }
+    {
+        let d = t.taboption("advanced", advanced_e.TextValue, "custom_css", _("Custom CSS"), _("Optional raw CSS injected into the Fluent header template. Use this for extra --fluent-* variable overrides or page-specific tweaks that are not exposed as dedicated options."));
+        d.default = FLUENT_DEFAULTS.custom_css, d.rmempty = !0, d.rows = 12, d.wrap = "off", d.placeholder = ":root {\n  --fluent-sidebar-width: 280px;\n  --fluent-card-shadow: none;\n}";
+    }
+};
+
 ;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/animation.ts
 let animation_e = L.form;
 
@@ -1112,16 +1147,17 @@ let fluent_config_e = L.form, fluent_config_o = L.uci;
 
 
 
-class fluent_config_l extends L.view {
+
+class fluent_config_f extends L.view {
     load() {
         return fluent_config_o.load("fluent");
     }
     render(o) {
-        let l = new fluent_config_e.Map("fluent", _("Fluent theme settings"), _("Configure color mode, accent colors, animation behavior, and login-page appearance for luci-theme-fluent.")), f = l.section(fluent_config_e.TypedSection, "global", _("Theme settings"));
-        return f.addremove = !1, f.anonymous = !0, registerGeneralTab(f), registerColorsTab(f), registerAnimationTab(f), registerLoginTab(f), registerAboutTab(f), l.render();
+        let f = new fluent_config_e.Map("fluent", _("Fluent theme settings"), _("Configure color mode, accent colors, layout sizing, animation behavior, login-page appearance, and advanced CSS overrides for luci-theme-fluent.")), m = f.section(fluent_config_e.TypedSection, "global", _("Theme settings"));
+        return m.addremove = !1, m.anonymous = !0, registerGeneralTab(m), registerColorsTab(m), registerAnimationTab(m), registerLoginTab(m), registerAdvancedTab(m), registerAboutTab(m), f.render();
     }
 }
-const main = fluent_config_l;
+const main = fluent_config_f;
 
 
 return main;

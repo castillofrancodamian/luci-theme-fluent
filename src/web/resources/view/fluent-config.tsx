@@ -1,6 +1,7 @@
 const form = L.form;
 const uci = L.uci;
 
+import { registerAdvancedTab } from "./fluent-config/tabs/advanced";
 import { registerAnimationTab } from "./fluent-config/tabs/animation";
 import { registerColorsTab } from "./fluent-config/tabs/colors";
 import { registerGeneralTab } from "./fluent-config/tabs/general";
@@ -19,7 +20,7 @@ class mainImpl extends L.view {
     const map = new MapCtor(
       "fluent",
       _("Fluent theme settings"),
-      _("Configure color mode, accent colors, animation behavior, and login-page appearance for luci-theme-fluent."),
+      _("Configure color mode, accent colors, layout sizing, animation behavior, login-page appearance, and advanced CSS overrides for luci-theme-fluent."),
     );
 
     const section = map.section(form.TypedSection, "global", _("Theme settings"));
@@ -30,6 +31,7 @@ class mainImpl extends L.view {
     registerColorsTab(section);
     registerAnimationTab(section);
     registerLoginTab(section);
+    registerAdvancedTab(section);
     registerAboutTab(section);
 
     return (map as unknown as { render: () => Promise<Node> }).render();

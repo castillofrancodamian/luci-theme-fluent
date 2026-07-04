@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: luci-theme-fluent\n"
-"POT-Creation-Date: 2026-06-27 20:29+0800\n"
+"POT-Creation-Date: 2026-07-04 22:04+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,14 @@ msgid "About"
 msgstr ""
 
 msgid "Accent color"
+msgstr ""
+
+msgid ""
+"Adjust layout, typography, transition timing, shadows, and inject custom CSS var"
+"iables or rules when the built-in controls are not enough."
+msgstr ""
+
+msgid "Advanced"
 msgstr ""
 
 msgid "and {count} more…"
@@ -53,6 +61,9 @@ msgstr ""
 msgid "Backend (Official GitHub)"
 msgstr ""
 
+msgid "Base font size"
+msgstr ""
+
 msgid "Blur radius in pixels behind the login card in dark mode. Use 0 to disable blur."
 msgstr ""
 
@@ -65,6 +76,9 @@ msgid "Cancel"
 msgstr ""
 
 msgid "Card background"
+msgstr ""
+
+msgid "Card shadow"
 msgstr ""
 
 msgid "Check for updates"
@@ -89,8 +103,8 @@ msgid "Compact (32px)"
 msgstr ""
 
 msgid ""
-"Configure color mode, accent colors, animation behavior, and login-page appearan"
-"ce for luci-theme-fluent."
+"Configure color mode, accent colors, layout sizing, animation behavior, login-pa"
+"ge appearance, and advanced CSS overrides for luci-theme-fluent."
 msgstr ""
 
 msgid "Confirm Installation"
@@ -108,11 +122,30 @@ msgid ""
 msgstr ""
 
 msgid ""
+"Controls the shared Fluent corner radius tokens used by cards, buttons, inputs, "
+"and related UI surfaces."
+msgstr ""
+
+msgid ""
+"Controls the shared Fluent transition timing used by menu, header, and other the"
+"me animations."
+msgstr ""
+
+msgid "Corner radius"
+msgstr ""
+
+msgid "Custom CSS"
+msgstr ""
+
+msgid ""
 "Customize the login page background, card opacity, and blur radius for light and"
 " dark modes."
 msgstr ""
 
 msgid "Dark mode"
+msgstr ""
+
+msgid "Disabled"
 msgstr ""
 
 msgid ""
@@ -135,10 +168,16 @@ msgstr ""
 msgid "Expecting: %s"
 msgstr ""
 
+msgid "Extra large (12px)"
+msgstr ""
+
 msgid "Failed to check for updates"
 msgstr ""
 
 msgid "Failed to fetch current theme version."
+msgstr ""
+
+msgid "Fast"
 msgstr ""
 
 msgid "Finished"
@@ -163,6 +202,12 @@ msgid "General"
 msgstr ""
 
 msgid "GitHub Token Required"
+msgstr ""
+
+msgid "Header height"
+msgstr ""
+
+msgid "Height of the top header bar in pixels."
 msgstr ""
 
 msgid ""
@@ -212,6 +257,12 @@ msgstr ""
 msgid "Installing package"
 msgstr ""
 
+msgid "Large"
+msgstr ""
+
+msgid "Large (8px)"
+msgstr ""
+
 msgid "Light mode"
 msgstr ""
 
@@ -222,6 +273,12 @@ msgid "Login card opacity"
 msgstr ""
 
 msgid "Login page"
+msgstr ""
+
+msgid "Medium"
+msgstr ""
+
+msgid "Medium (4px)"
 msgstr ""
 
 msgid "Navigation font weight"
@@ -239,6 +296,9 @@ msgstr ""
 msgid "No matching package asset found for your system architecture in this release."
 msgstr ""
 
+msgid "None"
+msgstr ""
+
 msgid "Normal"
 msgstr ""
 
@@ -250,6 +310,12 @@ msgstr ""
 msgid ""
 "Opacity of the login card in light mode. 0 is fully transparent and 1 is fully o"
 "paque."
+msgstr ""
+
+msgid ""
+"Optional raw CSS injected into the Fluent header template. Use this for extra --"
+"fluent-* variable overrides or page-specific tweaks that are not exposed as dedi"
+"cated options."
 msgstr ""
 
 msgid "Package format"
@@ -279,13 +345,24 @@ msgstr ""
 msgid "Retrying with token..."
 msgstr ""
 
+msgid "Rounded (6px)"
+msgstr ""
+
 msgid "Search menu items"
 msgstr ""
 
 msgid "Search menu…"
 msgstr ""
 
+msgid "Select the shadow depth applied to themed cards and panels."
+msgstr ""
+
 msgid "Semibold"
+msgstr ""
+
+msgid ""
+"Sets the base interface font size in pixels. Most theme text scales from this va"
+"lue through the Fluent CSS variables. Recommended range: 12-18px."
 msgstr ""
 
 msgid "Show top loading bar"
@@ -294,10 +371,25 @@ msgstr ""
 msgid "Sidebar background"
 msgstr ""
 
+msgid "Sidebar width"
+msgstr ""
+
+msgid "Slow"
+msgstr ""
+
+msgid "Small"
+msgstr ""
+
+msgid "Small (2px)"
+msgstr ""
+
 msgid "Software Update"
 msgstr ""
 
 msgid "Source code"
+msgstr ""
+
+msgid "Square (0px)"
 msgstr ""
 
 msgid "Stable Channel"
@@ -338,6 +430,9 @@ msgid ""
 "seconds."
 msgstr ""
 
+msgid "Theme transition speed"
+msgstr ""
+
 msgid "Triggering installation on router..."
 msgstr ""
 
@@ -372,6 +467,9 @@ msgstr ""
 msgid ""
 "When enabled, Fluent animations follow the browser or operating system reduced-m"
 "otion preference."
+msgstr ""
+
+msgid "Width of the main navigation sidebar in pixels."
 msgstr ""
 
 msgid "You can create a new token at"
