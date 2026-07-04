@@ -108,21 +108,8 @@ function upgradeDropdownChevron(dropdown: HTMLElement) {
   }
 }
 
-let nextCbiAnchorId = 0;
 function upgradeNativeDropdown(dropdown: HTMLElement) {
   upgradeDropdownChevron(dropdown);
-
-  if (dropdown.getAttribute("data-fluent-anchor-setup") !== "true") {
-    dropdown.setAttribute("data-fluent-anchor-setup", "true");
-    const anchorId = ++nextCbiAnchorId;
-    const anchorName = `--fluent-cbi-anchor-${anchorId}`;
-    dropdown.style.setProperty("anchor-name", anchorName);
-
-    const listbox = dropdown.querySelector("ul.dropdown");
-    if (listbox instanceof HTMLElement) {
-      listbox.style.setProperty("position-anchor", anchorName);
-    }
-  }
 }
 
 function isSelectElementHidden(selectEl: HTMLSelectElement): boolean {

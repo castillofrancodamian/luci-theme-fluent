@@ -5553,6 +5553,7 @@ cbi-dropdown:after, .cbi-dropdown:after {
 
 cbi-dropdown[open], .cbi-dropdown[open] {
   z-index: var(--fluent-zindex-dropdown);
+  anchor-name: --fluent-cbi-dropdown-active !important;
 }
 
 cbi-dropdown[disabled], .cbi-dropdown[disabled] {
@@ -6461,10 +6462,11 @@ cbi-dropdown.fluent-custom-select[data-fluent-floating="anchor"][open] > ul.drop
   cbi-dropdown:not(.fluent-custom-select)[open] > ul.dropdown, .cbi-dropdown:not(.fluent-custom-select)[open] > ul.dropdown {
     position-try-fallbacks: flip-block;
     position-visibility: anchors-visible;
-    top: calc(anchor(bottom) + var(--fluent-space-xxs)) !important;
+    position-anchor: --fluent-cbi-dropdown-active !important;
+    top: calc(anchor(--fluent-cbi-dropdown-active bottom) + var(--fluent-space-xxs)) !important;
     bottom: auto !important;
-    left: anchor(left) !important;
-    min-width: anchor-size(width) !important;
+    left: anchor(--fluent-cbi-dropdown-active left) !important;
+    min-width: anchor-size(--fluent-cbi-dropdown-active width) !important;
     width: max-content !important;
     max-width: calc(100vw - 16px) !important;
     max-height: min(350px, 50vh) !important;
