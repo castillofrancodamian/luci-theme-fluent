@@ -40,9 +40,7 @@ For direct map access cases such as custom `mask-image` rules, fetch from `$flue
 $chevron-svg: map.get($fluent-icons, "chevron-down-20-regular");
 $accept-svg: map.get($fluent-icons, "fluent-mdl2:accept");
 
--webkit-mask-image: url("data:image/svg+xml,#{$chevron-svg}");
 mask-image: url("data:image/svg+xml,#{$chevron-svg}");
 ```
 
 All icons are dynamically scanned and resolved from the SCSS source files during the build process.
-

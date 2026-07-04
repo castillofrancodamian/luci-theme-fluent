@@ -1109,12 +1109,12 @@ input:disabled, .cbi-input-text:disabled, .cbi-input-password:disabled, .cbi-inp
 }
 
 input[type="search"] {
-  -webkit-appearance: none;
+  appearance: none;
   padding-left: var(--fluent-space-xl);
 }
 
 input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
+  appearance: none;
   cursor: pointer;
   background: none;
   border: none;

@@ -104,11 +104,11 @@ input:disabled,
 
 // Search input specific
 input[type="search"] {
-  -webkit-appearance: none;
+  appearance: none;
   padding-left: var(--fluent-space-xl);
 
   &::-webkit-search-cancel-button {
-    -webkit-appearance: none;
+    appearance: none;
     height: 14px;
     width: 14px;
     cursor: pointer;

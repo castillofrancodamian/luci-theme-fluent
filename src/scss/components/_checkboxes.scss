@@ -13,7 +13,6 @@ $checkmark-svg-disabled: url("../assets/checkmark-disabled.svg");
 // ============================================================
 input[type="checkbox"] {
   appearance: none !important;
-  -webkit-appearance: none !important;
   -moz-appearance: none !important;
   position: relative !important;
   width: 40px !important;
@@ -274,7 +273,6 @@ label:has(input[type="radio"]) {
 }
 
 input[type="radio"] {
-  -webkit-appearance: none;
   appearance: none;
   width: 16px !important;
   height: 16px !important;

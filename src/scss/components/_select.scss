@@ -9,7 +9,6 @@ select {
   @include input-base;
   @include input-focus-ripple-v2;
   appearance: none;
-  -webkit-appearance: none;
   padding-right: var(--fluent-space-xl);
   cursor: pointer;
 
@@ -28,7 +27,6 @@ select.cbi-input-select {
     10px 6px
   );
   appearance: none;
-  -webkit-appearance: none;
   padding-right: var(--fluent-space-xl);
   cursor: pointer;
   max-width: 100%;
