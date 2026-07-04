@@ -1,52 +1,14 @@
 #!/bin/sh
-# Register luci-theme-fluent in LuCI and set up theme config defaults
-
 uci batch <<EOF
 set luci.themes.Fluent=/luci-static/fluent
 commit luci
 EOF
 
-# Ensure the fluent config exists
-if ! uci -q get fluent.@global[0] > /dev/null 2>&1; then
-	uci batch << 'EOF'
-	set fluent.global=global
-	set fluent.global.mode='auto'
-	set fluent.global.primary='#0078D4'
-	set fluent.global.dark_primary='#4da6ff'
-	set fluent.global.page_bg='#fafafa'
-	set fluent.global.card_bg='#ffffff'
-	set fluent.global.sidebar_bg='#f3f3f3'
-	set fluent.global.dark_page_bg='#1b1b1b'
-	set fluent.global.dark_card_bg='#2d2d2d'
-	set fluent.global.dark_sidebar_bg='#1f1f1f'
-	set fluent.global.progressbar_font='#2e2b60'
-	set fluent.global.dark_progressbar_font='#d6d9e5'
-	set fluent.global.font_weight='400'
-	set fluent.global.font_size='14'
-	set fluent.global.border_radius='4'
-	set fluent.global.sidebar_width='260'
-	set fluent.global.sidebar_style='default'
-	set fluent.global.header_height='48'
-	set fluent.global.login_bg='microsoft'
-	set fluent.global.blur='40'
-	set fluent.global.transparency='0.8'
-	set fluent.global.blur_dark='20'
-	set fluent.global.transparency_dark='0.8'
-	set fluent.global.login_animation='1'
-	set fluent.global.card_shadow='small'
-	set fluent.global.card_border='1'
-	set fluent.global.transition_speed='normal'
-	set fluent.global.custom_select='1'
-	set fluent.global.view_transition='1'
-	set fluent.global.tab_animation='1'
-	set fluent.global.prefers_reduced_motion='1'
-	set fluent.global.loading_bar='1'
-EOF
+if ! uci -q get fluent.@global[0] >/dev/null 2>&1; then
+	uci set fluent.global=global
 	uci commit fluent
 fi
 
-
-# Ensure custom login background storage exists for uploads on fresh installs
 mkdir -p /www/luci-static/fluent/background
 chmod 0755 /www/luci-static/fluent/background
 exit 0
