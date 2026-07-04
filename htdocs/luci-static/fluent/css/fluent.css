@@ -5553,6 +5553,9 @@ cbi-dropdown:after, .cbi-dropdown:after {
 
 cbi-dropdown[open], .cbi-dropdown[open] {
   z-index: var(--fluent-zindex-dropdown);
+}
+
+cbi-dropdown[open]:not(.fluent-custom-select), .cbi-dropdown[open]:not(.fluent-custom-select) {
   anchor-name: --fluent-cbi-dropdown-active !important;
 }
 

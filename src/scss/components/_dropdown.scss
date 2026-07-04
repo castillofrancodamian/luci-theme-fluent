@@ -58,7 +58,9 @@ cbi-dropdown,
 
   &[open] {
     z-index: var(--fluent-zindex-dropdown);
-    anchor-name: --fluent-cbi-dropdown-active !important;
+    &:not(.fluent-custom-select) {
+      anchor-name: --fluent-cbi-dropdown-active !important;
+    }
   }
 
   // ----------------------------------------------------------
