@@ -6457,6 +6457,24 @@ cbi-dropdown.fluent-custom-select[data-fluent-floating="anchor"][open] > ul.drop
   right: auto !important;
 }
 
+@supports (anchor-name: --a) {
+  cbi-dropdown:not(.fluent-custom-select)[open] > ul.dropdown, .cbi-dropdown:not(.fluent-custom-select)[open] > ul.dropdown {
+    position-try-fallbacks: flip-block;
+    position-visibility: anchors-visible;
+    top: calc(anchor(bottom) + var(--fluent-space-xxs)) !important;
+    bottom: auto !important;
+    left: anchor(left) !important;
+    min-width: anchor-size(width) !important;
+    width: max-content !important;
+    max-width: calc(100vw - 16px) !important;
+    max-height: min(350px, 50vh) !important;
+    z-index: calc(var(--fluent-zindex-dropdown) + 1) !important;
+    margin: 0 !important;
+    position: fixed !important;
+    right: auto !important;
+  }
+}
+
 .cbi-value-field.cbi-dropdown-open {
   position: relative;
   z-index: 2000 !important;

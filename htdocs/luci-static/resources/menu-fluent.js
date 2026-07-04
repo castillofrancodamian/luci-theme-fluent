@@ -338,21 +338,21 @@ function select_dropdown_r() {
     document.querySelectorAll(".fluent-custom-select[open]").forEach((e)=>{
         if (!(e instanceof HTMLElement) || "anchor" === e.getAttribute("data-fluent-floating")) return;
         let t = e.previousElementSibling;
-        t instanceof HTMLSelectElement && select_dropdown_s(e, t);
+        t instanceof HTMLSelectElement && select_dropdown_d(e, t);
     });
 }
 function setupFluentSelects() {
     "0" === document.body.getAttribute("data-theme-custom-select") || (select_dropdown_n || (select_dropdown_n = !0, window.addEventListener("scroll", select_dropdown_r, !0), window.addEventListener("resize", select_dropdown_r)), document.querySelectorAll("select").forEach((e)=>{
-        select_dropdown_c(e);
-    }), document.querySelectorAll("cbi-dropdown").forEach((e)=>{
-        select_dropdown_i(e);
+        select_dropdown_u(e);
+    }), document.querySelectorAll("cbi-dropdown, .cbi-dropdown").forEach((e)=>{
+        e.classList.contains("fluent-custom-select") || select_dropdown_s(e);
     }), new MutationObserver((e)=>{
         e.forEach((e)=>{
             e.addedNodes.forEach((e)=>{
-                e.nodeType === Node.ELEMENT_NODE && ("SELECT" === e.tagName ? select_dropdown_c(e) : "CBI-DROPDOWN" === e.tagName ? select_dropdown_i(e) : (e.querySelectorAll("select").forEach((e)=>{
-                    select_dropdown_c(e);
-                }), e.querySelectorAll("cbi-dropdown").forEach((e)=>{
-                    select_dropdown_i(e);
+                e.nodeType === Node.ELEMENT_NODE && ("SELECT" === e.tagName ? select_dropdown_u(e) : "CBI-DROPDOWN" === e.tagName || e.classList.contains("cbi-dropdown") ? e.classList.contains("fluent-custom-select") || select_dropdown_s(e) : (e.querySelectorAll("select").forEach((e)=>{
+                    select_dropdown_u(e);
+                }), e.querySelectorAll("cbi-dropdown, .cbi-dropdown").forEach((e)=>{
+                    e.classList.contains("fluent-custom-select") || select_dropdown_s(e);
                 })));
             });
         });
@@ -361,31 +361,38 @@ function setupFluentSelects() {
         subtree: !0
     }));
 }
-function select_dropdown_i(e) {
-    let t = e.querySelector("span.open");
-    t && "true" !== t.getAttribute("data-chevron-upgraded") && (t.setAttribute("data-chevron-upgraded", "true"), t.innerHTML = '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>');
+let select_dropdown_i = 0;
+function select_dropdown_s(e) {
+    let t;
+    if ((t = e.querySelector("span.open")) && "true" !== t.getAttribute("data-chevron-upgraded") && (t.setAttribute("data-chevron-upgraded", "true"), t.innerHTML = '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>'), "true" !== e.getAttribute("data-fluent-anchor-setup")) {
+        e.setAttribute("data-fluent-anchor-setup", "true");
+        let t = ++select_dropdown_i, o = "--fluent-cbi-anchor-".concat(t);
+        e.style.setProperty("anchor-name", o);
+        let n = e.querySelector("ul.dropdown");
+        n instanceof HTMLElement && n.style.setProperty("position-anchor", o);
+    }
 }
 function select_dropdown_a(e, t) {
     let o = t.offsetTop, n = o + t.offsetHeight, l = e.scrollTop, r = l + e.clientHeight;
     o < l ? e.scrollTop = o : n > r && (e.scrollTop = n - e.clientHeight);
 }
-function select_dropdown_s(t, o) {
+function select_dropdown_d(t, o) {
     let n = t.getBoundingClientRect(), l = window.innerHeight, r = l - n.bottom, i = n.top;
     if (r < Math.min(32 * o.options.length + 10, 250) && i > r ? t.setAttribute("data-open-direction", "up") : t.setAttribute("data-open-direction", "down"), !t.closest("#modal_overlay .modal")) return void t.removeAttribute("data-fluent-floating");
     if (void 0 !== select_dropdown_e ? select_dropdown_e : select_dropdown_e = "u" > typeof CSS && "function" == typeof HTMLElement.prototype.showPopover && CSS.supports("anchor-name", "--fluent-select-anchor") && CSS.supports("position-anchor", "--fluent-select-anchor") && CSS.supports("top", "anchor(bottom)") && CSS.supports("width", "anchor-size(width)") && CSS.supports("position-try-fallbacks", "flip-block")) {
         t.setAttribute("data-fluent-floating", "anchor"), t.style.removeProperty("--fluent-dropdown-left"), t.style.removeProperty("--fluent-dropdown-top"), t.style.removeProperty("--fluent-dropdown-width"), t.style.removeProperty("--fluent-dropdown-max-height");
         return;
     }
-    let a = Math.min(32 * o.options.length + 10, 350, 0.5 * l), s = r < a && i > r, d = Math.min(a, Math.max(64, s ? n.top - 8 - 4 : l - n.bottom - 8 - 4)), c = Math.min(n.width, window.innerWidth - 16), u = Math.min(Math.max(8, n.left), window.innerWidth - c - 8), p = s ? Math.max(8, n.top - d - 4) : Math.min(l - 8 - d, n.bottom + 4);
-    t.setAttribute("data-open-direction", s ? "up" : "down"), t.setAttribute("data-fluent-floating", "modal"), t.style.setProperty("--fluent-dropdown-left", "".concat(u, "px")), t.style.setProperty("--fluent-dropdown-top", "".concat(p, "px")), t.style.setProperty("--fluent-dropdown-width", "".concat(c, "px")), t.style.setProperty("--fluent-dropdown-max-height", "".concat(d, "px"));
+    let s = Math.min(32 * o.options.length + 10, 350, 0.5 * l), a = r < s && i > r, d = Math.min(s, Math.max(64, a ? n.top - 8 - 4 : l - n.bottom - 8 - 4)), c = Math.min(n.width, window.innerWidth - 16), u = Math.min(Math.max(8, n.left), window.innerWidth - c - 8), p = a ? Math.max(8, n.top - d - 4) : Math.min(l - 8 - d, n.bottom + 4);
+    t.setAttribute("data-open-direction", a ? "up" : "down"), t.setAttribute("data-fluent-floating", "modal"), t.style.setProperty("--fluent-dropdown-left", "".concat(u, "px")), t.style.setProperty("--fluent-dropdown-top", "".concat(p, "px")), t.style.setProperty("--fluent-dropdown-width", "".concat(c, "px")), t.style.setProperty("--fluent-dropdown-max-height", "".concat(d, "px"));
 }
-function select_dropdown_d(e) {
+function select_dropdown_c(e) {
     var t;
     e.removeAttribute("open"), e.removeAttribute("data-fluent-floating"), e.style.removeProperty("--fluent-dropdown-left"), e.style.removeProperty("--fluent-dropdown-top"), e.style.removeProperty("--fluent-dropdown-width"), e.style.removeProperty("--fluent-dropdown-max-height"), null == (t = e.closest(".cbi-value-field, .cbi-value")) || t.classList.remove("cbi-dropdown-open");
     let o = e.querySelector("ul.dropdown");
     o instanceof HTMLElement && "function" == typeof o.hidePopover && o.matches(":popover-open") && o.hidePopover();
 }
-function select_dropdown_c(e) {
+function select_dropdown_u(e) {
     var n;
     if ((null == e ? void 0 : e.tagName) !== "SELECT" || "true" === e.getAttribute("data-fluent-transformed") || e.closest(".cbi-dropdown") || e.multiple || function(e) {
         let t = e.getAttribute("style") || "";
@@ -416,7 +423,7 @@ function select_dropdown_c(e) {
     e.setAttribute("data-fluent-transformed", "true"), e.style.setProperty("display", "none", "important");
     let i = jsx("li", {});
     i.setAttribute("selected", "");
-    let c = jsx("ul", {
+    let s = jsx("ul", {
         class: "dropdown"
     }), u = jsx("span", {
         class: "open"
@@ -429,7 +436,7 @@ function select_dropdown_c(e) {
                 children: i
             }),
             u,
-            c
+            s
         ]
     });
     if (p.setAttribute("tabindex", "0"), r) {
@@ -437,19 +444,19 @@ function select_dropdown_c(e) {
         e && p.setAttribute("style", e);
     }
     let b = "--fluent-select-anchor-".concat(++select_dropdown_l);
-    p.style.setProperty("anchor-name", b), c.style.setProperty("position-anchor", b), e.disabled && (p.setAttribute("disabled", ""), p.removeAttribute("tabindex"));
+    p.style.setProperty("anchor-name", b), s.style.setProperty("position-anchor", b), e.disabled && (p.setAttribute("disabled", ""), p.removeAttribute("tabindex"));
     let f = ()=>{
-        c.innerHTML = "";
+        s.innerHTML = "";
         let o = "", n = !1;
         if (Array.from(e.options).forEach((e)=>{
             let l = jsx("li", {
                 children: e.text
             });
-            l.setAttribute("data-value", e.value), e.selected && (l.setAttribute("selected", ""), o = e.text, n = !0), e.disabled && l.setAttribute("disabled", ""), c.appendChild(l);
+            l.setAttribute("data-value", e.value), e.selected && (l.setAttribute("selected", ""), o = e.text, n = !0), e.disabled && l.setAttribute("disabled", ""), s.appendChild(l);
         }), !n && e.options.length > 0) {
             let t = e.options[e.selectedIndex >= 0 ? e.selectedIndex : 0];
             o = t.text;
-            let n = c.querySelector('li[data-value="'.concat(t.value, '"]'));
+            let n = s.querySelector('li[data-value="'.concat(t.value, '"]'));
             null == n || n.setAttribute("selected", "");
         }
         i.textContent = o;
@@ -463,32 +470,32 @@ function select_dropdown_c(e) {
                 bubbles: !0
             })), e.dispatchEvent(new Event("input", {
                 bubbles: !0
-            }))), select_dropdown_d(p), t.stopPropagation();
+            }))), select_dropdown_c(p), t.stopPropagation();
             return;
         }
-        if (p.hasAttribute("open")) select_dropdown_d(p);
+        if (p.hasAttribute("open")) select_dropdown_c(p);
         else {
             var n;
             document.querySelectorAll("cbi-dropdown[open], .cbi-dropdown[open]").forEach((e)=>{
-                if (e instanceof HTMLElement && e.classList.contains("fluent-custom-select")) select_dropdown_d(e);
+                if (e instanceof HTMLElement && e.classList.contains("fluent-custom-select")) select_dropdown_c(e);
                 else {
                     var t;
                     e.removeAttribute("open"), null == (t = e.closest(".cbi-value-field, .cbi-value")) || t.classList.remove("cbi-dropdown-open");
                 }
-            }), select_dropdown_s(p, e), p.setAttribute("open", ""), null == (n = p.closest(".cbi-value-field, .cbi-value")) || n.classList.add("cbi-dropdown-open"), "anchor" === p.getAttribute("data-fluent-floating") && (c.setAttribute("popover", "manual"), c.showPopover({
+            }), select_dropdown_d(p, e), p.setAttribute("open", ""), null == (n = p.closest(".cbi-value-field, .cbi-value")) || n.classList.add("cbi-dropdown-open"), "anchor" === p.getAttribute("data-fluent-floating") && (s.setAttribute("popover", "manual"), s.showPopover({
                 source: p
             }));
-            let t = c.querySelector("li[selected]");
-            t && select_dropdown_a(c, t);
+            let t = s.querySelector("li[selected]");
+            t && select_dropdown_a(s, t);
         }
         t.stopPropagation();
     });
     let h = (t)=>{
-        !p.contains(t.target) && t.target !== e && p.hasAttribute("open") && select_dropdown_d(p);
+        !p.contains(t.target) && t.target !== e && p.hasAttribute("open") && select_dropdown_c(p);
     };
     document.addEventListener("click", h, !0), p.addEventListener("keydown", (t)=>{
         if (p.hasAttribute("disabled")) return;
-        let o = p.hasAttribute("open"), n = Array.from(c.querySelectorAll("li:not([disabled])")), l = n.findIndex((e)=>e.hasAttribute("selected"));
+        let o = p.hasAttribute("open"), n = Array.from(s.querySelectorAll("li:not([disabled])")), l = n.findIndex((e)=>e.hasAttribute("selected"));
         switch(t.key){
             case "Enter":
             case " ":
@@ -498,7 +505,7 @@ function select_dropdown_c(e) {
                 } else p.click();
                 break;
             case "Escape":
-                o && (t.preventDefault(), select_dropdown_d(p));
+                o && (t.preventDefault(), select_dropdown_c(p));
                 break;
             case "ArrowDown":
                 if (t.preventDefault(), o) {
@@ -506,7 +513,7 @@ function select_dropdown_c(e) {
                         let t = (l + 1) % n.length;
                         n.forEach((o, n)=>{
                             if (n === t) {
-                                o.setAttribute("selected", ""), select_dropdown_a(c, o);
+                                o.setAttribute("selected", ""), select_dropdown_a(s, o);
                                 let t = o.getAttribute("data-value");
                                 null !== t && (e.value = t, e.dispatchEvent(new Event("change", {
                                     bubbles: !0
@@ -524,7 +531,7 @@ function select_dropdown_c(e) {
                         let t = (l - 1 + n.length) % n.length;
                         n.forEach((o, n)=>{
                             if (n === t) {
-                                o.setAttribute("selected", ""), select_dropdown_a(c, o);
+                                o.setAttribute("selected", ""), select_dropdown_a(s, o);
                                 let t = o.getAttribute("data-value");
                                 null !== t && (e.value = t, e.dispatchEvent(new Event("change", {
                                     bubbles: !0
@@ -537,10 +544,10 @@ function select_dropdown_c(e) {
                 } else p.click();
                 break;
             case "Tab":
-                o && select_dropdown_d(p);
+                o && select_dropdown_c(p);
         }
     }), e.addEventListener("change", ()=>{
-        let t = e.value, o = Array.from(c.querySelectorAll("li")), n = "";
+        let t = e.value, o = Array.from(s.querySelectorAll("li")), n = "";
         o.forEach((e)=>{
             e.getAttribute("data-value") === t ? (e.setAttribute("selected", ""), n = e.textContent || "") : e.removeAttribute("selected");
         }), i.textContent = n;
@@ -553,7 +560,7 @@ function select_dropdown_c(e) {
     });
     let m = new MutationObserver((t)=>{
         t.forEach((t)=>{
-            "disabled" === t.attributeName && (e.disabled ? (p.setAttribute("disabled", ""), p.removeAttribute("tabindex"), select_dropdown_d(p)) : (p.removeAttribute("disabled"), p.setAttribute("tabindex", "0")));
+            "disabled" === t.attributeName && (e.disabled ? (p.setAttribute("disabled", ""), p.removeAttribute("tabindex"), select_dropdown_c(p)) : (p.removeAttribute("disabled"), p.setAttribute("tabindex", "0")));
         });
     });
     m.observe(e, {
