@@ -348,6 +348,21 @@ cbi-dropdown,
       text-overflow: ellipsis;
       white-space: nowrap;
 
+      // Allow rich elements (e.g. descriptions, badges) to wrap normally
+      &:has(.hide-close),
+      &:has(div) {
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+
+        .hide-close {
+          min-width: unset !important;
+          width: 100% !important;
+        }
+      }
+
       // Transition
       transition:
         background-color 0.05s var(--fluent-easing-standard),
@@ -822,7 +837,7 @@ cbi-dropdown,
       left: anchor(--fluent-cbi-dropdown-active left) !important;
       right: auto !important;
       min-width: anchor-size(--fluent-cbi-dropdown-active width) !important;
-      width: max-content !important;
+      width: anchor-size(--fluent-cbi-dropdown-active width) !important;
       max-width: calc(100vw - 16px) !important;
       max-height: min(350px, 50vh) !important;
       margin: 0 !important;

@@ -5820,12 +5820,67 @@ cbi-dropdown[open] > ul.dropdown > li, .cbi-dropdown[open] > ul.dropdown > li {
   font-weight: var(--fluent-font-weight-regular);
   text-overflow: ellipsis;
   white-space: nowrap;
-  transition: background-color 50ms var(--fluent-easing-standard),color 50ms var(--fluent-easing-standard);
   align-items: center;
   line-height: 20px;
   display: flex;
   position: relative;
   overflow: hidden;
+}
+
+cbi-dropdown[open] > ul.dropdown > li:has(.hide-close) {
+  white-space: normal !important;
+  text-overflow: clip !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  overflow: visible !important;
+}
+
+cbi-dropdown[open] > ul.dropdown > li:has(div) {
+  white-space: normal !important;
+  text-overflow: clip !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  overflow: visible !important;
+}
+
+.cbi-dropdown[open] > ul.dropdown > li:has(.hide-close) {
+  white-space: normal !important;
+  text-overflow: clip !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  overflow: visible !important;
+}
+
+.cbi-dropdown[open] > ul.dropdown > li:has(div) {
+  white-space: normal !important;
+  text-overflow: clip !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  overflow: visible !important;
+}
+
+cbi-dropdown[open] > ul.dropdown > li:has(.hide-close) .hide-close {
+  min-width: unset !important;
+  width: 100% !important;
+}
+
+cbi-dropdown[open] > ul.dropdown > li:has(div) .hide-close {
+  min-width: unset !important;
+  width: 100% !important;
+}
+
+.cbi-dropdown[open] > ul.dropdown > li:has(.hide-close) .hide-close {
+  min-width: unset !important;
+  width: 100% !important;
+}
+
+.cbi-dropdown[open] > ul.dropdown > li:has(div) .hide-close {
+  min-width: unset !important;
+  width: 100% !important;
+}
+
+cbi-dropdown[open] > ul.dropdown > li, .cbi-dropdown[open] > ul.dropdown > li {
+  transition: background-color 50ms var(--fluent-easing-standard),color 50ms var(--fluent-easing-standard);
 }
 
 cbi-dropdown[open] > ul.dropdown > li > span, cbi-dropdown[open] > ul.dropdown > li > .ifacebadge, .cbi-dropdown[open] > ul.dropdown > li > span, .cbi-dropdown[open] > ul.dropdown > li > .ifacebadge {
@@ -6470,7 +6525,7 @@ cbi-dropdown.fluent-custom-select[data-fluent-floating="anchor"][open] > ul.drop
     bottom: auto !important;
     left: anchor(--fluent-cbi-dropdown-active left) !important;
     min-width: anchor-size(--fluent-cbi-dropdown-active width) !important;
-    width: max-content !important;
+    width: anchor-size(--fluent-cbi-dropdown-active width) !important;
     max-width: calc(100vw - 16px) !important;
     max-height: min(350px, 50vh) !important;
     z-index: calc(var(--fluent-zindex-dropdown) + 1) !important;
