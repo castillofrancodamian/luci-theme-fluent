@@ -54,6 +54,15 @@
   --fluent-card-padding: var(--fluent-space-lg);
   --fluent-modal-radius: var(--fluent-radius-lg);
   --fluent-modal-padding: var(--fluent-space-xl);
+}
+
+@media (max-width: 767.98px) {
+  :root {
+    --fluent-modal-padding: var(--fluent-space-lg);
+  }
+}
+
+:root {
   --fluent-tab-height: 44px;
   --fluent-tab-indicator-height: 3px;
   --fluent-checkbox-size: 20px;
@@ -4477,6 +4486,7 @@ input[type="checkbox"]:disabled:checked:before {
 }
 
 .table input[type="checkbox"] {
+  border-radius: var(--fluent-radius-md) !important;
   border: 1px solid var(--fluent-checkbox-border) !important;
   background-color: var(--fluent-checkbox-bg) !important;
   vertical-align: middle !important;
@@ -4487,7 +4497,6 @@ input[type="checkbox"]:disabled:checked:before {
   background-size: auto !important;
   border-style: solid !important;
   border-width: 1px !important;
-  border-radius: 4px !important;
   width: 20px !important;
   min-width: 20px !important;
   height: 20px !important;
@@ -4546,6 +4555,7 @@ input[type="checkbox"]:disabled:checked:before {
 }
 
 .cbi-section-table input[type="checkbox"] {
+  border-radius: var(--fluent-radius-md) !important;
   border: 1px solid var(--fluent-checkbox-border) !important;
   background-color: var(--fluent-checkbox-bg) !important;
   vertical-align: middle !important;
@@ -4556,7 +4566,6 @@ input[type="checkbox"]:disabled:checked:before {
   background-size: auto !important;
   border-style: solid !important;
   border-width: 1px !important;
-  border-radius: 4px !important;
   width: 20px !important;
   min-width: 20px !important;
   height: 20px !important;
@@ -4615,6 +4624,7 @@ input[type="checkbox"]:disabled:checked:before {
 }
 
 .cbi-dropdown input[type="checkbox"] {
+  border-radius: var(--fluent-radius-md) !important;
   border: 1px solid var(--fluent-checkbox-border) !important;
   background-color: var(--fluent-checkbox-bg) !important;
   vertical-align: middle !important;
@@ -4625,7 +4635,6 @@ input[type="checkbox"]:disabled:checked:before {
   background-size: auto !important;
   border-style: solid !important;
   border-width: 1px !important;
-  border-radius: 4px !important;
   width: 20px !important;
   min-width: 20px !important;
   height: 20px !important;
@@ -4684,6 +4693,7 @@ input[type="checkbox"]:disabled:checked:before {
 }
 
 td input[type="checkbox"] {
+  border-radius: var(--fluent-radius-md) !important;
   border: 1px solid var(--fluent-checkbox-border) !important;
   background-color: var(--fluent-checkbox-bg) !important;
   vertical-align: middle !important;
@@ -4694,7 +4704,6 @@ td input[type="checkbox"] {
   background-size: auto !important;
   border-style: solid !important;
   border-width: 1px !important;
-  border-radius: 4px !important;
   width: 20px !important;
   min-width: 20px !important;
   height: 20px !important;
@@ -4753,6 +4762,7 @@ td input[type="checkbox"]:disabled:checked {
 }
 
 th input[type="checkbox"] {
+  border-radius: var(--fluent-radius-md) !important;
   border: 1px solid var(--fluent-checkbox-border) !important;
   background-color: var(--fluent-checkbox-bg) !important;
   vertical-align: middle !important;
@@ -4763,7 +4773,6 @@ th input[type="checkbox"] {
   background-size: auto !important;
   border-style: solid !important;
   border-width: 1px !important;
-  border-radius: 4px !important;
   width: 20px !important;
   min-width: 20px !important;
   height: 20px !important;
@@ -4822,6 +4831,7 @@ th input[type="checkbox"]:disabled:checked {
 }
 
 .tr .td input[type="checkbox"] {
+  border-radius: var(--fluent-radius-md) !important;
   border: 1px solid var(--fluent-checkbox-border) !important;
   background-color: var(--fluent-checkbox-bg) !important;
   vertical-align: middle !important;
@@ -4832,7 +4842,6 @@ th input[type="checkbox"]:disabled:checked {
   background-size: auto !important;
   border-style: solid !important;
   border-width: 1px !important;
-  border-radius: 4px !important;
   width: 20px !important;
   min-width: 20px !important;
   height: 20px !important;
@@ -4891,6 +4900,7 @@ th input[type="checkbox"]:disabled:checked {
 }
 
 .tr .th input[type="checkbox"] {
+  border-radius: var(--fluent-radius-md) !important;
   border: 1px solid var(--fluent-checkbox-border) !important;
   background-color: var(--fluent-checkbox-bg) !important;
   vertical-align: middle !important;
@@ -4901,7 +4911,6 @@ th input[type="checkbox"]:disabled:checked {
   background-size: auto !important;
   border-style: solid !important;
   border-width: 1px !important;
-  border-radius: 4px !important;
   width: 20px !important;
   min-width: 20px !important;
   height: 20px !important;
@@ -6171,6 +6180,7 @@ cbi-dropdown ul.dropdown > li input[type="checkbox"]:disabled, .cbi-dropdown ul.
 
 cbi-dropdown ul.dropdown > li input[type="checkbox"], .cbi-dropdown ul.dropdown > li input[type="checkbox"] {
   pointer-events: none;
+  border-radius: var(--fluent-radius-sm) !important;
 }
 
 cbi-dropdown ul.dropdown > li[selected] input[type="checkbox"], cbi-dropdown ul.dropdown > li input[type="checkbox"]:checked, cbi-dropdown ul.dropdown > li[selected] input[type="checkbox"]:hover, cbi-dropdown ul.dropdown > li input[type="checkbox"]:checked:hover, cbi-dropdown ul.dropdown > li[selected] input[type="checkbox"]:focus, cbi-dropdown ul.dropdown > li input[type="checkbox"]:checked:focus, cbi-dropdown ul.dropdown > li[selected] input[type="checkbox"]:active, cbi-dropdown ul.dropdown > li input[type="checkbox"]:checked:active, cbi-dropdown ul.dropdown > li:hover input[type="checkbox"]:checked, cbi-dropdown ul.dropdown > li[selected]:hover input[type="checkbox"], cbi-dropdown ul.dropdown > li.focus input[type="checkbox"]:checked, cbi-dropdown ul.dropdown > li[selected].focus input[type="checkbox"], .cbi-dropdown ul.dropdown > li[selected] input[type="checkbox"], .cbi-dropdown ul.dropdown > li input[type="checkbox"]:checked, .cbi-dropdown ul.dropdown > li[selected] input[type="checkbox"]:hover, .cbi-dropdown ul.dropdown > li input[type="checkbox"]:checked:hover, .cbi-dropdown ul.dropdown > li[selected] input[type="checkbox"]:focus, .cbi-dropdown ul.dropdown > li input[type="checkbox"]:checked:focus, .cbi-dropdown ul.dropdown > li[selected] input[type="checkbox"]:active, .cbi-dropdown ul.dropdown > li input[type="checkbox"]:checked:active, .cbi-dropdown ul.dropdown > li:hover input[type="checkbox"]:checked, .cbi-dropdown ul.dropdown > li[selected]:hover input[type="checkbox"], .cbi-dropdown ul.dropdown > li.focus input[type="checkbox"]:checked, .cbi-dropdown ul.dropdown > li[selected].focus input[type="checkbox"] {
