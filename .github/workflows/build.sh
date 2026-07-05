@@ -74,10 +74,9 @@ ls -la feeds.conf.default scripts/ 2>/dev/null || { echo "ERROR: SDK extraction 
 sed -i 's/git\.openwrt\.org\/project\/luci/github\.com\/openwrt\/luci/g' ./feeds.conf.default
 sed -i 's/git\.openwrt\.org\/project\/feeds/github\.com\/openwrt\/feeds/g' ./feeds.conf.default
 
-# Update & install LuCI feeds
 echo ">>> Updating feeds..."
-./scripts/feeds update luci
-./scripts/feeds install luci
+./scripts/feeds update -a
+./scripts/feeds install -a
 
 # Copy package sources into SDK package tree
 echo ">>> Installing package sources..."
