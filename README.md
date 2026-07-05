@@ -15,7 +15,7 @@ A FluentUI-inspired OpenWrt LuCI theme built with Rsbuild using pure TypeScript/
 [![release](https://img.shields.io/github/v/release/LazuliKao/luci-theme-fluent?style=flat-square)](https://github.com/LazuliKao/luci-theme-fluent/releases)
 [![downloads](https://img.shields.io/github/downloads/LazuliKao/luci-theme-fluent/total?style=flat-square)](https://github.com/LazuliKao/luci-theme-fluent/releases)
 
-**English**
+**English** | [简体中文](./README.zh-Hans.md)
 
 [Features](#key-features) • [Showcase](#showcase) • [Getting Started](#getting-started) • [Configuration](#configuration) • [Build](#build) • [Project Structure](#project-structure) • [Development](#development) • [Credits](#credits)
 </div>
