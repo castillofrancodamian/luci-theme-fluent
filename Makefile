@@ -3,9 +3,10 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=luci-theme-fluent
 PKG_VERSION:=1.0.4
 PKG_RELEASE:=1
+PKG_LICENSE:=Apache-2.0
 
 LUCI_TITLE:=Fluent Theme for LuCI
-LUCI_DEPENDS:=
+LUCI_DEPENDS:=+luci-base
 LUCI_MINIFY_CSS:=0
 
 include $(TOPDIR)/feeds/luci/luci.mk
