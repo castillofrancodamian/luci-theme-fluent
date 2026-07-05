@@ -26,7 +26,7 @@ export default defineConfig({
       output: {
         module: true,
         charset: "ascii",
-        overrideBrowserslist: ["defaults", "not ie <= 11", "not op_mini all", "chrome >= 60", "firefox >= 60", "safari >= 11", "edge >= 16"],
+        overrideBrowserslist: ["defaults", "not ie <= 11", "not op_mini all", "chrome >= 125", "firefox >= 147", "safari >= 26", "edge >= 125"],
         distPath: {
           root: "../htdocs/luci-static/resources",
           js: ".",

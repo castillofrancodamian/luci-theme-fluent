@@ -43,161 +43,42 @@ __webpack_require__.d(__webpack_exports__, {
   main: () => (/* binding */ main)
 });
 
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_define_property.js
-function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
-    } else obj[key] = value;
-
-    return obj;
-}
-
-
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_spread.js
-
-
-function _object_spread(target) {
-    for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
-
-        if (typeof Object.getOwnPropertySymbols === "function") {
-            ownKeys = ownKeys.concat(
-                Object.getOwnPropertySymbols(source).filter(function(sym) {
-                    return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-                })
-            );
-        }
-
-        ownKeys.forEach(function(key) {
-            _define_property(target, key, source[key]);
-        });
-    }
-
-    return target;
-}
-
-
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_spread_props.js
-function _object_spread_props_ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-
-    if (Object.getOwnPropertySymbols) {
-        var symbols = Object.getOwnPropertySymbols(object);
-        if (enumerableOnly) {
-            symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-            });
-        }
-        keys.push.apply(keys, symbols);
-    }
-
-    return keys;
-}
-function _object_spread_props(target, source) {
-    source = source != null ? source : {};
-
-    if (Object.getOwnPropertyDescriptors) Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    else {
-        _object_spread_props_ownKeys(Object(source)).forEach(function(key) {
-            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-    }
-
-    return target;
-}
-
-
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_without_properties_loose.js
-function _object_without_properties_loose(source, excluded) {
-    if (source == null) return {};
-
-    var target = {}, sourceKeys = Object.getOwnPropertyNames(source), key, i;
-    for (i = 0; i < sourceKeys.length; i++) {
-        key = sourceKeys[i];
-        if (excluded.indexOf(key) >= 0) continue;
-        if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-        target[key] = source[key];
-    }
-
-    return target;
-}
-
-
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_without_properties.js
-
-
-function _object_without_properties(source, excluded) {
-    if (source == null) return {};
-
-    var target = {}, sourceKeys, key, i;
-    if (typeof Reflect !== "undefined" && Reflect.ownKeys) {
-        sourceKeys = Reflect.ownKeys(Object(source));
-        for (i = 0; i < sourceKeys.length; i++) {
-            key = sourceKeys[i];
-            if (excluded.indexOf(key) >= 0) continue;
-            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-            target[key] = source[key];
-        }
-
-        return target;
-    }
-
-    target = _object_without_properties_loose(source, excluded);
-    if (Object.getOwnPropertySymbols) {
-        sourceKeys = Object.getOwnPropertySymbols(source);
-        for (i = 0; i < sourceKeys.length; i++) {
-            key = sourceKeys[i];
-            if (excluded.indexOf(key) >= 0) continue;
-            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-            target[key] = source[key];
-        }
-    }
-
-    return target;
-}
-
-
-
 ;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_fa7db5d1266078230463ede1708aac21/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
-
-
-
 const Fragment = Symbol.for("jsx.fragment");
-function jsx_factory_o(o, n) {
-    let s = n || {}, { children: l } = s, f = _object_without_properties(s, [
-        "children"
-    ]), i = function e(t) {
-        let r = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : [];
-        for (let o of t)null != o && "boolean" != typeof o && (Array.isArray(o) ? e(o, r) : r.push(o));
-        return r;
-    }(null == l ? [] : Array.isArray(l) ? l : [
-        l
+function jsx_factory_e(e, t) {
+    let { children: n, ...r } = t || {}, o = function e(t, n = []) {
+        for (let r of t)null != r && "boolean" != typeof r && (Array.isArray(r) ? e(r, n) : n.push(r));
+        return n;
+    }(null == n ? [] : Array.isArray(n) ? n : [
+        n
     ]);
-    if (o === Fragment) {
+    if (e === Fragment) {
         let e = document.createDocumentFragment();
-        return e.append(...i), e;
+        return e.append(...o), e;
     }
-    if ("function" == typeof o) return o(_object_spread_props(_object_spread({}, f), {
-        children: i
-    }));
-    let c = {}, p = _object_spread({}, f);
-    for (let [e, t] of Object.entries(p))e.startsWith("on") && "function" == typeof t ? (c[e] = t, delete p[e]) : "boolean" == typeof t && (t ? p[e] = e : delete p[e]);
-    let a = Object.keys(p).length > 0 ? i.length > 1 ? E(o, p, i) : E(o, p, i[0]) : i.length > 1 ? E(o, {}, i) : E(o, {}, i[0]);
-    for (let [e, t] of Object.entries(c)){
-        let r = e.slice(2).toLowerCase();
-        a.addEventListener(r, t);
+    if ("function" == typeof e) return e({
+        ...r,
+        children: o
+    });
+    let l = {}, f = {
+        ...r
+    };
+    for (let [e, t] of Object.entries(f))e.startsWith("on") && "function" == typeof t ? (l[e] = t, delete f[e]) : "boolean" == typeof t && (t ? f[e] = e : delete f[e]);
+    let u = Object.keys(f).length > 0 ? o.length > 1 ? E(e, f, o) : E(e, f, o[0]) : o.length > 1 ? E(e, {}, o) : E(e, {}, o[0]);
+    for (let [e, t] of Object.entries(l)){
+        let n = e.slice(2).toLowerCase();
+        u.addEventListener(n, t);
     }
-    return a;
+    return u;
 }
-function jsx(e, t) {
-    return jsx_factory_o(e, t);
+function jsx(t, n) {
+    return jsx_factory_e(t, n);
 }
-function jsxs(e, t) {
-    return jsx_factory_o(e, t);
+function jsxs(t, n) {
+    return jsx_factory_e(t, n);
 }
-function jsxDEV(e, t) {
-    return jsx_factory_o(e, t);
+function jsxDEV(t, n) {
+    return jsx_factory_e(t, n);
 }
 
 ;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_fa7db5d1266078230463ede1708aac21/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
@@ -211,8 +92,8 @@ function setupErrorTooltips() {
     }), new MutationObserver((t)=>{
         t.forEach((t)=>{
             if ("attributes" === t.type) {
-                let n, r = t.target;
-                "class" === t.attributeName ? r.classList.contains("cbi-input-invalid") ? error_tooltips_i(r) : (null == (n = error_tooltips_e(r).nextElementSibling) ? void 0 : n.classList.contains("fluent-error-message")) && n.remove() : "data-tooltip" === t.attributeName && r.classList.contains("cbi-input-invalid") && error_tooltips_i(r);
+                let r, n = t.target;
+                "class" === t.attributeName ? n.classList.contains("cbi-input-invalid") ? error_tooltips_i(n) : (r = error_tooltips_e(n).nextElementSibling, r?.classList.contains("fluent-error-message") && r.remove()) : "data-tooltip" === t.attributeName && n.classList.contains("cbi-input-invalid") && error_tooltips_i(n);
             } else "childList" === t.type && t.addedNodes.forEach((t)=>{
                 t.nodeType === Node.ELEMENT_NODE && (t.classList.contains("cbi-input-invalid") && error_tooltips_i(t), t.querySelectorAll(".cbi-input-invalid").forEach((t)=>{
                     error_tooltips_i(t);
@@ -230,39 +111,36 @@ function setupErrorTooltips() {
     });
 }
 function error_tooltips_e(t) {
-    var e;
-    return (null == (e = t.parentElement) ? void 0 : e.closest(".control-group, .password-input, .cbi-input-group, .add-item")) || t;
+    return t.parentElement?.closest(".control-group, .password-input, .cbi-input-group, .add-item") || t;
 }
 function error_tooltips_i(i) {
-    var n;
     let r = i.getAttribute("data-tooltip");
     if (!r) return;
-    let l = error_tooltips_e(i), s = l.nextElementSibling;
-    if (null == s ? void 0 : s.classList.contains("fluent-error-message")) {
-        let t = s.querySelector(".fluent-error-text");
-        t && t.textContent !== r && (t.textContent = r), s.style.display = "";
+    let n = error_tooltips_e(i), l = n.nextElementSibling;
+    if (l?.classList.contains("fluent-error-message")) {
+        let t = l.querySelector(".fluent-error-text");
+        t && t.textContent !== r && (t.textContent = r), l.style.display = "";
         return;
     }
-    (s = jsx("div", {
+    (l = jsx("div", {
         class: "fluent-error-message",
         children: jsx("span", {
             class: "fluent-error-text",
             children: r
         })
-    })).insertAdjacentHTML("afterbegin", '<svg fill="currentColor" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;"><path d="M6 1a5 5 0 1 0 0 10A5 5 0 0 0 6 1Zm2.12 3.28a.5.5 0 0 1 0 .7L6.7 6.42l1.41 1.41a.5.5 0 1 1-.7.7L6 7.12 4.59 8.53a.5.5 0 0 1-.7-.7L5.3 6.42 3.88 5.01a.5.5 0 0 1 .7-.7L6 5.72l1.41-1.41a.5.5 0 0 1 .71 0Z" fill="currentColor"></path></svg>'), null == (n = l.parentNode) || n.insertBefore(s, l.nextSibling);
+    })).insertAdjacentHTML("afterbegin", '<svg fill="currentColor" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;"><path d="M6 1a5 5 0 1 0 0 10A5 5 0 0 0 6 1Zm2.12 3.28a.5.5 0 0 1 0 .7L6.7 6.42l1.41 1.41a.5.5 0 1 1-.7.7L6 7.12 4.59 8.53a.5.5 0 0 1-.7-.7L5.3 6.42 3.88 5.01a.5.5 0 0 1 .7-.7L6 5.72l1.41-1.41a.5.5 0 0 1 .71 0Z" fill="currentColor"></path></svg>'), n.parentNode?.insertBefore(l, n.nextSibling);
 }
 
 ;// CONCATENATED MODULE: ./web/resources/utils/poll-pause.ts
 function setupSelectionPause() {
     let t = !1;
     document.addEventListener("selectionchange", ()=>{
-        var n, e, l, o, i, u, c, p, a;
-        let f = document.getSelection(), r = f && "" !== f.toString().trim();
-        if (!r) {
+        let e = document.getSelection(), n = e && "" !== e.toString().trim();
+        if (!n) {
             let t = document.activeElement;
-            t && ("INPUT" === t.tagName || "TEXTAREA" === t.tagName) && "number" == typeof t.selectionStart && "number" == typeof t.selectionEnd && (r = t.selectionStart !== t.selectionEnd);
+            t && ("INPUT" === t.tagName || "TEXTAREA" === t.tagName) && "number" == typeof t.selectionStart && "number" == typeof t.selectionEnd && (n = t.selectionStart !== t.selectionEnd);
         }
-        r ? !t && ("function" == typeof (null == (e = L) || null == (n = e.poll) ? void 0 : n.active) ? L.poll.active() : "function" == typeof (null == (l = XHR) ? void 0 : l.running) && XHR.running()) && ("function" == typeof (null == (i = L) || null == (o = i.poll) ? void 0 : o.stop) ? L.poll.stop() : "function" == typeof (null == (u = XHR) ? void 0 : u.halt) && XHR.halt(), t = !0) : t && ("function" == typeof (null == (p = L) || null == (c = p.poll) ? void 0 : c.start) ? L.poll.start() : "function" == typeof (null == (a = XHR) ? void 0 : a.run) && XHR.run(), t = !1);
+        n ? !t && ("function" == typeof L?.poll?.active ? L.poll.active() : "function" == typeof XHR?.running && XHR.running()) && ("function" == typeof L?.poll?.stop ? L.poll.stop() : "function" == typeof XHR?.halt && XHR.halt(), t = !0) : t && ("function" == typeof L?.poll?.start ? L.poll.start() : "function" == typeof XHR?.run && XHR.run(), t = !1);
     });
 }
 
@@ -283,9 +161,9 @@ const SlideAnimations = {
             height: t.style.height,
             transition: t.style.transition
         };
-        t.style.display = "block", t.style.overflow = "hidden", t.style.height = "0px", t.style.transition = "height ".concat(n, "ms ease-out"), t.offsetHeight;
+        t.style.display = "block", t.style.overflow = "hidden", t.style.height = "0px", t.style.transition = `height ${n}ms ease-out`, t.offsetHeight;
         let o = t.scrollHeight;
-        t.style.height = "".concat(o, "px");
+        t.style.height = `${o}px`;
         let l = ()=>{
             if (t.style.height = s.height || "", t.style.overflow = s.overflow || "", t.style.transition = s.transition || "", this.runningAnimations.delete(t), e && "function" == typeof e) try {
                 e.call(t);
@@ -307,7 +185,7 @@ const SlideAnimations = {
             height: t.style.height,
             transition: t.style.transition
         }, o = t.scrollHeight;
-        t.style.overflow = "hidden", t.style.height = "".concat(o, "px"), t.style.transition = "height ".concat(n, "ms ease-out"), t.offsetHeight, t.style.height = "0px";
+        t.style.overflow = "hidden", t.style.height = `${o}px`, t.style.transition = `height ${n}ms ease-out`, t.offsetHeight, t.style.height = "0px";
         let l = ()=>{
             if (t.style.display = "none", t.style.height = s.height || "", t.style.overflow = s.overflow || "", t.style.transition = s.transition || "", this.runningAnimations.delete(t), e && "function" == typeof e) try {
                 e.call(t);
@@ -333,8 +211,8 @@ const SlideAnimations = {
 ;// CONCATENATED MODULE: ./web/resources/utils/select-dropdown.tsx
 let select_dropdown_e;
 
-let select_dropdown_n = !1, select_dropdown_l = 0;
-function select_dropdown_r() {
+let select_dropdown_n = !1, select_dropdown_r = 0;
+function select_dropdown_l() {
     document.querySelectorAll(".fluent-custom-select[open]").forEach((e)=>{
         if (!(e instanceof HTMLElement) || "anchor" === e.getAttribute("data-fluent-floating")) return;
         let t = e.previousElementSibling;
@@ -342,7 +220,7 @@ function select_dropdown_r() {
     });
 }
 function setupFluentSelects() {
-    "0" === document.body.getAttribute("data-theme-custom-select") || (select_dropdown_n || (select_dropdown_n = !0, window.addEventListener("scroll", select_dropdown_r, !0), window.addEventListener("resize", select_dropdown_r)), document.querySelectorAll("select").forEach((e)=>{
+    "0" === document.body.getAttribute("data-theme-custom-select") || (select_dropdown_n || (select_dropdown_n = !0, window.addEventListener("scroll", select_dropdown_l, !0), window.addEventListener("resize", select_dropdown_l)), document.querySelectorAll("select").forEach((e)=>{
         select_dropdown_c(e);
     }), document.querySelectorAll("cbi-dropdown, .cbi-dropdown").forEach((e)=>{
         e.classList.contains("fluent-custom-select") || select_dropdown_i(e);
@@ -366,28 +244,26 @@ function select_dropdown_i(e) {
     (t = e.querySelector("span.open")) && "true" !== t.getAttribute("data-chevron-upgraded") && (t.setAttribute("data-chevron-upgraded", "true"), t.innerHTML = '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>');
 }
 function select_dropdown_s(e, t) {
-    let o = t.offsetTop, n = o + t.offsetHeight, l = e.scrollTop, r = l + e.clientHeight;
-    o < l ? e.scrollTop = o : n > r && (e.scrollTop = n - e.clientHeight);
+    let o = t.offsetTop, n = o + t.offsetHeight, r = e.scrollTop, l = r + e.clientHeight;
+    o < r ? e.scrollTop = o : n > l && (e.scrollTop = n - e.clientHeight);
 }
 function select_dropdown_a(t, o) {
-    let n = t.getBoundingClientRect(), l = window.innerHeight, r = l - n.bottom, i = n.top;
-    if (r < Math.min(32 * o.options.length + 10, 250) && i > r ? t.setAttribute("data-open-direction", "up") : t.setAttribute("data-open-direction", "down"), !t.closest("#modal_overlay .modal")) return void t.removeAttribute("data-fluent-floating");
+    let n = t.getBoundingClientRect(), r = window.innerHeight, l = r - n.bottom, i = n.top;
+    if (l < Math.min(32 * o.options.length + 10, 250) && i > l ? t.setAttribute("data-open-direction", "up") : t.setAttribute("data-open-direction", "down"), !t.closest("#modal_overlay .modal")) return void t.removeAttribute("data-fluent-floating");
     if (void 0 !== select_dropdown_e ? select_dropdown_e : select_dropdown_e = "u" > typeof CSS && "function" == typeof HTMLElement.prototype.showPopover && CSS.supports("anchor-name", "--fluent-select-anchor") && CSS.supports("position-anchor", "--fluent-select-anchor") && CSS.supports("top", "anchor(bottom)") && CSS.supports("width", "anchor-size(width)") && CSS.supports("position-try-fallbacks", "flip-block")) {
         t.setAttribute("data-fluent-floating", "anchor"), t.style.removeProperty("--fluent-dropdown-left"), t.style.removeProperty("--fluent-dropdown-top"), t.style.removeProperty("--fluent-dropdown-width"), t.style.removeProperty("--fluent-dropdown-max-height");
         return;
     }
-    let s = Math.min(32 * o.options.length + 10, 350, 0.5 * l), a = r < s && i > r, d = Math.min(s, Math.max(64, a ? n.top - 8 - 4 : l - n.bottom - 8 - 4)), c = Math.min(n.width, window.innerWidth - 16), u = Math.min(Math.max(8, n.left), window.innerWidth - c - 8), p = a ? Math.max(8, n.top - d - 4) : Math.min(l - 8 - d, n.bottom + 4);
-    t.setAttribute("data-open-direction", a ? "up" : "down"), t.setAttribute("data-fluent-floating", "modal"), t.style.setProperty("--fluent-dropdown-left", "".concat(u, "px")), t.style.setProperty("--fluent-dropdown-top", "".concat(p, "px")), t.style.setProperty("--fluent-dropdown-width", "".concat(c, "px")), t.style.setProperty("--fluent-dropdown-max-height", "".concat(d, "px"));
+    let s = Math.min(32 * o.options.length + 10, 350, 0.5 * r), a = l < s && i > l, d = Math.min(s, Math.max(64, a ? n.top - 8 - 4 : r - n.bottom - 8 - 4)), c = Math.min(n.width, window.innerWidth - 16), u = Math.min(Math.max(8, n.left), window.innerWidth - c - 8), p = a ? Math.max(8, n.top - d - 4) : Math.min(r - 8 - d, n.bottom + 4);
+    t.setAttribute("data-open-direction", a ? "up" : "down"), t.setAttribute("data-fluent-floating", "modal"), t.style.setProperty("--fluent-dropdown-left", `${u}px`), t.style.setProperty("--fluent-dropdown-top", `${p}px`), t.style.setProperty("--fluent-dropdown-width", `${c}px`), t.style.setProperty("--fluent-dropdown-max-height", `${d}px`);
 }
 function select_dropdown_d(e) {
-    var t;
-    e.removeAttribute("open"), e.removeAttribute("data-fluent-floating"), e.style.removeProperty("--fluent-dropdown-left"), e.style.removeProperty("--fluent-dropdown-top"), e.style.removeProperty("--fluent-dropdown-width"), e.style.removeProperty("--fluent-dropdown-max-height"), null == (t = e.closest(".cbi-value-field, .cbi-value")) || t.classList.remove("cbi-dropdown-open");
-    let o = e.querySelector("ul.dropdown");
-    o instanceof HTMLElement && "function" == typeof o.hidePopover && o.matches(":popover-open") && o.hidePopover();
+    e.removeAttribute("open"), e.removeAttribute("data-fluent-floating"), e.style.removeProperty("--fluent-dropdown-left"), e.style.removeProperty("--fluent-dropdown-top"), e.style.removeProperty("--fluent-dropdown-width"), e.style.removeProperty("--fluent-dropdown-max-height"), e.closest(".cbi-value-field, .cbi-value")?.classList.remove("cbi-dropdown-open");
+    let t = e.querySelector("ul.dropdown");
+    t instanceof HTMLElement && "function" == typeof t.hidePopover && t.matches(":popover-open") && t.hidePopover();
 }
 function select_dropdown_c(e) {
-    var n;
-    if ((null == e ? void 0 : e.tagName) !== "SELECT" || "true" === e.getAttribute("data-fluent-transformed") || e.closest(".cbi-dropdown") || e.multiple || function(e) {
+    if (e?.tagName !== "SELECT" || "true" === e.getAttribute("data-fluent-transformed") || e.closest(".cbi-dropdown") || e.multiple || function(e) {
         let t = e.getAttribute("style") || "";
         if (/\bdisplay\s*:\s*none/i.test(t) || "none" === e.style.display) return !0;
         if (!e.isConnected) return !1;
@@ -406,56 +282,56 @@ function select_dropdown_c(e) {
                 if (!o) return !0;
                 let n = e.cloneNode(!1);
                 n.style.display = "", document.body.appendChild(n);
-                let l = window.getComputedStyle(n), r = "none" === l.display;
-                return document.body.removeChild(n), r;
+                let r = window.getComputedStyle(n), l = "none" === r.display;
+                return document.body.removeChild(n), l;
             }
         } catch (e) {}
         return !1;
     }(e)) return;
-    let r = e.getAttribute("style");
+    let n = e.getAttribute("style");
     e.setAttribute("data-fluent-transformed", "true"), e.style.setProperty("display", "none", "important");
-    let i = jsx("li", {});
-    i.setAttribute("selected", "");
-    let c = jsx("ul", {
+    let l = jsx("li", {});
+    l.setAttribute("selected", "");
+    let i = jsx("ul", {
         class: "dropdown"
-    }), u = jsx("span", {
+    }), c = jsx("span", {
         class: "open"
     });
-    u.innerHTML = '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>';
-    let p = jsxs("div", {
+    c.innerHTML = '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>';
+    let u = jsxs("div", {
         class: "cbi-dropdown fluent-custom-select",
         children: [
             jsx("ul", {
-                children: i
+                children: l
             }),
-            u,
-            c
+            c,
+            i
         ]
     });
-    if (p.setAttribute("tabindex", "0"), r) {
-        let e = r.replace(/\bdisplay\s*:\s*[^;]+(;|$)/gi, "").trim();
-        e && p.setAttribute("style", e);
+    if (u.setAttribute("tabindex", "0"), n) {
+        let e = n.replace(/\bdisplay\s*:\s*[^;]+(;|$)/gi, "").trim();
+        e && u.setAttribute("style", e);
     }
-    let b = "--fluent-select-anchor-".concat(++select_dropdown_l);
-    p.style.setProperty("anchor-name", b), c.style.setProperty("position-anchor", b), e.disabled && (p.setAttribute("disabled", ""), p.removeAttribute("tabindex"));
-    let f = ()=>{
-        c.innerHTML = "";
+    let p = `--fluent-select-anchor-${++select_dropdown_r}`;
+    u.style.setProperty("anchor-name", p), i.style.setProperty("position-anchor", p), e.disabled && (u.setAttribute("disabled", ""), u.removeAttribute("tabindex"));
+    let b = ()=>{
+        i.innerHTML = "";
         let o = "", n = !1;
         if (Array.from(e.options).forEach((e)=>{
-            let l = jsx("li", {
+            let r = jsx("li", {
                 children: e.text
             });
-            l.setAttribute("data-value", e.value), e.selected && (l.setAttribute("selected", ""), o = e.text, n = !0), e.disabled && l.setAttribute("disabled", ""), c.appendChild(l);
+            r.setAttribute("data-value", e.value), e.selected && (r.setAttribute("selected", ""), o = e.text, n = !0), e.disabled && r.setAttribute("disabled", ""), i.appendChild(r);
         }), !n && e.options.length > 0) {
             let t = e.options[e.selectedIndex >= 0 ? e.selectedIndex : 0];
             o = t.text;
-            let n = c.querySelector('li[data-value="'.concat(t.value, '"]'));
-            null == n || n.setAttribute("selected", "");
+            let n = i.querySelector(`li[data-value="${t.value}"]`);
+            n?.setAttribute("selected", "");
         }
-        i.textContent = o;
+        l.textContent = o;
     };
-    f(), null == (n = e.parentNode) || n.insertBefore(p, e.nextSibling), p.addEventListener("click", (t)=>{
-        if (p.hasAttribute("disabled")) return;
+    b(), e.parentNode?.insertBefore(u, e.nextSibling), u.addEventListener("click", (t)=>{
+        if (u.hasAttribute("disabled")) return;
         let o = t.target.closest("ul.dropdown > li");
         if (o) {
             let n = o.getAttribute("data-value");
@@ -463,50 +339,45 @@ function select_dropdown_c(e) {
                 bubbles: !0
             })), e.dispatchEvent(new Event("input", {
                 bubbles: !0
-            }))), select_dropdown_d(p), t.stopPropagation();
+            }))), select_dropdown_d(u), t.stopPropagation();
             return;
         }
-        if (p.hasAttribute("open")) select_dropdown_d(p);
+        if (u.hasAttribute("open")) select_dropdown_d(u);
         else {
-            var n;
             document.querySelectorAll("cbi-dropdown[open], .cbi-dropdown[open]").forEach((e)=>{
-                if (e instanceof HTMLElement && e.classList.contains("fluent-custom-select")) select_dropdown_d(e);
-                else {
-                    var t;
-                    e.removeAttribute("open"), null == (t = e.closest(".cbi-value-field, .cbi-value")) || t.classList.remove("cbi-dropdown-open");
-                }
-            }), select_dropdown_a(p, e), p.setAttribute("open", ""), null == (n = p.closest(".cbi-value-field, .cbi-value")) || n.classList.add("cbi-dropdown-open"), "anchor" === p.getAttribute("data-fluent-floating") && (c.setAttribute("popover", "manual"), c.showPopover({
-                source: p
+                e instanceof HTMLElement && e.classList.contains("fluent-custom-select") ? select_dropdown_d(e) : (e.removeAttribute("open"), e.closest(".cbi-value-field, .cbi-value")?.classList.remove("cbi-dropdown-open"));
+            }), select_dropdown_a(u, e), u.setAttribute("open", ""), u.closest(".cbi-value-field, .cbi-value")?.classList.add("cbi-dropdown-open"), "anchor" === u.getAttribute("data-fluent-floating") && (i.setAttribute("popover", "manual"), i.showPopover({
+                source: u
             }));
-            let t = c.querySelector("li[selected]");
-            t && select_dropdown_s(c, t);
+            let t = i.querySelector("li[selected]");
+            t && select_dropdown_s(i, t);
         }
         t.stopPropagation();
     });
-    let h = (t)=>{
-        !p.contains(t.target) && t.target !== e && p.hasAttribute("open") && select_dropdown_d(p);
+    let f = (t)=>{
+        !u.contains(t.target) && t.target !== e && u.hasAttribute("open") && select_dropdown_d(u);
     };
-    document.addEventListener("click", h, !0), p.addEventListener("keydown", (t)=>{
-        if (p.hasAttribute("disabled")) return;
-        let o = p.hasAttribute("open"), n = Array.from(c.querySelectorAll("li:not([disabled])")), l = n.findIndex((e)=>e.hasAttribute("selected"));
+    document.addEventListener("click", f, !0), u.addEventListener("keydown", (t)=>{
+        if (u.hasAttribute("disabled")) return;
+        let o = u.hasAttribute("open"), n = Array.from(i.querySelectorAll("li:not([disabled])")), r = n.findIndex((e)=>e.hasAttribute("selected"));
         switch(t.key){
             case "Enter":
             case " ":
                 if (t.preventDefault(), o) {
-                    let e = n[l];
+                    let e = n[r];
                     e && e.click();
-                } else p.click();
+                } else u.click();
                 break;
             case "Escape":
-                o && (t.preventDefault(), select_dropdown_d(p));
+                o && (t.preventDefault(), select_dropdown_d(u));
                 break;
             case "ArrowDown":
                 if (t.preventDefault(), o) {
                     if (n.length > 0) {
-                        let t = (l + 1) % n.length;
+                        let t = (r + 1) % n.length;
                         n.forEach((o, n)=>{
                             if (n === t) {
-                                o.setAttribute("selected", ""), select_dropdown_s(c, o);
+                                o.setAttribute("selected", ""), select_dropdown_s(i, o);
                                 let t = o.getAttribute("data-value");
                                 null !== t && (e.value = t, e.dispatchEvent(new Event("change", {
                                     bubbles: !0
@@ -516,15 +387,15 @@ function select_dropdown_c(e) {
                             } else o.removeAttribute("selected");
                         });
                     }
-                } else p.click();
+                } else u.click();
                 break;
             case "ArrowUp":
                 if (t.preventDefault(), o) {
                     if (n.length > 0) {
-                        let t = (l - 1 + n.length) % n.length;
+                        let t = (r - 1 + n.length) % n.length;
                         n.forEach((o, n)=>{
                             if (n === t) {
-                                o.setAttribute("selected", ""), select_dropdown_s(c, o);
+                                o.setAttribute("selected", ""), select_dropdown_s(i, o);
                                 let t = o.getAttribute("data-value");
                                 null !== t && (e.value = t, e.dispatchEvent(new Event("change", {
                                     bubbles: !0
@@ -534,26 +405,26 @@ function select_dropdown_c(e) {
                             } else o.removeAttribute("selected");
                         });
                     }
-                } else p.click();
+                } else u.click();
                 break;
             case "Tab":
-                o && select_dropdown_d(p);
+                o && select_dropdown_d(u);
         }
     }), e.addEventListener("change", ()=>{
-        let t = e.value, o = Array.from(c.querySelectorAll("li")), n = "";
+        let t = e.value, o = Array.from(i.querySelectorAll("li")), n = "";
         o.forEach((e)=>{
             e.getAttribute("data-value") === t ? (e.setAttribute("selected", ""), n = e.textContent || "") : e.removeAttribute("selected");
-        }), i.textContent = n;
+        }), l.textContent = n;
     });
-    let v = new MutationObserver(()=>{
-        f();
+    let h = new MutationObserver(()=>{
+        b();
     });
-    v.observe(e, {
+    h.observe(e, {
         childList: !0
     });
     let m = new MutationObserver((t)=>{
         t.forEach((t)=>{
-            "disabled" === t.attributeName && (e.disabled ? (p.setAttribute("disabled", ""), p.removeAttribute("tabindex"), select_dropdown_d(p)) : (p.removeAttribute("disabled"), p.setAttribute("tabindex", "0")));
+            "disabled" === t.attributeName && (e.disabled ? (u.setAttribute("disabled", ""), u.removeAttribute("tabindex"), select_dropdown_d(u)) : (u.removeAttribute("disabled"), u.setAttribute("tabindex", "0")));
         });
     });
     m.observe(e, {
@@ -562,15 +433,14 @@ function select_dropdown_c(e) {
             "disabled"
         ]
     });
-    let w = new MutationObserver((t)=>{
+    let v = new MutationObserver((t)=>{
         t.forEach((t)=>{
             t.removedNodes.forEach((t)=>{
-                var o;
-                (t === e || (null == (o = t.contains) ? void 0 : o.call(t, e))) && (document.removeEventListener("click", h, !0), v.disconnect(), m.disconnect(), w.disconnect(), p.remove());
+                (t === e || t.contains?.(e)) && (document.removeEventListener("click", f, !0), h.disconnect(), m.disconnect(), v.disconnect(), u.remove());
             });
         });
     });
-    e.parentNode && w.observe(e.parentNode, {
+    e.parentNode && v.observe(e.parentNode, {
         childList: !0
     });
 }
@@ -580,7 +450,7 @@ let ifacebox_tooltip_e = null;
 function setupIfaceboxTooltips() {
     document.addEventListener("mouseover", (t)=>{
         let o = t.target.closest(".cbi-tooltip-container");
-        if (!(null == o ? void 0 : o.closest('td[data-name="_ifacebox"] .ifacebox-body, .td[data-name="_ifacebox"] .ifacebox-body'))) {
+        if (!o?.closest('td[data-name="_ifacebox"] .ifacebox-body, .td[data-name="_ifacebox"] .ifacebox-body')) {
             ifacebox_tooltip_e && "none" !== ifacebox_tooltip_e.style.display && (ifacebox_tooltip_e.style.display = "none", ifacebox_tooltip_e.style.opacity = "0");
             return;
         }
@@ -588,15 +458,15 @@ function setupIfaceboxTooltips() {
         if (!n) return;
         ifacebox_tooltip_e || ((ifacebox_tooltip_e = document.createElement("div")).id = "fluent-global-tooltip", ifacebox_tooltip_e.className = "cbi-tooltip ifacebadge large", ifacebox_tooltip_e.style.position = "absolute", ifacebox_tooltip_e.style.zIndex = "10000", ifacebox_tooltip_e.style.pointerEvents = "none", ifacebox_tooltip_e.style.display = "none", document.body.appendChild(ifacebox_tooltip_e)), ifacebox_tooltip_e.innerHTML = n.innerHTML, ifacebox_tooltip_e.style.display = "block", ifacebox_tooltip_e.style.opacity = "0";
         let i = o.getBoundingClientRect(), l = ifacebox_tooltip_e.getBoundingClientRect(), s = window.pageYOffset + i.bottom + 6, d = window.pageXOffset + i.left + i.width / 2 - l.width / 2;
-        d < 10 && (d = 10), d + l.width > window.innerWidth - 10 && (d = window.innerWidth - l.width - 10), ifacebox_tooltip_e.style.top = "".concat(s, "px"), ifacebox_tooltip_e.style.left = "".concat(d, "px"), ifacebox_tooltip_e.offsetWidth, ifacebox_tooltip_e.style.opacity = "1";
+        d < 10 && (d = 10), d + l.width > window.innerWidth - 10 && (d = window.innerWidth - l.width - 10), ifacebox_tooltip_e.style.top = `${s}px`, ifacebox_tooltip_e.style.left = `${d}px`, ifacebox_tooltip_e.offsetWidth, ifacebox_tooltip_e.style.opacity = "1";
         let a = window.pageXOffset + i.left + i.width / 2 - d;
-        ifacebox_tooltip_e.style.setProperty("--arrow-left", "".concat(a, "px"));
-        let c = ()=>{
-            ifacebox_tooltip_e && (ifacebox_tooltip_e.style.display = "none", ifacebox_tooltip_e.style.opacity = "0"), o.removeEventListener("mouseleave", c), window.removeEventListener("scroll", r, !0);
-        }, r = ()=>{
-            ifacebox_tooltip_e && (ifacebox_tooltip_e.style.display = "none", ifacebox_tooltip_e.style.opacity = "0"), o.removeEventListener("mouseleave", c), window.removeEventListener("scroll", r, !0);
+        ifacebox_tooltip_e.style.setProperty("--arrow-left", `${a}px`);
+        let r = ()=>{
+            ifacebox_tooltip_e && (ifacebox_tooltip_e.style.display = "none", ifacebox_tooltip_e.style.opacity = "0"), o.removeEventListener("mouseleave", r), window.removeEventListener("scroll", y, !0);
+        }, y = ()=>{
+            ifacebox_tooltip_e && (ifacebox_tooltip_e.style.display = "none", ifacebox_tooltip_e.style.opacity = "0"), o.removeEventListener("mouseleave", r), window.removeEventListener("scroll", y, !0);
         };
-        o.addEventListener("mouseleave", c), window.addEventListener("scroll", r, !0);
+        o.addEventListener("mouseleave", r), window.addEventListener("scroll", y, !0);
     }, !0);
 }
 
@@ -604,73 +474,72 @@ function setupIfaceboxTooltips() {
 function setupThemeFeatures() {
     let e = document.body;
     if (!e) return;
-    let t = L.ui, i = L.rpc.declare({
+    let t = L.ui, r = L.rpc.declare({
         object: 'luci.fluent',
         method: 'set_mode',
         params: [
             'mode'
         ]
-    }), r = e.getAttribute('data-prefers-reduced-motion') || '1';
-    if ('1' === r) {
+    }), i = e.getAttribute('data-prefers-reduced-motion') || '1';
+    if ('1' === i) {
         let t = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         e.setAttribute('data-reduce-motion', t ? 'true' : 'false');
     } else e.setAttribute('data-reduce-motion', 'false');
-    '1' === r && window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (t)=>{
+    '1' === i && window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (t)=>{
         e.setAttribute('data-reduce-motion', t.matches ? 'true' : 'false');
     });
-    let n = e.getAttribute('data-theme-mode') || 'auto', l = document.getElementById('theme-toggle');
-    function s(e) {
+    let l = e.getAttribute('data-theme-mode') || 'auto', s = document.getElementById('theme-toggle');
+    function n(e) {
         return 'dark' === e ? 'dark' : 'light' === e ? 'light' : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
     function a(e, t) {
-        l && (document.documentElement.setAttribute('data-theme', e), l.setAttribute('data-active-theme', e), l.setAttribute('data-mode', t));
+        s && (document.documentElement.setAttribute('data-theme', e), s.setAttribute('data-active-theme', e), s.setAttribute('data-mode', t));
     }
-    l && (a(s(e.getAttribute('data-theme-mode') || 'auto'), n), l.hidden = !1, requestAnimationFrame(()=>{
-        l.classList.add('visible');
-    }), l.addEventListener('click', async ()=>{
-        var r, o;
-        if (l.disabled) return;
-        let d = 'dark' === (r = e.getAttribute('data-theme-mode') || n) ? 'light' : 'light' === r ? 'auto' : 'dark', u = s(d);
-        l.disabled = !0, a(u, d);
+    s && (a(n(e.getAttribute('data-theme-mode') || 'auto'), l), s.hidden = !1, requestAnimationFrame(()=>{
+        s.classList.add('visible');
+    }), s.addEventListener('click', async ()=>{
+        var i;
+        if (s.disabled) return;
+        let o = 'dark' === (i = e.getAttribute('data-theme-mode') || l) ? 'light' : 'light' === i ? 'auto' : 'dark', d = n(o);
+        s.disabled = !0, a(d, o);
         try {
-            let t = await i(d);
-            if ((null == t ? void 0 : t.result) !== 0) throw Error("RPC returned ".concat(null != (o = null == t ? void 0 : t.result) ? o : 'no response', " - permission denied or script error"));
-            e.setAttribute('data-theme-mode', d);
-        } catch (r) {
-            let i = e.getAttribute('data-theme-mode') || n;
-            a(s(i), i), t.addNotification(null, "Failed to save theme mode: ".concat(r instanceof Error ? r.message : String(r)), 'error');
+            let t = await r(o);
+            if (t?.result !== 0) throw Error(`RPC returned ${t?.result ?? 'no response'} - permission denied or script error`);
+            e.setAttribute('data-theme-mode', o);
+        } catch (i) {
+            let r = e.getAttribute('data-theme-mode') || l;
+            a(n(r), r), t.addNotification(null, `Failed to save theme mode: ${i instanceof Error ? i.message : String(i)}`, 'error');
         } finally{
-            l.disabled = !1;
+            s.disabled = !1;
         }
     }), window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (t)=>{
-        if ('auto' !== (e.getAttribute('data-theme-mode') || n)) return;
-        let i = t.matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', i), l.setAttribute('data-active-theme', i);
+        if ('auto' !== (e.getAttribute('data-theme-mode') || l)) return;
+        let r = t.matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', r), s.setAttribute('data-active-theme', r);
     }));
     let o = '1' === e.getAttribute('data-tab-animation');
     function d(e) {
-        var t;
-        let i = e.getBoundingClientRect();
-        if (0 === i.width && 0 === i.height) return;
+        let t = e.getBoundingClientRect();
+        if (0 === t.width && 0 === t.height) return;
         let r = e.querySelector('.fluent-tab-slider');
         r || ((r = document.createElement('div')).className = 'fluent-tab-slider', e.appendChild(r));
-        let n = e.querySelector('li.cbi-tab, li.active');
-        if (!n) {
+        let i = e.querySelector('li.cbi-tab, li.active');
+        if (!i) {
             r.style.width = '0px';
             return;
         }
-        let l = n.querySelector('a');
+        let l = i.querySelector('a');
         if (!l) return;
-        let s = l.getBoundingClientRect(), a = window.getComputedStyle(l), o = parseFloat(a.paddingLeft) || 16, d = parseFloat(a.paddingRight) || 16, u = s.left - i.left + e.scrollLeft + o, c = s.width - o - d, m = "".concat(u, "px"), f = "".concat(c, "px");
-        if (r.style.left === m && r.style.width === f) return;
-        let h = function(e) {
+        let s = l.getBoundingClientRect(), n = window.getComputedStyle(l), a = parseFloat(n.paddingLeft) || 16, o = parseFloat(n.paddingRight) || 16, d = s.left - t.left + e.scrollLeft + a, u = s.width - a - o, c = `${d}px`, m = `${u}px`;
+        if (r.style.left === c && r.style.width === m) return;
+        let f = function(e) {
             if (e.classList.contains('tabs')) return 'header-tabs';
             let t = e.closest('.cbi-section');
-            return (null == t ? void 0 : t.id) ? "cbi-tabs-".concat(t.id) : 'cbi-tabs-generic';
-        }(e), b = null == (t = window._fluent_last_tab_pos) ? void 0 : t[h];
-        '' === r.style.left && b && Date.now() - b.time < 2000 && (r.style.transition = 'none', r.style.left = b.left, r.style.width = b.width, r.offsetHeight, r.style.transition = ''), r.style.left = m, r.style.width = f, window._fluent_last_tab_pos && (window._fluent_last_tab_pos[h] = {
-            left: m,
-            width: f,
+            return t?.id ? `cbi-tabs-${t.id}` : 'cbi-tabs-generic';
+        }(e), h = window._fluent_last_tab_pos?.[f];
+        '' === r.style.left && h && Date.now() - h.time < 2000 && (r.style.transition = 'none', r.style.left = h.left, r.style.width = h.width, r.offsetHeight, r.style.transition = ''), r.style.left = c, r.style.width = m, window._fluent_last_tab_pos && (window._fluent_last_tab_pos[f] = {
+            left: c,
+            width: m,
             time: Date.now()
         });
     }
@@ -680,26 +549,26 @@ function setupThemeFeatures() {
             e.dataset.sliderInit = 'true';
             let t = e.querySelector('.fluent-tab-slider');
             if (t || ((t = document.createElement('div')).className = 'fluent-tab-slider', e.appendChild(t)), o && e.classList.contains('tabs')) {
-                let i = null;
+                let r = null;
                 try {
-                    i = sessionStorage.getItem('fluent-tab-slider-pos');
-                } catch (e) {}
-                if (i) try {
-                    let r = JSON.parse(i);
-                    sessionStorage.removeItem('fluent-tab-slider-pos'), t.style.transition = 'none', t.style.left = r.left, t.style.width = r.width, t.offsetHeight, t.style.transition = '', d(e);
-                } catch (t) {
+                    r = sessionStorage.getItem('fluent-tab-slider-pos');
+                } catch  {}
+                if (r) try {
+                    let i = JSON.parse(r);
+                    sessionStorage.removeItem('fluent-tab-slider-pos'), t.style.transition = 'none', t.style.left = i.left, t.style.width = i.width, t.offsetHeight, t.style.transition = '', d(e);
+                } catch  {
                     d(e);
                 }
                 else d(e), t.style.transition = 'none', t.style.transform = 'scaleX(0)', t.offsetHeight, t.style.transition = '', t.style.transform = 'scaleX(1)';
                 e.querySelectorAll('li > a').forEach((e)=>{
-                    let i = e.getAttribute('href');
-                    i && '#' !== i && e.addEventListener('click', ()=>{
+                    let r = e.getAttribute('href');
+                    r && '#' !== r && e.addEventListener('click', ()=>{
                         try {
                             t && sessionStorage.setItem('fluent-tab-slider-pos', JSON.stringify({
                                 left: t.style.left,
                                 width: t.style.width
                             }));
-                        } catch (e) {}
+                        } catch  {}
                     });
                 });
             } else d(e);
@@ -714,7 +583,7 @@ function setupThemeFeatures() {
             });
             try {
                 new IntersectionObserver((t)=>{
-                    for (let i of t)i.isIntersecting && d(e);
+                    for (let r of t)r.isIntersecting && d(e);
                 }, {
                     threshold: 0
                 }).observe(e);
@@ -731,50 +600,50 @@ function setupThemeFeatures() {
             d(e);
         });
     }), '1' === e.getAttribute('data-loading-bar')) {
-        let e = !1, t = document.getElementById('fluent-top-loading'), i = ()=>{
+        let e = !1, t = document.getElementById('fluent-top-loading'), r = ()=>{
             t && !e && t.classList.add('loaded');
-        }, r = ()=>{
+        }, i = ()=>{
             t && t.classList.remove('loaded');
         };
-        'interactive' === document.readyState || 'complete' === document.readyState ? i() : document.addEventListener('DOMContentLoaded', i), window.addEventListener('load', i), window.addEventListener('beforeunload', ()=>{
-            e = !0, r();
+        'interactive' === document.readyState || 'complete' === document.readyState ? r() : document.addEventListener('DOMContentLoaded', r), window.addEventListener('load', r), window.addEventListener('beforeunload', ()=>{
+            e = !0, i();
         }), document.addEventListener('click', (e)=>{
             let t = e.target;
             if (!t) return;
-            let i = t.closest('a');
-            if (i) {
-                let e = i.getAttribute('href');
-                !e || e.startsWith('#') || e.startsWith("javascript:") || i.getAttribute('target') || i.hostname !== location.hostname || r();
+            let r = t.closest('a');
+            if (r) {
+                let e = r.getAttribute('href');
+                !e || e.startsWith('#') || e.startsWith("javascript:") || r.getAttribute('target') || r.hostname !== location.hostname || i();
             }
         }), document.addEventListener('submit', (e)=>{
             if (e.defaultPrevented) return;
             let t = e.target;
             if (!t) return;
-            let i = t.closest('form');
-            i && !i.getAttribute('target') && r();
+            let r = t.closest('form');
+            r && !r.getAttribute('target') && i();
         }), new MutationObserver(()=>{
             Array.from(document.querySelectorAll('.spinning, .loading, #view > .spinning')).some((e)=>{
                 let t = window.getComputedStyle(e);
                 return e.getClientRects().length > 0 && 'none' !== t.display && 'hidden' !== t.visibility && !e.closest('.btn');
-            }) ? r() : i();
+            }) ? i() : r();
         }).observe(document.documentElement, {
             childList: !0,
             subtree: !0
         });
     }
     function c(e, t) {
-        let i, r, n = t ? 'fluent-sidebar-parent-slider' : 'fluent-sidebar-slider', l = e.querySelector(".".concat(n));
-        l || ((l = document.createElement('div')).className = n, e.appendChild(l));
-        let s = e.querySelector('li.active');
-        if (!s || t && (s.classList.contains('slide') || s.querySelector('.slide-menu'))) {
-            l.style.height = '0px', l.style.opacity = '0';
+        let r, i, l = t ? 'fluent-sidebar-parent-slider' : 'fluent-sidebar-slider', s = e.querySelector(`.${l}`);
+        s || ((s = document.createElement('div')).className = l, e.appendChild(s));
+        let n = e.querySelector('li.active');
+        if (!n || t && (n.classList.contains('slide') || n.querySelector('.slide-menu'))) {
+            s.style.height = '0px', s.style.opacity = '0';
             return;
         }
-        l.style.opacity = '1';
-        let a = t ? s.querySelector('a.menu, a.food') : s;
+        s.style.opacity = '1';
+        let a = t ? n.querySelector('a.menu, a.food') : n;
         if (!a) return;
         let o = a.getBoundingClientRect(), d = e.getBoundingClientRect();
-        t ? (i = o.top - d.top + e.scrollTop + 0.2 * o.height, r = 0.6 * o.height) : (i = o.top - d.top + e.scrollTop + 0.15 * o.height, r = 0.7 * o.height), l.style.top = "".concat(i, "px"), l.style.height = "".concat(r, "px");
+        t ? (r = o.top - d.top + e.scrollTop + 0.2 * o.height, i = 0.6 * o.height) : (r = o.top - d.top + e.scrollTop + 0.15 * o.height, i = 0.7 * o.height), s.style.top = `${r}px`, s.style.height = `${i}px`;
     }
     function m() {
         let e = document.querySelector('#mainmenu');
@@ -783,50 +652,50 @@ function setupThemeFeatures() {
         if (t) {
             let e = t.querySelector('.fluent-sidebar-parent-slider');
             if (e || ((e = document.createElement('div')).className = 'fluent-sidebar-parent-slider', t.appendChild(e)), t.classList.add('has-slider'), !t.dataset.sliderInit && (t.dataset.sliderInit = 'true', o && t.querySelectorAll('li > a.menu, li > a.food').forEach((e)=>{
-                let i = e.getAttribute('href');
-                i && '#' !== i && e.addEventListener('click', ()=>{
+                let r = e.getAttribute('href');
+                r && '#' !== r && e.addEventListener('click', ()=>{
                     try {
                         let e = t.querySelector('.fluent-sidebar-parent-slider');
                         e && sessionStorage.setItem('fluent-sidebar-parent-pos', JSON.stringify({
                             top: e.style.top,
                             height: e.style.height
                         }));
-                    } catch (e) {}
+                    } catch  {}
                 });
             })), o) {
                 let t = null;
                 try {
                     t = sessionStorage.getItem('fluent-sidebar-parent-pos');
-                } catch (e) {}
+                } catch  {}
                 if (t) try {
-                    let i = JSON.parse(t);
-                    sessionStorage.removeItem('fluent-sidebar-parent-pos'), e.style.transition = 'none', e.style.top = i.top, e.style.height = i.height, e.offsetHeight, e.style.transition = '';
-                } catch (e) {}
+                    let r = JSON.parse(t);
+                    sessionStorage.removeItem('fluent-sidebar-parent-pos'), e.style.transition = 'none', e.style.top = r.top, e.style.height = r.height, e.offsetHeight, e.style.transition = '';
+                } catch  {}
             }
             c(t, !0);
         }
         e.querySelectorAll('ul.slide-menu').forEach((e)=>{
-            let t = e.classList.contains('active'), i = e.querySelector('.fluent-sidebar-slider');
-            if (i || ((i = document.createElement('div')).className = 'fluent-sidebar-slider', e.appendChild(i)), e.classList.add('has-slider'), !e.dataset.sliderInit && (e.dataset.sliderInit = 'true', o && e.querySelectorAll('li > a').forEach((t)=>{
-                let i = t.getAttribute('href');
-                i && '#' !== i && t.addEventListener('click', ()=>{
+            let t = e.classList.contains('active'), r = e.querySelector('.fluent-sidebar-slider');
+            if (r || ((r = document.createElement('div')).className = 'fluent-sidebar-slider', e.appendChild(r)), e.classList.add('has-slider'), !e.dataset.sliderInit && (e.dataset.sliderInit = 'true', o && e.querySelectorAll('li > a').forEach((t)=>{
+                let r = t.getAttribute('href');
+                r && '#' !== r && t.addEventListener('click', ()=>{
                     try {
                         let t = e.querySelector('.fluent-sidebar-slider');
                         t && sessionStorage.setItem('fluent-sidebar-submenu-pos', JSON.stringify({
                             top: t.style.top,
                             height: t.style.height
                         }));
-                    } catch (e) {}
+                    } catch  {}
                 });
             })), o && t) {
                 let e = null;
                 try {
                     e = sessionStorage.getItem('fluent-sidebar-submenu-pos');
-                } catch (e) {}
+                } catch  {}
                 if (e) try {
                     let t = JSON.parse(e);
-                    sessionStorage.removeItem('fluent-sidebar-submenu-pos'), i.style.transition = 'none', i.style.top = t.top, i.style.height = t.height, i.offsetHeight, i.style.transition = '';
-                } catch (e) {}
+                    sessionStorage.removeItem('fluent-sidebar-submenu-pos'), r.style.transition = 'none', r.style.top = t.top, r.style.height = t.height, r.offsetHeight, r.style.transition = '';
+                } catch  {}
             }
             c(e, !1);
         });
@@ -928,7 +797,7 @@ function setupMenuSearch(n) {
                     let r = [];
                     return !function t(n, a, u) {
                         for (let c of ui.menu.getChildren(n)){
-                            let n = a ? "".concat(a, "/").concat(c.name) : c.name, i = [
+                            let n = a ? `${a}/${c.name}` : c.name, i = [
                                 ...u
                             ], s = c.title || c.name || "", o = s ? _(s) : "";
                             s && i.push(o), (o && menu_search_e(o).includes(l) || s && menu_search_e(s).includes(l)) && r.push({
@@ -969,11 +838,10 @@ function setupMenuSearch(n) {
                 overlay: u
             };
         }(n);
-        a.appendChild(u.closest(".".concat(menu_search_t))), l.push(u);
+        a.appendChild(u.closest(`.${menu_search_t}`)), l.push(u);
     };
     r(".header__search-slot"), r(".sidebar__search-slot"), 0 !== l.length && document.addEventListener("keydown", (e)=>{
-        var t, n, r;
-        if ((e.ctrlKey || e.metaKey) && "k" === e.key || "/" === e.key && !e.ctrlKey && !e.metaKey && !e.altKey && (null == (t = document.activeElement) ? void 0 : t.tagName) !== "INPUT" && (null == (n = document.activeElement) ? void 0 : n.tagName) !== "TEXTAREA" && !(null == (r = document.activeElement) ? void 0 : r.getAttribute("contenteditable"))) {
+        if ((e.ctrlKey || e.metaKey) && "k" === e.key || "/" === e.key && !e.ctrlKey && !e.metaKey && !e.altKey && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA" && !document.activeElement?.getAttribute("contenteditable")) {
             e.preventDefault(), (()=>{
                 for (let e of l)if (null !== e.offsetParent) {
                     e.focus(), e.select();
@@ -982,8 +850,8 @@ function setupMenuSearch(n) {
             })();
             return;
         }
-        let a = l.find((e)=>document.activeElement === e);
-        "Escape" === e.key && a && a.blur();
+        let t = l.find((e)=>document.activeElement === e);
+        "Escape" === e.key && t && t.blur();
     });
 }
 
@@ -996,10 +864,10 @@ function setupMenuSearch(n) {
 
 
 
-function menu_fluent_c(e) {
+function menu_fluent_u(e) {
     document.body.setAttribute("data-sidebar-state", e), document.dispatchEvent(new CustomEvent("fluent-sidebar-state-change"));
 }
-function menu_fluent_u() {
+function menu_fluent_c() {
     let e = localStorage.getItem("fluent-sidebar-state");
     return "collapsed" === e || "expanded" === e ? e : "expanded";
 }
@@ -1016,29 +884,28 @@ const main = baseclass.extend({
         this.render(e), setupSelectionPause(), setupErrorTooltips(), setupFluentSelects(), setupIfaceboxTooltips(), setupThemeFeatures(), setupMenuSearch(e);
     },
     render (e) {
-        var t, n, a;
-        let l = e, i = "", s = ui.menu.getChildren(e);
-        for(let e = 0; e < s.length; e++)(L.env.requestpath.length ? s[e].name === L.env.requestpath[0] : 0 === e) && this.renderMainMenu(s[e], s[e].name);
+        let t = e, n = "", a = ui.menu.getChildren(e);
+        for(let e = 0; e < a.length; e++)(L.env.requestpath.length ? a[e].name === L.env.requestpath[0] : 0 === e) && this.renderMainMenu(a[e], a[e].name);
         if (L.env.dispatchpath.length >= 3) {
-            for(let e = 0; e < 3 && l; e++){
-                let t = L.env.dispatchpath[e];
-                l = null == (a = l.children) ? void 0 : a[t], i = i + (i ? "/" : "") + L.env.dispatchpath[e];
+            for(let e = 0; e < 3 && t; e++){
+                let a = L.env.dispatchpath[e];
+                t = t.children?.[a], n = n + (n ? "/" : "") + L.env.dispatchpath[e];
             }
-            l && this.renderTabMenu(l, i);
+            t && this.renderTabMenu(t, n);
         }
-        let d = document.querySelectorAll("a.showSide"), r = document.querySelector(".darkMask"), o = document.querySelector(".sidebar-collapse-toggle"), m = null != (t = ui.createHandlerFn(this, "handleSidebarToggle")) ? t : ()=>{
+        let l = document.querySelectorAll("a.showSide"), i = document.querySelector(".darkMask"), s = document.querySelector(".sidebar-collapse-toggle"), d = ui.createHandlerFn(this, "handleSidebarToggle") ?? (()=>{
             console.warn("Fluent menu: missing sidebar toggle handler");
-        }, h = null != (n = ui.createHandlerFn(this, "handleDesktopSidebarToggle")) ? n : ()=>{
+        }), r = ui.createHandlerFn(this, "handleDesktopSidebarToggle") ?? (()=>{
             console.warn("Fluent menu: missing desktop sidebar toggle handler");
-        };
-        d.forEach((e)=>{
-            e.addEventListener("click", m);
-        }), r && r.addEventListener("click", m), o && o.addEventListener("click", h), window.innerWidth > 768 ? menu_fluent_c(menu_fluent_u()) : document.body.setAttribute("data-sidebar-state", "expanded"), window.addEventListener("resize", ()=>{
-            this.adjustBrandTextSize(), window.innerWidth > 768 ? menu_fluent_c(menu_fluent_u()) : document.body.setAttribute("data-sidebar-state", "expanded");
+        });
+        l.forEach((e)=>{
+            e.addEventListener("click", d);
+        }), i && i.addEventListener("click", d), s && s.addEventListener("click", r), window.innerWidth > 768 ? menu_fluent_u(menu_fluent_c()) : document.body.setAttribute("data-sidebar-state", "expanded"), window.addEventListener("resize", ()=>{
+            this.adjustBrandTextSize(), window.innerWidth > 768 ? menu_fluent_u(menu_fluent_c()) : document.body.setAttribute("data-sidebar-state", "expanded");
         }), document.addEventListener("click", (e)=>{
             if (window.innerWidth <= 768 || "collapsed" !== document.body.getAttribute("data-sidebar-state")) return;
             let t = e.target, n = document.querySelector("#mainmenu");
-            t && (null == n ? void 0 : n.contains(t)) || menu_fluent_p();
+            t && n?.contains(t) || menu_fluent_p();
         });
     },
     handleMenuExpand (e) {
@@ -1046,16 +913,15 @@ const main = baseclass.extend({
         if (!t) return;
         let n = t.parentNode, a = t.nextElementSibling, l = window.innerWidth > 768 && "collapsed" === document.body.getAttribute("data-sidebar-state"), s = !1;
         if (document.querySelectorAll(l ? ".main .main-left .nav > li > ul.slide-menu.popup-open" : ".main .main-left .nav > li > ul.slide-menu.active").forEach((e)=>{
-            var t;
-            s || e !== a || (s = !0), e.classList.remove("popup-open", "active"), null == (t = e.previousElementSibling) || t.classList.remove("popup-open", "active"), SlideAnimations.stop(e), l ? (e.style.display = "none", e.style.top = "") : SlideAnimations.slideUp(e, "fast");
+            s || e !== a || (s = !0), e.classList.remove("popup-open", "active"), e.previousElementSibling?.classList.remove("popup-open", "active"), SlideAnimations.stop(e), l ? (e.style.display = "none", e.style.top = "") : SlideAnimations.slideUp(e, "fast");
         }), a) {
             if (!s) {
-                let e = null == n ? void 0 : n.querySelector(".slide-menu");
+                let e = n?.querySelector(".slide-menu");
                 if (e) {
                     if (a.classList.add(l ? "popup-open" : "active"), t.classList.add(l ? "popup-open" : "active"), l) {
                         SlideAnimations.stop(e), e.style.display = "block";
                         let n = t.getBoundingClientRect(), a = e.offsetHeight, l = Math.max(8, window.innerHeight - a - 8), s = n.top - 8;
-                        e.style.top = "".concat(Math.min(l, Math.max(8, s)), "px");
+                        e.style.top = `${Math.min(l, Math.max(8, s))}px`;
                     } else e.style.top = "", SlideAnimations.slideDown(e, "fast");
                     e.querySelectorAll("li > a").forEach((e)=>{
                         e.addEventListener("click", ()=>{
@@ -1076,10 +942,10 @@ const main = baseclass.extend({
         }), r = ui.menu.getChildren(a);
         if (0 === r.length || s > 2) return jsx(Fragment, {});
         for(let n = 0; n < r.length; n++){
-            let i = r[n], o = L.env.dispatchpath[s] === i.name && L.env.dispatchpath[s - 1] === a.name, c = this.renderMainMenu(i, "".concat(l, "/").concat(i.name), s), u = c.children.length > 0, p = u ? "slide" : null, m = u ? "menu" : "food";
-            o && (d.classList.add("active"), p = p ? "".concat(p, " active") : "null active");
-            let h = o ? "".concat(m, " active") : m, v = jsxs("li", {
-                class: null != p ? p : void 0,
+            let i = r[n], o = L.env.dispatchpath[s] === i.name && L.env.dispatchpath[s - 1] === a.name, u = this.renderMainMenu(i, `${l}/${i.name}`, s), c = u.children.length > 0, p = c ? "slide" : null, m = c ? "menu" : "food";
+            o && (d.classList.add("active"), p = p ? `${p} active` : "null active");
+            let h = o ? `${m} active` : m, f = jsxs("li", {
+                class: p ?? void 0,
                 children: [
                     jsxs("a", {
                         href: L.url(l, i.name),
@@ -1096,10 +962,10 @@ const main = baseclass.extend({
                             })
                         ]
                     }),
-                    c
+                    u
                 ]
             });
-            d.appendChild(v);
+            d.appendChild(f);
         }
         if (1 === s) {
             let e = document.querySelector("#mainmenu");
@@ -1113,17 +979,17 @@ const main = baseclass.extend({
         }), r = ui.menu.getChildren(t), o = null;
         if (0 === r.length) return jsx(Fragment, {});
         for(let t = 0; t < r.length; t++){
-            let n = r[t], l = L.env.dispatchpath[s + 2] === n.name, i = l ? " active" : "", c = jsx("li", {
-                class: "tabmenu-item-".concat(n.name).concat(i),
+            let n = r[t], l = L.env.dispatchpath[s + 2] === n.name, i = l ? " active" : "", u = jsx("li", {
+                class: `tabmenu-item-${n.name}${i}`,
                 children: jsx("a", {
                     href: L.url(a, n.name),
                     children: _(n.title || "")
                 })
             });
-            d.appendChild(c), l && (o = n);
+            d.appendChild(u), l && (o = n);
         }
         if (i && (i.appendChild(d), i.style.display = "", o)) {
-            let e = this.renderTabMenu(o, "".concat(a, "/").concat(o.name), s);
+            let e = this.renderTabMenu(o, `${a}/${o.name}`, s);
             e.children.length > 0 && i.appendChild(e);
         }
         return d;
@@ -1136,7 +1002,7 @@ const main = baseclass.extend({
                 let n = t.clientWidth - 32;
                 if (n > 0) {
                     let t = 16;
-                    for(e.style.fontSize = "".concat(t, "px"); e.scrollWidth > n && t > 9;)t -= 0.5, e.style.fontSize = "".concat(t, "px");
+                    for(e.style.fontSize = `${t}px`; e.scrollWidth > n && t > 9;)t -= 0.5, e.style.fontSize = `${t}px`;
                 }
             }
         }
@@ -1152,7 +1018,7 @@ const main = baseclass.extend({
     handleDesktopSidebarToggle (e) {
         if (e.preventDefault(), e.stopPropagation(), window.innerWidth <= 768) return;
         let t = "collapsed" == ("collapsed" === document.body.getAttribute("data-sidebar-state") ? "collapsed" : "expanded") ? "expanded" : "collapsed";
-        menu_fluent_p(), localStorage.setItem("fluent-sidebar-state", t), menu_fluent_c(t), "expanded" === t && this.adjustBrandTextSize();
+        menu_fluent_p(), localStorage.setItem("fluent-sidebar-state", t), menu_fluent_u(t), "expanded" === t && this.adjustBrandTextSize();
     }
 });
 

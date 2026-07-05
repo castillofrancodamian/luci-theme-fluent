@@ -151,7 +151,7 @@ const transparencySteps = [
     0.9,
     1
 ];
-let shared_t = "fluent-live-preview", shared_a = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i, shared_r = {
+let shared_t = "fluent-live-preview", shared_r = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i, shared_a = {
     primary: {
         cssVar: "--fluent-primary",
         isDark: !1
@@ -193,58 +193,56 @@ let shared_t = "fluent-live-preview", shared_a = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3
         isDark: !0
     }
 }, shared_l = new globalThis.Map();
-const configureHexColorValue = function(o, s) {
-    let n = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
-    o.rmempty = !1, o.validate = (e, t)=>!e || shared_a.test(String(t)) || _("Expecting: %s").format(_("valid HEX color value")), o.render = (c, i, u)=>{
-        let d = shared_e.Value.prototype.render.call(o, c, i, u), p = ()=>{
-            let e = document.querySelector('[id^="widget.cbid.fluent."][id$=".'.concat(s, '"]'));
+const configureHexColorValue = (s, o, n = !1)=>{
+    s.rmempty = !1, s.validate = (e, t)=>!e || shared_r.test(String(t)) || _("Expecting: %s").format(_("valid HEX color value")), s.render = (i, c, d)=>{
+        let u = shared_e.Value.prototype.render.call(s, i, c, d), p = ()=>{
+            let e = document.querySelector(`[id^="widget.cbid.fluent."][id$=".${o}"]`);
             e && ((e, t)=>{
                 if ("true" === e.dataset.fluentColorPicker) return;
-                let r = e.parentElement;
-                if (!r) return;
+                let a = e.parentElement;
+                if (!a) return;
                 e.dataset.fluentColorPicker = "true", e.classList.add("fluent-color-field__text");
                 let l = document.createElement("div");
                 l.className = "fluent-color-field";
-                let o = document.createElement("label");
-                o.className = "fluent-color-swatch", o.title = _("Choose color");
-                let s = document.createElement("input");
-                s.type = "color", s.className = "fluent-color-swatch__input", s.setAttribute("aria-label", _("Choose color"));
+                let s = document.createElement("label");
+                s.className = "fluent-color-swatch", s.title = _("Choose color");
+                let o = document.createElement("input");
+                o.type = "color", o.className = "fluent-color-swatch__input", o.setAttribute("aria-label", _("Choose color"));
                 let n = document.createElement("span");
                 n.className = "fluent-color-swatch__preview";
-                let c = (e)=>{
-                    shared_a.test(e) && (s.value = e, n.style.backgroundColor = e);
+                let i = (e)=>{
+                    shared_r.test(e) && (o.value = e, n.style.backgroundColor = e);
                 };
-                c(e.value), s.addEventListener("input", ()=>{
-                    e.value = s.value, n.style.backgroundColor = s.value, shared_a.test(s.value) && t(s.value);
+                i(e.value), o.addEventListener("input", ()=>{
+                    e.value = o.value, n.style.backgroundColor = o.value, shared_r.test(o.value) && t(o.value);
                 }), e.addEventListener("input", ()=>{
-                    c(e.value), shared_a.test(e.value) && t(e.value);
-                }), o.appendChild(s), o.appendChild(n), r.insertBefore(l, e), l.appendChild(e), l.appendChild(o);
-            })(e, (e)=>((e, a)=>{
-                    let o = shared_r[e];
-                    if (!o) return;
-                    let s = "".concat(o.isDark ? "dark" : "light", "|").concat(o.cssVar);
-                    shared_l.set(s, {
-                        selector: o.isDark ? ':root[data-theme="dark"]' : ":root",
-                        cssVar: o.cssVar,
-                        value: a
+                    i(e.value), shared_r.test(e.value) && t(e.value);
+                }), s.appendChild(o), s.appendChild(n), a.insertBefore(l, e), l.appendChild(e), l.appendChild(s);
+            })(e, (e)=>((e, r)=>{
+                    let s = shared_a[e];
+                    if (!s) return;
+                    let o = `${s.isDark ? "dark" : "light"}|${s.cssVar}`;
+                    shared_l.set(o, {
+                        selector: s.isDark ? ':root[data-theme="dark"]' : ":root",
+                        cssVar: s.cssVar,
+                        value: r
                     }), (()=>{
-                        let e, a = ((e = document.getElementById(shared_t)) || ((e = document.createElement("style")).id = shared_t, document.head.appendChild(e)), e), r = new globalThis.Map();
+                        let e, r = ((e = document.getElementById(shared_t)) || ((e = document.createElement("style")).id = shared_t, document.head.appendChild(e)), e), a = new globalThis.Map();
                         for (let e of shared_l.values()){
-                            var o;
-                            let t = null != (o = r.get(e.selector)) ? o : [];
-                            t.push("".concat(e.cssVar, ": ").concat(e.value, ";")), r.set(e.selector, t);
+                            let t = a.get(e.selector) ?? [];
+                            t.push(`${e.cssVar}: ${e.value};`), a.set(e.selector, t);
                         }
                         let s = "";
-                        for (let [e, t] of r)s += "".concat(e, " { ").concat(t.join(" "), " }\n");
-                        a.textContent = s;
+                        for (let [e, t] of a)s += `${e} { ${t.join(" ")} }\n`;
+                        r.textContent = s;
                     })();
-                })(s, e));
+                })(o, e));
         };
-        return n ? requestAnimationFrame(p) : setTimeout(p, 0), d;
+        return n ? requestAnimationFrame(p) : setTimeout(p, 0), u;
     };
 };
-const createModeSubtabs = (t, a, r)=>{
-    let l = t.taboption(a, shared_e.SectionValue, r, shared_e.TypedSection, "global").subsection;
+const createModeSubtabs = (t, r, a)=>{
+    let l = t.taboption(r, shared_e.SectionValue, a, shared_e.TypedSection, "global").subsection;
     return l.anonymous = !0, l.addremove = !1, l.tab("light", _("Light mode")), l.tab("dark", _("Dark mode")), l;
 };
 
@@ -320,161 +318,42 @@ const registerGeneralTab = (l)=>{
     }
 };
 
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_define_property.js
-function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
-    } else obj[key] = value;
-
-    return obj;
-}
-
-
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_spread.js
-
-
-function _object_spread(target) {
-    for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
-
-        if (typeof Object.getOwnPropertySymbols === "function") {
-            ownKeys = ownKeys.concat(
-                Object.getOwnPropertySymbols(source).filter(function(sym) {
-                    return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-                })
-            );
-        }
-
-        ownKeys.forEach(function(key) {
-            _define_property(target, key, source[key]);
-        });
-    }
-
-    return target;
-}
-
-
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_spread_props.js
-function _object_spread_props_ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-
-    if (Object.getOwnPropertySymbols) {
-        var symbols = Object.getOwnPropertySymbols(object);
-        if (enumerableOnly) {
-            symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-            });
-        }
-        keys.push.apply(keys, symbols);
-    }
-
-    return keys;
-}
-function _object_spread_props(target, source) {
-    source = source != null ? source : {};
-
-    if (Object.getOwnPropertyDescriptors) Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    else {
-        _object_spread_props_ownKeys(Object(source)).forEach(function(key) {
-            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-    }
-
-    return target;
-}
-
-
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_without_properties_loose.js
-function _object_without_properties_loose(source, excluded) {
-    if (source == null) return {};
-
-    var target = {}, sourceKeys = Object.getOwnPropertyNames(source), key, i;
-    for (i = 0; i < sourceKeys.length; i++) {
-        key = sourceKeys[i];
-        if (excluded.indexOf(key) >= 0) continue;
-        if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-        target[key] = source[key];
-    }
-
-    return target;
-}
-
-
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/esm/_object_without_properties.js
-
-
-function _object_without_properties(source, excluded) {
-    if (source == null) return {};
-
-    var target = {}, sourceKeys, key, i;
-    if (typeof Reflect !== "undefined" && Reflect.ownKeys) {
-        sourceKeys = Reflect.ownKeys(Object(source));
-        for (i = 0; i < sourceKeys.length; i++) {
-            key = sourceKeys[i];
-            if (excluded.indexOf(key) >= 0) continue;
-            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-            target[key] = source[key];
-        }
-
-        return target;
-    }
-
-    target = _object_without_properties_loose(source, excluded);
-    if (Object.getOwnPropertySymbols) {
-        sourceKeys = Object.getOwnPropertySymbols(source);
-        for (i = 0; i < sourceKeys.length; i++) {
-            key = sourceKeys[i];
-            if (excluded.indexOf(key) >= 0) continue;
-            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-            target[key] = source[key];
-        }
-    }
-
-    return target;
-}
-
-
-
 ;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_fa7db5d1266078230463ede1708aac21/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
-
-
-
 const Fragment = Symbol.for("jsx.fragment");
-function jsx_factory_o(o, n) {
-    let s = n || {}, { children: l } = s, f = _object_without_properties(s, [
-        "children"
-    ]), i = function e(t) {
-        let r = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : [];
-        for (let o of t)null != o && "boolean" != typeof o && (Array.isArray(o) ? e(o, r) : r.push(o));
-        return r;
-    }(null == l ? [] : Array.isArray(l) ? l : [
-        l
+function jsx_factory_e(e, t) {
+    let { children: n, ...r } = t || {}, o = function e(t, n = []) {
+        for (let r of t)null != r && "boolean" != typeof r && (Array.isArray(r) ? e(r, n) : n.push(r));
+        return n;
+    }(null == n ? [] : Array.isArray(n) ? n : [
+        n
     ]);
-    if (o === Fragment) {
+    if (e === Fragment) {
         let e = document.createDocumentFragment();
-        return e.append(...i), e;
+        return e.append(...o), e;
     }
-    if ("function" == typeof o) return o(_object_spread_props(_object_spread({}, f), {
-        children: i
-    }));
-    let c = {}, p = _object_spread({}, f);
-    for (let [e, t] of Object.entries(p))e.startsWith("on") && "function" == typeof t ? (c[e] = t, delete p[e]) : "boolean" == typeof t && (t ? p[e] = e : delete p[e]);
-    let a = Object.keys(p).length > 0 ? i.length > 1 ? E(o, p, i) : E(o, p, i[0]) : i.length > 1 ? E(o, {}, i) : E(o, {}, i[0]);
-    for (let [e, t] of Object.entries(c)){
-        let r = e.slice(2).toLowerCase();
-        a.addEventListener(r, t);
+    if ("function" == typeof e) return e({
+        ...r,
+        children: o
+    });
+    let l = {}, f = {
+        ...r
+    };
+    for (let [e, t] of Object.entries(f))e.startsWith("on") && "function" == typeof t ? (l[e] = t, delete f[e]) : "boolean" == typeof t && (t ? f[e] = e : delete f[e]);
+    let u = Object.keys(f).length > 0 ? o.length > 1 ? E(e, f, o) : E(e, f, o[0]) : o.length > 1 ? E(e, {}, o) : E(e, {}, o[0]);
+    for (let [e, t] of Object.entries(l)){
+        let n = e.slice(2).toLowerCase();
+        u.addEventListener(n, t);
     }
-    return a;
+    return u;
 }
-function jsx(e, t) {
-    return jsx_factory_o(e, t);
+function jsx(t, n) {
+    return jsx_factory_e(t, n);
 }
-function jsxs(e, t) {
-    return jsx_factory_o(e, t);
+function jsxs(t, n) {
+    return jsx_factory_e(t, n);
 }
-function jsxDEV(e, t) {
-    return jsx_factory_o(e, t);
+function jsxDEV(t, n) {
+    return jsx_factory_e(t, n);
 }
 
 ;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_fa7db5d1266078230463ede1708aac21/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
@@ -482,13 +361,13 @@ function jsxDEV(e, t) {
 
 ;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/login.tsx
 
-let login_a = L.form, login_n = L.rpc, login_l = L.dom, login_o = L.fs, login_r = L.ui, login_i = login_n.declare({
+let login_a = L.form, login_n = L.rpc, login_l = L.dom, login_i = L.fs, login_r = L.ui, login_o = login_n.declare({
     object: "luci.fluent",
     method: "avail",
     expect: {
         avail: 0
     }
-}), login_c = login_n.declare({
+}), login_d = login_n.declare({
     object: "luci.fluent",
     method: "remove",
     params: [
@@ -497,7 +376,7 @@ let login_a = L.form, login_n = L.rpc, login_l = L.dom, login_o = L.fs, login_r 
     expect: {
         result: 0
     }
-}), login_d = login_n.declare({
+}), login_c = login_n.declare({
     object: "luci.fluent",
     method: "rename",
     params: [
@@ -517,19 +396,16 @@ let login_p = new Set([
     "webp",
     "mp4",
     "webm"
-]), login_m = (e)=>{
-    var t, a;
-    return null != (t = null == (a = e.split(".").pop()) ? void 0 : a.toLowerCase()) ? t : "";
-}, login_b = (e)=>login_p.has(login_m(e)), login_f = (e)=>e >= 1048576 ? "".concat((e / 1024 / 1024).toFixed(1), " GiB") : e >= 1024 ? "".concat((e / 1024).toFixed(1), " MiB") : "".concat(e, " KiB"), login_h = (e, t)=>{
-    if (0 !== e) throw Error("".concat(t, " failed with code ").concat(e, "."));
+]), login_m = (e)=>e.split(".").pop()?.toLowerCase() ?? "", login_b = (e)=>login_p.has(login_m(e)), login_f = (e)=>e >= 1048576 ? `${(e / 1024 / 1024).toFixed(1)} GiB` : e >= 1024 ? `${(e / 1024).toFixed(1)} MiB` : `${e} KiB`, login_h = (e, t)=>{
+    if (0 !== e) throw Error(`${t} failed with code ${e}.`);
 }, login_v = (e, t)=>{
     login_l.content(e, t);
 }, login_y = login_a.DummyValue.extend({
     renderWidget: function(a, n, l) {
-        let u = jsx("div", {
+        let s = jsx("div", {
             class: "cbi-value-description fluent-bg-status",
             children: "Ready to upload or remove custom backgrounds."
-        }), s = jsx("div", {
+        }), u = jsx("div", {
             class: "fluent-bg-hint",
             children: "Supported formats: JPG, PNG, GIF, WEBP, MP4, WEBM."
         }), g = jsx("button", {
@@ -542,58 +418,51 @@ let login_p = new Set([
         }), y = jsx("div", {
             class: "fluent-bg-list"
         }), k = (e)=>{
-            login_v(u, [
+            login_v(s, [
                 document.createTextNode(e)
             ]);
-        }, w = ()=>login_o.list("/www/luci-static/fluent/background").catch(()=>[]).then((a)=>{
-                let n = a.filter((e)=>{
-                    var t;
-                    return "file" === e.type && login_b(String(null != (t = e.name) ? t : ""));
-                }).sort((e, t)=>{
-                    var a, n;
-                    return String(null != (a = e.name) ? a : "").localeCompare(String(null != (n = t.name) ? n : ""));
-                });
+        }, $ = ()=>login_i.list("/www/luci-static/fluent/background").catch(()=>[]).then((a)=>{
+                let n = a.filter((e)=>"file" === e.type && login_b(String(e.name ?? ""))).sort((e, t)=>String(e.name ?? "").localeCompare(String(t.name ?? "")));
                 n.length ? login_v(y, n.map((a)=>{
-                    var n, l;
-                    let o, i, d, u = String(null != (n = a.name) ? n : ""), s = jsx("button", {
+                    let n, l, i, o = String(a.name ?? ""), c = jsx("button", {
                         class: "btn cbi-button cbi-button-remove",
                         type: "button",
                         children: "Delete"
-                    }), g = login_r.createHandlerFn(this, ()=>(k("Deleting ".concat(u, "...")), login_c(u).then((e)=>(login_h(e, "Deleting ".concat(u)), w().then(()=>{
-                                k("Deleted ".concat(u, "."));
+                    }), s = login_r.createHandlerFn(this, ()=>(k(`Deleting ${o}...`), login_d(o).then((e)=>(login_h(e, `Deleting ${o}`), $().then(()=>{
+                                k(`Deleted ${o}.`);
                             }))).catch((e)=>{
-                            k("Failed to delete ".concat(u, ": ").concat(e instanceof Error ? e.message : String(e)));
+                            k(`Failed to delete ${o}: ${e instanceof Error ? e.message : String(e)}`);
                         })));
-                    return g && s.addEventListener("click", g), jsxs("div", {
+                    return s && c.addEventListener("click", s), jsxs("div", {
                         class: "fluent-bg-item",
                         children: [
-                            (o = login_m(u), i = "".concat("/luci-static/fluent/background/").concat(encodeURIComponent(u)), "mp4" === o || "webm" === o ? jsx("video", {
+                            (n = login_m(o), l = `/luci-static/fluent/background/${encodeURIComponent(o)}`, "mp4" === n || "webm" === n ? jsx("video", {
                                 class: "fluent-bg-preview fluent-bg-preview-video",
                                 muted: !0,
                                 playsInline: !0,
                                 preload: "metadata",
-                                src: i
+                                src: l
                             }) : jsx("div", {
                                 class: "fluent-bg-preview",
-                                style: "background-image:url('".concat(i.replace(/'/g, "%27"), "')")
+                                style: `background-image:url('${l.replace(/'/g, "%27")}')`
                             })),
                             jsxs("div", {
                                 class: "fluent-bg-meta",
                                 children: [
                                     jsx("strong", {
                                         class: "fluent-bg-name",
-                                        title: u,
-                                        children: u
+                                        title: o,
+                                        children: o
                                     }),
                                     jsx("span", {
                                         class: "fluent-bg-size",
-                                        children: (d = Number(null != (l = a.size) ? l : 0)) > 0 ? login_f(Math.max(1, Math.ceil(d / 1024))) : "Unknown size"
+                                        children: (i = Number(a.size ?? 0)) > 0 ? login_f(Math.max(1, Math.ceil(i / 1024))) : "Unknown size"
                                     })
                                 ]
                             }),
                             jsx("div", {
                                 class: "fluent-bg-item-actions",
-                                children: s
+                                children: c
                             })
                         ]
                     });
@@ -612,26 +481,26 @@ let login_p = new Set([
         return g.addEventListener("click", ()=>{
             k("Selecting background file..."), login_r.uploadFile("/tmp/fluent_background.tmp").then((e)=>{
                 let t;
-                if (!(null == e ? void 0 : e.name)) throw Error("Upload did not return a filename.");
-                let a = "" !== (t = e.name.replace(/^.*[\\/]/, "").replace(/[^A-Za-z0-9._-]+/g, "-").replace(/^-+|-+$/g, "")) && "." !== t && ".." !== t && login_b(t) ? t : "background-".concat(Date.now(), ".jpg");
-                return k("Saving ".concat(a, "...")), login_d(a).then((e)=>(login_h(e, "Saving ".concat(a)), w().then(()=>{
-                        k("Saved ".concat(a, "."));
+                if (!e?.name) throw Error("Upload did not return a filename.");
+                let a = "" !== (t = e.name.replace(/^.*[\\/]/, "").replace(/[^A-Za-z0-9._-]+/g, "-").replace(/^-+|-+$/g, "")) && "." !== t && ".." !== t && login_b(t) ? t : `background-${Date.now()}.jpg`;
+                return k(`Saving ${a}...`), login_c(a).then((e)=>(login_h(e, `Saving ${a}`), $().then(()=>{
+                        k(`Saved ${a}.`);
                     }))).catch((e)=>{
-                    k("Failed to save ".concat(a, ": ").concat(e instanceof Error ? e.message : String(e)));
+                    k(`Failed to save ${a}: ${e instanceof Error ? e.message : String(e)}`);
                 });
             }).catch((e)=>{
                 let t = e instanceof Error ? e.message : String(e);
-                t && "false" !== t ? k("Upload failed: ".concat(t)) : k("Upload canceled.");
+                t && "false" !== t ? k(`Upload failed: ${t}`) : k("Upload canceled.");
             });
-        }), login_i().then((e)=>{
-            k("Ready to upload or remove custom backgrounds. Available space: ".concat(login_f(e), "."));
+        }), login_o().then((e)=>{
+            k(`Ready to upload or remove custom backgrounds. Available space: ${login_f(e)}.`);
         }).catch(()=>{
             k("Ready to upload or remove custom backgrounds.");
-        }), w(), jsx("div", {
+        }), $(), jsx("div", {
             class: "fluent-bg-manager",
             children: [
-                u,
                 s,
+                u,
                 p,
                 y
             ]
@@ -667,13 +536,12 @@ const registerLoginTab = (e)=>{
 };
 
 ;// CONCATENATED MODULE: ./web/resources/utils/update.ts
-
-let update_e = L.rpc;
-const callGetVersion = update_e.declare({
+let update_t = L.rpc;
+const callGetVersion = update_t.declare({
     object: "luci.fluent",
     method: "get_version"
 });
-const callStartDownload = update_e.declare({
+const callStartDownload = update_t.declare({
     object: "luci.fluent",
     method: "start_download",
     params: [
@@ -681,11 +549,11 @@ const callStartDownload = update_e.declare({
         "i18n_url"
     ]
 });
-const callCheckDownload = update_e.declare({
+const callCheckDownload = update_t.declare({
     object: "luci.fluent",
     method: "check_download"
 });
-const callDoInstall = update_e.declare({
+const callDoInstall = update_t.declare({
     object: "luci.fluent",
     method: "do_install",
     params: [
@@ -694,46 +562,47 @@ const callDoInstall = update_e.declare({
     ]
 });
 class GitHubAPIError extends Error {
-    constructor(e, l){
-        super(e), _define_property(this, "status", void 0), this.name = "GitHubAPIError", this.status = l;
+    status;
+    constructor(t, e){
+        super(t), this.name = "GitHubAPIError", this.status = e;
     }
 }
 async function fetchLatestRelease(t, e, l) {
     let a = {};
-    l && (a.Authorization = "token ".concat(l));
+    l && (a.Authorization = `token ${l}`);
     let s = await fetch("nightly" === t ? "https://api.github.com/repos/LazuliKao/luci-theme-fluent/releases/tags/nightly" : "https://api.github.com/repos/LazuliKao/luci-theme-fluent/releases/latest", {
         headers: a
-    }), o = await s.json();
+    }), i = await s.json();
     if (!s.ok) {
-        let t = (null == o ? void 0 : o.message) ? ": ".concat(o.message) : "";
-        throw new GitHubAPIError("GitHub API returned status ".concat(s.status).concat(t), s.status);
+        let t = i?.message ? `: ${i.message}` : "";
+        throw new GitHubAPIError(`GitHub API returned status ${s.status}${t}`, s.status);
     }
-    let i = o.assets || [], r = null, n = null;
-    for (let t of i){
+    let r = i.assets || [], n = null, o = null;
+    for (let t of r){
         let l = String(t.name || "");
-        "apk" === e && l.startsWith("luci-theme-fluent") && l.endsWith(".apk") || "ipk" === e && l.startsWith("luci-theme-fluent") && l.endsWith("_all.ipk") ? r = t : "apk" === e && l.startsWith("luci-i18n-fluent") && l.endsWith(".apk") ? n = t : "ipk" === e && l.startsWith("luci-i18n-fluent") && l.endsWith("_all.ipk") && (n = t);
+        "apk" === e && l.startsWith("luci-theme-fluent") && l.endsWith(".apk") || "ipk" === e && l.startsWith("luci-theme-fluent") && l.endsWith("_all.ipk") ? n = t : "apk" === e && l.startsWith("luci-i18n-fluent") && l.endsWith(".apk") ? o = t : "ipk" === e && l.startsWith("luci-i18n-fluent") && l.endsWith("_all.ipk") && (o = t);
     }
     return {
-        tag_name: String(o.tag_name || ""),
-        published_at: String(o.published_at || ""),
-        body: String(o.body || ""),
-        html_url: String(o.html_url || ""),
-        package_asset: r,
-        i18n_asset: n
+        tag_name: String(i.tag_name || ""),
+        published_at: String(i.published_at || ""),
+        body: String(i.body || ""),
+        html_url: String(i.html_url || ""),
+        package_asset: n,
+        i18n_asset: o
     };
 }
 
 ;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/about.tsx
 
-let about_a = L.form, about_l = L.dom, about_i = "https://ghfast.top/";
+let about_n = L.form, about_l = L.dom, about_i = "https://ghfast.top/";
 
-let about_p = about_a.DummyValue.extend({
-    renderWidget: (a, p, h)=>{
+let about_p = about_n.DummyValue.extend({
+    renderWidget: (n, p, h)=>{
         let b = "1.0.1", f = "ipk", g = !1, y = jsxs("div", {
             class: "fluent-about-logo",
             children: [
                 jsx("img", {
-                    src: "".concat(L.media(), "/img/fluent.svg"),
+                    src: `${L.media()}/img/fluent.svg`,
                     alt: "Fluent Theme Logo"
                 }),
                 jsx("h2", {
@@ -811,7 +680,7 @@ let about_p = about_a.DummyValue.extend({
                     ]
                 })
             ]
-        }), v = jsxs("select", {
+        }), w = jsxs("select", {
             class: "cbi-input-select",
             id: "update-channel-select",
             children: [
@@ -824,7 +693,7 @@ let about_p = about_a.DummyValue.extend({
                     children: _("Nightly Channel (Prerelease)")
                 })
             ]
-        }), w = jsxs("select", {
+        }), v = jsxs("select", {
             class: "cbi-input-select",
             id: "update-method-select",
             children: [
@@ -855,7 +724,7 @@ let about_p = about_a.DummyValue.extend({
                                 ": "
                             ]
                         }),
-                        v
+                        w
                     ]
                 }),
                 k
@@ -870,13 +739,13 @@ let about_p = about_a.DummyValue.extend({
             class: "fluent-progress-bar",
             style: "display: none",
             children: C
-        }), E = jsx("div", {
+        }), $ = jsx("div", {
             class: "fluent-progress-text",
             style: "display: none"
-        }), F = jsx("div", {
+        }), E = jsx("div", {
             class: "fluent-update-card",
             style: "display: none"
-        }), P = jsxs("div", {
+        }), F = jsxs("div", {
             class: "fluent-about-manager",
             children: [
                 y,
@@ -889,42 +758,41 @@ let about_p = about_a.DummyValue.extend({
                 }),
                 x,
                 T,
-                F,
+                E,
                 S,
-                E
+                $
             ]
-        }), A = function(e) {
-            let t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "info";
+        }), P = (e, t = "info")=>{
             about_l.content(T, [
                 document.createTextNode(e)
-            ]), T.className = "fluent-update-status status-".concat(t), T.style.display = "block";
-        }, N = (e, t, n)=>{
-            S.style.display = "block", E.style.display = "block", C.style.width = "".concat(t, "%"), C.className = "fluent-progress-bar__fill fill-".concat(e), about_l.content(E, [
-                document.createTextNode("".concat(n, " (").concat(t, "%)"))
+            ]), T.className = `fluent-update-status status-${t}`, T.style.display = "block";
+        }, A = (e, t, a)=>{
+            S.style.display = "block", $.style.display = "block", C.style.width = `${t}%`, C.className = `fluent-progress-bar__fill fill-${e}`, about_l.content($, [
+                document.createTextNode(`${a} (${t}%)`)
             ]);
-        }, j = ()=>{
-            S.style.display = "none", E.style.display = "none";
+        }, N = ()=>{
+            S.style.display = "none", $.style.display = "none";
         };
         (async ()=>{
             try {
                 let e = await callGetVersion();
                 b = e.version, f = e.pkg_type, g = !!e.i18n_zh_cn_installed;
                 let t = m.querySelector(".fluent-about-current-version");
-                t && (t.textContent = "v".concat(b));
-                let n = m.querySelector(".fluent-about-pkg-type");
-                n && (n.textContent = "apk" === f ? "APK (OpenWrt 25.12+)" : "IPK (OpenWrt 24.10)");
+                t && (t.textContent = `v${b}`);
+                let a = m.querySelector(".fluent-about-pkg-type");
+                a && (a.textContent = "apk" === f ? "APK (OpenWrt 25.12+)" : "IPK (OpenWrt 24.10)");
             } catch (e) {
-                console.error("Failed to fetch version", e), A(_("Failed to fetch current theme version."), "error");
+                console.error("Failed to fetch version", e), P(_("Failed to fetch current theme version."), "error");
             }
         })();
-        let z = async (a)=>{
-            let r = v.value;
+        let j = async (n)=>{
+            let r = w.value;
             try {
-                let n = await fetchLatestRelease(r, f, a);
-                console.log(n), k.disabled = !1;
-                let u = b.replace(/^v/, "").trim(), p = n.tag_name.replace(/^v/, "").trim(), h = L.naturalCompare(p, u) > 0, y = !h && "nightly" !== r;
-                if (y ? A(_("Your theme is up to date!"), "success") : A(h ? _("A new version is available!") : _("Nightly build available (reinstallation check)."), h ? "warn" : "info"), !n.package_asset) return void A(_("No matching package asset found for your system architecture in this release."), "error");
-                let m = n.body ? n.body : "", x = jsx("button", {
+                let a = await fetchLatestRelease(r, f, n);
+                console.log(a), k.disabled = !1;
+                let u = b.replace(/^v/, "").trim(), p = a.tag_name.replace(/^v/, "").trim(), h = L.naturalCompare(p, u) > 0, y = !h && "nightly" !== r;
+                if (y ? P(_("Your theme is up to date!"), "success") : P(h ? _("A new version is available!") : _("Nightly build available (reinstallation check)."), h ? "warn" : "info"), !a.package_asset) return void P(_("No matching package asset found for your system architecture in this release."), "error");
+                let m = a.body ? a.body : "", x = jsx("button", {
                     class: "btn cbi-button cbi-button-save",
                     type: "button",
                     style: "white-space: nowrap;",
@@ -935,11 +803,11 @@ let about_p = about_a.DummyValue.extend({
                         children: [
                             jsx("span", {
                                 class: "fluent-update-badge",
-                                children: "nightly" === p ? "Nightly" : "v".concat(p)
+                                children: "nightly" === p ? "Nightly" : `v${p}`
                             }),
                             jsx("span", {
                                 class: "fluent-update-date",
-                                children: n.published_at.split("T")[0]
+                                children: a.published_at.split("T")[0]
                             })
                         ]
                     })
@@ -951,35 +819,34 @@ let about_p = about_a.DummyValue.extend({
                     class: "fluent-update-footer",
                     style: "display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 15px; flex-wrap: wrap;",
                     children: [
-                        w,
+                        v,
                         x
                     ]
-                })), about_l.content(F, T), F.style.display = "block", x.addEventListener("click", async ()=>{
-                    var a, r;
-                    let d = n.package_asset;
-                    if (!d) return void A(_("No matching package asset found for your system architecture in this release."), "error");
-                    x.disabled = !0, v.disabled = !0, w.disabled = !0, k.disabled = !0, A(_("Starting update process..."), "info");
-                    let u = g ? n.i18n_asset : null, p = null, h = "";
-                    (null == (a = d.digest) ? void 0 : a.startsWith("sha256:")) ? p = d.digest.replace("sha256:", "") : (console.warn("Unable to determine expected package hash from digest. Skipping verification."), p = "skip"), (null == u || null == (r = u.digest) ? void 0 : r.startsWith("sha256:")) && (h = u.digest.replace("sha256:", ""));
-                    let b = async ()=>{
-                        let n = w.value.includes("ghproxy");
-                        A(_("Starting backend download..."), "info"), N("download", 0, _("Downloading on router"));
-                        let a = n ? about_i + d.browser_download_url : d.browser_download_url, r = u ? n ? about_i + u.browser_download_url : u.browser_download_url : "", b = await callStartDownload(a, r);
+                })), about_l.content(E, T), E.style.display = "block", x.addEventListener("click", async ()=>{
+                    let n = a.package_asset;
+                    if (!n) return void P(_("No matching package asset found for your system architecture in this release."), "error");
+                    x.disabled = !0, w.disabled = !0, v.disabled = !0, k.disabled = !0, P(_("Starting update process..."), "info");
+                    let r = g ? a.i18n_asset : null, c = null, u = "";
+                    n.digest?.startsWith("sha256:") ? c = n.digest.replace("sha256:", "") : (console.warn("Unable to determine expected package hash from digest. Skipping verification."), c = "skip"), r?.digest?.startsWith("sha256:") && (u = r.digest.replace("sha256:", ""));
+                    let p = async ()=>{
+                        let a = v.value.includes("ghproxy");
+                        P(_("Starting backend download..."), "info"), A("download", 0, _("Downloading on router"));
+                        let p = a ? about_i + n.browser_download_url : n.browser_download_url, h = r ? a ? about_i + r.browser_download_url : r.browser_download_url : "", b = await callStartDownload(p, h);
                         if (0 !== b.result) throw Error(b.message || "Failed to start router download.");
                         for(;;){
-                            let e = await callCheckDownload(), t = e.size || 0, n = d.size + (u ? u.size : 0), a = n > 0 ? Math.min(Math.round(t / n * 100), 100) : 0;
-                            if (N("download", a, "".concat(_("Downloading on router"), " (").concat((t / 1024).toFixed(0), " / ").concat((n / 1024).toFixed(0), " KB)")), !e.running) if (0 !== e.code) throw Error("Router background download failed or file is empty.");
+                            let e = await callCheckDownload(), t = e.size || 0, a = n.size + (r ? r.size : 0), l = a > 0 ? Math.min(Math.round(t / a * 100), 100) : 0;
+                            if (A("download", l, `${_("Downloading on router")} (${(t / 1024).toFixed(0)} / ${(a / 1024).toFixed(0)} KB)`), !e.running) if (0 !== e.code) throw Error("Router background download failed or file is empty.");
                             else break;
                             await new Promise((e)=>setTimeout(e, 1000));
                         }
-                        if (!await new Promise((n)=>{
-                            let a = jsx("button", {
+                        if (!await new Promise((a)=>{
+                            let n = jsx("button", {
                                 type: "button",
                                 class: "btn cbi-button cbi-button-action",
                                 children: _("Cancel")
                             });
-                            a.addEventListener("click", ()=>{
-                                L.ui.hideModal(), n(!1);
+                            n.addEventListener("click", ()=>{
+                                L.ui.hideModal(), a(!1);
                             });
                             let l = jsx("button", {
                                 type: "button",
@@ -987,7 +854,7 @@ let about_p = about_a.DummyValue.extend({
                                 children: _("Continue")
                             });
                             l.addEventListener("click", ()=>{
-                                L.ui.hideModal(), n(!0);
+                                L.ui.hideModal(), a(!0);
                             }), L.ui.showModal(_("Confirm Installation"), jsxs("div", {
                                 children: [
                                     jsx("p", {
@@ -997,15 +864,15 @@ let about_p = about_a.DummyValue.extend({
                                         class: "right",
                                         style: "margin-top: 15px; display: flex; gap: 10px; justify-content: flex-end;",
                                         children: [
-                                            a,
+                                            n,
                                             l
                                         ]
                                     })
                                 ]
                             }));
                         })) throw Error(_("Installation cancelled by user."));
-                        A(_("Triggering installation on router..."), "info"), N("install", 100, _("Installing package"));
-                        let f = await callDoInstall(p, h);
+                        P(_("Triggering installation on router..."), "info"), A("install", 100, _("Installing package"));
+                        let f = await callDoInstall(c, u);
                         if (0 !== f.result) throw Error(f.message || "Router installation failed.");
                         let g = jsx("pre", {
                             style: "background: var(--fluent-code-bg, #1a1a1a); color: var(--fluent-text, #fff); padding: 10px; border-radius: 4px; font-family: monospace; font-size: 12px; white-space: pre-wrap; word-wrap: break-word; max-height: 200px; overflow-y: auto; margin-top: 15px;"
@@ -1013,8 +880,7 @@ let about_p = about_a.DummyValue.extend({
                         (async ()=>{
                             let e = L.env.ubuspath || "/ubus", t = L.env.sessionid;
                             for(;;)try {
-                                var n, a;
-                                let l = await fetch(e, {
+                                let a = await fetch(e, {
                                     method: "POST",
                                     headers: {
                                         "Content-Type": "application/json"
@@ -1030,13 +896,13 @@ let about_p = about_a.DummyValue.extend({
                                             {}
                                         ]
                                     })
-                                }), i = await l.json();
-                                if (i.error) break;
-                                (null == (a = i.result) || null == (n = a[1]) ? void 0 : n.log) && (g.textContent = i.result[1].log, g.scrollTop = g.scrollHeight), await new Promise((e)=>setTimeout(e, 1000));
-                            } catch (e) {
+                                }), n = await a.json();
+                                if (n.error) break;
+                                n.result?.[1]?.log && (g.textContent = n.result[1].log, g.scrollTop = g.scrollHeight), await new Promise((e)=>setTimeout(e, 1000));
+                            } catch  {
                                 break;
                             }
-                        })(), A(_("Theme successfully updated! Reloading RPC service, please refresh the page in 5 seconds."), "success"), N("done", 100, _("Finished"));
+                        })(), P(_("Theme successfully updated! Reloading RPC service, please refresh the page in 5 seconds."), "success"), A("done", 100, _("Finished"));
                         let y = jsx("button", {
                             class: "btn cbi-button cbi-button-action",
                             type: "button",
@@ -1045,7 +911,7 @@ let about_p = about_a.DummyValue.extend({
                         });
                         y.addEventListener("click", ()=>{
                             window.location.reload();
-                        }), about_l.content(F, [
+                        }), about_l.content(E, [
                             jsxs("div", {
                                 class: "fluent-update-success",
                                 children: [
@@ -1067,13 +933,13 @@ let about_p = about_a.DummyValue.extend({
                         ]);
                     };
                     try {
-                        await b();
+                        await p();
                     } catch (e) {
-                        console.error("Update failed", e), A("".concat(_("Update failed"), ": ").concat(e instanceof Error ? e.message : String(e)), "error"), x.disabled = !1, x.removeAttribute("disabled"), v.disabled = !1, v.removeAttribute("disabled"), w.disabled = !1, w.removeAttribute("disabled"), k.disabled = !1, k.removeAttribute("disabled"), j();
+                        console.error("Update failed", e), P(`${_("Update failed")}: ${e instanceof Error ? e.message : String(e)}`, "error"), x.disabled = !1, x.removeAttribute("disabled"), w.disabled = !1, w.removeAttribute("disabled"), v.disabled = !1, v.removeAttribute("disabled"), k.disabled = !1, k.removeAttribute("disabled"), N();
                     }
                 });
-            } catch (a) {
-                if (k.disabled = !1, console.error("Failed checking updates", a), a instanceof GitHubAPIError && 403 === a.status) {
+            } catch (n) {
+                if (k.disabled = !1, console.error("Failed checking updates", n), n instanceof GitHubAPIError && 403 === n.status) {
                     let l = jsx("input", {
                         type: "text",
                         class: "cbi-input-text",
@@ -1095,45 +961,45 @@ let about_p = about_a.DummyValue.extend({
                             ".",
                             _("The token does NOT require any permissions/scopes to be granted (read-only public access is sufficient).")
                         ]
-                    }), o = jsx("pre", {
+                    }), s = jsx("pre", {
                         style: "margin-top: 10px; margin-bottom: 15px; font-size: 12px; white-space: pre-wrap; word-break: break-word; color: var(--fluent-error-text); background: var(--fluent-card-bg); padding: 8px; border-radius: var(--fluent-border-radius);",
-                        children: a instanceof Error ? a.message : String(a)
-                    }), s = jsx("button", {
+                        children: n instanceof Error ? n.message : String(n)
+                    }), o = jsx("button", {
                         type: "button",
                         class: "btn cbi-button cbi-button-action",
                         children: _("Cancel")
                     });
-                    s.addEventListener("click", ()=>L.ui.hideModal());
-                    let c = jsx("button", {
+                    o.addEventListener("click", ()=>L.ui.hideModal());
+                    let d = jsx("button", {
                         type: "button",
                         class: "btn cbi-button cbi-button-save",
                         children: _("Submit")
                     });
-                    c.addEventListener("click", ()=>{
+                    d.addEventListener("click", ()=>{
                         let e = l.value.trim();
-                        L.ui.hideModal(), e && (A(_("Retrying with token..."), "info"), k.disabled = !0, z(e));
+                        L.ui.hideModal(), e && (P(_("Retrying with token..."), "info"), k.disabled = !0, j(e));
                     }), L.ui.showModal(_("GitHub Token Required"), jsxs(Fragment, {
                         children: [
                             i,
                             r,
-                            o,
+                            s,
                             l,
                             jsxs("div", {
                                 class: "right",
                                 style: "margin-top: 15px; display: flex; gap: 10px; justify-content: flex-end;",
                                 children: [
-                                    s,
-                                    c
+                                    o,
+                                    d
                                 ]
                             })
                         ]
                     }));
-                } else A("".concat(_("Failed to check for updates"), ": ").concat(a instanceof Error ? a.message : String(a)), "error");
+                } else P(`${_("Failed to check for updates")}: ${n instanceof Error ? n.message : String(n)}`, "error");
             }
         };
         return k.addEventListener("click", ()=>{
-            A(_("Checking for updates..."), "info"), k.disabled = !0, F.style.display = "none", j(), z();
-        }), P;
+            P(_("Checking for updates..."), "info"), k.disabled = !0, E.style.display = "none", N(), j();
+        }), F;
     }
 });
 const registerAboutTab = (e)=>{
