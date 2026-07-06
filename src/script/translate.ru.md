@@ -1,6 +1,6 @@
 # Translation guidance
 
-You are translating luci-theme-fluent LuCI interface copy into Russian (`ru_RU`).
+You are translating luci-theme-fluent LuCI interface copy into Russian (`ru`).
 
 Translation goals: keep the text concise, natural, and appropriate for a router/web UI while improving terminology accuracy, consistency, and professionalism. The result should read like polished OpenWrt / LuCI interface copy, not explanatory prose.
 
