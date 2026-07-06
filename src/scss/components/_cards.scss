@@ -32,10 +32,11 @@
 
   // Top-right section remove button
   .cbi-section-remove {
-    float: right;
+    float: inline-end;
     position: relative;
     z-index: 10;
-    margin: 8px 8px 0 0;
+    margin-block-start: 8px;
+    margin-inline: 0 8px;
     .cbi-button {
       background: var(--fluent-error);
       border-color: var(--fluent-error);
@@ -54,7 +55,7 @@
     justify-content: flex-end;
     gap: var(--fluent-space-sm);
 
-    margin-right: var(--fluent-space-sm);
+    margin-inline-end: var(--fluent-space-sm);
     margin-bottom: var(--fluent-space-sm);
 
     .cbi-button-add {

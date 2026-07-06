@@ -28,6 +28,8 @@
   let blur_opacity = defaults.transparency;
   let blur_opacity_dark = defaults.transparency_dark;
   let bar_color = primary;
+  let direction = {};
+  include('themes/fluent/direction', { cfg, defaults, direction });
 
   if (access('/etc/config/fluent')) {
     primary = cfg.get_first('fluent', 'global', 'primary') || primary;
@@ -41,7 +43,7 @@
   }
 %}
 <!DOCTYPE html>
-<html lang="{{ dispatcher.lang }}">
+<html lang="{{ dispatcher.lang }}" dir="{{ direction.resolved }}">
 
 <head>
 	<meta charset="utf-8">
@@ -121,4 +123,4 @@
 	<script src="{{ resource }}/luci.js?v={{ version.luciversion }}"></script>
 	<script src="{{ resource }}/cbi.js?v={{ version.luciversion }}"></script>
 </head>
-<body class="lang_{{ dispatcher.lang }} login-page" data-theme-mode="{{ mode }}">
+<body class="lang_{{ dispatcher.lang }} login-page" data-theme-mode="{{ mode }}" data-fluent-dir="{{ direction.resolved }}">

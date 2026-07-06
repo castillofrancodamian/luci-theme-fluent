@@ -75,11 +75,11 @@
   }
 
   &.left {
-    text-align: left;
+    text-align: start;
     justify-content: flex-start;
   }
   &.right {
-    text-align: right;
+    text-align: end;
     justify-content: flex-end;
   }
   &.center {
@@ -198,7 +198,7 @@ div.th {
 td.cbi-section-actions {
   padding: var(--fluent-space-xs) var(--fluent-space-sm);
   white-space: nowrap;
-  text-align: right;
+  text-align: end;
   vertical-align: middle;
   align-self: center !important;
 

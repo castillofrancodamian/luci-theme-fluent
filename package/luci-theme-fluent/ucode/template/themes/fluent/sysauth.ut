@@ -341,8 +341,8 @@
       <div class="ms-card-header">
         <button type="button" class="ms-back-button" id="ms-back-btn" style="display: none;" aria-label="Back">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
+            <line x1="17" y1="12" x2="7" y2="12"></line>
+            <polyline points="11 17 6 12 11 7"></polyline>
           </svg>
         </button>
         <a class="brand" href="/">
@@ -417,6 +417,7 @@
           var accountPillText = document.getElementById('login-account-pill-text');
           var passwordToggle = document.getElementById('ms-password-toggle');
           var errorBox = document.querySelector('.errorbox');
+          var loginFormEl = document.querySelector('.form-login');
 
           function getCurrentHost() {
             if (window.location && window.location.host) {
@@ -455,8 +456,6 @@
           if (passInput) {
             passInput.addEventListener('input', clearError);
           }
-
-          var loginFormEl = document.querySelector('.form-login');
 
           function showStep2() {
             if (loginFormEl) loginFormEl.classList.add('show-step2');

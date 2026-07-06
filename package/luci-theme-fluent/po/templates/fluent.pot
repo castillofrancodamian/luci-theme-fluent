@@ -116,6 +116,9 @@ msgstr ""
 msgid "Control height"
 msgstr ""
 
+msgid "Choose the document direction for authenticated and login pages. Automatic mode resolves Arabic and Persian locale codes (ar, ar_*, ar-*, fa, fa_*, fa-*) to RTL and falls back to LTR for missing or unrecognized locales."
+msgstr ""
+
 msgid ""
 "Controls the font weight used by main navigation labels and related theme text a"
 "ccents."
@@ -192,6 +195,12 @@ msgstr ""
 msgid "Follow system"
 msgstr ""
 
+msgid "Force LTR"
+msgstr ""
+
+msgid "Force RTL"
+msgstr ""
+
 msgid "Force dark mode"
 msgstr ""
 
@@ -199,6 +208,12 @@ msgid "Force light mode"
 msgstr ""
 
 msgid "General"
+msgstr ""
+
+msgid "Text direction"
+msgstr ""
+
+msgid "Automatic (Arabic/Persian locales only)"
 msgstr ""
 
 msgid "GitHub Token Required"

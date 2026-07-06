@@ -28,5 +28,6 @@ return {
   view_transition: "1",
   tab_animation: "1",
   prefers_reduced_motion: "1",
-  loading_bar: "1"
+  loading_bar: "1",
+  direction_mode: "auto"
 };

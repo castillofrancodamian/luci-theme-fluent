@@ -8,11 +8,11 @@
 .main-left {
   position: fixed;
   top: var(--fluent-header-height, 48px);
-  left: 0;
+  inset-inline-start: 0;
   width: var(--fluent-sidebar-width, 260px);
   height: calc(100vh - var(--fluent-header-height, 48px));
   background: var(--fluent-sidebar-bg);
-  border-right: 1px solid var(--fluent-border);
+  border-inline-end: 1px solid var(--fluent-border);
   z-index: var(--fluent-zindex-menu);
   overflow-y: auto;
   overflow-x: hidden;
@@ -31,13 +31,13 @@
 }
 
 .main-right {
-  margin-left: var(--fluent-sidebar-width, 260px);
+  margin-inline-start: var(--fluent-sidebar-width, 260px);
   height: 100vh;
   padding-top: var(--fluent-header-height, 48px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: margin-left var(--fluent-duration-normal) var(--fluent-easing-standard);
+  transition: margin-inline-start var(--fluent-duration-normal) var(--fluent-easing-standard);
 }
 
 .main-left .nav {
@@ -48,7 +48,7 @@
 
   .fluent-sidebar-parent-slider {
     position: absolute;
-    left: 3px;
+    inset-inline-start: 3px;
     width: 3px;
     background-color: var(--fluent-primary);
     border-radius: 999px;
@@ -70,7 +70,8 @@
     align-items: center;
     gap: var(--fluent-space-sm);
     margin: 2px 0;
-    padding: 0 var(--fluent-space-sm);
+    padding-block: 0;
+    padding-inline: 6px var(--fluent-space-sm);
     min-width: 0;
     height: 36px;
     border-radius: var(--fluent-radius-md);
@@ -97,14 +98,14 @@
       flex-shrink: 0;
       color: var(--fluent-text-secondary);
 
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+              &::before,
+              &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                inset-inline-start: 0;
+                width: 100%;
+                height: 100%;
         background-color: currentColor;
         mask-size: contain;
         mask-repeat: no-repeat;
@@ -272,7 +273,8 @@
       }
 
       .slide-menu {
-        margin: 0 0 var(--fluent-space-xs) 36px;
+        margin: 0 0 var(--fluent-space-xs) 0;
+        margin-inline-start: 36px;
         padding: 0;
         background: transparent;
         border-radius: 0;
@@ -281,7 +283,7 @@
 
         .fluent-sidebar-slider {
           position: absolute;
-          left: 0;
+          inset-inline-start: 0;
           width: 3px;
           background-color: var(--fluent-primary);
           border-radius: var(--fluent-radius-sm);
@@ -317,7 +319,7 @@
           &::before {
             content: "";
             position: absolute;
-            left: 0;
+            inset-inline-start: 0;
             top: 15%;
             height: 70%;
             width: 3px;
@@ -359,7 +361,7 @@
                 content: "";
                 position: absolute;
                 top: 0;
-                left: 0;
+                inset-inline-start: 0;
                 width: 100%;
                 height: 100%;
                 background-color: currentColor;
@@ -919,7 +921,7 @@
     .menu {
       &::after {
         position: absolute;
-        right: var(--fluent-space-sm);
+        inset-inline-end: var(--fluent-space-sm);
         top: 50%;
         transform: translateY(-50%) rotate(-90deg);
         transition:
@@ -931,6 +933,16 @@
       &.active::after {
         transform: translateY(-50%) rotate(0deg);
         background-color: var(--fluent-primary) !important;
+      }
+
+      @include rtl {
+        &::after {
+          transform: translateY(-50%) rotate(90deg);
+        }
+
+        &.active::after {
+          transform: translateY(-50%) rotate(0deg);
+        }
       }
     }
   }
@@ -958,7 +970,7 @@ body[data-sidebar-state="collapsed"] {
       .sidebar-collapse-toggle {
         width: 100%;
         height: 48px;
-        margin-left: 0;
+        margin-inline-start: 0;
         border-radius: 0;
         justify-content: center;
 
@@ -969,15 +981,15 @@ body[data-sidebar-state="collapsed"] {
     }
   }
 
-  .main-right {
-    margin-left: var(--fluent-sidebar-collapsed-width, 48px);
-    position: relative;
-    z-index: 1;
+    .main-right {
+      margin-inline-start: var(--fluent-sidebar-collapsed-width, 48px);
+      position: relative;
+      z-index: 1;
   }
 
   .main-left .nav {
-    padding-left: 0;
-    padding-right: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
 
     > li > .slide-menu.active {
       display: none;
@@ -988,7 +1000,8 @@ body[data-sidebar-state="collapsed"] {
 
       > a:first-child {
         justify-content: flex-start;
-        padding: 0 0 0 14px;
+        padding: 0;
+        padding-inline-start: 14px;
 
         .menu-icon {
           margin: 0;
@@ -1006,7 +1019,7 @@ body[data-sidebar-state="collapsed"] {
       > .slide-menu {
         position: fixed;
         top: auto;
-        left: calc(var(--fluent-sidebar-collapsed-width, 48px) + var(--fluent-space-sm));
+        inset-inline-start: calc(var(--fluent-sidebar-collapsed-width, 48px) + var(--fluent-space-sm));
         min-width: 220px;
         max-height: calc(100vh - 16px);
         margin: 0;
@@ -1039,7 +1052,7 @@ body[data-sidebar-state="collapsed"] {
       &::before {
         content: "";
         position: absolute;
-        left: 3px;
+        inset-inline-start: 3px;
         width: 3px;
         height: 60%;
         background: var(--fluent-primary);
@@ -1062,8 +1075,27 @@ body[data-sidebar-state="collapsed"] {
 }
 
 @include respond-down("md") {
+  @include direction-root(ltr) {
+    .main-left {
+      transform: translateX(-100%);
+    }
+
+    .main-left.active {
+      transform: translateX(0);
+    }
+  }
+
+  @include direction-root(rtl) {
+    .main-left {
+      transform: translateX(100%);
+    }
+
+    .main-left.active {
+      transform: translateX(0);
+    }
+  }
+
   .main-left {
-    transform: translateX(-100%);
     z-index: calc(var(--fluent-zindex-modal) + 150);
     top: 0;
     height: 100vh;
@@ -1072,23 +1104,17 @@ body[data-sidebar-state="collapsed"] {
       display: block;
       padding-top: 16px;
     }
-
-    &.active {
-      transform: translateX(0);
-    }
   }
 
   .main-right,
   body[data-sidebar-state="collapsed"] .main-right {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 
   .darkMask {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    inset: 0;
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(2px);
     z-index: calc(var(--fluent-zindex-modal) + 149);

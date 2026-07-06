@@ -89,7 +89,7 @@ a {
 // ============================================================
 ul,
 ol {
-  padding-left: var(--fluent-space-xl);
+  padding-inline-start: var(--fluent-space-xl);
 }
 
 li {
@@ -187,7 +187,7 @@ body {
 
 .text-left,
 .left {
-  text-align: left;
+  text-align: start;
 }
 
 .text-center {
@@ -196,15 +196,15 @@ body {
 
 .text-right,
 .right {
-  text-align: right;
+  text-align: end;
 }
 
 .pull-right {
-  float: right;
+  float: inline-end;
 }
 
 .pull-left {
-  float: left;
+  float: inline-start;
 }
 
 .hidden {
@@ -341,12 +341,12 @@ body {
 // Inline spinner (not in main view)
 div:not([id="view"]) > .spinning {
   position: relative;
-  padding-left: 40px !important;
+  padding-inline-start: 40px !important;
 
   &::before {
     position: absolute;
     background: none;
-    left: 10px;
+    inset-inline-start: 10px;
     top: 50%;
     transform: translateY(-50%);
     content: "";

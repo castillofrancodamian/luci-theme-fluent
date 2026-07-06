@@ -1,3 +1,5 @@
+@use "../mixins" as *;
+
 // ============================================================
 // TABS - FluentUI 2 Tab / Pivot Styles
 // Clean transparent background, underline indicators on hover/active
@@ -52,7 +54,7 @@ ul.cbi-tabmenu {
     background-color: var(--fluent-primary);
     border-radius: calc(var(--fluent-tab-indicator-height, 3px) / 2);
     transition:
-      left var(--fluent-duration-normal) var(--fluent-easing-standard),
+      inset-inline-start var(--fluent-duration-normal) var(--fluent-easing-standard),
       width var(--fluent-duration-normal) var(--fluent-easing-standard),
       transform var(--fluent-duration-normal) var(--fluent-easing-standard);
     transform-origin: center;
@@ -105,8 +107,8 @@ ul.cbi-tabmenu {
       &::after {
         content: "";
         position: absolute;
-        left: var(--fluent-space-lg, 16px);
-        right: var(--fluent-space-lg, 16px);
+        inset-inline-start: var(--fluent-space-lg, 16px);
+        inset-inline-end: var(--fluent-space-lg, 16px);
         bottom: 0;
         height: var(--fluent-tab-indicator-height, 3px);
         background-color: transparent;
@@ -206,7 +208,7 @@ ul.cbi-tabmenu {
 [data-initialized="true"] {
   > [data-tab][data-tab-title] {
     &[data-tab-title] {
-      padding-left: var(--fluent-space-sm);
+      padding-inline-start: var(--fluent-space-sm);
     }
     &[data-tab-active="true"] {
       display: block;

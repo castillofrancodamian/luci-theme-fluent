@@ -205,6 +205,11 @@
       max-width: calc(100vw - 32px) !important;
       transform-origin: bottom !important;
       animation-name: fluent-dropdown-slide-in-up !important;
+
+      @include rtl {
+        left: 0 !important;
+        right: auto !important;
+      }
     }
   }
 }

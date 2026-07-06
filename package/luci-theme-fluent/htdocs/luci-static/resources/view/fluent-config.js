@@ -74,7 +74,8 @@ const FLUENT_DEFAULTS = {
     view_transition: "1",
     tab_animation: "1",
     prefers_reduced_motion: "1",
-    loading_bar: "1"
+    loading_bar: "1",
+    direction_mode: "auto"
 };
 const fluentFlagDefault = (r)=>"1" === r;
 
@@ -298,27 +299,31 @@ const registerColorsTab = (t)=>{
 ;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/general.ts
 let general_e = L.form;
 
-const registerGeneralTab = (l)=>{
-    l.tab("general", _("General"));
+const registerGeneralTab = (a)=>{
+    a.tab("general", _("General"));
     {
-        let o = l.taboption("general", general_e.ListValue, "mode", _("Color mode"));
+        let o = a.taboption("general", general_e.ListValue, "mode", _("Color mode"));
         o.value("auto", _("Follow system")), o.value("light", _("Force light mode")), o.value("dark", _("Force dark mode")), o.default = FLUENT_DEFAULTS.mode, o.rmempty = !1, o.description = _("Use the system/browser preference, or always render the Fluent theme in a fixed light or dark palette.");
     }
     {
-        let o = l.taboption("general", general_e.ListValue, "font_weight", _("Navigation font weight"));
+        let o = a.taboption("general", general_e.ListValue, "direction_mode", _("Text direction"));
+        o.value("auto", _("Automatic (Arabic/Persian locales only)")), o.value("rtl", _("Force RTL")), o.value("ltr", _("Force LTR")), o.default = FLUENT_DEFAULTS.direction_mode, o.rmempty = !1, o.description = _("Choose the document direction for authenticated and login pages. Automatic mode resolves Arabic and Persian locale codes (ar, ar_*, ar-*, fa, fa_*, fa-*) to RTL and falls back to LTR for missing or unrecognized locales.");
+    }
+    {
+        let o = a.taboption("general", general_e.ListValue, "font_weight", _("Navigation font weight"));
         o.value("normal", _("Normal")), o.value("600", _("Semibold")), o.default = FLUENT_DEFAULTS.font_weight, o.rmempty = !1, o.description = _("Controls the font weight used by main navigation labels and related theme text accents.");
     }
     {
-        let o = l.taboption("general", general_e.ListValue, "control_height", _("Control height"));
+        let o = a.taboption("general", general_e.ListValue, "control_height", _("Control height"));
         o.value("32", _("Compact (32px)")), o.value("42", _("Comfortable (42px)")), o.default = FLUENT_DEFAULTS.control_height, o.rmempty = !1, o.description = _("Applies to standard buttons, inputs, selects, and similar form controls across the theme.");
     }
     {
-        let a = l.taboption("general", general_e.Flag, "custom_select", _("Use Fluent custom select dropdowns"), _("Replace native select elements with the theme's custom dropdown widget."));
-        a.default = fluentFlagDefault(FLUENT_DEFAULTS.custom_select) ? a.enabled : a.disabled, a.rmempty = !1;
+        let l = a.taboption("general", general_e.Flag, "custom_select", _("Use Fluent custom select dropdowns"), _("Replace native select elements with the theme's custom dropdown widget."));
+        l.default = fluentFlagDefault(FLUENT_DEFAULTS.custom_select) ? l.enabled : l.disabled, l.rmempty = !1;
     }
 };
 
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_fa7db5d1266078230463ede1708aac21/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_415c1fe03795183071a679fcf2fe2648/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
 const Fragment = Symbol.for("jsx.fragment");
 function jsx_factory_e(e, t) {
     let { children: n, ...r } = t || {}, o = function e(t, n = []) {
@@ -356,7 +361,7 @@ function jsxDEV(t, n) {
     return jsx_factory_e(t, n);
 }
 
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_fa7db5d1266078230463ede1708aac21/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_415c1fe03795183071a679fcf2fe2648/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
 
 
 ;// CONCATENATED MODULE: ./web/resources/view/fluent-config/tabs/login.tsx

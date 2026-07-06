@@ -52,8 +52,7 @@ body.login-page {
     position: absolute !important;
     width: 100% !important;
     height: 100% !important;
-    left: 0 !important;
-    top: 0 !important;
+    inset: 0 !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
     background-size: cover !important;
@@ -64,8 +63,7 @@ body.login-page {
     position: absolute !important;
     width: 100% !important;
     height: 100% !important;
-    left: 0 !important;
-    top: 0 !important;
+    inset: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -75,9 +73,8 @@ body.login-page {
 
     video {
       position: absolute !important;
-      top: 50% !important;
-      left: 50% !important;
-      transform: translate(-50%, -50%) !important;
+      inset: 0 !important;
+      transform: none !important;
       object-fit: cover !important;
       height: 100% !important;
       width: 100% !important;
@@ -86,8 +83,8 @@ body.login-page {
 
   .volume-control {
     position: fixed !important;
-    right: 20px !important;
-    top: 20px !important;
+    inset-inline-end: 20px !important;
+    inset-block-start: 20px !important;
     width: 24px !important;
     height: 24px !important;
     z-index: 5000 !important;
@@ -114,7 +111,7 @@ body.login-page {
     -webkit-backdrop-filter: blur(var(--fluent-blur-radius)) !important;
     position: relative !important;
     top: auto !important;
-    left: auto !important;
+    inset-inline-start: auto !important;
     transform: none !important;
     margin: 0 !important;
     flex: 1 1 auto !important;
@@ -164,11 +161,12 @@ body.login-page {
         margin-bottom: 28px !important;
         min-height: 48px !important;
         width: 100% !important;
+        padding-inline: 36px !important;
       }
 
       .ms-back-button {
         position: absolute !important;
-        left: -12px !important;
+        inset-inline-start: -12px !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
         background: transparent !important;
@@ -185,6 +183,8 @@ body.login-page {
         svg {
           width: 20px !important;
           height: 24px !important;
+
+          @include rtl-flip-icon;
         }
 
         &:hover {
@@ -272,7 +272,15 @@ body.login-page {
             opacity 0.25s cubic-bezier(0.1, 0.9, 0.2, 1) !important;
         }
 
-        // Default state: Step 1 visible, Step 2 off to the right
+        --login-step-enter-offset: 40px;
+        --login-step-exit-offset: -40px;
+
+        @include rtl {
+          --login-step-enter-offset: -40px;
+          --login-step-exit-offset: 40px;
+        }
+
+        // Default state: Step 1 visible, Step 2 off to inline-end
         #step-username {
           transform: translateX(0) !important;
           opacity: 1 !important;
@@ -280,15 +288,17 @@ body.login-page {
         }
 
         #step-password {
-          transform: translateX(40px) !important;
+          transform: translateX(var(--login-step-enter-offset)) !important;
           opacity: 0 !important;
           visibility: hidden !important;
         }
 
-        // Active state: Step 2 visible, Step 1 off to the left
+        // Active state: Step 2 visible, Step 1 exits toward inline-start.
+        // Reversing the signed offsets under html/body dir preserves the fixed
+        // username -> password enters from inline-end rule in both LTR and RTL.
         &.show-step2 {
           #step-username {
-            transform: translateX(-40px) !important;
+            transform: translateX(var(--login-step-exit-offset)) !important;
             opacity: 0 !important;
             visibility: hidden !important;
           }
@@ -308,11 +318,11 @@ body.login-page {
         // ERROR BOX (Microsoft style)
         .errorbox {
           position: relative !important;
-          padding: 0 0 0 16px !important;
+          padding-inline-start: 16px !important;
           margin: 2px 0 0 0 !important;
           border-radius: 0 !important;
           display: block !important;
-          text-align: left !important;
+          text-align: start !important;
           background: transparent !important;
           border: none !important;
           box-shadow: none !important;
@@ -332,8 +342,8 @@ body.login-page {
           &::after {
             content: "" !important;
             position: absolute !important;
-            left: 0 !important;
-            top: 1px !important;
+            inset-inline-start: 0 !important;
+            inset-block-start: 1px !important;
             width: 14px !important;
             height: 14px !important;
             display: block !important;
@@ -425,11 +435,11 @@ body.login-page {
           // Floating Label
           .ms-label {
             position: absolute !important;
-            left: 10px !important;
+            inset-inline-start: 10px !important;
             top: 50% !important;
             transform: translateY(-50%) !important;
             background-color: var(--fluent-bg-card) !important;
-            padding: 0 4px !important;
+            padding-inline: 4px !important;
             color: var(--fluent-text-secondary) !important;
             font-family: var(--fluent-font-family) !important;
             font-size: 14px !important;
@@ -462,7 +472,7 @@ body.login-page {
         // Password Wrapper (to give spacing for eye icon)
         .password-wrapper {
           .ms-input {
-            padding: 0 36px 0 10px !important;
+            padding-inline: 10px 36px !important;
           }
         }
 
@@ -471,13 +481,12 @@ body.login-page {
         // ============================================================
         .ms-password-toggle {
           position: absolute !important;
-          right: 1px !important;
-          top: 1px !important;
-          bottom: 2px !important;
+          inset-inline-end: 1px !important;
+          inset-block: 1px 2px !important;
           width: 32px !important;
           background: transparent !important;
           border: none !important;
-          border-radius: 0 1px 1px 0 !important;
+          @include logical-radius(0, 1px, 1px, 0);
           cursor: pointer !important;
           display: flex !important;
           align-items: center !important;
@@ -602,9 +611,8 @@ body.login-page {
   // FOOTER - Pinned to the bottom of the login page flow
   footer {
     position: fixed !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 18px !important;
+    inset-inline: 0 !important;
+    inset-block-end: 18px !important;
     width: 100% !important;
     text-align: center !important;
     z-index: 10 !important;
@@ -619,6 +627,7 @@ body.login-page {
       align-items: center !important;
       justify-content: center !important;
       gap: 16px !important;
+      flex-wrap: wrap !important;
       font-size: 12px !important;
       color: var(--fluent-text-secondary) !important;
       opacity: 0.75 !important;

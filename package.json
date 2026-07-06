@@ -32,7 +32,7 @@
     "@dotenvx/dotenvx": "^1.38.0",
     "@iconify-json/fluent": "^1.2.51",
     "@iconify-json/fluent-mdl2": "^1.2.1",
-    "@lazulikao/luci-types": "github:LazuliKao/luci-types#ba10994517383afe7c4cc989ff9252b359258982",
+    "@lazulikao/luci-types": "github:LazuliKao/luci-types#204c97d283ecce9770598329068a0616192394ba",
     "@types/node": "^22.19.21",
     "playwright": "^1.61.0",
     "sass": "^1.101.0",

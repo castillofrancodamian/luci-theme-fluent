@@ -9,7 +9,7 @@
 #modal_overlay {
   position: fixed;
   top: 0;
-  left: 0;
+  inset-inline-start: 0;
   width: 100%;
   height: 100%;
   background: var(--fluent-modal-overlay);
@@ -51,7 +51,9 @@
   .alert-message {
     background: transparent !important;
     border: none !important;
-    padding: 0 0 0 calc(18px + var(--fluent-space-md)) !important;
+    padding-block: 0 !important;
+    padding-inline: 0 0 !important;
+    padding-inline-start: calc(18px + var(--fluent-space-md)) !important;
     margin: 0 !important;
     box-shadow: none !important;
     color: var(--fluent-text) !important;
@@ -59,7 +61,7 @@
 
     &::before {
       position: absolute !important;
-      left: 0 !important;
+      inset-inline-start: 0 !important;
       top: 0 !important;
       margin-top: 2px !important;
     }
@@ -84,7 +86,7 @@
     }
   }
 
-  // Support both .button-row (standard LuCI), .modal-footer (custom), and direct child .right (common button alignment)
+  // Support both .button-row (standard LuCI), .modal-footer (custom), and direct child .right (legacy end-alignment class)
   .button-row,
   .modal-footer,
   > .right {
@@ -136,7 +138,7 @@
     color: var(--fluent-text-secondary);
     position: absolute;
     top: var(--fluent-space-lg);
-    right: var(--fluent-space-lg);
+    inset-inline-end: var(--fluent-space-lg);
     z-index: 11;
 
     &::before {
@@ -157,7 +159,7 @@
     overflow: visible !important; // Prevent clipping of the spinner icon due to modal's overflow-y: auto
   }
 
-  // Right-aligned layouts inside modal body (e.g. file upload dialog buttons)
+  // End-aligned layouts inside modal body (e.g. file upload dialog buttons)
   > :not(.right) .right {
     display: flex;
     justify-content: flex-end;
@@ -176,13 +178,12 @@
 .uci-dialog {
   padding: var(--fluent-modal-padding);
   .button-row {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding-inline: 0 !important;
     > .btn {
       min-width: 96px;
     }
     .cbi-button + .cbi-button {
-      margin-left: var(--fluent-space-sm);
+      margin-inline-start: var(--fluent-space-sm);
     }
   }
   > .cbi-section {
@@ -296,13 +297,13 @@ body.modal-overlay-active {
   &::before {
     position: absolute !important;
     top: calc(var(--fluent-modal-padding) + 4px) !important;
-    left: var(--fluent-modal-padding) !important;
+    inset-inline-start: var(--fluent-modal-padding) !important;
     margin: 0 !important;
     z-index: 11 !important;
   }
 
   h4 {
-    padding-left: 28px !important;
+    padding-inline-start: 28px !important;
     font-size: var(--fluent-font-size-lg) !important;
     font-weight: var(--fluent-font-weight-semibold) !important;
     color: var(--fluent-text) !important;

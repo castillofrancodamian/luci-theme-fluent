@@ -3,6 +3,7 @@
 // Overrides and separates dropdown styling when used as a button/btn
 // ============================================================
 @use "../mixins" as *;
+@use "../icons" as *;
 
 .cbi-dropdown.cbi-button,
 .cbi-dropdown.btn {
@@ -17,10 +18,15 @@
   vertical-align: middle;
   cursor: pointer;
 
+  @include rtl {
+    direction: rtl;
+  }
+
   // Layout & size overrides
-  padding: 0 var(--fluent-space-md) !important; // Balanced padding
-  padding-right: 0 !important; // Remove right padding to accommodate chevron
-  border-right: 0 !important; // Remove right margin to accommodate chevron
+  padding-block: 0 !important;
+  padding-inline: var(--fluent-space-md) !important; // Balanced padding
+  padding-inline-end: 0 !important; // Remove inline-end padding to accommodate chevron
+  border-inline-end: 0 !important; // Remove inline-end border to accommodate chevron
   gap: var(--fluent-space-xs); // Gap between text and chevron
   min-width: unset; // Buttons shouldn't have the 120px min-width of select dropdowns
   width: auto;
@@ -132,29 +138,33 @@
     justify-content: center;
     width: 30px;
     height: 100%;
-    margin-left: 0 !important;
-    margin-right: 0;
+    margin-inline-start: 0 !important;
+    margin-inline-end: 0;
     font-size: 0;
     color: inherit;
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.23, 1);
+    transition: color var(--fluent-duration-fast) var(--fluent-easing-standard);
 
     &::before {
+      @include fluent-mask-icon-by-name("chevron-down-20-regular", 16px, currentColor);
       content: "";
-      display: block;
-      width: 6px;
-      height: 6px;
-      border-right: 1.5px solid currentColor; // Matches text color of button dynamically
-      border-bottom: 1.5px solid currentColor;
-      border-left: none !important;
-      border-top: none !important;
-      background: none !important;
-      transform: rotate(45deg) translateY(-1px);
-      transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+      transition:
+        background-color var(--fluent-duration-fast) var(--fluent-easing-standard),
+        transform 0.2s cubic-bezier(0.4, 0, 0.23, 1);
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      color: inherit !important;
+    }
+
+    &:has(svg)::before {
+      display: none !important;
     }
   }
 
   // When dropdown list is open, rotate the chevron
-  &[open] > span.open {
+  &[open] > span.open::before {
     transform: rotate(180deg);
   }
 

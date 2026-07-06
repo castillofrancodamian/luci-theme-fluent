@@ -1,3 +1,11 @@
+import {
+  getEffectiveDocumentDirection,
+  getPhysicalLeftFromInlineStart,
+  getRectInlineStart,
+  getViewportInlineSize,
+  type InlineGeometry,
+} from "./direction";
+
 /**
  * Setup dynamic positioning and portaling for interface badge tooltips
  * using a single global tooltip instance to avoid DOM clipping and event loops.
@@ -42,30 +50,46 @@ export function setupIfaceboxTooltips() {
 
     const parentRect = container.getBoundingClientRect();
     const tooltipRect = globalTooltip.getBoundingClientRect();
+    const direction = getEffectiveDocumentDirection();
+    const viewportInlineSize = getViewportInlineSize();
 
     // Position calculation
     const top = window.pageYOffset + parentRect.bottom + 6;
-    let left = window.pageXOffset + parentRect.left + parentRect.width / 2 - tooltipRect.width / 2;
+    const parentInlineCenter = getRectInlineStart(parentRect, direction, viewportInlineSize) + parentRect.width / 2;
+    let tooltipInlineStart = parentInlineCenter - tooltipRect.width / 2;
 
     // Screen boundary checks
     const padding = 10;
-    if (left < padding) {
-      left = padding;
+    if (tooltipInlineStart < padding) {
+      tooltipInlineStart = padding;
     }
-    if (left + tooltipRect.width > window.innerWidth - padding) {
-      left = window.innerWidth - tooltipRect.width - padding;
+    if (tooltipInlineStart + tooltipRect.width > viewportInlineSize - padding) {
+      tooltipInlineStart = viewportInlineSize - tooltipRect.width - padding;
     }
 
+    const tooltipInlineGeometry: InlineGeometry = {
+      inlineStart: tooltipInlineStart,
+      inlineSize: tooltipRect.width,
+    };
+    const tooltipPhysicalLeft = getPhysicalLeftFromInlineStart(
+      tooltipInlineGeometry,
+      direction,
+      viewportInlineSize,
+    );
+
     globalTooltip.style.top = `${top}px`;
-    globalTooltip.style.left = `${left}px`;
+    globalTooltip.style.left = `${window.pageXOffset + tooltipPhysicalLeft}px`;
 
     // Force reflow and animate opacity
     globalTooltip.offsetWidth;
     globalTooltip.style.opacity = "1";
 
     // Set arrow pointer position dynamically
-    const arrowLeft = window.pageXOffset + parentRect.left + parentRect.width / 2 - left;
-    globalTooltip.style.setProperty("--arrow-left", `${arrowLeft}px`);
+    const arrowInlineStart = parentInlineCenter - tooltipInlineStart;
+    const arrowPhysicalLeft = direction === "rtl"
+      ? tooltipRect.width - arrowInlineStart
+      : arrowInlineStart;
+    globalTooltip.style.setProperty("--arrow-left", `${arrowPhysicalLeft}px`);
 
     const handleMouseLeave = () => {
       if (globalTooltip) {

@@ -3,7 +3,7 @@
 // FluentUI 2 badges, zone indicators, interface cards, log output
 // ============================================================
 @use "../mixins" as *;
-$indicator-left-offset: 10px;
+$indicator-inline-offset: 10px;
 .ifacebadge {
   display: inline-flex;
   align-items: center;
@@ -20,6 +20,13 @@ $indicator-left-offset: 10px;
   line-height: var(--fluent-line-height-tight);
   box-sizing: border-box;
   vertical-align: middle;
+
+  @include rtl {
+    img {
+      order: -1;
+    }
+  }
+
   // Truncate name with ellipsis when container overflows
   > span:not(.cbi-tooltip-container) {
     overflow: hidden;
@@ -133,13 +140,13 @@ td > .ifacebadge,
   overflow: visible;
 
   > :first-child {
-    border-top-left-radius: calc(var(--fluent-card-radius) - 1px);
-    border-top-right-radius: calc(var(--fluent-card-radius) - 1px);
+    border-start-start-radius: calc(var(--fluent-card-radius) - 1px);
+    border-start-end-radius: calc(var(--fluent-card-radius) - 1px);
   }
 
   > :last-child {
-    border-bottom-left-radius: calc(var(--fluent-card-radius) - 1px);
-    border-bottom-right-radius: calc(var(--fluent-card-radius) - 1px);
+    border-end-start-radius: calc(var(--fluent-card-radius) - 1px);
+    border-end-end-radius: calc(var(--fluent-card-radius) - 1px);
   }
 
   &:hover {
@@ -162,12 +169,11 @@ td > .ifacebadge,
     background: none;
 
     .cbi-tooltip {
-      left: 0;
-      right: 0;
+      inset-inline: 0;
       transform: translateY(var(--fluent-space-xs));
       white-space: normal;
       &::before {
-        left: $indicator-left-offset;
+        inset-inline-start: $indicator-inline-offset;
       }
     }
 
@@ -205,7 +211,7 @@ td > .ifacebadge,
       background: transparent;
       color: var(--fluent-success);
       border-bottom-color: var(--fluent-card-border);
-      border-left: 3px solid var(--fluent-success);
+      border-inline-start: 3px solid var(--fluent-success);
     }
 
     .ifacebox-body {
@@ -243,10 +249,10 @@ td > .ifacebadge,
   gap: var(--fluent-space-xs);
   padding: var(--fluent-space-sm) var(--fluent-space-md);
   color: var(--fluent-text-secondary);
-  text-align: left;
+  text-align: start;
   &.left {
     align-items: flex-start;
-    text-align: left;
+    text-align: start;
   }
 
   &.center {

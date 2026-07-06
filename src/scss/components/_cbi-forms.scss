@@ -105,9 +105,9 @@
           display: block;
           width: 8px;
           height: 8px;
-          border-right: 1.5px solid var(--fluent-text-secondary);
+          border-inline-end: 1.5px solid var(--fluent-text-secondary);
           border-bottom: 1.5px solid var(--fluent-text-secondary);
-          transform: rotate(-45deg) translate(-1px, -1px); // Points right (>) when collapsed
+          transform: rotate(-45deg) translate(-1px, -1px); // Points inline-end when collapsed
           transition:
             transform var(--fluent-duration-normal) var(--fluent-easing-standard),
             border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
@@ -169,7 +169,7 @@
     }
   }
 
-  // Mobile-only switch layout (label on left, toggle switch on right)
+  // Mobile-only switch layout (label on inline start, toggle switch on inline end)
   @media (max-width: 767px) {
     &[data-widget="CBI.FlagValue"],
     &:has(.cbi-checkbox:not(td *):not(th *)) {
@@ -247,7 +247,7 @@
 
 .cbi-value-description abbr {
   display: inline-block;
-  margin-left: var(--fluent-space-xs);
+  margin-inline-start: var(--fluent-space-xs);
   color: var(--fluent-primary);
   font-size: var(--fluent-font-size-sm);
   font-weight: var(--fluent-font-weight-semibold);

@@ -29,6 +29,7 @@ export const FLUENT_DEFAULTS = {
   tab_animation: "1",
   prefers_reduced_motion: "1",
   loading_bar: "1",
+  direction_mode: "auto",
 } as const;
 
 export const fluentFlagDefault = (value: string): boolean => value === "1";

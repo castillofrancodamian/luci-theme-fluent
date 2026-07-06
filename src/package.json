@@ -8,7 +8,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
-    "@lazulikao/luci-types": "github:LazuliKao/luci-types#ba10994517383afe7c4cc989ff9252b359258982",
+    "@lazulikao/luci-types": "github:LazuliKao/luci-types#204c97d283ecce9770598329068a0616192394ba",
     "@rspack/core": "^2.0.8",
     "@rsbuild/core": "^2.0.15",
     "@rsbuild/plugin-sass": "^1.5.3",

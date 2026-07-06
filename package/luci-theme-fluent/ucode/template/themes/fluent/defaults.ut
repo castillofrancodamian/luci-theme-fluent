@@ -29,4 +29,5 @@
   defaults.tab_animation = "1";
   defaults.prefers_reduced_motion = "1";
   defaults.loading_bar = "1";
+  defaults.direction_mode = "auto";
 %}

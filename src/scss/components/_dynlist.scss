@@ -50,7 +50,8 @@
       display: flex;
       align-items: center;
       height: var(--fluent-input-height);
-      padding: 0 42px 0 var(--fluent-space-sm); // extra padding on the right for absolute delete button
+      padding-block: 0;
+      padding-inline: var(--fluent-space-sm) 42px; // extra padding on the inline end for absolute delete button
       color: var(--fluent-text);
       background: var(--fluent-bg-hover);
       border: 1px solid var(--fluent-border);
@@ -67,13 +68,13 @@
       border-bottom-color: var(--fluent-border-hover);
     }
 
-    // Absolute positioned delete button on the right to prevent coordinate calculations conflict
+    // Absolute positioned delete button on the inline end to prevent coordinate calculations conflict
     &::after {
       content: "";
       position: absolute;
       width: 28px !important;
       height: 28px !important;
-      right: 2px;
+      inset-inline-end: 2px;
       top: 50%;
       transform: translateY(-50%);
       pointer-events: auto;
@@ -140,12 +141,12 @@
       @include input-base;
       @include input-focus-ripple-v2;
 
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      border-right: none;
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
+      border-inline-end: none;
 
       &:focus {
-        border-right: none;
+        border-inline-end: none;
       }
 
       &.drag-over {
@@ -191,7 +192,7 @@
       @include fluent-icon-by-name("add-16-filled", 14px, #ffffff);
       border-bottom-width: 2px;
       border-bottom-color: var(--fluent-btn-primary-bg);
-      border-radius: 0 var(--fluent-radius-md) var(--fluent-radius-md) 0;
+      @include logical-radius(0, var(--fluent-radius-md), var(--fluent-radius-md), 0);
       cursor: pointer;
       box-sizing: border-box;
 
@@ -214,12 +215,12 @@
       }
     }
 
-    // Remove right border radius when add button is present to create a connected appearance
+    // Remove inline-end border radius when add button is present to create a connected appearance
     &:has(> .cbi-button-add) {
       > input,
       > .cbi-dropdown {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
       }
     }
 

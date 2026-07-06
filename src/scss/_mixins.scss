@@ -1,3 +1,5 @@
+@use "sass:string";
+
 // FluentUI 2 SCSS Mixins
 // Aligned with official @fluentui/tokens v2
 
@@ -216,12 +218,12 @@ $breakpoint-xxl: 1400px;
     box-sizing: border-box;
     content: "";
     position: absolute;
-    left: 1px;
+    inset-inline-start: 1px;
     bottom: -1px;
-    right: 1px;
+    inset-inline-end: 1px;
     height: 2px;
-    border-bottom-left-radius: var(--fluent-radius-sm);
-    border-bottom-right-radius: var(--fluent-radius-sm);
+    border-end-start-radius: var(--fluent-radius-sm);
+    border-end-end-radius: var(--fluent-radius-sm);
     background: var(--fluent-input-border-bottom-focus);
     transform: scaleX(0);
     transition: transform var(--fluent-duration-fast) var(--fluent-easing-standard);
@@ -231,14 +233,7 @@ $breakpoint-xxl: 1400px;
 // for void elements like input
 @mixin input-focus-ripple-v2($extra-bg: null, $extra-position: null, $extra-size: null) {
   @if $extra-bg {
-    background-image:
-      linear-gradient(var(--fluent-input-border-bottom-focus), var(--fluent-input-border-bottom-focus)), $extra-bg;
-    background-position:
-      center bottom,
-      $extra-position;
-    background-size:
-      0 2px,
-      $extra-size;
+    @include inline-end-background($extra-bg, $extra-position, center, $extra-size);
   } @else {
     background-image: linear-gradient(var(--fluent-input-border-bottom-focus), var(--fluent-input-border-bottom-focus));
     background-position: center bottom;
@@ -443,5 +438,104 @@ $breakpoint-xxl: 1400px;
 @mixin theme-light-context {
   [data-theme="light"] & {
     @content;
+  }
+}
+
+// ============================================================
+// DIRECTION HELPERS
+// Logical properties stay the default path. Use these helpers only when a
+// selector branch or physical fallback is unavoidable for RTL-exclusive cases.
+// Do not scatter raw [dir="rtl"] selectors in leaf components.
+// ============================================================
+@function _direction-is-valid($direction) {
+  @return $direction == rtl or $direction == ltr;
+}
+
+@mixin direction-root($direction) {
+  @if not _direction-is-valid($direction) {
+    @error "direction-root() only supports rtl or ltr.";
+  }
+
+  html[dir="#{$direction}"],
+  body[data-fluent-dir="#{$direction}"] {
+    @content;
+  }
+}
+
+@mixin direction-context($direction) {
+  @if not _direction-is-valid($direction) {
+    @error "direction-context() only supports rtl or ltr.";
+  }
+
+  html[dir="#{$direction}"] &,
+  body[data-fluent-dir="#{$direction}"] & {
+    @content;
+  }
+}
+
+@mixin rtl {
+  @include direction-context(rtl) {
+    @content;
+  }
+}
+
+@mixin ltr {
+  @include direction-context(ltr) {
+    @content;
+  }
+}
+
+@mixin inset-inline($start, $end: $start) {
+  inset-inline-start: $start;
+  inset-inline-end: $end;
+}
+
+@mixin inline-end-background(
+  $image,
+  $offset,
+  $block: center,
+  $size: null,
+  $origin: border-box
+) {
+  background-image: linear-gradient(var(--fluent-input-border-bottom-focus), var(--fluent-input-border-bottom-focus)), $image;
+  background-position:
+    center bottom,
+    string.unquote("right #{$offset} #{$block}");
+  background-repeat: no-repeat;
+  background-origin: $origin;
+
+  @if $size {
+    background-size:
+      0 2px,
+      $size;
+  } @else {
+    background-size: 0 2px;
+  }
+
+  @include rtl {
+    background-position:
+      center bottom,
+      string.unquote("left #{$offset} #{$block}");
+  }
+}
+
+@mixin logical-radius($start-start, $start-end, $end-end, $end-start) {
+  border-start-start-radius: $start-start;
+  border-start-end-radius: $start-end;
+  border-end-end-radius: $end-end;
+  border-end-start-radius: $end-start;
+}
+
+@mixin rtl-flip-icon {
+  @include rtl {
+    transform: scaleX(-1);
+  }
+}
+
+@mixin reverse-inline-motion($motion-value) {
+  transform: $motion-value;
+
+  @include rtl {
+    transform: scaleX(-1) $motion-value;
   }
 }

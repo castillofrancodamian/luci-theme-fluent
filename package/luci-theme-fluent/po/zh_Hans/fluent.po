@@ -116,6 +116,9 @@ msgstr "继续"
 msgid "Control height"
 msgstr "控件高度"
 
+msgid "Choose the document direction for authenticated and login pages. Automatic mode resolves Arabic and Persian locale codes (ar, ar_*, ar-*, fa, fa_*, fa-*) to RTL and falls back to LTR for missing or unrecognized locales."
+msgstr "为已登录页面和登录页面选择文档方向。自动模式会将阿拉伯语和波斯语语言环境代码（ar、ar_*、ar-*、fa、fa_*、fa-*）解析为 RTL，对于缺失或无法识别的语言环境则回退为 LTR。"
+
 msgid ""
 "Controls the font weight used by main navigation labels and related theme text a"
 "ccents."
@@ -192,6 +195,12 @@ msgstr "Fluent 主题设置"
 msgid "Follow system"
 msgstr "跟随系统"
 
+msgid "Force LTR"
+msgstr "强制 LTR"
+
+msgid "Force RTL"
+msgstr "强制 RTL"
+
 msgid "Force dark mode"
 msgstr "强制深色模式"
 
@@ -200,6 +209,12 @@ msgstr "强制亮色模式"
 
 msgid "General"
 msgstr "常规"
+
+msgid "Text direction"
+msgstr "文本方向"
+
+msgid "Automatic (Arabic/Persian locales only)"
+msgstr "自动（仅阿拉伯语/波斯语语言环境）"
 
 msgid "GitHub Token Required"
 msgstr "需要 GitHub Token"

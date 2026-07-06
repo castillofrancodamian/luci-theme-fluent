@@ -9,7 +9,7 @@ select {
   @include input-base;
   @include input-focus-ripple-v2;
   appearance: none;
-  padding-right: var(--fluent-space-xl);
+  padding-inline-end: var(--fluent-space-xl);
   cursor: pointer;
 
   // Custom chevron
@@ -23,11 +23,11 @@ select.cbi-input-select {
   @include input-base;
   @include input-focus-ripple-v2(
     url("../assets/select-chevron.svg"),
-    right 10px center,
+    10px,
     10px 6px
   );
   appearance: none;
-  padding-right: var(--fluent-space-xl);
+  padding-inline-end: var(--fluent-space-xl);
   cursor: pointer;
   max-width: 100%;
   box-sizing: border-box;

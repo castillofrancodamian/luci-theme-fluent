@@ -1,30 +1,19 @@
+import {
+  getEffectiveDocumentDirection,
+  getRectInlineStart,
+  getViewportInlineSize,
+  setInlineCssCustomProperties,
+} from "./direction";
+
 /**
  * Monitor native select elements and dynamically replace/transform them
  * into FluentUI-style custom dropdowns (using standard .cbi-dropdown classes).
  */
 let selectDropdownListenersRegistered = false;
-let nextSelectAnchorId = 0;
-let cssAnchorPositioningSupported: boolean | undefined;
-
-function supportsCssAnchorPositioning() {
-  if (cssAnchorPositioningSupported !== undefined) return cssAnchorPositioningSupported;
-
-  cssAnchorPositioningSupported =
-    typeof CSS !== "undefined" &&
-    typeof HTMLElement.prototype.showPopover === "function" &&
-    CSS.supports("anchor-name", "--fluent-select-anchor") &&
-    CSS.supports("position-anchor", "--fluent-select-anchor") &&
-    CSS.supports("top", "anchor(bottom)") &&
-    CSS.supports("width", "anchor-size(width)") &&
-    CSS.supports("position-try-fallbacks", "flip-block");
-
-  return cssAnchorPositioningSupported;
-}
-
 
 function updateOpenDropdownPositions() {
   document.querySelectorAll(".fluent-custom-select[open]").forEach((dropdown) => {
-    if (!(dropdown instanceof HTMLElement) || dropdown.getAttribute("data-fluent-floating") === "anchor") return;
+    if (!(dropdown instanceof HTMLElement)) return;
 
     const selectEl = dropdown.previousElementSibling;
     if (selectEl instanceof HTMLSelectElement) {
@@ -102,8 +91,7 @@ function upgradeDropdownChevron(dropdown: HTMLElement) {
   if (openSpan) {
     if (openSpan.getAttribute("data-chevron-upgraded") !== "true") {
       openSpan.setAttribute("data-chevron-upgraded", "true");
-      openSpan.innerHTML =
-        '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>';
+      openSpan.innerHTML = "";
     }
   }
 }
@@ -185,6 +173,8 @@ function scrollOptionIntoDropdown(listbox: HTMLElement, item: HTMLElement) {
 
 function updateDropdownPosition(customDropdown: HTMLElement, selectEl: HTMLSelectElement) {
   const rect = customDropdown.getBoundingClientRect();
+  const direction = getEffectiveDocumentDirection();
+  const viewportInlineSize = getViewportInlineSize();
   const viewportHeight = window.innerHeight;
   const spaceBelow = viewportHeight - rect.bottom;
   const spaceAbove = rect.top;
@@ -201,16 +191,6 @@ function updateDropdownPosition(customDropdown: HTMLElement, selectEl: HTMLSelec
     return;
   }
 
-  if (supportsCssAnchorPositioning()) {
-    customDropdown.setAttribute("data-fluent-floating", "anchor");
-    customDropdown.style.removeProperty("--fluent-dropdown-left");
-    customDropdown.style.removeProperty("--fluent-dropdown-top");
-    customDropdown.style.removeProperty("--fluent-dropdown-width");
-    customDropdown.style.removeProperty("--fluent-dropdown-max-height");
-    return;
-  }
- 
-
   const maxListHeight = Math.min(selectEl.options.length * 32 + 10, 350, viewportHeight * 0.5);
   const openUp = spaceBelow < maxListHeight && spaceAbove > spaceBelow;
   const availableHeight = Math.max(
@@ -220,10 +200,11 @@ function updateDropdownPosition(customDropdown: HTMLElement, selectEl: HTMLSelec
       : viewportHeight - rect.bottom - DROPDOWN_VIEWPORT_MARGIN - DROPDOWN_GAP,
   );
   const dropdownHeight = Math.min(maxListHeight, availableHeight);
-  const dropdownWidth = Math.min(rect.width, window.innerWidth - DROPDOWN_VIEWPORT_MARGIN * 2);
-  const dropdownLeft = Math.min(
-    Math.max(DROPDOWN_VIEWPORT_MARGIN, rect.left),
-    window.innerWidth - dropdownWidth - DROPDOWN_VIEWPORT_MARGIN,
+  const dropdownInlineSize = Math.min(rect.width, viewportInlineSize - DROPDOWN_VIEWPORT_MARGIN * 2);
+  const triggerInlineStart = getRectInlineStart(rect, direction, viewportInlineSize);
+  const dropdownInlineStart = Math.min(
+    Math.max(DROPDOWN_VIEWPORT_MARGIN, triggerInlineStart),
+    viewportInlineSize - dropdownInlineSize - DROPDOWN_VIEWPORT_MARGIN,
   );
   const dropdownTop = openUp
     ? Math.max(DROPDOWN_VIEWPORT_MARGIN, rect.top - dropdownHeight - DROPDOWN_GAP)
@@ -231,9 +212,20 @@ function updateDropdownPosition(customDropdown: HTMLElement, selectEl: HTMLSelec
 
   customDropdown.setAttribute("data-open-direction", openUp ? "up" : "down");
   customDropdown.setAttribute("data-fluent-floating", "modal");
-  customDropdown.style.setProperty("--fluent-dropdown-left", `${dropdownLeft}px`);
+  setInlineCssCustomProperties(
+    customDropdown.style,
+    {
+      inlineStart: dropdownInlineStart,
+      inlineSize: dropdownInlineSize,
+    },
+    direction,
+    viewportInlineSize,
+    {
+      inlineStart: "--fluent-dropdown-left",
+      inlineSize: "--fluent-dropdown-width",
+    },
+  );
   customDropdown.style.setProperty("--fluent-dropdown-top", `${dropdownTop}px`);
-  customDropdown.style.setProperty("--fluent-dropdown-width", `${dropdownWidth}px`);
   customDropdown.style.setProperty("--fluent-dropdown-max-height", `${dropdownHeight}px`);
 }
 
@@ -272,8 +264,6 @@ function transformSelect(selectEl: HTMLSelectElement) {
 
   // Insert the SVG element via HTML string since LuCI's JSX types do not support SVG elements natively
   const openSpan = (<span class="open"></span>) as HTMLElement;
-  openSpan.innerHTML =
-    '<svg fill="currentColor" class="___9ctc0p0 f1w7gpdv fez10in f1dd5bof" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z" fill="currentColor"></path></svg>';
 
   const customDropdown = (
     <div class="cbi-dropdown fluent-custom-select">
@@ -290,10 +280,6 @@ function transformSelect(selectEl: HTMLSelectElement) {
       customDropdown.setAttribute("style", cleanStyle);
     }
   }
-  const anchorName = `--fluent-select-anchor-${++nextSelectAnchorId}`;
-  customDropdown.style.setProperty("anchor-name", anchorName);
-  listbox.style.setProperty("position-anchor", anchorName);
-
   // Set initial disabled state
   if (selectEl.disabled) {
     customDropdown.setAttribute("disabled", "");
@@ -374,11 +360,6 @@ function transformSelect(selectEl: HTMLSelectElement) {
       updateDropdownPosition(customDropdown, selectEl);
       customDropdown.setAttribute("open", "");
       customDropdown.closest(".cbi-value-field, .cbi-value")?.classList.add("cbi-dropdown-open");
-      if (customDropdown.getAttribute("data-fluent-floating") === "anchor") {
-        listbox.setAttribute("popover", "manual");
-        listbox.showPopover({ source: customDropdown });
-      }
-
       // Scroll selected item into view
       const selectedItem = listbox.querySelector("li[selected]") as HTMLElement;
       if (selectedItem) {

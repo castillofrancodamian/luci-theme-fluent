@@ -16,6 +16,16 @@ export const registerGeneralTab = (section: LuCI.form.TypedSection): void => {
   }
 
   {
+    const option = section.taboption("general", form.ListValue, "direction_mode", _("Text direction"));
+    option.value("auto", _("Automatic (Arabic/Persian locales only)"));
+    option.value("rtl", _("Force RTL"));
+    option.value("ltr", _("Force LTR"));
+    option.default = FLUENT_DEFAULTS.direction_mode;
+    option.rmempty = false;
+    option.description = _("Choose the document direction for authenticated and login pages. Automatic mode resolves Arabic and Persian locale codes (ar, ar_*, ar-*, fa, fa_*, fa-*) to RTL and falls back to LTR for missing or unrecognized locales.");
+  }
+
+  {
     const option = section.taboption("general", form.ListValue, "font_weight", _("Navigation font weight"));
     option.value("normal", _("Normal"));
     option.value("600", _("Semibold"));

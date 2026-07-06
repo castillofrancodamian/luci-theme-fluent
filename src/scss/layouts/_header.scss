@@ -19,7 +19,7 @@ body > div.main > div.main-right > header {
   height: var(--fluent-header-height, 48px);
   position: fixed;
   top: 0;
-  left: 0;
+  inset-inline-start: 0;
   width: 100%;
   z-index: var(--fluent-zindex-actions, 1000);
   transition: background var(--fluent-duration-normal) var(--fluent-easing-standard);
@@ -49,7 +49,7 @@ body > div.main > div.main-right > header {
       .icon {
         width: 18px;
         height: 18px;
-        margin-right: 12px;
+        margin-inline-end: 12px;
         flex-shrink: 0;
       }
     }
@@ -116,6 +116,9 @@ body > div.main > div.main-right > header {
     justify-content: center;
     width: 32px;
     height: 32px;
+    flex: 0 0 32px;
+    box-sizing: border-box;
+    overflow: visible;
     padding: 0;
     border: none;
     background: transparent;
@@ -161,7 +164,7 @@ body > div.main > div.main-right > header {
 
     &::after {
       @include fluent-mask-icon-by-name("link-16-filled", 12px, currentColor);
-      right: 2px;
+      inset-inline-end: 2px;
       bottom: 2px;
       opacity: 0;
     }
@@ -173,10 +176,18 @@ body > div.main > div.main-right > header {
     &[data-mode="auto"]::before {
       mask-image: var(--fluent-mask-weather-sunny-20-regular), radial-gradient(ellipse 6.5px 4.5px at 17px 17px, transparent 90%, black 100%);
       mask-composite: intersect;
+
+      @include rtl {
+        mask-image: var(--fluent-mask-weather-sunny-20-regular), radial-gradient(ellipse 6.5px 4.5px at 1px 17px, transparent 90%, black 100%);
+      }
     }
 
     &[data-active-theme="dark"][data-mode="auto"]::before {
       mask-image: var(--fluent-mask-weather-moon-20-regular), radial-gradient(ellipse 6.5px 4.5px at 17px 17px, transparent 90%, black 100%);
+
+      @include rtl {
+        mask-image: var(--fluent-mask-weather-moon-20-regular), radial-gradient(ellipse 6.5px 4.5px at 1px 17px, transparent 90%, black 100%);
+      }
     }
 
     &[data-mode="auto"]::after {
@@ -189,6 +200,10 @@ body > div.main > div.main-right > header {
     align-items: center;
     gap: var(--fluent-space-sm);
     flex: 0 0 auto;
+
+    > * {
+      flex-shrink: 0;
+    }
   }
 
   .status {
@@ -207,12 +222,15 @@ body > div.main > div.main-right > header {
       padding: 0 !important;
       height: 32px !important;
       width: 32px !important;
+      min-width: 32px !important;
       border-radius: var(--fluent-radius-sm);
       border: none !important;
       background-color: transparent !important;
       user-select: none;
       transition: all var(--fluent-duration-fast) var(--fluent-easing-standard);
       position: relative; // For absolute icon positioning
+      box-sizing: border-box;
+      overflow: visible;
 
       &[data-style="active"] {
         --fluent-poll-icon: var(--fluent-text-secondary);
@@ -229,8 +247,8 @@ body > div.main > div.main-right > header {
         &::after {
           content: "";
           position: absolute;
-          right: 4px;
-          bottom: 4px;
+          inset-inline-end: 2px;
+          bottom: 2px;
           width: 8px;
           height: 8px;
           border-radius: 50%;

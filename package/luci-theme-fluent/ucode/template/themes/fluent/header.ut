@@ -55,6 +55,8 @@
   let dark_page_bg = defaults.dark_page_bg;
   let dark_card_bg = defaults.dark_card_bg;
   let dark_sidebar_bg = defaults.dark_sidebar_bg;
+  let direction = {};
+  include('themes/fluent/direction', { cfg, defaults, direction });
 
   // Transition speed mapping
   let transition_map = {
@@ -114,7 +116,7 @@
   let page_title = striptags(hostname + (node && node.title ? ' - ' + _(node.title) : ''));
 %} {% if (ctx.authsession) { %}
 <!DOCTYPE html>
-<html lang="{{ dispatcher.lang }}">
+<html lang="{{ dispatcher.lang }}" dir="{{ direction.resolved }}">
 
 <head>
   <meta charset="utf-8">
@@ -233,7 +235,7 @@
     .fluent-loading-bar {
       position: fixed;
       top: 0;
-      left: 0;
+      inset-inline-start: 0;
       width: 100%;
       height: 3px;
       background-color: transparent;
@@ -252,11 +254,16 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      left: 0;
+      inset-inline-start: 0;
       width: 100%;
       background-color: var(--fluent-primary, #0078d4);
       transform-origin: left;
       animation: fluent-indeterminate-bar 1.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html[dir="rtl"] .fluent-loading-bar-indicator,
+    body[data-fluent-dir="rtl"] .fluent-loading-bar-indicator {
+      transform-origin: right;
     }
 
     @keyframes fluent-indeterminate-bar {
@@ -304,6 +311,7 @@
   class="lang_{{ dispatcher.lang }} {{ node ? entityencode(node.title, true) : '' }} {{ ctx.authsession ? 'logged-in' : '' }}"
   data-page="{{ entityencode(join('-', ctx.request_path), true) }}"
   data-theme-mode="{{ mode }}"
+  data-fluent-dir="{{ direction.resolved }}"
   data-theme-custom-select="{{ custom_select }}"
   data-view-transition="{{ view_transition }}"
   data-tab-animation="{{ tab_animation }}"

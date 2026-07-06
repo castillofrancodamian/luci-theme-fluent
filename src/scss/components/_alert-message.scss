@@ -10,8 +10,9 @@
 :not(#modal_overlay) > .alert-message {
   position: relative;
   margin: 0 0 var(--fluent-space-lg);
-  padding: var(--fluent-space-md) var(--fluent-space-lg) var(--fluent-space-md)
-    calc(var(--fluent-space-lg) + 18px + var(--fluent-space-md));
+  padding-block: var(--fluent-space-md);
+  padding-inline: var(--fluent-space-lg) var(--fluent-space-lg);
+  padding-inline-start: calc(var(--fluent-space-lg) + 18px + var(--fluent-space-md));
   border: 1px solid;
   border-radius: var(--fluent-radius-md);
   background: var(--fluent-bg-hover);
@@ -24,7 +25,7 @@
   // Fallback / default icon (informative info)
   &::before {
     position: absolute;
-    left: var(--fluent-space-lg);
+    inset-inline-start: var(--fluent-space-lg);
     top: var(--fluent-space-md);
     @include fluent-mask-icon-by-name("info-20-regular", 18px, var(--fluent-text-secondary));
     margin-top: 2px;
@@ -45,17 +46,17 @@
       padding: 0 var(--fluent-space-sm);
       border-radius: var(--fluent-radius-md);
       margin-top: var(--fluent-space-sm);
-      float: right; // Pushes the action button to the bottom right
+      float: inline-end; // Pushes the action button to the inline end
     }
   }
-  // Dismiss / close button container (aligns button to top right)
+  // Dismiss / close button container (aligns button to the inline end)
   // Use :last-of-type > :only-child to avoid matching containers with multiple buttons
   > div:last-of-type:not(:first-of-type) {
     // float to top right of the alert box and do not take any space
     position: absolute;
     display: flex;
     top: 8px;
-    right: 8px;
+    inset-inline-end: 8px;
 
     > .btn:not(.cbi-button):only-child {
       &::after {
@@ -98,7 +99,7 @@
       color: var(--fluent-text-secondary);
       border-radius: var(--fluent-radius-md);
       margin-top: 0 !important;
-      margin-left: auto !important;
+      margin-inline-start: auto !important;
       align-self: flex-start;
       background: transparent;
       border: none;

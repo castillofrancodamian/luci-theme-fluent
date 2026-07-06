@@ -43,7 +43,7 @@ textarea:disabled {
   .char-count {
     position: absolute;
     bottom: var(--fluent-space-xs);
-    right: var(--fluent-space-sm);
+    inset-inline-end: var(--fluent-space-sm);
     font-size: var(--fluent-font-size-xs);
     color: var(--fluent-text-disabled);
   }

@@ -1,6 +1,15 @@
+import {
+  applyInlineGeometryToStyle,
+  getEffectiveDocumentDirection,
+  getInlinePadding,
+  getRectInlineStart,
+  getViewportInlineSize,
+  type InlineGeometry,
+} from "./direction";
+
 declare global {
   interface Window {
-    _fluent_last_tab_pos?: Record<string, { left: string; width: string; time: number }>;
+    _fluent_last_tab_pos?: Record<string, { inlineStart: string; inlineSize: string; time: number }>;
   }
 }
 
@@ -164,41 +173,56 @@ export function setupThemeFeatures() {
     if (!activeA) return;
     
     const rectA = activeA.getBoundingClientRect();
-    
+
     const style = window.getComputedStyle(activeA);
-    const paddingLeft = parseFloat(style.paddingLeft) || 16;
-    const paddingRight = parseFloat(style.paddingRight) || 16;
-    
-    const left = rectA.left - rectUl.left + ul.scrollLeft + paddingLeft;
-    const width = rectA.width - paddingLeft - paddingRight;
-    
-    const newLeftStr = `${left}px`;
-    const newWidthStr = `${width}px`;
+    const direction = getEffectiveDocumentDirection();
+    const viewportInlineSize = getViewportInlineSize();
+    const inlinePadding = getInlinePadding(style);
+    const rectInlineStart = getRectInlineStart(rectA, direction, viewportInlineSize);
+    const containerInlineStart = getRectInlineStart(rectUl, direction, viewportInlineSize);
+    const scrollLeft = Math.abs(ul.scrollLeft);
+    const inlineGeometry: InlineGeometry = {
+      inlineStart: rectInlineStart - containerInlineStart + scrollLeft + inlinePadding.inlineStart,
+      inlineSize: rectA.width - inlinePadding.inlineStart - inlinePadding.inlineEnd,
+    };
+    const newInlineStartStr = `${inlineGeometry.inlineStart}px`;
+    const newInlineSizeStr = `${inlineGeometry.inlineSize}px`;
 
     // Avoid interrupting active transitions if values are unchanged
-    if (slider.style.left === newLeftStr && slider.style.width === newWidthStr) {
+    if (
+      slider.dataset.inlineStart === newInlineStartStr
+      && slider.dataset.inlineSize === newInlineSizeStr
+    ) {
       return;
     }
     
     const key = getTabMenuKey(ul);
     const lastPos = window._fluent_last_tab_pos?.[key];
-    const hasInlineLeft = slider.style.left !== '';
+    const hasInlineStart = slider.dataset.inlineStart !== undefined;
 
-    if (!hasInlineLeft && lastPos && (Date.now() - lastPos.time < 2000)) {
+    if (!hasInlineStart && lastPos && (Date.now() - lastPos.time < 2000)) {
       slider.style.transition = 'none';
-      slider.style.left = lastPos.left;
-      slider.style.width = lastPos.width;
+      applyInlineGeometryToStyle(
+        slider.style,
+        {
+          inlineStart: Number.parseFloat(lastPos.inlineStart),
+          inlineSize: Number.parseFloat(lastPos.inlineSize),
+        },
+      );
+      slider.dataset.inlineStart = lastPos.inlineStart;
+      slider.dataset.inlineSize = lastPos.inlineSize;
       slider.offsetHeight; // force reflow
       slider.style.transition = '';
     }
-    
-    slider.style.left = newLeftStr;
-    slider.style.width = newWidthStr;
+
+    applyInlineGeometryToStyle(slider.style, inlineGeometry);
+    slider.dataset.inlineStart = newInlineStartStr;
+    slider.dataset.inlineSize = newInlineSizeStr;
 
     if (window._fluent_last_tab_pos) {
       window._fluent_last_tab_pos[key] = {
-        left: newLeftStr,
-        width: newWidthStr,
+        inlineStart: newInlineStartStr,
+        inlineSize: newInlineSizeStr,
         time: Date.now()
       };
     }
@@ -233,8 +257,15 @@ export function setupThemeFeatures() {
             sessionStorage.removeItem('fluent-tab-slider-pos');
             
             slider.style.transition = 'none';
-            slider.style.left = pos.left;
-            slider.style.width = pos.width;
+            applyInlineGeometryToStyle(
+              slider.style,
+              {
+                inlineStart: Number.parseFloat(pos.inlineStart),
+                inlineSize: Number.parseFloat(pos.inlineSize),
+              },
+            );
+            slider.dataset.inlineStart = pos.inlineStart;
+            slider.dataset.inlineSize = pos.inlineSize;
             slider.offsetHeight; // force reflow
             
             slider.style.transition = '';
@@ -244,7 +275,9 @@ export function setupThemeFeatures() {
           }
         } else {
           updateSlider(ul);
+          const direction = getEffectiveDocumentDirection();
           slider.style.transition = 'none';
+          slider.style.transformOrigin = direction === 'rtl' ? 'right center' : 'left center';
           slider.style.transform = 'scaleX(0)';
           slider.offsetHeight; // force reflow
           slider.style.transition = '';
@@ -259,8 +292,8 @@ export function setupThemeFeatures() {
               try {
                 if (slider) {
                   sessionStorage.setItem('fluent-tab-slider-pos', JSON.stringify({
-                    left: slider.style.left,
-                    width: slider.style.width
+                    inlineStart: slider.dataset.inlineStart || '0px',
+                    inlineSize: slider.dataset.inlineSize || '0px'
                   }));
                 }
               } catch {}
