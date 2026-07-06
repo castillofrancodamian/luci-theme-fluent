@@ -99,6 +99,12 @@ img[src="/luci-static/resources/icons/tunnel_disabled.svg"] {
         var(--fluent-text-secondary)
     );
 }
+img[src="/luci-static/resources/icons/alias.svg"] {
+    @include fluent-mask-icon-by-path("../assets/icons/override/alias.svg", $icon-size, var(--fluent-text-secondary));
+}
+img[src="/luci-static/resources/icons/alias_disabled.svg"] {
+    @include fluent-mask-icon-by-path("../assets/icons/override/alias_disabled.svg", $icon-size, var(--fluent-text-secondary));
+}
 img[src="/luci-static/resources/icons/switch.svg"] {
     @include fluent-mask-icon-by-path("../assets/icons/override/switch.svg", $icon-size, var(--fluent-text-secondary));
 }
