@@ -148,7 +148,7 @@ jobs:
       - name: Prepare package sources
         run: |
           mkdir -p ${HOME}/builder/packages
-          cp -r "$PWD/package/luci-theme-fluent" "${HOME}/builder/package/luci-theme-fluent"
+          cp -r "$PWD/package/luci-theme-fluent" "${HOME}/builder/packages/luci-theme-fluent"
 
       - name: Build packages
         run: |
