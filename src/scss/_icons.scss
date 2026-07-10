@@ -136,8 +136,8 @@
     mask-image: var(--icon-data);
   }
 }
-
-$mask-content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+$mask-content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'></svg>");
+// $mask-content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 @mixin set-mask-content() {
-  content: $mask-content !important;
+  content: $mask-content;
 }

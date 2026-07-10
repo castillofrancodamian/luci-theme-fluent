@@ -167,7 +167,8 @@ body > div.main > div.main-right > header {
       @include fluent-mask-icon-by-name("weather-sunny-20-regular", 18px, currentColor);
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%) rotate(0deg);
+      transform: translate3d(-50%, -50%, 0) rotate(0deg);
+      backface-visibility: hidden;
       opacity: 1;
     }
 
