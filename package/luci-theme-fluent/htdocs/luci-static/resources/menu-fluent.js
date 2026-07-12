@@ -674,7 +674,10 @@ function setupThemeFeatures() {
                     let t = e.classList.contains('button-row') || e.classList.contains('modal-footer') || e.classList.contains('right'), r = null !== e.querySelector('button, .btn, .cbi-button, input[type="button"], input[type="submit"]');
                     if ((t || r) && (l = e, i.length >= 3)) {
                         let e = i[i.length - 2];
-                        n.includes(e) || null !== e.querySelector('input[type="checkbox"], .cbi-checkbox') && (l = e);
+                        if (!n.includes(e) && !(e.classList.contains('cbi-map') || e.classList.contains('cbi-section') || 'UL' === e.tagName || 'TABLE' === e.tagName || e.id.startsWith('cbi-'))) {
+                            let t = null !== e.querySelector('input[type="checkbox"], .cbi-checkbox'), i = null !== e.querySelector('input[type="text"], input[type="number"], input[type="password"], textarea, select');
+                            t && !i && (l = e);
+                        }
                     }
                 }
             }

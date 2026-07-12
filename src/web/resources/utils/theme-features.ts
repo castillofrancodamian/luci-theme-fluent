@@ -408,9 +408,19 @@ export function setupThemeFeatures() {
             if (layoutChildren.length >= 3) {
               const secondLastChild = layoutChildren[layoutChildren.length - 2];
               if (!headers.includes(secondLastChild)) {
-                const hasCheckbox = secondLastChild.querySelector('input[type="checkbox"], .cbi-checkbox') !== null;
-                if (hasCheckbox) {
-                  footerStartElement = secondLastChild;
+                const isMainContent = secondLastChild.classList.contains('cbi-map') || 
+                                      secondLastChild.classList.contains('cbi-section') || 
+                                      secondLastChild.tagName === 'UL' || 
+                                      secondLastChild.tagName === 'TABLE' ||
+                                      secondLastChild.id.startsWith('cbi-');
+                
+                if (!isMainContent) {
+                  const hasCheckbox = secondLastChild.querySelector('input[type="checkbox"], .cbi-checkbox') !== null;
+                  const hasOtherInputs = secondLastChild.querySelector('input[type="text"], input[type="number"], input[type="password"], textarea, select') !== null;
+                  
+                  if (hasCheckbox && !hasOtherInputs) {
+                    footerStartElement = secondLastChild;
+                  }
                 }
               }
             }
