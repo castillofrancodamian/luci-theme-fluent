@@ -1,0 +1,18 @@
+@use "overrides-utils" as *;
+@include plugin-dialog("admin-system-package-manager") {
+  div.modal {
+    > ul.errors {
+      padding-inline-start: unset !important;
+      margin-left: unset !important;
+    }
+    > div:has(hr:first-child) {
+      > hr:first-child {
+        display: none;
+      }
+      > p:nth-child(2) {
+        margin-top: var(--fluent-space-lg) !important;
+        margin-bottom: unset !important;
+      }
+    }
+  }
+}
