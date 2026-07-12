@@ -30,7 +30,7 @@
   background: var(--fluent-modal-bg);
   border-radius: var(--fluent-modal-radius);
   box-shadow: var(--fluent-shadow-xl);
-  padding: 0; // Removed padding to allow content to scroll edge-to-edge horizontally and fit header/footer perfectly
+  padding: var(--fluent-modal-padding); // Restore standard padding
   width: 90%;
   min-width: 280px;
   max-width: 800px;
@@ -102,15 +102,20 @@
     margin: 0;
   }
 
-  // Content area: make any direct child that is not a header, footer, or close button scrollable
-  > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(
-      style
-    ):not(script) {
+  // Content wrapper created dynamically by JS
+  .modal-content-wrap {
     flex: 1 1 auto;
     overflow-y: auto;
     min-height: 20px; // Essential for nested flexbox scrolling
-    // padding: 0 var(--fluent-modal-padding);
     @include custom-scrollbar;
+
+    // Direct children inside wrapper will lay out normally
+    > * {
+      margin-bottom: var(--fluent-space-md);
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   .cbi-map {
@@ -151,9 +156,12 @@
     }
   }
 
-  // Ensure inline spinning elements direct child of modal have proper alignment and spacing
-  &:not(.spinning) > .spinning {
+  // Ensure inline spinning elements inside modal have proper alignment and spacing
+  &:not(.spinning) .spinning {
     position: relative;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
     margin-top: var(--fluent-space-lg);
     margin-bottom: var(--fluent-space-lg);
     overflow: visible !important; // Prevent clipping of the spinner icon due to modal's overflow-y: auto
@@ -177,8 +185,11 @@
 .modal,
 .uci-dialog {
   padding: var(--fluent-modal-padding);
+}
+
+.modal,
+.uci-dialog {
   .button-row {
-    padding-inline: 0 !important;
     > .btn {
       min-width: 96px;
     }

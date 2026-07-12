@@ -356,9 +356,101 @@ export function setupThemeFeatures() {
     });
   }
 
-  // Initialize tabs & observe changes
+  function initModals() {
+    const modals = document.querySelectorAll('#modal_overlay .modal');
+    modals.forEach((node) => {
+      const modal = node as HTMLElement;
+      
+      let wrap = modal.querySelector('.modal-content-wrap') as HTMLElement | null;
+      const children = Array.from(modal.children);
+      
+      // Filter out close buttons and script/style elements
+      const layoutChildren = children.filter((child) => {
+        if (child === wrap) return false;
+        const isClose = child.classList.contains('close') || child.classList.contains('modal-close');
+        const isMeta = child.tagName === 'SCRIPT' || child.tagName === 'STYLE';
+        return !isClose && !isMeta;
+      });
+
+      if (layoutChildren.length === 0) return;
+
+      // 1. Identify header elements at the beginning
+      const headers: Element[] = [];
+      let i = 0;
+      while (i < layoutChildren.length) {
+        const child = layoutChildren[i];
+        const isHeader = child.tagName === 'H4' || 
+                         child.classList.contains('modal-header') || 
+                         child.classList.contains('cbi-tabmenu') || 
+                         child.classList.contains('tabs');
+        if (isHeader) {
+          headers.push(child);
+          i++;
+        } else {
+          break;
+        }
+      }
+
+      // 2. Identify the footer at the end (if it contains buttons or matches footer classes)
+      let footerStartElement: Element | null = null;
+      if (i < layoutChildren.length) {
+        const lastChild = layoutChildren[layoutChildren.length - 1];
+        if (!headers.includes(lastChild)) {
+          const isFooterClass = lastChild.classList.contains('button-row') || 
+                                lastChild.classList.contains('modal-footer') || 
+                                lastChild.classList.contains('right');
+          const hasButtons = lastChild.querySelector('button, .btn, .cbi-button, input[type="button"], input[type="submit"]') !== null;
+          
+          if (isFooterClass || hasButtons) {
+            footerStartElement = lastChild;
+
+            // Check if the second-to-last child contains a checkbox, and group it into the footer block
+            if (layoutChildren.length >= 3) {
+              const secondLastChild = layoutChildren[layoutChildren.length - 2];
+              if (!headers.includes(secondLastChild)) {
+                const hasCheckbox = secondLastChild.querySelector('input[type="checkbox"], .cbi-checkbox') !== null;
+                if (hasCheckbox) {
+                  footerStartElement = secondLastChild;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // 3. Elements between headers and footerStartElement are the scrollable content
+      const contentChildren: Element[] = [];
+      const contentEndIndex = footerStartElement ? layoutChildren.indexOf(footerStartElement) : layoutChildren.length;
+      for (let j = i; j < contentEndIndex; j++) {
+        contentChildren.push(layoutChildren[j]);
+      }
+
+      if (contentChildren.length > 0) {
+        if (!wrap) {
+          wrap = document.createElement('div');
+          wrap.className = 'modal-content-wrap';
+          
+          if (footerStartElement) {
+            modal.insertBefore(wrap, footerStartElement);
+          } else {
+            modal.appendChild(wrap);
+          }
+        }
+
+        for (const child of contentChildren) {
+          wrap.appendChild(child);
+        }
+      }
+    });
+  }
+
+  // Initialize tabs, modals & observe changes
   initTabs();
-  const bodyObserver = new MutationObserver(() => initTabs());
+  initModals();
+  const bodyObserver = new MutationObserver(() => {
+    initTabs();
+    initModals();
+  });
   bodyObserver.observe(body, { childList: true, subtree: true });
 
   window.addEventListener('resize', () => {

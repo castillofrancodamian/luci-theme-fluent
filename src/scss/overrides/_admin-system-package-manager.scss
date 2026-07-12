@@ -1,9 +1,15 @@
 @use "overrides-utils" as *;
 @include plugin-dialog("admin-system-package-manager") {
   div.modal {
-    > ul.errors {
-      padding-inline-start: unset !important;
-      margin-left: unset !important;
+    > .modal-content-wrap {
+      > ul:first-child {
+        max-height: calc(85vh - 300px);
+        overflow-y: auto;
+      }
+      > ul.errors {
+        padding-inline-start: unset !important;
+        margin-left: unset !important;
+      }
     }
     > div:has(hr:first-child) {
       > hr:first-child {

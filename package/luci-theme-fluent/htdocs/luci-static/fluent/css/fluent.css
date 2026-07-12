@@ -1837,13 +1837,13 @@ div.td, div.th {
   background: var(--fluent-modal-bg);
   border-radius: var(--fluent-modal-radius);
   box-shadow: var(--fluent-shadow-xl);
+  padding: var(--fluent-modal-padding);
   width: 90%;
   min-width: 280px;
   max-width: 800px;
   max-height: 85vh;
   animation: slideInUp var(--fluent-duration-normal) var(--fluent-easing-decelerate);
   flex-direction: column;
-  padding: 0;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -1901,50 +1901,58 @@ div.td, div.th {
   display: flex;
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script) {
+.modal .modal-content-wrap {
   flex: auto;
   min-height: 20px;
   overflow-y: auto;
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar {
+.modal .modal-content-wrap::-webkit-scrollbar {
   width: var(--fluent-scrollbar-width);
   height: var(--fluent-scrollbar-width);
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar:horizontal {
+.modal .modal-content-wrap::-webkit-scrollbar:horizontal {
   height: var(--fluent-scrollbar-horizontal-height, 5px);
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-track {
+.modal .modal-content-wrap::-webkit-scrollbar-track {
   background: var(--fluent-scrollbar-track-bg);
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-thumb {
+.modal .modal-content-wrap::-webkit-scrollbar-thumb {
   background: var(--fluent-scrollbar-thumb-bg);
   border-radius: 3px;
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-thumb:hover {
+.modal .modal-content-wrap::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-thumb:horizontal {
+.modal .modal-content-wrap::-webkit-scrollbar-thumb:horizontal {
   background: var(--fluent-scrollbar-thumb-horizontal-bg);
   border-radius: var(--fluent-radius-circular, 10000px);
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-thumb:horizontal:hover {
+.modal .modal-content-wrap::-webkit-scrollbar-thumb:horizontal:hover {
   background: var(--fluent-scrollbar-thumb-horizontal-bg-hover);
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-scrollbar-corner {
+.modal .modal-content-wrap::-webkit-scrollbar-corner {
   background: none;
   display: none;
 }
 
-.modal > :not(h4):not(.modal-header):not(.button-row):not(.modal-footer):not(.right):not(.close):not(.modal-close):not(style):not(script)::-webkit-resizer {
+.modal .modal-content-wrap::-webkit-resizer {
   background: none;
+}
+
+.modal .modal-content-wrap > * {
+  margin-bottom: var(--fluent-space-md);
+}
+
+.modal .modal-content-wrap > :last-child {
+  margin-bottom: 0;
 }
 
 .modal .cbi-map .cbi-section {
@@ -2028,9 +2036,12 @@ div.td, div.th {
   color: var(--fluent-text);
 }
 
-.modal:not(.spinning) > .spinning {
+.modal:not(.spinning) .spinning {
+  min-height: 32px;
   margin-top: var(--fluent-space-lg);
   margin-bottom: var(--fluent-space-lg);
+  align-items: center;
+  display: flex;
   position: relative;
   overflow: visible !important;
 }
@@ -2048,10 +2059,6 @@ div.td, div.th {
 
 .modal, .uci-dialog {
   padding: var(--fluent-modal-padding);
-}
-
-.modal .button-row, .uci-dialog .button-row {
-  padding-inline: 0 !important;
 }
 
 .modal .button-row > .btn, .uci-dialog .button-row > .btn {
@@ -9392,13 +9399,13 @@ img[src="/luci-static/resources/icons/wifi_disabled.svg"] {
   background: var(--fluent-text-secondary) !important;
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent {
   --text-color-high: var(--fluent-text);
   --text-color-medium: var(--fluent-text-secondary);
   --text-color-low: var(--fluent-text-secondary);
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .dashboard-bg {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .dashboard-bg {
   background: var(--fluent-card-bg);
   border: 1px solid var(--fluent-card-border);
   border-radius: var(--fluent-card-radius);
@@ -9409,13 +9416,13 @@ body[data-page="admin-dashboard"] .main > .main-right > #maincontent .dashboard-
   min-width: 320px;
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .router-status-wifi .settings-info {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .router-status-wifi .settings-info {
   gap: var(--fluent-space-md);
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   display: grid;
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .radio-info {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .radio-info {
   background: var(--fluent-bg);
   border: 1px solid var(--fluent-table-border);
   border-radius: var(--fluent-radius-md);
@@ -9423,18 +9430,18 @@ body[data-page="admin-dashboard"] .main > .main-right > #maincontent .radio-info
   font-size: var(--fluent-font-size-sm);
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .radio-info p {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .radio-info p {
   line-height: var(--fluent-line-height-normal);
   margin: 3px 0;
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .radio-info p > span:first-child {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .radio-info p > span:first-child {
   color: var(--fluent-text-secondary);
   min-width: 100px;
   display: inline-block;
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .label {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .label {
   border-radius: var(--fluent-radius-sm);
   font-size: var(--fluent-font-size-xs);
   font-weight: var(--fluent-font-weight-semibold);
@@ -9445,31 +9452,31 @@ body[data-page="admin-dashboard"] .main > .main-right > #maincontent .label {
   display: inline-block;
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .label-success {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .label-success {
   background: var(--fluent-success-light);
   color: var(--fluent-success);
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .label-danger {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .label-danger {
   background: var(--fluent-error-light);
   color: var(--fluent-error);
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .label-warning {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .label-warning {
   background: var(--fluent-warning-light);
   color: #866b00;
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .devices-list .table.assoclist {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .devices-list .table.assoclist {
   border-collapse: collapse;
   width: 100%;
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .devices-list .table.assoclist .thead {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .devices-list .table.assoclist .thead {
   background: var(--fluent-table-header-bg);
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .devices-list .table.assoclist .th {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .devices-list .table.assoclist .th {
   font-size: var(--fluent-font-size-sm);
   font-weight: var(--fluent-font-weight-semibold);
   color: var(--fluent-text-secondary);
@@ -9479,7 +9486,7 @@ body[data-page="admin-dashboard"] .main > .main-right > #maincontent .devices-li
   padding: 8px 12px;
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .devices-list .table.assoclist .td {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .devices-list .table.assoclist .td {
   font-size: var(--fluent-font-size-sm);
   color: var(--fluent-text);
   border-bottom: 1px solid var(--fluent-table-border);
@@ -9487,70 +9494,89 @@ body[data-page="admin-dashboard"] .main > .main-right > #maincontent .devices-li
   padding: 8px 12px;
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .devices-list .table.assoclist .tr:hover .td {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .devices-list .table.assoclist .tr:hover .td {
   background: var(--fluent-table-row-hover);
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .devices-list .table.assoclist .tfoot .td {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .devices-list .table.assoclist .tfoot .td {
   font-weight: var(--fluent-font-weight-semibold);
   border-top: 2px solid var(--fluent-table-border);
   border-bottom: none;
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .wireless-table-transfer br + span {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .wireless-table-transfer br + span {
   font-size: var(--fluent-font-size-xs);
 }
 
-body[data-page="admin-dashboard"] .main > .main-right > #maincontent .cbi-progressbar {
+body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .cbi-progressbar {
   height: 12px;
 }
 
 @media (max-width: 768px) {
-  body[data-page="admin-dashboard"] .main > .main-right > #maincontent .dashboard-bg {
+  body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .dashboard-bg {
     flex: 100%;
     min-width: 0;
   }
 
-  body[data-page="admin-dashboard"] .main > .main-right > #maincontent .settings-info {
+  body[data-page="admin-dashboard"] > .main > .main-right > #maincontent .settings-info {
     grid-template-columns: 1fr !important;
   }
 }
 
-body[data-page="admin-status-nftables-iptables"] .main > .main-right > #maincontent #view > div.right {
+body[data-page="admin-status-nftables-iptables"] > .main > .main-right > #maincontent #view > div.right {
   margin-top: 4px;
   margin-bottom: 0 !important;
 }
 
-body[data-page="admin-status-channel_analysis"] .main > .main-right > #maincontent #view > div > div.cbi-title-section {
+body[data-page="admin-status-channel_analysis"] > .main > .main-right > #maincontent #view > div > div.cbi-title-section {
   display: flex;
 }
 
-body[data-page="admin-status-channel_analysis"] .main > .main-right > #maincontent #view > div > div.cbi-title-section > div {
+body[data-page="admin-status-channel_analysis"] > .main > .main-right > #maincontent #view > div > div.cbi-title-section > div {
   margin-left: auto;
 }
 
-body[data-page="admin-status-channel_analysis"] .main > .main-right > #maincontent #channel_graph {
+body[data-page="admin-status-channel_analysis"] > .main > .main-right > #maincontent #channel_graph {
   border: 1px solid var(--fluent-card-border);
   border-radius: var(--fluent-card-radius);
   background: var(--fluent-card-bg) !important;
 }
 
-body[data-page="admin-status-channel_analysis"] .main > .main-right > #maincontent #channel_graph svg line[style*="stroke:black"] {
+body[data-page="admin-status-channel_analysis"] > .main > .main-right > #maincontent #channel_graph svg line[style*="stroke:black"] {
   stroke: var(--fluent-text-secondary) !important;
 }
 
-body[data-page^="admin-status-realtime"] .main > .main-right > #maincontent .cbi-section div[style*="background:#fff"] {
+body[data-page^="admin-status-realtime"] > .main > .main-right > #maincontent .cbi-section div[style*="background:#fff"] {
   background: var(--fluent-card-bg) !important;
   border-radius: var(--fluent-card-radius) !important;
   border: none !important;
 }
 
-body[data-page^="admin-status-realtime"] .main > .main-right > #maincontent .cbi-section svg line[style*="stroke:black"] {
+body[data-page^="admin-status-realtime"] > .main > .main-right > #maincontent .cbi-section svg line[style*="stroke:black"] {
   stroke: var(--fluent-text-secondary) !important;
 }
 
-body[data-page^="admin-status-overview"] .main > .main-right > #maincontent .ifacebox > .ifacebox-body > br {
+body[data-page^="admin-status-overview"] > .main > .main-right > #maincontent .ifacebox > .ifacebox-body > br {
   display: none;
+}
+
+body[data-page="admin-system-package-manager"] > #modal_overlay div.modal > .modal-content-wrap > ul:first-child {
+  max-height: calc(85vh - 300px);
+  overflow-y: auto;
+}
+
+body[data-page="admin-system-package-manager"] > #modal_overlay div.modal > .modal-content-wrap > ul.errors {
+  margin-left: unset !important;
+  padding-inline-start: unset !important;
+}
+
+body[data-page="admin-system-package-manager"] > #modal_overlay div.modal > div:has(hr:first-child) > hr:first-child {
+  display: none;
+}
+
+body[data-page="admin-system-package-manager"] > #modal_overlay div.modal > div:has(hr:first-child) > p:nth-child(2) {
+  margin-top: var(--fluent-space-lg) !important;
+  margin-bottom: unset !important;
 }
 
 body.login-page {

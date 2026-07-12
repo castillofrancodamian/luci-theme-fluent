@@ -536,34 +536,34 @@ function setupThemeFeatures() {
     '1' === d && window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e)=>{
         l.setAttribute('data-reduce-motion', e.matches ? 'true' : 'false');
     });
-    let u = l.getAttribute('data-theme-mode') || 'auto', c = document.getElementById('theme-toggle');
+    let c = l.getAttribute('data-theme-mode') || 'auto', u = document.getElementById('theme-toggle');
     function m(e) {
         return 'dark' === e ? 'dark' : 'light' === e ? 'light' : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
     function f(e, t) {
-        c && (document.documentElement.setAttribute('data-theme', e), c.setAttribute('data-active-theme', e), c.setAttribute('data-mode', t));
+        u && (document.documentElement.setAttribute('data-theme', e), u.setAttribute('data-active-theme', e), u.setAttribute('data-mode', t));
     }
-    c && (f(m(l.getAttribute('data-theme-mode') || 'auto'), u), c.hidden = !1, requestAnimationFrame(()=>{
-        c.classList.add('visible');
-    }), c.addEventListener('click', async ()=>{
+    u && (f(m(l.getAttribute('data-theme-mode') || 'auto'), c), u.hidden = !1, requestAnimationFrame(()=>{
+        u.classList.add('visible');
+    }), u.addEventListener('click', async ()=>{
         var e;
-        if (c.disabled) return;
-        let t = 'dark' === (e = l.getAttribute('data-theme-mode') || u) ? 'light' : 'light' === e ? 'auto' : 'dark', i = m(t);
-        c.disabled = !0, f(i, t);
+        if (u.disabled) return;
+        let t = 'dark' === (e = l.getAttribute('data-theme-mode') || c) ? 'light' : 'light' === e ? 'auto' : 'dark', i = m(t);
+        u.disabled = !0, f(i, t);
         try {
             let e = await o(t);
             if (e?.result !== 0) throw Error(`RPC returned ${e?.result ?? 'no response'} - permission denied or script error`);
             l.setAttribute('data-theme-mode', t);
         } catch (t) {
-            let e = l.getAttribute('data-theme-mode') || u;
+            let e = l.getAttribute('data-theme-mode') || c;
             f(m(e), e), a.addNotification(null, `Failed to save theme mode: ${t instanceof Error ? t.message : String(t)}`, 'error');
         } finally{
-            c.disabled = !1;
+            u.disabled = !1;
         }
     }), window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)=>{
-        if ('auto' !== (l.getAttribute('data-theme-mode') || u)) return;
+        if ('auto' !== (l.getAttribute('data-theme-mode') || c)) return;
         let t = e.matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', t), c.setAttribute('data-active-theme', t);
+        document.documentElement.setAttribute('data-theme', t), u.setAttribute('data-active-theme', t);
     }));
     let h = '1' === l.getAttribute('data-tab-animation');
     function b(l) {
@@ -578,9 +578,9 @@ function setupThemeFeatures() {
         }
         let d = o.querySelector('a');
         if (!d) return;
-        let u = d.getBoundingClientRect(), c = window.getComputedStyle(d), m = getEffectiveDocumentDirection(), f = getViewportInlineSize(), h = getInlinePadding(c), b = {
-            inlineStart: getRectInlineStart(u, m, f) - getRectInlineStart(a, m, f) + Math.abs(l.scrollLeft) + h.inlineStart,
-            inlineSize: u.width - h.inlineStart - h.inlineEnd
+        let c = d.getBoundingClientRect(), u = window.getComputedStyle(d), m = getEffectiveDocumentDirection(), f = getViewportInlineSize(), h = getInlinePadding(u), b = {
+            inlineStart: getRectInlineStart(c, m, f) - getRectInlineStart(a, m, f) + Math.abs(l.scrollLeft) + h.inlineStart,
+            inlineSize: c.width - h.inlineStart - h.inlineEnd
         }, p = `${b.inlineStart}px`, g = `${b.inlineSize}px`;
         if (s.dataset.inlineStart === p && s.dataset.inlineSize === g) return;
         let y = function(e) {
@@ -653,7 +653,39 @@ function setupThemeFeatures() {
             }
         });
     }
-    if (window._fluent_last_tab_pos = window._fluent_last_tab_pos || {}, p(), new MutationObserver(()=>p()).observe(l, {
+    function g() {
+        document.querySelectorAll('#modal_overlay .modal').forEach((e)=>{
+            let t = e.querySelector('.modal-content-wrap'), i = Array.from(e.children).filter((e)=>{
+                if (e === t) return !1;
+                let i = e.classList.contains('close') || e.classList.contains('modal-close'), n = 'SCRIPT' === e.tagName || 'STYLE' === e.tagName;
+                return !i && !n;
+            });
+            if (0 === i.length) return;
+            let n = [], r = 0;
+            for(; r < i.length;){
+                let e = i[r];
+                if ('H4' === e.tagName || e.classList.contains('modal-header') || e.classList.contains('cbi-tabmenu') || e.classList.contains('tabs')) n.push(e), r++;
+                else break;
+            }
+            let l = null;
+            if (r < i.length) {
+                let e = i[i.length - 1];
+                if (!n.includes(e)) {
+                    let t = e.classList.contains('button-row') || e.classList.contains('modal-footer') || e.classList.contains('right'), r = null !== e.querySelector('button, .btn, .cbi-button, input[type="button"], input[type="submit"]');
+                    if ((t || r) && (l = e, i.length >= 3)) {
+                        let e = i[i.length - 2];
+                        n.includes(e) || null !== e.querySelector('input[type="checkbox"], .cbi-checkbox') && (l = e);
+                    }
+                }
+            }
+            let a = [], s = l ? i.indexOf(l) : i.length;
+            for(let e = r; e < s; e++)a.push(i[e]);
+            if (a.length > 0) for (let i of (t || ((t = document.createElement('div')).className = 'modal-content-wrap', l ? e.insertBefore(t, l) : e.appendChild(t)), a))t.appendChild(i);
+        });
+    }
+    if (window._fluent_last_tab_pos = window._fluent_last_tab_pos || {}, p(), g(), new MutationObserver(()=>{
+        p(), g();
+    }).observe(l, {
         childList: !0,
         subtree: !0
     }), window.addEventListener('resize', ()=>{
@@ -692,7 +724,7 @@ function setupThemeFeatures() {
             subtree: !0
         });
     }
-    function g(e, t) {
+    function y(e, t) {
         let i, n, r = t ? 'fluent-sidebar-parent-slider' : 'fluent-sidebar-slider', l = e.querySelector(`.${r}`);
         l || ((l = document.createElement('div')).className = r, e.appendChild(l));
         let a = e.querySelector('li.active');
@@ -706,7 +738,7 @@ function setupThemeFeatures() {
         let o = s.getBoundingClientRect(), d = e.getBoundingClientRect();
         t ? (i = o.top - d.top + e.scrollTop + 0.2 * o.height, n = 0.6 * o.height) : (i = o.top - d.top + e.scrollTop + 0.15 * o.height, n = 0.7 * o.height), l.style.top = `${i}px`, l.style.height = `${n}px`;
     }
-    function y() {
+    function S() {
         let e = document.querySelector('#mainmenu');
         if (!e) return;
         let t = e.querySelector('ul.nav');
@@ -733,7 +765,7 @@ function setupThemeFeatures() {
                     sessionStorage.removeItem('fluent-sidebar-parent-pos'), e.style.transition = 'none', e.style.top = i.top, e.style.height = i.height, e.offsetHeight, e.style.transition = '';
                 } catch  {}
             }
-            g(t, !0);
+            y(t, !0);
         }
         e.querySelectorAll('ul.slide-menu').forEach((e)=>{
             let t = e.classList.contains('active'), i = e.querySelector('.fluent-sidebar-slider');
@@ -758,34 +790,34 @@ function setupThemeFeatures() {
                     sessionStorage.removeItem('fluent-sidebar-submenu-pos'), i.style.transition = 'none', i.style.top = t.top, i.style.height = t.height, i.offsetHeight, i.style.transition = '';
                 } catch  {}
             }
-            g(e, !1);
+            y(e, !1);
         });
     }
-    y(), new MutationObserver(()=>y()).observe(l, {
+    S(), new MutationObserver(()=>S()).observe(l, {
         childList: !0,
         subtree: !0
     }), document.addEventListener('fluent-menu-expand', ()=>{
         let e = document.querySelector('#mainmenu');
         if (e) {
             let t = e.querySelector('ul.nav');
-            t && (g(t, !0), setTimeout(()=>{
-                g(t, !0);
+            t && (y(t, !0), setTimeout(()=>{
+                y(t, !0);
             }, 250));
         }
     }), document.addEventListener('fluent-sidebar-state-change', ()=>{
         let e = document.querySelector('#mainmenu');
         if (e) {
             let t = e.querySelector('ul.nav');
-            t && g(t, !0), e.querySelectorAll('ul.slide-menu').forEach((e)=>{
-                g(e, !1);
+            t && y(t, !0), e.querySelectorAll('ul.slide-menu').forEach((e)=>{
+                y(e, !1);
             });
         }
     }), window.addEventListener('resize', ()=>{
         let e = document.querySelector('#mainmenu');
         if (e) {
             let t = e.querySelector('ul.nav');
-            t && g(t, !0), e.querySelectorAll('ul.slide-menu').forEach((e)=>{
-                g(e, !1);
+            t && y(t, !0), e.querySelectorAll('ul.slide-menu').forEach((e)=>{
+                y(e, !1);
             });
         }
     });
