@@ -22,6 +22,38 @@ export function setupThemeFeatures() {
   const body = document.body;
   if (!body) return;
   const ui = L.ui;
+
+  // ============================================================
+  // PATCH: PREVENT EXTREMELY SHORT DROPDOWNS IN NESTED SCROLL PARENTS (E.G. TABS IN MODALS)
+  // ============================================================
+  // biome-ignore lint/suspicious/noExplicitAny: override core prototype without strict types
+  const uiClass = (ui as any)?.Dropdown;
+  if (uiClass?.prototype) {
+    uiClass.prototype.getScrollParent = (element: HTMLElement) => {
+      let parent: HTMLElement | null = element.parentElement;
+      while (parent) {
+        // Skip tab containers, sections, or elements with too small height that are not the actual scrollable modal body
+        if (
+          parent.classList.contains("cbi-tabcontainer") ||
+          parent.id?.startsWith("container.") ||
+          parent.classList.contains("cbi-section") ||
+          (parent.clientHeight < 250 && !parent.classList.contains("modal"))
+        ) {
+          parent = parent.parentElement;
+          continue;
+        }
+
+        const style = getComputedStyle(parent);
+        if (/(auto|scroll)/.test(style.overflow + style.overflowY + style.overflowX)) {
+          return parent;
+        }
+
+        parent = parent.parentElement;
+      }
+      return document.scrollingElement || document.documentElement;
+    };
+  }
+
   const callFluentSetMode = L.rpc.declare<{ result: number }, [string]>({ object: 'luci.fluent', method: 'set_mode', params: ['mode'] });
   // ============================================================
   // 1. ACCESSIBILITY: PREFERS REDUCED MOTION SETTINGS

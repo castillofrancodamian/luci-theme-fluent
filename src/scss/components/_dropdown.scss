@@ -63,9 +63,7 @@ cbi-dropdown,
 
   &[open] {
     z-index: var(--fluent-zindex-dropdown);
-    &:not(.fluent-custom-select) {
-      anchor-name: --fluent-cbi-dropdown-active !important;
-    }
+    anchor-name: --fluent-cbi-dropdown-active !important;
   }
 
   // ----------------------------------------------------------
@@ -858,10 +856,39 @@ cbi-dropdown,
 
   }
 
-  // Position native (non-custom select) open dropdowns using anchor positioning when supported
-  &:not(.fluent-custom-select)[open] > ul.dropdown {
+  // Position open dropdowns (both native and custom select) using anchor positioning when supported
+  &[open] > ul.dropdown {
     @supports (anchor-name: --a) {
-      position: absolute !important;
+      position: fixed !important;
+      position-anchor: --fluent-cbi-dropdown-active !important;
+      min-width: anchor-size(width) !important;
+      width: max-content !important;
+      max-width: calc(100vw - 16px) !important;
+      margin: 0 !important;
+      left: anchor(left) !important;
+      right: auto !important;
+
+      @include rtl {
+        right: anchor(right) !important;
+        left: auto !important;
+      }
+
+      // By default or when opening downwards
+      top: anchor(bottom) !important;
+      bottom: auto !important;
+
+      // When opening upwards (detected via inline style bottom set by ui.js)
+      &[style*="bottom"] {
+        top: auto !important;
+        bottom: anchor(top) !important;
+      }
+    }
+  }
+
+  &[data-open-direction="up"][open] > ul.dropdown {
+    @supports (anchor-name: --a) {
+      top: auto !important;
+      bottom: anchor(top) !important;
     }
   }
 }

@@ -506,86 +506,100 @@ function setupIfaceboxTooltips() {
 ;// CONCATENATED MODULE: ./web/resources/utils/theme-features.ts
 
 function setupThemeFeatures() {
-    let a = document.body;
-    if (!a) return;
-    let l = L.ui, s = L.rpc.declare({
+    let l = document.body;
+    if (!l) return;
+    let a = L.ui, s = a?.Dropdown;
+    s?.prototype && (s.prototype.getScrollParent = (e)=>{
+        let t = e.parentElement;
+        for(; t;){
+            if (t.classList.contains("cbi-tabcontainer") || t.id?.startsWith("container.") || t.classList.contains("cbi-section") || t.clientHeight < 250 && !t.classList.contains("modal")) {
+                t = t.parentElement;
+                continue;
+            }
+            let e = getComputedStyle(t);
+            if (/(auto|scroll)/.test(e.overflow + e.overflowY + e.overflowX)) return t;
+            t = t.parentElement;
+        }
+        return document.scrollingElement || document.documentElement;
+    });
+    let o = L.rpc.declare({
         object: 'luci.fluent',
         method: 'set_mode',
         params: [
             'mode'
         ]
-    }), o = a.getAttribute('data-prefers-reduced-motion') || '1';
-    if ('1' === o) {
+    }), d = l.getAttribute('data-prefers-reduced-motion') || '1';
+    if ('1' === d) {
         let e = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        a.setAttribute('data-reduce-motion', e ? 'true' : 'false');
-    } else a.setAttribute('data-reduce-motion', 'false');
-    '1' === o && window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e)=>{
-        a.setAttribute('data-reduce-motion', e.matches ? 'true' : 'false');
+        l.setAttribute('data-reduce-motion', e ? 'true' : 'false');
+    } else l.setAttribute('data-reduce-motion', 'false');
+    '1' === d && window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e)=>{
+        l.setAttribute('data-reduce-motion', e.matches ? 'true' : 'false');
     });
-    let d = a.getAttribute('data-theme-mode') || 'auto', u = document.getElementById('theme-toggle');
-    function c(e) {
+    let u = l.getAttribute('data-theme-mode') || 'auto', c = document.getElementById('theme-toggle');
+    function m(e) {
         return 'dark' === e ? 'dark' : 'light' === e ? 'light' : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
-    function m(e, t) {
-        u && (document.documentElement.setAttribute('data-theme', e), u.setAttribute('data-active-theme', e), u.setAttribute('data-mode', t));
+    function f(e, t) {
+        c && (document.documentElement.setAttribute('data-theme', e), c.setAttribute('data-active-theme', e), c.setAttribute('data-mode', t));
     }
-    u && (m(c(a.getAttribute('data-theme-mode') || 'auto'), d), u.hidden = !1, requestAnimationFrame(()=>{
-        u.classList.add('visible');
-    }), u.addEventListener('click', async ()=>{
+    c && (f(m(l.getAttribute('data-theme-mode') || 'auto'), u), c.hidden = !1, requestAnimationFrame(()=>{
+        c.classList.add('visible');
+    }), c.addEventListener('click', async ()=>{
         var e;
-        if (u.disabled) return;
-        let t = 'dark' === (e = a.getAttribute('data-theme-mode') || d) ? 'light' : 'light' === e ? 'auto' : 'dark', i = c(t);
-        u.disabled = !0, m(i, t);
+        if (c.disabled) return;
+        let t = 'dark' === (e = l.getAttribute('data-theme-mode') || u) ? 'light' : 'light' === e ? 'auto' : 'dark', i = m(t);
+        c.disabled = !0, f(i, t);
         try {
-            let e = await s(t);
+            let e = await o(t);
             if (e?.result !== 0) throw Error(`RPC returned ${e?.result ?? 'no response'} - permission denied or script error`);
-            a.setAttribute('data-theme-mode', t);
+            l.setAttribute('data-theme-mode', t);
         } catch (t) {
-            let e = a.getAttribute('data-theme-mode') || d;
-            m(c(e), e), l.addNotification(null, `Failed to save theme mode: ${t instanceof Error ? t.message : String(t)}`, 'error');
+            let e = l.getAttribute('data-theme-mode') || u;
+            f(m(e), e), a.addNotification(null, `Failed to save theme mode: ${t instanceof Error ? t.message : String(t)}`, 'error');
         } finally{
-            u.disabled = !1;
+            c.disabled = !1;
         }
     }), window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)=>{
-        if ('auto' !== (a.getAttribute('data-theme-mode') || d)) return;
+        if ('auto' !== (l.getAttribute('data-theme-mode') || u)) return;
         let t = e.matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', t), u.setAttribute('data-active-theme', t);
+        document.documentElement.setAttribute('data-theme', t), c.setAttribute('data-active-theme', t);
     }));
-    let h = '1' === a.getAttribute('data-tab-animation');
-    function f(a) {
-        let l = a.getBoundingClientRect();
-        if (0 === l.width && 0 === l.height) return;
-        let s = a.querySelector('.fluent-tab-slider');
-        s || ((s = document.createElement('div')).className = 'fluent-tab-slider', a.appendChild(s));
-        let o = a.querySelector('li.cbi-tab, li.active');
+    let h = '1' === l.getAttribute('data-tab-animation');
+    function b(l) {
+        let a = l.getBoundingClientRect();
+        if (0 === a.width && 0 === a.height) return;
+        let s = l.querySelector('.fluent-tab-slider');
+        s || ((s = document.createElement('div')).className = 'fluent-tab-slider', l.appendChild(s));
+        let o = l.querySelector('li.cbi-tab, li.active');
         if (!o) {
             s.style.width = '0px';
             return;
         }
         let d = o.querySelector('a');
         if (!d) return;
-        let u = d.getBoundingClientRect(), c = window.getComputedStyle(d), m = getEffectiveDocumentDirection(), h = getViewportInlineSize(), f = getInlinePadding(c), b = {
-            inlineStart: getRectInlineStart(u, m, h) - getRectInlineStart(l, m, h) + Math.abs(a.scrollLeft) + f.inlineStart,
-            inlineSize: u.width - f.inlineStart - f.inlineEnd
-        }, g = `${b.inlineStart}px`, p = `${b.inlineSize}px`;
-        if (s.dataset.inlineStart === g && s.dataset.inlineSize === p) return;
+        let u = d.getBoundingClientRect(), c = window.getComputedStyle(d), m = getEffectiveDocumentDirection(), f = getViewportInlineSize(), h = getInlinePadding(c), b = {
+            inlineStart: getRectInlineStart(u, m, f) - getRectInlineStart(a, m, f) + Math.abs(l.scrollLeft) + h.inlineStart,
+            inlineSize: u.width - h.inlineStart - h.inlineEnd
+        }, p = `${b.inlineStart}px`, g = `${b.inlineSize}px`;
+        if (s.dataset.inlineStart === p && s.dataset.inlineSize === g) return;
         let y = function(e) {
             if (e.classList.contains('tabs')) return 'header-tabs';
             let t = e.closest('.cbi-section');
             return t?.id ? `cbi-tabs-${t.id}` : 'cbi-tabs-generic';
-        }(a), S = window._fluent_last_tab_pos?.[y];
+        }(l), S = window._fluent_last_tab_pos?.[y];
         void 0 === s.dataset.inlineStart && S && Date.now() - S.time < 2000 && (s.style.transition = 'none', applyInlineGeometryToStyle(s.style, {
             inlineStart: Number.parseFloat(S.inlineStart),
             inlineSize: Number.parseFloat(S.inlineSize)
-        }), s.dataset.inlineStart = S.inlineStart, s.dataset.inlineSize = S.inlineSize, s.offsetHeight, s.style.transition = ''), applyInlineGeometryToStyle(s.style, b), s.dataset.inlineStart = g, s.dataset.inlineSize = p, window._fluent_last_tab_pos && (window._fluent_last_tab_pos[y] = {
-            inlineStart: g,
-            inlineSize: p,
+        }), s.dataset.inlineStart = S.inlineStart, s.dataset.inlineSize = S.inlineSize, s.offsetHeight, s.style.transition = ''), applyInlineGeometryToStyle(s.style, b), s.dataset.inlineStart = p, s.dataset.inlineSize = g, window._fluent_last_tab_pos && (window._fluent_last_tab_pos[y] = {
+            inlineStart: p,
+            inlineSize: g,
             time: Date.now()
         });
     }
-    function b() {
+    function p() {
         document.querySelectorAll('ul.cbi-tabmenu, ul.tabs').forEach((i)=>{
-            if (i.dataset.sliderInit) return void f(i);
+            if (i.dataset.sliderInit) return void b(i);
             i.dataset.sliderInit = 'true';
             let n = i.querySelector('.fluent-tab-slider');
             if (n || ((n = document.createElement('div')).className = 'fluent-tab-slider', i.appendChild(n)), h && i.classList.contains('tabs')) {
@@ -598,12 +612,12 @@ function setupThemeFeatures() {
                     sessionStorage.removeItem('fluent-tab-slider-pos'), n.style.transition = 'none', applyInlineGeometryToStyle(n.style, {
                         inlineStart: Number.parseFloat(t.inlineStart),
                         inlineSize: Number.parseFloat(t.inlineSize)
-                    }), n.dataset.inlineStart = t.inlineStart, n.dataset.inlineSize = t.inlineSize, n.offsetHeight, n.style.transition = '', f(i);
+                    }), n.dataset.inlineStart = t.inlineStart, n.dataset.inlineSize = t.inlineSize, n.offsetHeight, n.style.transition = '', b(i);
                 } catch  {
-                    f(i);
+                    b(i);
                 }
                 else {
-                    f(i);
+                    b(i);
                     let e = getEffectiveDocumentDirection();
                     n.style.transition = 'none', n.style.transformOrigin = 'rtl' === e ? 'right center' : 'left center', n.style.transform = 'scaleX(0)', n.offsetHeight, n.style.transition = '', n.style.transform = 'scaleX(1)';
                 }
@@ -618,9 +632,9 @@ function setupThemeFeatures() {
                         } catch  {}
                     });
                 });
-            } else f(i);
+            } else b(i);
             new MutationObserver(()=>{
-                f(i);
+                b(i);
             }).observe(i, {
                 attributes: !0,
                 subtree: !0,
@@ -630,7 +644,7 @@ function setupThemeFeatures() {
             });
             try {
                 new IntersectionObserver((e)=>{
-                    for (let t of e)t.isIntersecting && f(i);
+                    for (let t of e)t.isIntersecting && b(i);
                 }, {
                     threshold: 0
                 }).observe(i);
@@ -639,14 +653,14 @@ function setupThemeFeatures() {
             }
         });
     }
-    if (window._fluent_last_tab_pos = window._fluent_last_tab_pos || {}, b(), new MutationObserver(()=>b()).observe(a, {
+    if (window._fluent_last_tab_pos = window._fluent_last_tab_pos || {}, p(), new MutationObserver(()=>p()).observe(l, {
         childList: !0,
         subtree: !0
     }), window.addEventListener('resize', ()=>{
         document.querySelectorAll('ul.cbi-tabmenu, ul.tabs').forEach((e)=>{
-            f(e);
+            b(e);
         });
-    }), '1' === a.getAttribute('data-loading-bar')) {
+    }), '1' === l.getAttribute('data-loading-bar')) {
         let e = !1, t = document.getElementById('fluent-top-loading'), i = ()=>{
             t && !e && t.classList.add('loaded');
         }, n = ()=>{
@@ -679,20 +693,20 @@ function setupThemeFeatures() {
         });
     }
     function g(e, t) {
-        let i, n, r = t ? 'fluent-sidebar-parent-slider' : 'fluent-sidebar-slider', a = e.querySelector(`.${r}`);
-        a || ((a = document.createElement('div')).className = r, e.appendChild(a));
-        let l = e.querySelector('li.active');
-        if (!l || t && (l.classList.contains('slide') || l.querySelector('.slide-menu'))) {
-            a.style.height = '0px', a.style.opacity = '0';
+        let i, n, r = t ? 'fluent-sidebar-parent-slider' : 'fluent-sidebar-slider', l = e.querySelector(`.${r}`);
+        l || ((l = document.createElement('div')).className = r, e.appendChild(l));
+        let a = e.querySelector('li.active');
+        if (!a || t && (a.classList.contains('slide') || a.querySelector('.slide-menu'))) {
+            l.style.height = '0px', l.style.opacity = '0';
             return;
         }
-        a.style.opacity = '1';
-        let s = t ? l.querySelector('a.menu, a.food') : l;
+        l.style.opacity = '1';
+        let s = t ? a.querySelector('a.menu, a.food') : a;
         if (!s) return;
         let o = s.getBoundingClientRect(), d = e.getBoundingClientRect();
-        t ? (i = o.top - d.top + e.scrollTop + 0.2 * o.height, n = 0.6 * o.height) : (i = o.top - d.top + e.scrollTop + 0.15 * o.height, n = 0.7 * o.height), a.style.top = `${i}px`, a.style.height = `${n}px`;
+        t ? (i = o.top - d.top + e.scrollTop + 0.2 * o.height, n = 0.6 * o.height) : (i = o.top - d.top + e.scrollTop + 0.15 * o.height, n = 0.7 * o.height), l.style.top = `${i}px`, l.style.height = `${n}px`;
     }
-    function p() {
+    function y() {
         let e = document.querySelector('#mainmenu');
         if (!e) return;
         let t = e.querySelector('ul.nav');
@@ -747,7 +761,7 @@ function setupThemeFeatures() {
             g(e, !1);
         });
     }
-    p(), new MutationObserver(()=>p()).observe(a, {
+    y(), new MutationObserver(()=>y()).observe(l, {
         childList: !0,
         subtree: !0
     }), document.addEventListener('fluent-menu-expand', ()=>{

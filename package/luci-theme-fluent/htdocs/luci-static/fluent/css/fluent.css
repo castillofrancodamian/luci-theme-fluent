@@ -5638,9 +5638,6 @@ cbi-dropdown:after, .cbi-dropdown:after {
 
 cbi-dropdown[open], .cbi-dropdown[open] {
   z-index: var(--fluent-zindex-dropdown);
-}
-
-cbi-dropdown[open]:not(.fluent-custom-select), .cbi-dropdown[open]:not(.fluent-custom-select) {
   anchor-name: --fluent-cbi-dropdown-active !important;
 }
 
@@ -6651,8 +6648,30 @@ cbi-dropdown.fluent-custom-select[data-fluent-floating="modal"][open] > ul.dropd
 }
 
 @supports (anchor-name: --a) {
-  cbi-dropdown:not(.fluent-custom-select)[open] > ul.dropdown, .cbi-dropdown:not(.fluent-custom-select)[open] > ul.dropdown {
-    position: absolute !important;
+  cbi-dropdown[open] > ul.dropdown, .cbi-dropdown[open] > ul.dropdown {
+    position-anchor: --fluent-cbi-dropdown-active !important;
+    min-width: anchor-size(width) !important;
+    width: max-content !important;
+    max-width: calc(100vw - 16px) !important;
+    left: anchor(left) !important;
+    margin: 0 !important;
+    position: fixed !important;
+    right: auto !important;
+  }
+
+  html[dir="rtl"] cbi-dropdown[open] > ul.dropdown, body[data-fluent-dir="rtl"] cbi-dropdown[open] > ul.dropdown, html[dir="rtl"] .cbi-dropdown[open] > ul.dropdown, body[data-fluent-dir="rtl"] .cbi-dropdown[open] > ul.dropdown {
+    right: anchor(right) !important;
+    left: auto !important;
+  }
+
+  cbi-dropdown[open] > ul.dropdown, .cbi-dropdown[open] > ul.dropdown {
+    top: anchor(bottom) !important;
+    bottom: auto !important;
+  }
+
+  cbi-dropdown[open] > ul.dropdown[style*="bottom"], .cbi-dropdown[open] > ul.dropdown[style*="bottom"], cbi-dropdown[data-open-direction="up"][open] > ul.dropdown, .cbi-dropdown[data-open-direction="up"][open] > ul.dropdown {
+    top: auto !important;
+    bottom: anchor(top) !important;
   }
 }
 
