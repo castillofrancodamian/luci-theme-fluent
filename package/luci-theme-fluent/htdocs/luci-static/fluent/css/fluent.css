@@ -2036,13 +2036,9 @@ div.td, div.th {
   color: var(--fluent-text);
 }
 
-.modal:not(.spinning) .spinning {
-  min-height: 32px;
-  margin-top: var(--fluent-space-lg);
-  margin-bottom: var(--fluent-space-lg);
-  align-items: center;
-  display: flex;
-  position: relative;
+.modal:not(.spinning) .modal-content-wrap > p.spinning {
+  margin-top: var(--fluent-space-sm);
+  margin-bottom: var(--fluent-space-sm);
   overflow: visible !important;
 }
 

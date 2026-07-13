@@ -156,15 +156,17 @@
     }
   }
 
-  // Ensure inline spinning elements inside modal have proper alignment and spacing
-  &:not(.spinning) .spinning {
-    position: relative;
-    min-height: 32px;
-    display: flex;
-    align-items: center;
-    margin-top: var(--fluent-space-lg);
-    margin-bottom: var(--fluent-space-lg);
-    overflow: visible !important; // Prevent clipping of the spinner icon due to modal's overflow-y: auto
+  // // Ensure inline spinning elements inside modal have proper alignment and spacing
+  &:not(.spinning) {
+    .modal-content-wrap > p.spinning {
+      // position: relative;
+      // min-height: 32px;
+      // display: flex;
+      // align-items: center;
+      margin-top: var(--fluent-space-sm);
+      margin-bottom: var(--fluent-space-sm);
+      overflow: visible !important; // Prevent clipping of the spinner icon due to modal's overflow-y: auto
+    }
   }
 
   // End-aligned layouts inside modal body (e.g. file upload dialog buttons)
