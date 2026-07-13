@@ -397,12 +397,14 @@ cbi-dropdown,
 
         label {
           white-space: normal !important;
-          display: block !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          gap: var(--fluent-space-xs);
         }
 
         .hide-close {
           min-width: unset !important;
-          width: 100% !important;
+          width: auto !important;
         }
       }
 
@@ -550,7 +552,7 @@ cbi-dropdown,
       display: none !important;
     }
     .hide-close {
-      display: block !important;
+      display: inline-block !important;
     }
   }
 
@@ -578,6 +580,7 @@ cbi-dropdown,
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      gap: var(--fluent-space-xs);
     }
 
     input[type="checkbox"] {

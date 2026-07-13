@@ -5980,43 +5980,51 @@ cbi-dropdown[open] > ul.dropdown > li:has(div) {
 }
 
 cbi-dropdown[open] > ul.dropdown > li:has(.hide-close) label {
+  gap: var(--fluent-space-xs);
   white-space: normal !important;
-  display: block !important;
+  align-items: center !important;
+  display: inline-flex !important;
 }
 
 cbi-dropdown[open] > ul.dropdown > li:has(div) label {
+  gap: var(--fluent-space-xs);
   white-space: normal !important;
-  display: block !important;
+  align-items: center !important;
+  display: inline-flex !important;
 }
 
 .cbi-dropdown[open] > ul.dropdown > li:has(.hide-close) label {
+  gap: var(--fluent-space-xs);
   white-space: normal !important;
-  display: block !important;
+  align-items: center !important;
+  display: inline-flex !important;
 }
 
 .cbi-dropdown[open] > ul.dropdown > li:has(div) label {
+  gap: var(--fluent-space-xs);
   white-space: normal !important;
-  display: block !important;
+  align-items: center !important;
+  display: inline-flex !important;
 }
 
 cbi-dropdown[open] > ul.dropdown > li:has(.hide-close) .hide-close {
   min-width: unset !important;
-  width: 100% !important;
+  width: auto !important;
 }
 
 cbi-dropdown[open] > ul.dropdown > li:has(div) .hide-close {
   min-width: unset !important;
-  width: 100% !important;
+  width: auto !important;
 }
 
 .cbi-dropdown[open] > ul.dropdown > li:has(.hide-close) .hide-close {
   min-width: unset !important;
-  width: 100% !important;
+  width: auto !important;
 }
 
 .cbi-dropdown[open] > ul.dropdown > li:has(div) .hide-close {
   min-width: unset !important;
-  width: 100% !important;
+  width: auto !important;
 }
 
 cbi-dropdown[open] > ul.dropdown > li, .cbi-dropdown[open] > ul.dropdown > li {
@@ -6234,7 +6242,7 @@ cbi-dropdown[open] > ul.dropdown > li .hide-open, .cbi-dropdown[open] > ul.dropd
 }
 
 cbi-dropdown[open] > ul.dropdown > li .hide-close, .cbi-dropdown[open] > ul.dropdown > li .hide-close {
-  display: block !important;
+  display: inline-block !important;
 }
 
 cbi-dropdown ul.dropdown > li form, .cbi-dropdown ul.dropdown > li form {
@@ -6250,6 +6258,7 @@ cbi-dropdown ul.dropdown > li label, .cbi-dropdown ul.dropdown > li label {
   color: inherit;
   white-space: nowrap;
   text-overflow: ellipsis;
+  gap: var(--fluent-space-xs);
   flex: 1;
   overflow: hidden;
   cursor: pointer !important;
