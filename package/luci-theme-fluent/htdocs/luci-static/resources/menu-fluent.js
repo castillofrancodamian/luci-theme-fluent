@@ -744,7 +744,7 @@ function setupThemeFeatures() {
             return;
         }
         r.style.opacity = '1';
-        let s = t ? a.querySelector('a.menu, a.food') : a;
+        let s = t ? a.querySelector('a.menu, a.item') : a;
         if (!s) return;
         let o = s.getBoundingClientRect(), d = e.getBoundingClientRect();
         t ? (i = o.top - d.top + e.scrollTop + 0.2 * o.height, n = 0.6 * o.height) : (i = o.top - d.top + e.scrollTop + 0.15 * o.height, n = 0.7 * o.height), r.style.top = `${i}px`, r.style.height = `${n}px`;
@@ -755,7 +755,7 @@ function setupThemeFeatures() {
         let t = e.querySelector('ul.nav');
         if (t) {
             let e = t.querySelector('.fluent-sidebar-parent-slider');
-            if (e || ((e = document.createElement('div')).className = 'fluent-sidebar-parent-slider', t.appendChild(e)), t.classList.add('has-slider'), !t.dataset.sliderInit && (t.dataset.sliderInit = 'true', b && t.querySelectorAll('li > a.menu, li > a.food').forEach((e)=>{
+            if (e || ((e = document.createElement('div')).className = 'fluent-sidebar-parent-slider', t.appendChild(e)), t.classList.add('has-slider'), !t.dataset.sliderInit && (t.dataset.sliderInit = 'true', b && t.querySelectorAll('li > a.menu, li > a.item').forEach((e)=>{
                 let i = e.getAttribute('href');
                 i && '#' !== i && e.addEventListener('click', ()=>{
                     try {
@@ -997,14 +997,14 @@ const main = baseclass.extend({
             }
             t && this.renderTabMenu(t, n);
         }
-        let l = document.querySelectorAll("a.showSide"), i = document.querySelector(".darkMask"), s = document.querySelector(".sidebar-collapse-toggle"), d = ui.createHandlerFn(this, "handleSidebarToggle") ?? (()=>{
+        let i = document.querySelectorAll("a.showSide"), l = document.querySelector(".darkMask"), s = document.querySelector(".sidebar-collapse-toggle"), d = ui.createHandlerFn(this, "handleSidebarToggle") ?? (()=>{
             console.warn("Fluent menu: missing sidebar toggle handler");
         }), r = ui.createHandlerFn(this, "handleDesktopSidebarToggle") ?? (()=>{
             console.warn("Fluent menu: missing desktop sidebar toggle handler");
         });
-        l.forEach((e)=>{
+        i.forEach((e)=>{
             e.addEventListener("click", d);
-        }), i && i.addEventListener("click", d), s && s.addEventListener("click", r), window.innerWidth > 768 ? menu_fluent_c(menu_fluent_u()) : document.body.setAttribute("data-sidebar-state", "expanded"), window.addEventListener("resize", ()=>{
+        }), l && l.addEventListener("click", d), s && s.addEventListener("click", r), window.innerWidth > 768 ? menu_fluent_c(menu_fluent_u()) : document.body.setAttribute("data-sidebar-state", "expanded"), window.addEventListener("resize", ()=>{
             this.adjustBrandTextSize(), window.innerWidth > 768 ? menu_fluent_c(menu_fluent_u()) : document.body.setAttribute("data-sidebar-state", "expanded");
         }), document.addEventListener("click", (e)=>{
             if (window.innerWidth <= 768 || "collapsed" !== document.body.getAttribute("data-sidebar-state")) return;
@@ -1015,17 +1015,17 @@ const main = baseclass.extend({
     handleMenuExpand (e) {
         let t = e.currentTarget;
         if (!t) return;
-        let n = t.parentNode, a = t.nextElementSibling, l = window.innerWidth > 768 && "collapsed" === document.body.getAttribute("data-sidebar-state"), s = !1;
-        if (document.querySelectorAll(l ? ".main .main-left .nav > li > ul.slide-menu.popup-open" : ".main .main-left .nav > li > ul.slide-menu.active").forEach((e)=>{
-            s || e !== a || (s = !0), e.classList.remove("popup-open", "active"), e.previousElementSibling?.classList.remove("popup-open", "active"), SlideAnimations.stop(e), l ? (e.style.display = "none", e.style.top = "") : SlideAnimations.slideUp(e, "fast");
+        let n = t.parentNode, a = t.nextElementSibling, i = window.innerWidth > 768 && "collapsed" === document.body.getAttribute("data-sidebar-state"), s = !1;
+        if (document.querySelectorAll(i ? ".main .main-left .nav > li > ul.slide-menu.popup-open" : ".main .main-left .nav > li > ul.slide-menu.active").forEach((e)=>{
+            s || e !== a || (s = !0), e.classList.remove("popup-open", "active"), e.previousElementSibling?.classList.remove("popup-open", "active"), SlideAnimations.stop(e), i ? (e.style.display = "none", e.style.top = "") : SlideAnimations.slideUp(e, "fast");
         }), a) {
             if (!s) {
                 let e = n?.querySelector(".slide-menu");
                 if (e) {
-                    if (a.classList.add(l ? "popup-open" : "active"), t.classList.add(l ? "popup-open" : "active"), l) {
+                    if (a.classList.add(i ? "popup-open" : "active"), t.classList.add(i ? "popup-open" : "active"), i) {
                         SlideAnimations.stop(e), e.style.display = "block";
-                        let n = t.getBoundingClientRect(), a = e.offsetHeight, l = Math.max(8, window.innerHeight - a - 8), s = n.top - 8;
-                        e.style.top = `${Math.min(l, Math.max(8, s))}px`;
+                        let n = t.getBoundingClientRect(), a = e.offsetHeight, i = Math.max(8, window.innerHeight - a - 8), s = n.top - 8;
+                        e.style.top = `${Math.min(i, Math.max(8, s))}px`;
                     } else e.style.top = "", SlideAnimations.slideDown(e, "fast");
                     e.querySelectorAll("li > a").forEach((e)=>{
                         e.addEventListener("click", ()=>{
@@ -1040,37 +1040,37 @@ const main = baseclass.extend({
             document.dispatchEvent(new CustomEvent("fluent-menu-expand")), e.preventDefault(), e.stopPropagation();
         }
     },
-    renderMainMenu (a, l, i) {
-        let s = (i || 0) + 1, d = i && a.title ? a.title.replace(/ /g, "_") : void 0, r = jsx("ul", {
-            class: i ? "slide-menu" : "nav",
+    renderMainMenu (a, i, l) {
+        let s = (l || 0) + 1, d = l && a.title ? a.title.replace(/ /g, "_") : void 0, r = jsx("ul", {
+            class: l ? "slide-menu" : "nav",
             "data-parent": d || void 0
         }), o = ui.menu.getChildren(a);
         if (0 === o.length || s > 2) return jsx(Fragment, {});
         for(let n = 0; n < o.length; n++){
-            let i = o[n], d = L.env.dispatchpath[s] === i.name && L.env.dispatchpath[s - 1] === a.name, c = this.renderMainMenu(i, `${l}/${i.name}`, s), u = c.children.length > 0, p = u ? "slide" : null, m = u ? "menu" : "food";
+            let l = o[n], d = L.env.dispatchpath[s] === l.name && L.env.dispatchpath[s - 1] === a.name, c = this.renderMainMenu(l, `${i}/${l.name}`, s), u = c.children.length > 0, p = u ? "slide" : null, m = u ? "menu" : "item";
             d && (r.classList.add("active"), p = p ? `${p} active` : "null active");
-            let h = d ? `${m} active` : m, f = jsxs("li", {
+            let h = d ? `${m} active` : m, v = jsxs("li", {
                 class: p ?? void 0,
                 children: [
                     jsxs("a", {
-                        href: L.url(l, i.name),
+                        href: L.url(i, l.name),
                         onclick: 1 === s ? ui.createHandlerFn(this, "handleMenuExpand") : null,
                         class: h,
-                        "data-title": (i.title || "").replace(/ /g, "_"),
+                        "data-title": (l.title || "").replace(/ /g, "_"),
                         children: [
                             1 === s || 2 === s ? jsx("span", {
                                 class: "menu-icon"
                             }) : null,
                             jsx("span", {
                                 class: "menu-label",
-                                children: _(i.title || "")
+                                children: _(l.title || "")
                             })
                         ]
                     }),
                     c
                 ]
             });
-            r.appendChild(f);
+            r.appendChild(v);
         }
         if (1 === s) {
             let e = document.querySelector("#mainmenu");
@@ -1078,24 +1078,24 @@ const main = baseclass.extend({
         }
         return r;
     },
-    renderTabMenu (t, a, l) {
-        let i = document.querySelector("#tabmenu"), s = (l || 0) + 1, d = jsx("ul", {
+    renderTabMenu (t, a, i) {
+        let l = document.querySelector("#tabmenu"), s = (i || 0) + 1, d = jsx("ul", {
             class: "tabs"
         }), r = ui.menu.getChildren(t), o = null;
         if (0 === r.length) return jsx(Fragment, {});
         for(let t = 0; t < r.length; t++){
-            let n = r[t], l = L.env.dispatchpath[s + 2] === n.name, i = l ? " active" : "", c = jsx("li", {
-                class: `tabmenu-item-${n.name}${i}`,
+            let n = r[t], i = L.env.dispatchpath[s + 2] === n.name, l = i ? " active" : "", c = jsx("li", {
+                class: `tabmenu-item-${n.name}${l}`,
                 children: jsx("a", {
                     href: L.url(a, n.name),
                     children: _(n.title || "")
                 })
             });
-            d.appendChild(c), l && (o = n);
+            d.appendChild(c), i && (o = n);
         }
-        if (i && (i.appendChild(d), i.style.display = "", o)) {
+        if (l && (l.appendChild(d), l.style.display = "", o)) {
             let e = this.renderTabMenu(o, `${a}/${o.name}`, s);
-            e.children.length > 0 && i.appendChild(e);
+            e.children.length > 0 && l.appendChild(e);
         }
         return d;
     },
@@ -1113,12 +1113,12 @@ const main = baseclass.extend({
         }
     },
     handleSidebarToggle (e) {
-        let t = document.querySelectorAll("a.showSide"), n = document.querySelector("#mainmenu"), a = document.querySelector(".darkMask"), l = document.querySelector(".main-right");
-        0 !== t.length && n && a && l ? Array.from(t).some((e)=>e.classList.contains("active")) ? (t.forEach((e)=>{
+        let t = document.querySelectorAll("a.showSide"), n = document.querySelector("#mainmenu"), a = document.querySelector(".darkMask"), i = document.querySelector(".main-right");
+        0 !== t.length && n && a && i ? Array.from(t).some((e)=>e.classList.contains("active")) ? (t.forEach((e)=>{
             e.classList.remove("active");
-        }), n.classList.remove("active"), l.classList.remove("active"), a.classList.remove("active")) : (t.forEach((e)=>{
+        }), n.classList.remove("active"), i.classList.remove("active"), a.classList.remove("active")) : (t.forEach((e)=>{
             e.classList.add("active");
-        }), n.classList.add("active"), l.classList.add("active"), a.classList.add("active"), this.adjustBrandTextSize()) : console.warn("Fluent menu: sidebar toggle elements are unavailable");
+        }), n.classList.add("active"), i.classList.add("active"), a.classList.add("active"), this.adjustBrandTextSize()) : console.warn("Fluent menu: sidebar toggle elements are unavailable");
     },
     handleDesktopSidebarToggle (e) {
         if (e.preventDefault(), e.stopPropagation(), window.innerWidth <= 768) return;

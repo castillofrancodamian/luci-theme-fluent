@@ -586,7 +586,7 @@ export function setupThemeFeatures() {
     slider.style.opacity = '1';
 
     const targetEl = isParent 
-      ? (activeLi.querySelector('a.menu, a.food') as HTMLElement | null)
+      ? (activeLi.querySelector('a.menu, a.item') as HTMLElement | null)
       : (activeLi as HTMLElement | null);
       
     if (!targetEl) return;
@@ -628,7 +628,7 @@ export function setupThemeFeatures() {
         navUl.dataset.sliderInit = 'true';
 
         if (tabAnimationEnabled) {
-          navUl.querySelectorAll('li > a.menu, li > a.food').forEach((el) => {
+          navUl.querySelectorAll('li > a.menu, li > a.item').forEach((el) => {
             const a = el as HTMLAnchorElement;
             const href = a.getAttribute('href');
             if (href && href !== '#') {

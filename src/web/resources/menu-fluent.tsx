@@ -266,7 +266,7 @@ const module: Module = {
 
       // Determine CSS classes based on state
       let slideClass: string | null = hasChildren ? "slide" : null;
-      const menuClass = hasChildren ? "menu" : "food";
+      const menuClass = hasChildren ? "menu" : "item";
 
       if (isActive) {
         menuContainer.classList.add("active");
