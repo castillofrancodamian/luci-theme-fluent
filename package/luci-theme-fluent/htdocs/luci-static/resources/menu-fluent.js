@@ -506,18 +506,10 @@ function setupIfaceboxTooltips() {
 ;// CONCATENATED MODULE: ./web/resources/utils/theme-features.ts
 
 function setupThemeFeatures() {
-    let r = document.body;
-    if (!r) return;
-    let a = L.ui, s = document.querySelector;
-    document.querySelector = function(e) {
-        if ('string' == typeof e && e.includes('body.modal-overlay-active > #modal_overlay > .modal.cbi-modal > .cbi-map')) {
-            let t = e.replace('body.modal-overlay-active > #modal_overlay > .modal.cbi-modal > .cbi-map', 'body.modal-overlay-active > #modal_overlay > .modal.cbi-modal .cbi-map');
-            return s.call(this, t);
-        }
-        return s.apply(this, arguments);
-    };
-    let o = a?.Dropdown;
-    o?.prototype && (o.prototype.getScrollParent = (e)=>{
+    let l = document.body;
+    if (!l) return;
+    let a = L.ui, s = a?.Dropdown;
+    s?.prototype && (s.prototype.getScrollParent = (e)=>{
         let t = e.parentElement;
         for(; t;){
             if (t.classList.contains("cbi-tabcontainer") || t.id?.startsWith("container.") || t.classList.contains("cbi-section") || t.clientHeight < 250 && !t.classList.contains("modal")) {
@@ -530,56 +522,56 @@ function setupThemeFeatures() {
         }
         return document.scrollingElement || document.documentElement;
     });
-    let d = L.rpc.declare({
+    let o = L.rpc.declare({
         object: 'luci.fluent',
         method: 'set_mode',
         params: [
             'mode'
         ]
-    }), c = r.getAttribute('data-prefers-reduced-motion') || '1';
-    if ('1' === c) {
+    }), d = l.getAttribute('data-prefers-reduced-motion') || '1';
+    if ('1' === d) {
         let e = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        r.setAttribute('data-reduce-motion', e ? 'true' : 'false');
-    } else r.setAttribute('data-reduce-motion', 'false');
-    '1' === c && window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e)=>{
-        r.setAttribute('data-reduce-motion', e.matches ? 'true' : 'false');
+        l.setAttribute('data-reduce-motion', e ? 'true' : 'false');
+    } else l.setAttribute('data-reduce-motion', 'false');
+    '1' === d && window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e)=>{
+        l.setAttribute('data-reduce-motion', e.matches ? 'true' : 'false');
     });
-    let u = r.getAttribute('data-theme-mode') || 'auto', m = document.getElementById('theme-toggle');
-    function f(e) {
+    let c = l.getAttribute('data-theme-mode') || 'auto', u = document.getElementById('theme-toggle');
+    function m(e) {
         return 'dark' === e ? 'dark' : 'light' === e ? 'light' : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
-    function h(e, t) {
-        m && (document.documentElement.setAttribute('data-theme', e), m.setAttribute('data-active-theme', e), m.setAttribute('data-mode', t));
+    function f(e, t) {
+        u && (document.documentElement.setAttribute('data-theme', e), u.setAttribute('data-active-theme', e), u.setAttribute('data-mode', t));
     }
-    m && (h(f(r.getAttribute('data-theme-mode') || 'auto'), u), m.hidden = !1, requestAnimationFrame(()=>{
-        m.classList.add('visible');
-    }), m.addEventListener('click', async ()=>{
+    u && (f(m(l.getAttribute('data-theme-mode') || 'auto'), c), u.hidden = !1, requestAnimationFrame(()=>{
+        u.classList.add('visible');
+    }), u.addEventListener('click', async ()=>{
         var e;
-        if (m.disabled) return;
-        let t = 'dark' === (e = r.getAttribute('data-theme-mode') || u) ? 'light' : 'light' === e ? 'auto' : 'dark', i = f(t);
-        m.disabled = !0, h(i, t);
+        if (u.disabled) return;
+        let t = 'dark' === (e = l.getAttribute('data-theme-mode') || c) ? 'light' : 'light' === e ? 'auto' : 'dark', i = m(t);
+        u.disabled = !0, f(i, t);
         try {
-            let e = await d(t);
+            let e = await o(t);
             if (e?.result !== 0) throw Error(`RPC returned ${e?.result ?? 'no response'} - permission denied or script error`);
-            r.setAttribute('data-theme-mode', t);
+            l.setAttribute('data-theme-mode', t);
         } catch (t) {
-            let e = r.getAttribute('data-theme-mode') || u;
-            h(f(e), e), a.addNotification(null, `Failed to save theme mode: ${t instanceof Error ? t.message : String(t)}`, 'error');
+            let e = l.getAttribute('data-theme-mode') || c;
+            f(m(e), e), a.addNotification(null, `Failed to save theme mode: ${t instanceof Error ? t.message : String(t)}`, 'error');
         } finally{
-            m.disabled = !1;
+            u.disabled = !1;
         }
     }), window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)=>{
-        if ('auto' !== (r.getAttribute('data-theme-mode') || u)) return;
+        if ('auto' !== (l.getAttribute('data-theme-mode') || c)) return;
         let t = e.matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', t), m.setAttribute('data-active-theme', t);
+        document.documentElement.setAttribute('data-theme', t), u.setAttribute('data-active-theme', t);
     }));
-    let b = '1' === r.getAttribute('data-tab-animation');
-    function p(r) {
-        let a = r.getBoundingClientRect();
+    let h = '1' === l.getAttribute('data-tab-animation');
+    function b(l) {
+        let a = l.getBoundingClientRect();
         if (0 === a.width && 0 === a.height) return;
-        let s = r.querySelector('.fluent-tab-slider');
-        s || ((s = document.createElement('div')).className = 'fluent-tab-slider', r.appendChild(s));
-        let o = r.querySelector('li.cbi-tab, li.active');
+        let s = l.querySelector('.fluent-tab-slider');
+        s || ((s = document.createElement('div')).className = 'fluent-tab-slider', l.appendChild(s));
+        let o = l.querySelector('li.cbi-tab, li.active');
         if (!o) {
             s.style.width = '0px';
             return;
@@ -587,45 +579,45 @@ function setupThemeFeatures() {
         let d = o.querySelector('a');
         if (!d) return;
         let c = d.getBoundingClientRect(), u = window.getComputedStyle(d), m = getEffectiveDocumentDirection(), f = getViewportInlineSize(), h = getInlinePadding(u), b = {
-            inlineStart: getRectInlineStart(c, m, f) - getRectInlineStart(a, m, f) + Math.abs(r.scrollLeft) + h.inlineStart,
+            inlineStart: getRectInlineStart(c, m, f) - getRectInlineStart(a, m, f) + Math.abs(l.scrollLeft) + h.inlineStart,
             inlineSize: c.width - h.inlineStart - h.inlineEnd
-        }, p = `${b.inlineStart}px`, y = `${b.inlineSize}px`;
-        if (s.dataset.inlineStart === p && s.dataset.inlineSize === y) return;
-        let g = function(e) {
+        }, p = `${b.inlineStart}px`, g = `${b.inlineSize}px`;
+        if (s.dataset.inlineStart === p && s.dataset.inlineSize === g) return;
+        let y = function(e) {
             if (e.classList.contains('tabs')) return 'header-tabs';
             let t = e.closest('.cbi-section');
             return t?.id ? `cbi-tabs-${t.id}` : 'cbi-tabs-generic';
-        }(r), S = window._fluent_last_tab_pos?.[g];
+        }(l), S = window._fluent_last_tab_pos?.[y];
         void 0 === s.dataset.inlineStart && S && Date.now() - S.time < 2000 && (s.style.transition = 'none', applyInlineGeometryToStyle(s.style, {
             inlineStart: Number.parseFloat(S.inlineStart),
             inlineSize: Number.parseFloat(S.inlineSize)
-        }), s.dataset.inlineStart = S.inlineStart, s.dataset.inlineSize = S.inlineSize, s.offsetHeight, s.style.transition = ''), applyInlineGeometryToStyle(s.style, b), s.dataset.inlineStart = p, s.dataset.inlineSize = y, window._fluent_last_tab_pos && (window._fluent_last_tab_pos[g] = {
+        }), s.dataset.inlineStart = S.inlineStart, s.dataset.inlineSize = S.inlineSize, s.offsetHeight, s.style.transition = ''), applyInlineGeometryToStyle(s.style, b), s.dataset.inlineStart = p, s.dataset.inlineSize = g, window._fluent_last_tab_pos && (window._fluent_last_tab_pos[y] = {
             inlineStart: p,
-            inlineSize: y,
+            inlineSize: g,
             time: Date.now()
         });
     }
-    function y() {
+    function p() {
         document.querySelectorAll('ul.cbi-tabmenu, ul.tabs').forEach((i)=>{
-            if (i.dataset.sliderInit) return void p(i);
+            if (i.dataset.sliderInit) return void b(i);
             i.dataset.sliderInit = 'true';
             let n = i.querySelector('.fluent-tab-slider');
-            if (n || ((n = document.createElement('div')).className = 'fluent-tab-slider', i.appendChild(n)), b && i.classList.contains('tabs')) {
-                let l = null;
+            if (n || ((n = document.createElement('div')).className = 'fluent-tab-slider', i.appendChild(n)), h && i.classList.contains('tabs')) {
+                let r = null;
                 try {
-                    l = sessionStorage.getItem('fluent-tab-slider-pos');
+                    r = sessionStorage.getItem('fluent-tab-slider-pos');
                 } catch  {}
-                if (l) try {
-                    let t = JSON.parse(l);
+                if (r) try {
+                    let t = JSON.parse(r);
                     sessionStorage.removeItem('fluent-tab-slider-pos'), n.style.transition = 'none', applyInlineGeometryToStyle(n.style, {
                         inlineStart: Number.parseFloat(t.inlineStart),
                         inlineSize: Number.parseFloat(t.inlineSize)
-                    }), n.dataset.inlineStart = t.inlineStart, n.dataset.inlineSize = t.inlineSize, n.offsetHeight, n.style.transition = '', p(i);
+                    }), n.dataset.inlineStart = t.inlineStart, n.dataset.inlineSize = t.inlineSize, n.offsetHeight, n.style.transition = '', b(i);
                 } catch  {
-                    p(i);
+                    b(i);
                 }
                 else {
-                    p(i);
+                    b(i);
                     let e = getEffectiveDocumentDirection();
                     n.style.transition = 'none', n.style.transformOrigin = 'rtl' === e ? 'right center' : 'left center', n.style.transform = 'scaleX(0)', n.offsetHeight, n.style.transition = '', n.style.transform = 'scaleX(1)';
                 }
@@ -640,9 +632,9 @@ function setupThemeFeatures() {
                         } catch  {}
                     });
                 });
-            } else p(i);
+            } else b(i);
             new MutationObserver(()=>{
-                p(i);
+                b(i);
             }).observe(i, {
                 attributes: !0,
                 subtree: !0,
@@ -652,7 +644,7 @@ function setupThemeFeatures() {
             });
             try {
                 new IntersectionObserver((e)=>{
-                    for (let t of e)t.isIntersecting && p(i);
+                    for (let t of e)t.isIntersecting && b(i);
                 }, {
                     threshold: 0
                 }).observe(i);
@@ -663,47 +655,54 @@ function setupThemeFeatures() {
     }
     function g() {
         document.querySelectorAll('#modal_overlay .modal').forEach((e)=>{
-            let t = e.querySelector('.modal-content-wrap'), i = Array.from(e.children).filter((e)=>{
+            let t = Array.from(e.children).find((e)=>e instanceof HTMLElement && e.classList.contains('modal-content-wrap'));
+            if (t?.querySelector(':scope > .cbi-map')) {
+                for (let i of Array.from(t.children))e.insertBefore(i, t);
+                t.remove();
+                return;
+            }
+            if (Array.from(e.children).some((e)=>e.classList.contains('cbi-map'))) return;
+            let i = Array.from(e.children).filter((e)=>{
                 if (e === t) return !1;
                 let i = e.classList.contains('close') || e.classList.contains('modal-close'), n = 'SCRIPT' === e.tagName || 'STYLE' === e.tagName;
                 return !i && !n;
             });
             if (0 === i.length) return;
-            let n = [], l = 0;
-            for(; l < i.length;){
-                let e = i[l];
-                if ('H4' === e.tagName || e.classList.contains('modal-header') || e.classList.contains('cbi-tabmenu') || e.classList.contains('tabs')) n.push(e), l++;
+            let n = [], r = 0;
+            for(; r < i.length;){
+                let e = i[r];
+                if ('H4' === e.tagName || e.classList.contains('modal-header') || e.classList.contains('cbi-tabmenu') || e.classList.contains('tabs')) n.push(e), r++;
                 else break;
             }
-            let r = null;
-            if (l < i.length) {
+            let l = null;
+            if (r < i.length) {
                 let e = i[i.length - 1];
                 if (!n.includes(e)) {
-                    let t = e.classList.contains('button-row') || e.classList.contains('modal-footer') || e.classList.contains('right'), l = null !== e.querySelector('button, .btn, .cbi-button, input[type="button"], input[type="submit"]');
-                    if ((t || l) && (r = e, i.length >= 3)) {
+                    let t = e.classList.contains('button-row') || e.classList.contains('modal-footer') || e.classList.contains('right'), r = null !== e.querySelector('button, .btn, .cbi-button, input[type="button"], input[type="submit"]');
+                    if ((t || r) && (l = e, i.length >= 3)) {
                         let e = i[i.length - 2];
                         if (!n.includes(e) && !(e.classList.contains('cbi-map') || e.classList.contains('cbi-section') || 'UL' === e.tagName || 'TABLE' === e.tagName || e.id.startsWith('cbi-'))) {
                             let t = null !== e.querySelector('input[type="checkbox"], .cbi-checkbox'), i = null !== e.querySelector('input[type="text"], input[type="number"], input[type="password"], textarea, select');
-                            t && !i && (r = e);
+                            t && !i && (l = e);
                         }
                     }
                 }
             }
-            let a = [], s = r ? i.indexOf(r) : i.length;
-            for(let e = l; e < s; e++)a.push(i[e]);
-            if (a.length > 0) for (let i of (t || ((t = document.createElement('div')).className = 'modal-content-wrap', r ? e.insertBefore(t, r) : e.appendChild(t)), a))t.appendChild(i);
+            let a = [], s = l ? i.indexOf(l) : i.length;
+            for(let e = r; e < s; e++)a.push(i[e]);
+            if (a.length > 0) for (let i of (t || ((t = document.createElement('div')).className = 'modal-content-wrap', l ? e.insertBefore(t, l) : e.appendChild(t)), a))t.appendChild(i);
         });
     }
-    if (window._fluent_last_tab_pos = window._fluent_last_tab_pos || {}, y(), g(), new MutationObserver(()=>{
-        y(), g();
-    }).observe(r, {
+    if (window._fluent_last_tab_pos = window._fluent_last_tab_pos || {}, p(), g(), new MutationObserver(()=>{
+        p(), g();
+    }).observe(l, {
         childList: !0,
         subtree: !0
     }), window.addEventListener('resize', ()=>{
         document.querySelectorAll('ul.cbi-tabmenu, ul.tabs').forEach((e)=>{
-            p(e);
+            b(e);
         });
-    }), '1' === r.getAttribute('data-loading-bar')) {
+    }), '1' === l.getAttribute('data-loading-bar')) {
         let e = !1, t = document.getElementById('fluent-top-loading'), i = ()=>{
             t && !e && t.classList.add('loaded');
         }, n = ()=>{
@@ -735,27 +734,27 @@ function setupThemeFeatures() {
             subtree: !0
         });
     }
-    function S(e, t) {
-        let i, n, l = t ? 'fluent-sidebar-parent-slider' : 'fluent-sidebar-slider', r = e.querySelector(`.${l}`);
-        r || ((r = document.createElement('div')).className = l, e.appendChild(r));
+    function y(e, t) {
+        let i, n, r = t ? 'fluent-sidebar-parent-slider' : 'fluent-sidebar-slider', l = e.querySelector(`.${r}`);
+        l || ((l = document.createElement('div')).className = r, e.appendChild(l));
         let a = e.querySelector('li.active');
         if (!a || t && (a.classList.contains('slide') || a.querySelector('.slide-menu'))) {
-            r.style.height = '0px', r.style.opacity = '0';
+            l.style.height = '0px', l.style.opacity = '0';
             return;
         }
-        r.style.opacity = '1';
+        l.style.opacity = '1';
         let s = t ? a.querySelector('a.menu, a.item') : a;
         if (!s) return;
         let o = s.getBoundingClientRect(), d = e.getBoundingClientRect();
-        t ? (i = o.top - d.top + e.scrollTop + 0.2 * o.height, n = 0.6 * o.height) : (i = o.top - d.top + e.scrollTop + 0.15 * o.height, n = 0.7 * o.height), r.style.top = `${i}px`, r.style.height = `${n}px`;
+        t ? (i = o.top - d.top + e.scrollTop + 0.2 * o.height, n = 0.6 * o.height) : (i = o.top - d.top + e.scrollTop + 0.15 * o.height, n = 0.7 * o.height), l.style.top = `${i}px`, l.style.height = `${n}px`;
     }
-    function v() {
+    function S() {
         let e = document.querySelector('#mainmenu');
         if (!e) return;
         let t = e.querySelector('ul.nav');
         if (t) {
             let e = t.querySelector('.fluent-sidebar-parent-slider');
-            if (e || ((e = document.createElement('div')).className = 'fluent-sidebar-parent-slider', t.appendChild(e)), t.classList.add('has-slider'), !t.dataset.sliderInit && (t.dataset.sliderInit = 'true', b && t.querySelectorAll('li > a.menu, li > a.item').forEach((e)=>{
+            if (e || ((e = document.createElement('div')).className = 'fluent-sidebar-parent-slider', t.appendChild(e)), t.classList.add('has-slider'), !t.dataset.sliderInit && (t.dataset.sliderInit = 'true', h && t.querySelectorAll('li > a.menu, li > a.item').forEach((e)=>{
                 let i = e.getAttribute('href');
                 i && '#' !== i && e.addEventListener('click', ()=>{
                     try {
@@ -766,7 +765,7 @@ function setupThemeFeatures() {
                         }));
                     } catch  {}
                 });
-            })), b) {
+            })), h) {
                 let t = null;
                 try {
                     t = sessionStorage.getItem('fluent-sidebar-parent-pos');
@@ -776,11 +775,11 @@ function setupThemeFeatures() {
                     sessionStorage.removeItem('fluent-sidebar-parent-pos'), e.style.transition = 'none', e.style.top = i.top, e.style.height = i.height, e.offsetHeight, e.style.transition = '';
                 } catch  {}
             }
-            S(t, !0);
+            y(t, !0);
         }
         e.querySelectorAll('ul.slide-menu').forEach((e)=>{
             let t = e.classList.contains('active'), i = e.querySelector('.fluent-sidebar-slider');
-            if (i || ((i = document.createElement('div')).className = 'fluent-sidebar-slider', e.appendChild(i)), e.classList.add('has-slider'), !e.dataset.sliderInit && (e.dataset.sliderInit = 'true', b && e.querySelectorAll('li > a').forEach((t)=>{
+            if (i || ((i = document.createElement('div')).className = 'fluent-sidebar-slider', e.appendChild(i)), e.classList.add('has-slider'), !e.dataset.sliderInit && (e.dataset.sliderInit = 'true', h && e.querySelectorAll('li > a').forEach((t)=>{
                 let i = t.getAttribute('href');
                 i && '#' !== i && t.addEventListener('click', ()=>{
                     try {
@@ -791,7 +790,7 @@ function setupThemeFeatures() {
                         }));
                     } catch  {}
                 });
-            })), b && t) {
+            })), h && t) {
                 let e = null;
                 try {
                     e = sessionStorage.getItem('fluent-sidebar-submenu-pos');
@@ -801,34 +800,34 @@ function setupThemeFeatures() {
                     sessionStorage.removeItem('fluent-sidebar-submenu-pos'), i.style.transition = 'none', i.style.top = t.top, i.style.height = t.height, i.offsetHeight, i.style.transition = '';
                 } catch  {}
             }
-            S(e, !1);
+            y(e, !1);
         });
     }
-    v(), new MutationObserver(()=>v()).observe(r, {
+    S(), new MutationObserver(()=>S()).observe(l, {
         childList: !0,
         subtree: !0
     }), document.addEventListener('fluent-menu-expand', ()=>{
         let e = document.querySelector('#mainmenu');
         if (e) {
             let t = e.querySelector('ul.nav');
-            t && (S(t, !0), setTimeout(()=>{
-                S(t, !0);
+            t && (y(t, !0), setTimeout(()=>{
+                y(t, !0);
             }, 250));
         }
     }), document.addEventListener('fluent-sidebar-state-change', ()=>{
         let e = document.querySelector('#mainmenu');
         if (e) {
             let t = e.querySelector('ul.nav');
-            t && S(t, !0), e.querySelectorAll('ul.slide-menu').forEach((e)=>{
-                S(e, !1);
+            t && y(t, !0), e.querySelectorAll('ul.slide-menu').forEach((e)=>{
+                y(e, !1);
             });
         }
     }), window.addEventListener('resize', ()=>{
         let e = document.querySelector('#mainmenu');
         if (e) {
             let t = e.querySelector('ul.nav');
-            t && S(t, !0), e.querySelectorAll('ul.slide-menu').forEach((e)=>{
-                S(e, !1);
+            t && y(t, !0), e.querySelectorAll('ul.slide-menu').forEach((e)=>{
+                y(e, !1);
             });
         }
     });

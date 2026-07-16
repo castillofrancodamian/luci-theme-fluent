@@ -1854,6 +1854,7 @@ div.td, div.th {
 }
 
 .modal .alert, .modal .alert-message {
+  display: block;
   padding-block: 0 !important;
   padding-inline: 0 !important;
   box-shadow: none !important;
@@ -1862,7 +1863,6 @@ div.td, div.th {
   border: none !important;
   margin: 0 !important;
   padding-inline-start: calc(18px + var(--fluent-space-md)) !important;
-  display: block !important;
 }
 
 .modal .alert:before, .modal .alert-message:before {
@@ -1901,7 +1901,7 @@ div.td, div.th {
   display: flex;
 }
 
-.modal .modal-content-wrap {
+.modal .modal-content-wrap, .modal > .cbi-map {
   flex: auto;
   min-height: 20px;
   overflow-y: auto;
@@ -1912,11 +1912,24 @@ div.td, div.th {
   height: var(--fluent-scrollbar-width);
 }
 
+.modal > .cbi-map::-webkit-scrollbar {
+  width: var(--fluent-scrollbar-width);
+  height: var(--fluent-scrollbar-width);
+}
+
 .modal .modal-content-wrap::-webkit-scrollbar:horizontal {
   height: var(--fluent-scrollbar-horizontal-height, 5px);
 }
 
+.modal > .cbi-map::-webkit-scrollbar:horizontal {
+  height: var(--fluent-scrollbar-horizontal-height, 5px);
+}
+
 .modal .modal-content-wrap::-webkit-scrollbar-track {
+  background: var(--fluent-scrollbar-track-bg);
+}
+
+.modal > .cbi-map::-webkit-scrollbar-track {
   background: var(--fluent-scrollbar-track-bg);
 }
 
@@ -1925,7 +1938,16 @@ div.td, div.th {
   border-radius: 3px;
 }
 
+.modal > .cbi-map::-webkit-scrollbar-thumb {
+  background: var(--fluent-scrollbar-thumb-bg);
+  border-radius: 3px;
+}
+
 .modal .modal-content-wrap::-webkit-scrollbar-thumb:hover {
+  background: var(--fluent-scrollbar-thumb-bg-hover);
+}
+
+.modal > .cbi-map::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
 }
 
@@ -1934,7 +1956,16 @@ div.td, div.th {
   border-radius: var(--fluent-radius-circular, 10000px);
 }
 
+.modal > .cbi-map::-webkit-scrollbar-thumb:horizontal {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg);
+  border-radius: var(--fluent-radius-circular, 10000px);
+}
+
 .modal .modal-content-wrap::-webkit-scrollbar-thumb:horizontal:hover {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg-hover);
+}
+
+.modal > .cbi-map::-webkit-scrollbar-thumb:horizontal:hover {
   background: var(--fluent-scrollbar-thumb-horizontal-bg-hover);
 }
 
@@ -1943,7 +1974,16 @@ div.td, div.th {
   display: none;
 }
 
+.modal > .cbi-map::-webkit-scrollbar-corner {
+  background: none;
+  display: none;
+}
+
 .modal .modal-content-wrap::-webkit-resizer {
+  background: none;
+}
+
+.modal > .cbi-map::-webkit-resizer {
   background: none;
 }
 
@@ -10289,6 +10329,22 @@ html[dir="rtl"] .login-page .login-container .login-form .form-login, body[data-
 }
 
 .main-left .nav li.slide .slide-menu[data-parent="QuickStart"] li a .menu-icon {
+  display: inline-flex;
+}
+
+.main-left .nav > li > a:first-child[data-title="Home"] .menu-icon:before, .main-left .nav li.slide .slide-menu[data-parent="Home"] li a .menu-icon:before {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M2.5 5.5a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5m15.75-.75a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0m-8.046-.706a.5.5 0 0 0-.408 0h-.002l-.003.002l-.012.005l-.04.02l-.151.07a14.6 14.6 0 0 0-2.13 1.271c-.584.423-1.187.939-1.648 1.528C5.35 7.527 5 8.225 5 9c0 .711.148 1.387.416 2H3V6.5a.5.5 0 0 0-1 0V17a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V6.5a.5.5 0 0 0-1 0V11h-2.416A5 5 0 0 0 15 9c0-.775-.35-1.473-.81-2.06c-.461-.589-1.064-1.105-1.647-1.527a14.6 14.6 0 0 0-2.281-1.343l-.041-.019l-.012-.005l-.003-.002zM17 17h-5v-2a2 2 0 1 0-4 0v2H3v-5h14zm-7-3a1 1 0 0 1 1 1v2H9v-2a1 1 0 0 1 1-1m3.403-6.443c.384.49.597.975.597 1.443c0 .729-.195 1.412-.535 2h-6.93A4 4 0 0 1 6 9c0-.468.213-.953.597-1.443c.382-.488.904-.941 1.446-1.334A13.6 13.6 0 0 1 10 5.053a13.6 13.6 0 0 1 1.957 1.17c.542.393 1.064.846 1.446 1.334'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav > li > a:first-child[data-title="Home"] .menu-icon:after, .main-left .nav li.slide .slide-menu[data-parent="Home"] li a .menu-icon:after {
+  --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill='currentColor' d='M3.25 4.75a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0m14.25.75a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5m-7.296-1.456a.5.5 0 0 0-.408 0h-.002l-.003.002l-.012.005l-.04.02l-.151.07a14.6 14.6 0 0 0-2.13 1.271c-.584.423-1.187.939-1.648 1.528C5.35 7.527 5 8.225 5 9c0 .711.148 1.387.416 2H3V6.5a.5.5 0 0 0-1 0V17a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V6.5a.5.5 0 0 0-1 0V11h-2.416A5 5 0 0 0 15 9c0-.775-.35-1.473-.81-2.06c-.461-.589-1.064-1.105-1.647-1.527a14.6 14.6 0 0 0-2.281-1.343l-.041-.019l-.012-.005l-.003-.002z'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--icon-data);
+  mask-image: var(--icon-data);
+}
+
+.main-left .nav li.slide .slide-menu[data-parent="Home"] li a .menu-icon {
   display: inline-flex;
 }
 

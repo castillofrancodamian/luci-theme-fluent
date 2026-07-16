@@ -57,7 +57,7 @@
     margin: 0 !important;
     box-shadow: none !important;
     color: var(--fluent-text) !important;
-    display: block !important;
+    display: block;
 
     &::before {
       position: absolute !important;
@@ -102,13 +102,16 @@
     margin: 0;
   }
 
-  // Content wrapper created dynamically by JS
-  .modal-content-wrap {
+  // Generic modals use the JS wrapper; CBI maps stay direct children to preserve LuCI's DOM API.
+  .modal-content-wrap,
+  > .cbi-map {
     flex: 1 1 auto;
     overflow-y: auto;
     min-height: 20px; // Essential for nested flexbox scrolling
     @include custom-scrollbar;
+  }
 
+  .modal-content-wrap {
     // Direct children inside wrapper will lay out normally
     > * {
       margin-bottom: var(--fluent-space-md);
