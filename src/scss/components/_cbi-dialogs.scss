@@ -210,6 +210,16 @@
         left: 0 !important;
         right: auto !important;
       }
+
+      @supports (anchor-name: --a) {
+        left: auto !important;
+        right: anchor(right) !important;
+
+        @include rtl {
+          left: anchor(left) !important;
+          right: auto !important;
+        }
+      }
     }
   }
 }

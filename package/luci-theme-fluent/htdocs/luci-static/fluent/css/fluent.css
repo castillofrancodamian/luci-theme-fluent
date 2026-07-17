@@ -2947,6 +2947,18 @@ html[dir="rtl"] .cbi-page-actions .cbi-dropdown[open] > ul.dropdown, body[data-f
   right: auto !important;
 }
 
+@supports (anchor-name: --a) {
+  .cbi-page-actions .cbi-dropdown[open] > ul.dropdown {
+    left: auto !important;
+    right: anchor(right) !important;
+  }
+
+  html[dir="rtl"] .cbi-page-actions .cbi-dropdown[open] > ul.dropdown, body[data-fluent-dir="rtl"] .cbi-page-actions .cbi-dropdown[open] > ul.dropdown {
+    left: anchor(left) !important;
+    right: auto !important;
+  }
+}
+
 :not(#modal_overlay) > .alert, :not(#modal_overlay) > .alert-message {
   margin: 0 0 var(--fluent-space-lg);
   padding-block: var(--fluent-space-md);
