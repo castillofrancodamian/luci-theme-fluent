@@ -10089,15 +10089,15 @@ html[dir="rtl"] .login-page .login-container .login-form .form-login, body[data-
 }
 
 .login-page .login-container .login-form .ms-button {
-  color: #fff !important;
+  background: var(--fluent-btn-primary-bg) !important;
+  border: 1px solid var(--fluent-btn-primary-bg) !important;
   width: 100% !important;
   height: 38px !important;
+  color: var(--fluent-text-on-primary) !important;
   font-family: var(--fluent-font-family) !important;
   text-align: center !important;
   cursor: pointer !important;
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),border-color var(--fluent-duration-fast) var(--fluent-easing-standard) !important;
-  background: #0067b8 !important;
-  border: 1px solid #0067b8 !important;
   border-radius: 4px !important;
   outline: none !important;
   justify-content: center !important;
@@ -10110,13 +10110,13 @@ html[dir="rtl"] .login-page .login-container .login-form .form-login, body[data-
 }
 
 .login-page .login-container .login-form .ms-button:hover {
-  background: #005da6 !important;
-  border-color: #005da6 !important;
+  background: var(--fluent-btn-primary-bg-hover) !important;
+  border-color: var(--fluent-btn-primary-bg-hover) !important;
 }
 
 .login-page .login-container .login-form .ms-button:active {
-  background: #005292 !important;
-  border-color: #005292 !important;
+  background: var(--fluent-btn-primary-bg-active) !important;
+  border-color: var(--fluent-btn-primary-bg-active) !important;
 }
 
 .login-page .login-container .login-form .ms-button:focus-visible {

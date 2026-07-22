@@ -533,10 +533,10 @@ body.login-page {
         width: 100% !important;
         height: 38px !important;
         padding: 8px 16px !important;
-        background: #0067b8 !important;
-        border: 1px solid #0067b8 !important;
+        background: var(--fluent-btn-primary-bg) !important;
+        border: 1px solid var(--fluent-btn-primary-bg) !important;
         border-radius: 4px !important;
-        color: #ffffff !important;
+        color: var(--fluent-text-on-primary) !important;
 
         font-family: var(--fluent-font-family) !important;
         font-size: 14px !important;
@@ -550,13 +550,13 @@ body.login-page {
           border-color var(--fluent-duration-fast) var(--fluent-easing-standard) !important;
 
         &:hover {
-          background: #005da6 !important;
-          border-color: #005da6 !important;
+          background: var(--fluent-btn-primary-bg-hover) !important;
+          border-color: var(--fluent-btn-primary-bg-hover) !important;
         }
 
         &:active {
-          background: #005292 !important;
-          border-color: #005292 !important;
+          background: var(--fluent-btn-primary-bg-active) !important;
+          border-color: var(--fluent-btn-primary-bg-active) !important;
         }
 
         &:focus-visible {
