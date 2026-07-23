@@ -43,6 +43,10 @@ importers:
         version: 6.0.3
 
   src:
+    dependencies:
+      oui-data:
+        specifier: ^1.1.571
+        version: 1.1.571
     devDependencies:
       '@lazulikao/luci-types':
         specifier: github:LazuliKao/luci-types#204c97d283ecce9770598329068a0616192394ba
@@ -855,6 +859,9 @@ packages:
   open@8.4.2:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
+
+  oui-data@1.1.571:
+    resolution: {integrity: sha512-T/GAmPkG5lfR14DrvHc7/TCw3kIjZVkLKmegkxP94qIQsObBtJExmozW1TuAaYU8uftuOYVyJxoGM+xg18e2TQ==}
 
   p-limit@2.3.0:
     resolution: {integrity: sha512-//88mFWSJx8lxCzwdAABTJL2MyWB12+eIY7MDL2SqLmAkeKU9qxRvWuSyTjm3FUmpBEMuFfckAIqEaVGUDxb6w==}
@@ -1783,6 +1790,8 @@ snapshots:
       define-lazy-prop: 2.0.0
       is-docker: 2.2.1
       is-wsl: 2.2.0
+
+  oui-data@1.1.571: {}
 
   p-limit@2.3.0:
     dependencies:

@@ -9118,6 +9118,274 @@ label[data-tooltip] {
   }
 }
 
+.fluent-mac-selector-group {
+  align-items: center;
+  gap: var(--fluent-space-xs);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+}
+
+.fluent-mac-selector-group > input.cbi-input-text {
+  flex: auto !important;
+  width: 100% !important;
+  min-width: 160px !important;
+}
+
+.fluent-mac-selector-group > .fluent-mac-edit-btn {
+  border-radius: var(--fluent-radius-md);
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  width: var(--fluent-input-height) !important;
+  height: var(--fluent-input-height) !important;
+  min-width: var(--fluent-input-height) !important;
+  padding: 0 !important;
+}
+
+.fluent-mac-selector-group > .fluent-mac-edit-btn:after {
+  content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'></svg>");
+  --fluent-mask-fluent-edit-20-regular: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M17.181 2.927a2.975 2.975 0 0 0-4.259-.054l-9.375 9.375a2.44 2.44 0 0 0-.656 1.194l-.877 3.95a.5.5 0 0 0 .596.597l3.927-.873a2.5 2.5 0 0 0 1.234-.678l9.358-9.358a2.975 2.975 0 0 0 .052-4.153m-3.552.653a1.975 1.975 0 1 1 2.793 2.793l-.671.671l-2.793-2.792zm-1.378 1.38l2.793 2.792l-7.98 7.98a1.5 1.5 0 0 1-.744.409l-3.16.702l.708-3.183c.059-.267.193-.511.386-.704z%22/></svg>");
+  width: 16px;
+  height: 16px;
+  -webkit-mask-image: var(--fluent-mask-fluent-edit-20-regular);
+  mask-image: var(--fluent-mask-fluent-edit-20-regular);
+  -webkit-user-select: none;
+  user-select: none;
+  display: inline-block;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  background: currentColor !important;
+}
+
+.fluent-mac-overlay-backdrop {
+  z-index: 2500;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  padding: var(--fluent-space-lg);
+  background: #0006;
+  justify-content: center;
+  align-items: center;
+  animation: .2s cubic-bezier(0, 0, .2, 1) fluent-mac-fade-in;
+  display: flex;
+  position: fixed;
+  inset: 0;
+}
+
+@keyframes fluent-mac-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fluent-mac-overlay-card {
+  background: var(--fluent-bg-card);
+  border: 1px solid var(--fluent-border);
+  border-radius: var(--fluent-radius-lg);
+  box-shadow: var(--fluent-shadow-lg, 0 12px 32px #0000004d);
+  flex-direction: column;
+  width: min(90vw, 440px);
+  max-width: 100%;
+  animation: .2s cubic-bezier(0, 0, .2, 1) fluent-mac-pop-in;
+  display: flex;
+  position: relative;
+  overflow: visible !important;
+}
+
+.fluent-mac-overlay-card .fluent-mac-overlay-header {
+  padding: var(--fluent-space-lg) var(--fluent-space-xl);
+  border-bottom: 1px solid var(--fluent-border);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.fluent-mac-overlay-card .fluent-mac-overlay-header h3 {
+  font-size: var(--fluent-font-size-md);
+  font-weight: var(--fluent-font-weight-semibold);
+  color: var(--fluent-text);
+  margin: 0;
+}
+
+.fluent-mac-overlay-card .fluent-mac-overlay-header .fluent-mac-overlay-close {
+  height: var(--fluent-btn-height);
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-base);
+  font-weight: var(--fluent-font-weight-regular);
+  border-radius: var(--fluent-radius-md);
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),border-color var(--fluent-duration-fast) var(--fluent-easing-standard),color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  border: 1px solid #0000;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+}
+
+.fluent-mac-overlay-card .fluent-mac-overlay-header .fluent-mac-overlay-close:disabled {
+  color: var(--fluent-text-disabled);
+  background: var(--fluent-bg-active);
+  border-color: var(--fluent-bg-active);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.fluent-mac-overlay-card .fluent-mac-overlay-header .fluent-mac-overlay-close:focus-visible {
+  outline: 2px solid var(--fluent-focus-color);
+  outline-offset: 2px;
+}
+
+.fluent-mac-overlay-card .fluent-mac-overlay-header .fluent-mac-overlay-close {
+  width: 32px;
+  height: 32px;
+  color: var(--fluent-text-secondary);
+  cursor: pointer;
+  background: none;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  display: inline-flex;
+}
+
+.fluent-mac-overlay-card .fluent-mac-overlay-header .fluent-mac-overlay-close:after {
+  content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'></svg>");
+  --fluent-mask-fluent-dismiss-20-regular: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22m4.089 4.216l.057-.07a.5.5 0 0 1 .638-.057l.07.057L10 9.293l5.146-5.147a.5.5 0 0 1 .638-.057l.07.057a.5.5 0 0 1 .057.638l-.057.07L10.707 10l5.147 5.146a.5.5 0 0 1 .057.638l-.057.07a.5.5 0 0 1-.638.057l-.07-.057L10 10.707l-5.146 5.147a.5.5 0 0 1-.638.057l-.07-.057a.5.5 0 0 1-.057-.638l.057-.07L9.293 10L4.146 4.854a.5.5 0 0 1-.057-.638l.057-.07z%22/></svg>");
+  width: 16px;
+  height: 16px;
+  -webkit-mask-image: var(--fluent-mask-fluent-dismiss-20-regular);
+  mask-image: var(--fluent-mask-fluent-dismiss-20-regular);
+  -webkit-user-select: none;
+  user-select: none;
+  display: inline-block;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  background: currentColor !important;
+}
+
+.fluent-mac-overlay-card .fluent-mac-overlay-header .fluent-mac-overlay-close:hover {
+  background: var(--fluent-bg-hover);
+  color: var(--fluent-text);
+}
+
+.fluent-mac-overlay-card .fluent-mac-overlay-body {
+  padding: var(--fluent-space-xl);
+  gap: var(--fluent-space-lg);
+  flex-direction: column;
+  display: flex;
+  overflow: visible !important;
+}
+
+.fluent-mac-overlay-card .fluent-mac-field-block {
+  gap: var(--fluent-space-xs);
+  flex-direction: column;
+  display: flex;
+  position: relative;
+  overflow: visible !important;
+}
+
+.fluent-mac-overlay-card .fluent-mac-field-block .fluent-mac-label {
+  font-size: var(--fluent-font-size-sm);
+  font-weight: var(--fluent-font-weight-semibold);
+  color: var(--fluent-text-secondary);
+}
+
+.fluent-mac-overlay-card .fluent-mac-field-block .fluent-mac-modal-input {
+  width: 100%;
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-size: var(--fluent-font-size-md);
+  font-weight: var(--fluent-font-weight-semibold);
+  text-align: center;
+  letter-spacing: 1px;
+  padding: var(--fluent-space-sm);
+}
+
+.fluent-mac-overlay-card .fluent-mac-picker-row {
+  align-items: center;
+  gap: var(--fluent-space-sm);
+  width: 100%;
+  display: flex;
+  overflow: visible !important;
+}
+
+.fluent-mac-overlay-card .fluent-mac-picker-row .fluent-mac-random-btn {
+  white-space: nowrap;
+  align-items: center;
+  gap: var(--fluent-space-xs);
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+.fluent-mac-overlay-card .fluent-mac-picker-row .fluent-mac-random-btn:before {
+  content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'></svg>");
+  --fluent-mask-fluent-arrow-clockwise-20-regular: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path fill='currentColor' d=%22M4 10a6 6 0 0 1 10.472-4H12.5a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-1 0v1.601a7 7 0 1 0 1.98 4.361a.5.5 0 1 0-.998.076Q16 9.766 16 10a6 6 0 0 1-12 0%22/></svg>");
+  width: 16px;
+  height: 16px;
+  -webkit-mask-image: var(--fluent-mask-fluent-arrow-clockwise-20-regular);
+  mask-image: var(--fluent-mask-fluent-arrow-clockwise-20-regular);
+  -webkit-user-select: none;
+  user-select: none;
+  display: inline-block;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  background: currentColor !important;
+}
+
+.fluent-mac-overlay-card .fluent-mac-vendor-picker-wrap {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  overflow: visible !important;
+}
+
+.fluent-mac-overlay-card .fluent-mac-overlay-footer {
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--fluent-space-sm);
+  padding: var(--fluent-space-md) var(--fluent-space-xl);
+  border-top: 1px solid var(--fluent-border);
+  background: var(--fluent-bg-secondary);
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  display: flex;
+}
+
+@keyframes fluent-mac-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(.95) translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 img[src="/luci-static/resources/icons/port_down.svg"] {
   content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'></svg>");
   --icon-data: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iNzUgNzUgMzYyIDM2MiIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsbGVkYnk9InRpdGxlIGRlc2MiPgogIDx0aXRsZSBpZD0idGl0bGUiPkV0aGVybmV0IHBvcnQgd2l0aCBkaXNjb25uZWN0ZWQgcGx1ZzwvdGl0bGU+CiAgPGRlc2MgaWQ9ImRlc2MiPkEgRmx1ZW50IFVJIHN0eWxlIGV0aGVybmV0IHBvcnQgaWNvbiB3aXRoIGVpZ2h0IFJKNDUgY29udGFjdHMgYW5kIGEgcGx1ZyBkaXNjb25uZWN0ZWQgc3ltYm9sLjwvZGVzYz4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiM0MjQyNDIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzMzIDEzNUgxMzljLTguOCAwLTE2IDcuMi0xNiAxNnYyMjFjMCA4LjggNy4yIDE2IDE2IDE2aDIzOWM4LjggMCAxNi03LjIgMTYtMTZWMjA2IiBzdHJva2Utd2lkdGg9IjEwIi8+CiAgICA8cGF0aCBkPSJNMTcxIDIwOWgxNzN2MTAxaC0zM3YyN2gtMjd2MjNoLTU1di0yM2gtMjd2LTI3aC0zMXoiIHN0cm9rZS13aWR0aD0iMTAiLz4KICAgIDxwYXRoIGQ9Ik0xOTUgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICAgIDxwYXRoIGQ9Ik0yMTMgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICAgIDxwYXRoIGQ9Ik0yMzEgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICAgIDxwYXRoIGQ9Ik0yNDkgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICAgIDxwYXRoIGQ9Ik0yNjcgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICAgIDxwYXRoIGQ9Ik0yODUgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICAgIDxwYXRoIGQ9Ik0zMDMgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICAgIDxwYXRoIGQ9Ik0zMjEgMjExdjI2IiBzdHJva2Utd2lkdGg9IjkiLz4KICA8L2c+CiAgPHBhdGggZmlsbD0iIzQyNDI0MiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzEyIDg2KSBzY2FsZSg2LjYpIiBkPSJNMTcuODU0IDIuMTQ2YS41LjUgMCAwIDEgMCAuNzA4bC0xLjY2OCAxLjY2OGE0LjA0IDQuMDQgMCAwIDEtLjMzMiA1LjMzMWwtLjMuM2wtLjAwMy4wMDNsLS4zMDkuMzA5YTEuMDUgMS4wNSAwIDAgMS0xLjQ4NCAwTDkuNTM1IDYuMjQyYTEuMDUgMS4wNSAwIDAgMSAwLTEuNDg1bC42MTEtLjYxYTQuMDM2IDQuMDM2IDAgMCAxIDUuMzMyLS4zMzJsMS42NjgtMS42NjlhLjUuNSAwIDAgMSAuNzA4IDBNMTUuMTQgNC44NDdhMy4wMzcgMy4wMzcgMCAwIDAtNC4yODYuMDA2bC0uMy4zYS40OS40OSAwIDAgMCAwIC42OTNsMy42IDMuNmMuMTkuMTkxLjUuMTkyLjY5MS4wMDJsLjAwMi0uMDAybC4zLS4zYTMuMDM2IDMuMDM2IDAgMCAwIC4wMDYtNC4yODZsLS4wMDctLjAwNnptLTUuNzg2IDMuOGEuNS41IDAgMCAxIDAgLjcwN0w3LjcwNyAxMUw5IDEyLjI5M2wxLjY0Ni0xLjY0N2EuNS41IDAgMCAxIC43MDguNzA4TDkuNzA3IDEzbC40NDcuNDQ3YTEuNDkgMS40OSAwIDAgMSAwIDIuMTA3bC0uMy4zYTQuMDM2IDQuMDM2IDAgMCAxLTUuMzMyLjMzMmwtMS42NjggMS42NjhhLjUuNSAwIDAgMS0uNzA4LS43MDhsMS42NjktMS42NjhhNC4wMzYgNC4wMzYgMCAwIDEgLjMzMS01LjMzMWwuMy0uM2ExLjQ5IDEuNDkgMCAwIDEgMi4xMDggMGwuNDQ2LjQ0NmwxLjY0Ni0xLjY0N2EuNS41IDAgMCAxIC43MDggMG0tNC40OTUgNi41MDVhMy4wMzYgMy4wMzYgMCAwIDAgNC4yODctLjAwNWwuMy0uM2EuNDkuNDkgMCAwIDAgMC0uNjkzbC0zLjYtMy42YS40OS40OSAwIDAgMC0uNjkyIDBsLS4zLjNhMy4wMzYgMy4wMzYgMCAwIDAgMCA0LjI5MnoiLz4KPC9zdmc+Cg==);

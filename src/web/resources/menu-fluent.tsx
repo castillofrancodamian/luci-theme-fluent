@@ -5,6 +5,7 @@ import { setupFluentSelects } from "./utils/select-dropdown";
 import { setupIfaceboxTooltips } from "./utils/ifacebox-tooltip";
 import { setupThemeFeatures } from "./utils/theme-features";
 import { setupMenuSearch } from "./utils/menu-search";
+import { setupMacSelector } from "./utils/mac-selector";
 
 
 interface Module {
@@ -61,6 +62,7 @@ const module: Module = {
     setupIfaceboxTooltips();
     setupThemeFeatures();
     setupMenuSearch(data);
+    setupMacSelector();
   },
 
   /**

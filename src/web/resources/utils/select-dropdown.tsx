@@ -178,7 +178,7 @@ function updateDropdownPosition(customDropdown: HTMLElement, selectEl: HTMLSelec
   const viewportHeight = window.innerHeight;
   const spaceBelow = viewportHeight - rect.bottom;
   const spaceAbove = rect.top;
-  const listHeight = Math.min(selectEl.options.length * 32 + 10, 250);
+  const listHeight = Math.min(selectEl.options.length * 32 + 10, 320);
 
   if (spaceBelow < listHeight && spaceAbove > spaceBelow) {
     customDropdown.setAttribute("data-open-direction", "up");
@@ -186,18 +186,19 @@ function updateDropdownPosition(customDropdown: HTMLElement, selectEl: HTMLSelec
     customDropdown.setAttribute("data-open-direction", "down");
   }
 
-  if (!customDropdown.closest("#modal_overlay .modal")) {
+  const isModalOrOverlay = !!customDropdown.closest("#modal_overlay .modal, .fluent-mac-overlay-card, [class*='overlay']");
+  if (!isModalOrOverlay) {
     customDropdown.removeAttribute("data-fluent-floating");
     return;
   }
 
-  const maxListHeight = Math.min(selectEl.options.length * 32 + 10, 350, viewportHeight * 0.5);
+  const maxListHeight = Math.min(selectEl.options.length * 32 + 10, 320, viewportHeight * 0.45);
   const openUp = spaceBelow < maxListHeight && spaceAbove > spaceBelow;
   const availableHeight = Math.max(
     64,
     openUp
-      ? rect.top - DROPDOWN_VIEWPORT_MARGIN - DROPDOWN_GAP
-      : viewportHeight - rect.bottom - DROPDOWN_VIEWPORT_MARGIN - DROPDOWN_GAP,
+      ? spaceAbove - DROPDOWN_VIEWPORT_MARGIN - DROPDOWN_GAP
+      : spaceBelow - DROPDOWN_VIEWPORT_MARGIN - DROPDOWN_GAP,
   );
   const dropdownHeight = Math.min(maxListHeight, availableHeight);
   const dropdownInlineSize = Math.min(rect.width, viewportInlineSize - DROPDOWN_VIEWPORT_MARGIN * 2);
