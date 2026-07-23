@@ -173,7 +173,7 @@
   @include mobile-only {
     &[data-widget="CBI.FlagValue"],
     &:has(.cbi-checkbox:not(td *):not(th *)) {
-      display: grid !important;
+      display: grid;
       grid-template-columns: 1fr auto;
       grid-template-areas:
         "title switch"

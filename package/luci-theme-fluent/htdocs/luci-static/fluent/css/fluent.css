@@ -2505,7 +2505,7 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
     grid-template-areas: "title switch"
                          "desc desc";
     align-items: center;
-    display: grid !important;
+    display: grid;
   }
 
   .cbi-value:has(.cbi-checkbox:not(td *):not(th *)) {
@@ -2514,7 +2514,7 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #maincontent a.btn
     grid-template-areas: "title switch"
                          "desc desc";
     align-items: center;
-    display: grid !important;
+    display: grid;
   }
 
   .cbi-value[data-widget="CBI.FlagValue"] .cbi-value-title {
